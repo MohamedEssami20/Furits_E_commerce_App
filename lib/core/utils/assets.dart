@@ -6,6 +6,10 @@ class Assets {
   /// assets/images/app_icon.png
   static const String assetsImagesAppIcon = "assets/images/app_icon.png";
 
+  /// Assets for assetsImagesOnboardBacgroundImage2
+  /// assets/images/onboard_bacground_image2.svg
+  static const String assetsImagesOnboardBacgroundImage2 = "assets/images/onboard_bacground_image2.svg";
+
   /// Assets for assetsImagesOnboardingBackgroundImage
   /// assets/images/onboarding_background_image.svg
   static const String assetsImagesOnboardingBackgroundImage = "assets/images/onboarding_background_image.svg";

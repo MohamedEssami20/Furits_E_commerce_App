@@ -17,16 +17,19 @@ class _SplashViewState extends State<SplashView> {
     super.initState();
   }
 
-  
   Future<void> execuiteNavigator() async {
     await Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacementNamed(mounted?context:context, OnBoardingView.routeName);
+      Navigator.pushReplacementNamed(
+          mounted ? context : context, OnBoardingView.routeName);
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: SafeArea(child: SplashViewBody()),
+      body: SafeArea(
+        child: SplashViewBody(),
+      ),
     );
   }
 }
