@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_text_form_filed.dart';
+import 'package:fruits_hub/features/auth/presentation/views/widgets/terms_and_condition.dart';
 
 class SignupViewBody extends StatelessWidget {
   const SignupViewBody({super.key});
@@ -37,8 +38,9 @@ class SignupViewBody extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 40,
+              height: 20,
             ),
+            TermsAndCondition(),
           ],
         ),
       ),
