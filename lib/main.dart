@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:fruits_hub/core/constant/constant.dart';
 import 'package:fruits_hub/core/helper/on_generate_routes.dart';
 import 'package:fruits_hub/core/services/shared_prefrence_sigelton.dart';
+import 'package:fruits_hub/core/utils/my_colors.dart';
 import 'package:fruits_hub/features/splash/presentation/views/splash_view.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 
@@ -20,7 +20,7 @@ class FruitsHub extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'Cairo',
-        colorScheme: ColorScheme.fromSeed(seedColor: kPrimaryColor),
+        colorScheme: ColorScheme.fromSeed(seedColor: MyColors.kPrimaryColor),
         scaffoldBackgroundColor: Colors.white,
       ),
       localizationsDelegates: const [

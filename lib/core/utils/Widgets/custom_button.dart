@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/utils/app_text_style.dart';
 import 'package:fruits_hub/core/utils/my_colors.dart';
 
 class CustomButton extends StatelessWidget {
@@ -20,7 +21,7 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           title,
-          style: const TextStyle(color: Colors.white),
+          style: TextStyles.bold16.copyWith(color: Colors.white),
         ),
       ),
     );
