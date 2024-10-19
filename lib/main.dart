@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fruits_hub/core/helper/on_generate_routes.dart';
+import 'package:fruits_hub/core/services/shared_prefrence_sigelton.dart';
 import 'package:fruits_hub/features/splash/presentation/views/splash_view.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 
-void main() {
+void main() async {
+  await SharedPrefrenceSigelton.init();
   runApp(const FruitsHub());
 }
 
