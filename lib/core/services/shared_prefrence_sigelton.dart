@@ -7,11 +7,11 @@ class SharedPrefrenceSigelton {
     _instance = await SharedPreferences.getInstance();
   }
 
-  static setBoolean(String key, bool value) async {
+  static void setBoolean(String key, bool value) async {
     await _instance.setBool(key, value);
   }
 
-  static getBoolean(String key) async {
-    return _instance.getBool(key);
+  static bool? getBoolean({required String key}) {
+  return  _instance.getBool(key)??false;
   }
 }
