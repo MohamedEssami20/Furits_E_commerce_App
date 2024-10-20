@@ -37,11 +37,13 @@ class SignupViewBody extends StatelessWidget {
                 color: Color(0xffC9CECF),
               ),
             ),
+            
             SizedBox(
               height: 20,
             ),
             TermsAndCondition(),
           ],
+          
         ),
       ),
     );
