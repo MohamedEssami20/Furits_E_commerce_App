@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/utils/Widgets/custom_button.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_text_form_filed.dart';
+import 'package:fruits_hub/features/auth/presentation/views/widgets/have_an_account.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/terms_and_condition.dart';
 
 class SignupViewBody extends StatelessWidget {
@@ -7,29 +9,29 @@ class SignupViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 32),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 32),
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            CustomTextFormFiled(
+            const CustomTextFormFiled(
               hintText: "الاسم كامل",
               textInputType: TextInputType.name,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            CustomTextFormFiled(
+            const CustomTextFormFiled(
               hintText: "البريد الالكتروني",
               textInputType: TextInputType.emailAddress,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            CustomTextFormFiled(
+            const CustomTextFormFiled(
               hintText: "كلمة المرور",
               textInputType: TextInputType.visiblePassword,
               suffixIcon: Icon(
@@ -37,13 +39,19 @@ class SignupViewBody extends StatelessWidget {
                 color: Color(0xffC9CECF),
               ),
             ),
-            
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            TermsAndCondition(),
+            const TermsAndCondition(),
+            const SizedBox(
+              height: 35,
+            ),
+            CustomButton(onPressed: () {}, title: "إنشاء حساب جديد"),
+            const SizedBox(
+              height: 40,
+            ),
+            const HaveAnAccountWidget(),
           ],
-          
         ),
       ),
     );
