@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fruits_hub/core/helper/on_generate_routes.dart';
+import 'package:fruits_hub/core/services/custom_bloc_observer.dart';
 import 'package:fruits_hub/core/services/get_it_service.dart';
 import 'package:fruits_hub/core/services/shared_prefrence_sigelton.dart';
 import 'package:fruits_hub/core/utils/my_colors.dart';
@@ -16,6 +18,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   setupGetIt();
+  Bloc.observer = CustomBlocObserver();
   await SharedPrefrenceSigelton.init();
   runApp(const FruitsHub());
 }

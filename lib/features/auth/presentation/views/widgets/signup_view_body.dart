@@ -6,6 +6,8 @@ import 'package:fruits_hub/features/auth/presentation/manager/signup_cubit/signu
 import 'package:fruits_hub/features/auth/presentation/views/widgets/have_an_account.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/terms_and_condition.dart';
 
+import '../../../../../core/utils/Widgets/password_text_field.dart';
+
 class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
 
@@ -23,6 +25,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: SingleChildScrollView(
         child: Form(
+          autovalidateMode: autoValidateMode,
           key: _formKey,
           child: Column(
             children: [
@@ -49,16 +52,10 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               const SizedBox(
                 height: 20,
               ),
-              CustomTextFormFiled(
-                onSaved: (value) {
-                  password = value!;
+              PasswordTextField(
+                onSaved: (value){
+                  password = value!;  
                 },
-                hintText: "كلمة المرور",
-                textInputType: TextInputType.visiblePassword,
-                suffixIcon: const Icon(
-                  Icons.remove_red_eye_rounded,
-                  color: Color(0xffC9CECF),
-                ),
               ),
               const SizedBox(
                 height: 20,
@@ -68,10 +65,10 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 height: 35,
               ),
               CustomButton(
-                onPressed: ()async {
+                onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-                 await context
+                    await context
                         .read<SignupUserCubit>()
                         .createUserWithEmailAndPassword(
                           name: userName,
@@ -96,3 +93,5 @@ class _SignupViewBodyState extends State<SignupViewBody> {
     );
   }
 }
+
+
