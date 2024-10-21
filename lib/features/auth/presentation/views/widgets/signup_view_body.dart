@@ -1,57 +1,96 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_button.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_text_form_filed.dart';
+import 'package:fruits_hub/features/auth/presentation/manager/signup_cubit/signup_user_cubit.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/have_an_account.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/terms_and_condition.dart';
 
-class SignupViewBody extends StatelessWidget {
+class SignupViewBody extends StatefulWidget {
   const SignupViewBody({super.key});
 
+  @override
+  State<SignupViewBody> createState() => _SignupViewBodyState();
+}
+
+class _SignupViewBodyState extends State<SignupViewBody> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
+  late String userName, email, password;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32),
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 30,
-            ),
-            const CustomTextFormFiled(
-              hintText: "الاسم كامل",
-              textInputType: TextInputType.name,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const CustomTextFormFiled(
-              hintText: "البريد الالكتروني",
-              textInputType: TextInputType.emailAddress,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const CustomTextFormFiled(
-              hintText: "كلمة المرور",
-              textInputType: TextInputType.visiblePassword,
-              suffixIcon: Icon(
-                Icons.remove_red_eye_rounded,
-                color: Color(0xffC9CECF),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 30,
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const TermsAndCondition(),
-            const SizedBox(
-              height: 35,
-            ),
-            CustomButton(onPressed: () {}, title: "إنشاء حساب جديد"),
-            const SizedBox(
-              height: 40,
-            ),
-            const HaveAnAccountWidget(),
-          ],
+              CustomTextFormFiled(
+                onSaved: (value) {
+                  userName = value!;
+                },
+                hintText: "الاسم كامل",
+                textInputType: TextInputType.name,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              CustomTextFormFiled(
+                onSaved: (value) {
+                  email = value!;
+                },
+                hintText: "البريد الالكتروني",
+                textInputType: TextInputType.emailAddress,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              CustomTextFormFiled(
+                onSaved: (value) {
+                  password = value!;
+                },
+                hintText: "كلمة المرور",
+                textInputType: TextInputType.visiblePassword,
+                suffixIcon: const Icon(
+                  Icons.remove_red_eye_rounded,
+                  color: Color(0xffC9CECF),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const TermsAndCondition(),
+              const SizedBox(
+                height: 35,
+              ),
+              CustomButton(
+                onPressed: ()async {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                 await context
+                        .read<SignupUserCubit>()
+                        .createUserWithEmailAndPassword(
+                          name: userName,
+                          email: email,
+                          password: password,
+                        );
+                  } else {
+                    autoValidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
+                },
+                title: "إنشاء حساب جديد",
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              const HaveAnAccountWidget(),
+            ],
+          ),
         ),
       ),
     );
