@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_hub/core/errors/custom_exception.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthService {
   // create an signup method that takes email and password ;
@@ -42,9 +43,11 @@ class FirebaseAuthService {
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        throw CustomException(errorMessage: "البريد الالكتروني أو كلمة المرور غير صحيحة");
+        throw CustomException(
+            errorMessage: "البريد الالكتروني أو كلمة المرور غير صحيحة");
       } else if (e.code == 'wrong-password') {
-        throw CustomException(errorMessage: "البريد الالكتروني أو كلمة المرور غير صحيحة");
+        throw CustomException(
+            errorMessage: "البريد الالكتروني أو كلمة المرور غير صحيحة");
       } else if (e.code == 'network-request-failed') {
         throw CustomException(errorMessage: "تأكد من اتصالك بالانترنت");
       } else {
@@ -56,5 +59,20 @@ class FirebaseAuthService {
       throw CustomException(
           errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى");
     }
+  }
+
+  //create google sign in method
+  Future<User> signInWithGoogle() async {
+  
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+      return userCredential.user!;
   }
 }
