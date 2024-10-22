@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_button.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_text_form_filed.dart';
 import 'package:fruits_hub/features/auth/presentation/manager/signup_cubit/signup_user_cubit.dart';
@@ -19,6 +20,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   late String userName, email, password;
+  late bool isTermsAndConditionAccepted = false;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -53,14 +55,19 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 height: 20,
               ),
               PasswordTextField(
-                onSaved: (value){
-                  password = value!;  
+                onSaved: (value) {
+                  password = value!;
                 },
               ),
               const SizedBox(
                 height: 20,
               ),
-              const TermsAndCondition(),
+              TermsAndCondition(
+                onCahanged: (value) {
+                  isTermsAndConditionAccepted = value;
+                  setState(() {});
+                },
+              ),
               const SizedBox(
                 height: 35,
               ),
@@ -68,13 +75,18 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-                    await context
-                        .read<SignupUserCubit>()
-                        .createUserWithEmailAndPassword(
-                          name: userName,
-                          email: email,
-                          password: password,
-                        );
+                    if (isTermsAndConditionAccepted) {
+                      await context
+                          .read<SignupUserCubit>()
+                          .createUserWithEmailAndPassword(
+                            name: userName,
+                            email: email,
+                            password: password,
+                          );
+                    } else {
+                      buildErrorSnackBar(
+                          context, "يجب ان تقبل الشروط والاحكام");
+                    }
                   } else {
                     autoValidateMode = AutovalidateMode.always;
                     setState(() {});
@@ -93,5 +105,3 @@ class _SignupViewBodyState extends State<SignupViewBody> {
     );
   }
 }
-
-

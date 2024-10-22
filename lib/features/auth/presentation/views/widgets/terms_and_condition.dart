@@ -5,8 +5,8 @@ import 'package:fruits_hub/features/auth/presentation/views/widgets/custom_check
 import '../../../../../core/utils/app_text_style.dart';
 
 class TermsAndCondition extends StatefulWidget {
-  const TermsAndCondition({super.key});
-
+  const TermsAndCondition({super.key, required this.onCahanged});
+  final ValueChanged<bool> onCahanged;
   @override
   State<TermsAndCondition> createState() => _TermsAndConditionState();
 }
@@ -21,6 +21,7 @@ class _TermsAndConditionState extends State<TermsAndCondition> {
           isChecked: termsAndCondition,
           onChanged: (value) {
             termsAndCondition = value!;
+            widget.onCahanged(value);
             setState(() {});
           },
         ),
