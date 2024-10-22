@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_hub/core/errors/custom_exception.dart';
 
@@ -12,15 +14,19 @@ class FirebaseAuthService {
       );
       return credential.user!;
     } on FirebaseAuthException catch (e) {
+      log("Exception in Firebase Auth service= ${e.toString()} and  e.code=${e.code}");
       if (e.code == 'weak-password') {
         throw CustomException(errorMessage: "كلمة المرور ضعيفة");
       } else if (e.code == 'email-already-in-use') {
         throw CustomException(errorMessage: "البريد الالكتروني مستخدم بالفعل");
+      } else if (e.code == 'network-request-failed') {
+        throw CustomException(errorMessage: "تأكد من اتصالك بالانترنت");
       } else {
         throw CustomException(
             errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى");
       }
     } catch (e) {
+      log("Exception in Firebase Auth service= ${e.toString()}");
       throw CustomException(
           errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى");
     }
