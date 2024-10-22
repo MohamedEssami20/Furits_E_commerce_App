@@ -4,6 +4,8 @@ import 'package:fruits_hub/core/utils/Widgets/custom_progress_hud.dart';
 import 'package:fruits_hub/features/auth/presentation/manager/signin_cubit/signin_cubit.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/signin_view_body.dart';
 
+import '../../../../../core/helper/build_error_snackbar.dart';
+
 class SiginViewBodyBlocConsumer extends StatelessWidget {
   const SiginViewBodyBlocConsumer({
     super.key,
@@ -12,7 +14,14 @@ class SiginViewBodyBlocConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SigninCubit, SigninState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is SigninSuccess) {
+          //Navigator.of(context).pop();
+        }
+        if (state is SigninFailure) {
+          buildErrorSnackBar(context, state.errorMessage);
+        }
+      },
       builder: (context, state) {
         return CustomProgressHud(
             inAsyncCall: state is SigninLoading ? true : false,
