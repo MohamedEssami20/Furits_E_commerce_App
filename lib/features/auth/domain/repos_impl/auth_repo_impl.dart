@@ -82,4 +82,26 @@ class AuthRepoImpl extends AuthRepo {
       );
     }
   }
+  
+  @override
+  Future<Either<Failure, UserEntity>> signInWithFacebook()async {
+    
+    try {
+      User user = await firebaseAuthService.signInWithFacebook();
+      return right(
+        UserModel.fromFirebaseUser(user: user),
+      );
+    } on CustomException catch (error) {
+      return left(
+        ServerFailure(errorMessage: error.errorMessage),
+      );
+    } catch (error) {
+      log("Exception in auth repo impl signin= ${error.toString()}");
+      return left(
+        ServerFailure(
+          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+        ),
+      );
+    }
+  }
 }
