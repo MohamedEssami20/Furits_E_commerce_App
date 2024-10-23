@@ -55,4 +55,19 @@ class SigninCubit extends Cubit<SigninState> {
       ),
     );
   }
+
+  // cereate sign in with apple function;
+
+  Future<void> signInWithApple() async {
+    emit(SigninLoading());
+    Either<Failure, UserEntity> result = await authRepo.signInWithApple();
+    result.fold(
+      (failure) => emit(
+        SigninFailure(errorMessage: failure.errorMessage),
+      ),
+      (success) => emit(
+        SigninSuccess(userEntity: success),
+      ),
+    );
+  }
 }
