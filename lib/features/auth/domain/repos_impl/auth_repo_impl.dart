@@ -31,6 +31,7 @@ class AuthRepoImpl extends AuthRepo {
       await dataBaseService.addData(
         path: BackendEndpoints.addUserData,
         data: userEntity.toMap(),
+        documentId: user.uid,
       );
       return right(
         userEntity,
@@ -63,8 +64,12 @@ class AuthRepoImpl extends AuthRepo {
     try {
       User user = await firebaseAuthService.signInWithEmailAndPassword(
           email: email, password: password);
+      log("user id= ${user.uid.toString()}");
+      UserEntity userEntity = await getUserData(uid: user.uid);
+      log("user entity= ${userEntity.toString()}");
+
       return right(
-        UserModel.fromFirebaseUser(user: user),
+        userEntity,
       );
     } on CustomException catch (error) {
       return left(
@@ -130,7 +135,7 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either<Failure, UserEntity>> signInWithApple() async {
     User? user;
     try {
-       user = await firebaseAuthService.signInWithApple();
+      user = await firebaseAuthService.signInWithApple();
       return right(
         UserModel.fromFirebaseUser(user: user),
       );
@@ -150,10 +155,18 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  Future<void> addUserData({required UserEntity userEntity}) async {
+  Future<void> addUserData({required UserEntity userEntity, String? documnetId}) async {
     await dataBaseService.addData(
       path: BackendEndpoints.addUserData,
       data: userEntity.toMap(),
+      documentId: documnetId!,
     );
+  }
+
+  @override
+  Future<UserEntity> getUserData({required String uid}) async {
+    Map<String, dynamic> data = await dataBaseService.getData(
+        path: BackendEndpoints.addUsersData, documentId: uid);
+    return UserEntity.fromMap(data);
   }
 }

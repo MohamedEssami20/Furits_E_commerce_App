@@ -15,6 +15,8 @@ abstract class AuthRepo {
 
   Future<Either<Failure, UserEntity>> signInWithApple();
 
-  Future<void>addUserData({required UserEntity userEntity});
+  Future<void>addUserData({required UserEntity userEntity, String? documnetId});
+
+  Future<UserEntity>getUserData({required String uid});
 }
  
