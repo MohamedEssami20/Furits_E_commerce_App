@@ -15,4 +15,12 @@ class UserEntity {
       "uid": uid,
     };
   }
+
+  factory UserEntity.fromMap(Map<String, dynamic> map) {
+    return UserEntity(
+      email: map["email"],
+      userName: map["userName"],
+      uid: map["uid"],
+    );
+  }
 }
