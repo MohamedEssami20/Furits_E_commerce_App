@@ -5,15 +5,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_hub/core/errors/custom_exception.dart';
 
 import 'package:fruits_hub/core/errors/failure.dart';
+import 'package:fruits_hub/core/services/data_base_service.dart';
 import 'package:fruits_hub/core/services/firebase_auth_service.dart';
+import 'package:fruits_hub/core/utils/backend_endpoints.dart';
 import 'package:fruits_hub/features/auth/data/models/user_model.dart';
 import 'package:fruits_hub/features/auth/domain/entity/user_entity.dart';
 import 'package:fruits_hub/features/auth/domain/repos/auth_repo.dart';
 
 class AuthRepoImpl extends AuthRepo {
   final FirebaseAuthService firebaseAuthService;
-
-  AuthRepoImpl({required this.firebaseAuthService});
+  final DataBaseService dataBaseService;
+  AuthRepoImpl(
+      {required this.dataBaseService, required this.firebaseAuthService});
   @override
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
       {required String email,
@@ -22,8 +25,13 @@ class AuthRepoImpl extends AuthRepo {
     try {
       User user = await firebaseAuthService.createUserWithEmailAndPassword(
           email: email, password: password);
+      UserEntity userEntity = UserModel.fromFirebaseUser(user: user);
+      await dataBaseService.addData(
+        path: BackendEndpoints.addUserData,
+        data: userEntity.toMap(),
+      );
       return right(
-        UserModel.fromFirebaseUser(user: user),
+        userEntity,
       );
     } on CustomException catch (error) {
       return left(
@@ -106,7 +114,6 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<Either<Failure, UserEntity>> signInWithApple() async {
-
     try {
       User user = await firebaseAuthService.signInWithApple();
       return right(
@@ -124,5 +131,13 @@ class AuthRepoImpl extends AuthRepo {
         ),
       );
     }
+  }
+
+  @override
+  Future<void> addUserData({required UserEntity userEntity}) async {
+    await dataBaseService.addData(
+      path: BackendEndpoints.addUserData,
+      data: userEntity.toMap(),
+    );
   }
 }
