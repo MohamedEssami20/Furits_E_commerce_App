@@ -12,6 +12,7 @@ class FirebaseAuthService {
   // create an signup method that takes email and password ;
   Future<User> createUserWithEmailAndPassword(
       {required String email, required String password}) async {
+      
     try {
       final credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -31,6 +32,17 @@ class FirebaseAuthService {
         throw CustomException(
             errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى");
       }
+    } catch (e) {
+      log("Exception in Firebase Auth service= ${e.toString()}");
+      throw CustomException(
+          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى");
+    }
+  }
+
+  // create method that deletes user;
+  Future<void> deleteUser() async {
+    try {
+      await FirebaseAuth.instance.currentUser!.delete();
     } catch (e) {
       log("Exception in Firebase Auth service= ${e.toString()}");
       throw CustomException(

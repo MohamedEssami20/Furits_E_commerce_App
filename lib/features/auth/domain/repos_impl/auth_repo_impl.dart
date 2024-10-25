@@ -22,8 +22,9 @@ class AuthRepoImpl extends AuthRepo {
       {required String email,
       required String password,
       required String name}) async {
+    User? user;
     try {
-      User user = await firebaseAuthService.createUserWithEmailAndPassword(
+      user = await firebaseAuthService.createUserWithEmailAndPassword(
           email: email, password: password);
       UserEntity userEntity = UserModel.fromFirebaseUser(user: user);
       await dataBaseService.addData(
@@ -34,9 +35,12 @@ class AuthRepoImpl extends AuthRepo {
         userEntity,
       );
     } on CustomException catch (error) {
-      return left(
+      if (user != null) {
+        await firebaseAuthService.deleteUser();
+      }
+        return left(
         ServerFailure(errorMessage: error.errorMessage),
-      );
+      );    
     } catch (error) {
       log("Exception in auth repo impl= ${error.toString()}");
       return left(
