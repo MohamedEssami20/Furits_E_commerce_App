@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_button.dart';
@@ -106,14 +108,20 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               const SizedBox(
                 height: 18,
               ),
-              SocialLoginButton(
-                title: "تسجيل بواسطة أبل",
-                onPressed: () {},
-                image: Assets.assetsImagesAppleIcons,
-              ),
-              const SizedBox(
-                height: 18,
-              ),
+              Platform.isIOS
+                  ? Column(
+                      children: [
+                        SocialLoginButton(
+                          title: "تسجيل بواسطة أبل",
+                          onPressed: () {},
+                          image: Assets.assetsImagesAppleIcons,
+                        ),
+                        const SizedBox(
+                          height: 18,
+                        ),
+                      ],
+                    )
+                  : const  SizedBox(),
               SocialLoginButton(
                 title: "تسجيل بواسطة فيسبوك",
                 onPressed: () async {
