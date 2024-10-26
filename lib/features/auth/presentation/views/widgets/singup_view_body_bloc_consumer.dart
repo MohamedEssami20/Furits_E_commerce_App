@@ -16,6 +16,10 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is SignupUserSuccess) {
           Navigator.of(context).pop();
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+                content:  Text("تم إنشاء حسابك بنجاح برجاء تسجيل الدخول")),
+          );
         }
         if (state is SignupUserFailure) {
           buildErrorSnackBar(context, state.errorMessage);
