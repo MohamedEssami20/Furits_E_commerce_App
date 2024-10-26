@@ -18,5 +18,7 @@ abstract class AuthRepo {
   Future<void>addUserData({required UserEntity userEntity, String? documnetId});
 
   Future<UserEntity>getUserData({required String uid});
+
+  Future<bool>isDataExists({required String path, required String documentId});
 }
  
