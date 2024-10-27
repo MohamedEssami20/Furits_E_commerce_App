@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/best_selling_grid_view.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/best_selling_header.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/custom_home_appbar.dart';
-import 'package:fruits_hub/features/home/presentation/views/widgets/featured_item.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/featured_item_list_view.dart';
 
 import '../../../../../core/utils/Widgets/custom_search_text_field.dart';

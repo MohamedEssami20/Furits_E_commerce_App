@@ -10,6 +10,22 @@ class Assets {
   /// assets/images/apple_Icons.svg
   static const String assetsImagesAppleIcons = "assets/images/apple_Icons.svg";
 
+  /// Assets for assetsImagesBoldHomeIcon
+  /// assets/images/bold/home_icon.svg
+  static const String assetsImagesBoldHomeIcon = "assets/images/bold/home_icon.svg";
+
+  /// Assets for assetsImagesBoldProductIcon
+  /// assets/images/bold/product_icon.svg
+  static const String assetsImagesBoldProductIcon = "assets/images/bold/product_icon.svg";
+
+  /// Assets for assetsImagesBoldShoppingCart
+  /// assets/images/bold/shopping-cart.svg
+  static const String assetsImagesBoldShoppingCart = "assets/images/bold/shopping-cart.svg";
+
+  /// Assets for assetsImagesBoldUserIcon
+  /// assets/images/bold/user_icon.svg
+  static const String assetsImagesBoldUserIcon = "assets/images/bold/user_icon.svg";
+
   /// Assets for assetsImagesCheck
   /// assets/images/Check.svg
   static const String assetsImagesCheck = "assets/images/Check.svg";
@@ -49,6 +65,22 @@ class Assets {
   /// Assets for assetsImagesOnboardingImage2
   /// assets/images/onboarding_image2.svg
   static const String assetsImagesOnboardingImage2 = "assets/images/onboarding_image2.svg";
+
+  /// Assets for assetsImagesOutlineHomeIcon
+  /// assets/images/outline/home_icon.svg
+  static const String assetsImagesOutlineHomeIcon = "assets/images/outline/home_icon.svg";
+
+  /// Assets for assetsImagesOutlineProductIcon
+  /// assets/images/outline/product_icon.svg
+  static const String assetsImagesOutlineProductIcon = "assets/images/outline/product_icon.svg";
+
+  /// Assets for assetsImagesOutlineShoppingCart
+  /// assets/images/outline/shopping-cart.svg
+  static const String assetsImagesOutlineShoppingCart = "assets/images/outline/shopping-cart.svg";
+
+  /// Assets for assetsImagesOutlineUserIcon
+  /// assets/images/outline/user_icon.svg
+  static const String assetsImagesOutlineUserIcon = "assets/images/outline/user_icon.svg";
 
   /// Assets for assetsImagesProfileImage
   /// assets/images/profile_image.png
