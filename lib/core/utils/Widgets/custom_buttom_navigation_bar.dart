@@ -11,10 +11,11 @@ class CustomButtomNavigationBar extends StatelessWidget {
       decoration: const ShapeDecoration(
           color: Colors.white,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
-          )),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30),
+              topRight: Radius.circular(30),
+            ),
+          ),
           shadows: [
             BoxShadow(
               color: Color(0x19000000),
