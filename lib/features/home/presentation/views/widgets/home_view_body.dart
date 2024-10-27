@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/custom_home_appbar.dart';
+import 'package:fruits_hub/features/home/presentation/views/widgets/featured_item.dart';
 
 import '../../../../../core/utils/Widgets/custom_search_text_field.dart';
 
@@ -20,6 +21,10 @@ class HomeViewBody extends StatelessWidget {
                   height: 20,
                 ),
                 CustomSearchTextField(),
+                SizedBox(
+                  height: 30,
+                ),
+                FeaturedItem(),
               ],
             ),
           ),

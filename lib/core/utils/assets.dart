@@ -18,6 +18,10 @@ class Assets {
   /// assets/images/facebook_icon.svg
   static const String assetsImagesFacebookIcon = "assets/images/facebook_icon.svg";
 
+  /// Assets for assetsImagesFeaturedBackgroundImage
+  /// assets/images/featured_background_image.svg
+  static const String assetsImagesFeaturedBackgroundImage = "assets/images/featured_background_image.svg";
+
   /// Assets for assetsImagesFilterIcon
   /// assets/images/filter_icon.svg
   static const String assetsImagesFilterIcon = "assets/images/filter_icon.svg";
@@ -65,5 +69,9 @@ class Assets {
   /// Assets for assetsImagesSplashPlanet
   /// assets/images/splash_planet.svg
   static const String assetsImagesSplashPlanet = "assets/images/splash_planet.svg";
+
+  /// Assets for assetsImagesWaterMelonTestImage
+  /// assets/images/water_melon_test_image.png
+  static const String assetsImagesWaterMelonTestImage = "assets/images/water_melon_test_image.png";
 }
 
