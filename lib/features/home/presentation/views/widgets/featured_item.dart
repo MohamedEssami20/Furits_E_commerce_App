@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as svg;
 import 'package:fruits_hub/core/utils/assets.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/featured_button_item.dart';
@@ -17,7 +18,15 @@ class FeaturedItem extends StatelessWidget {
         aspectRatio: 342 / 125,
         child: Stack(
           children: [
-            // Image.asset(Assets.assetsImagesWaterMelonTestImage),
+            Positioned(
+              left: 0,
+              right: itemWidth * 0.4,
+              bottom: 0,
+              child: SvgPicture.asset(
+                Assets.assetsImagesOnboardingImage2,
+                fit: BoxFit.fill,
+              ),
+            ),
             Container(
               width: itemWidth * 0.5,
               decoration: const BoxDecoration(
