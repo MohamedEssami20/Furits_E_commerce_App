@@ -10,7 +10,9 @@ class BottomNavigationBarEntity {
       required this.inActiveIcon,
       required this.name});
 
-  List<BottomNavigationBarEntity> get bottomNavigationBarItems => [
+}
+
+List<BottomNavigationBarEntity> get bottomNavigationBarList => [
         BottomNavigationBarEntity(
             activeIcon: Assets.assetsImagesOutlineHomeIcon,
             inActiveIcon: Assets.assetsImagesOutlineHomeIcon,
@@ -28,4 +30,3 @@ class BottomNavigationBarEntity {
             inActiveIcon: Assets.assetsImagesBoldUserIcon,
             name: "حسابي"),
       ];
-}

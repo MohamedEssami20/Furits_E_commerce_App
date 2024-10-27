@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fruits_hub/core/utils/assets.dart';
+import 'package:fruits_hub/core/utils/Widgets/bottom_navigation_bar_item.dart';
+import 'package:fruits_hub/features/home/presentation/domain/entities/bottom_navigation_bar_entity.dart';
 
 class CustomButtomNavigationBar extends StatelessWidget {
-  const CustomButtomNavigationBar({super.key});
-
+  const CustomButtomNavigationBar({
+    super.key,
+  });
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,42 +28,19 @@ class CustomButtomNavigationBar extends StatelessWidget {
           ),
         ],
       ),
-      child: Center(
-        child: SizedBox(
-            width: 50,
-            child: const InAcativeIcon(
-                pathImage: Assets.assetsImagesOutlineHomeIcon)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: bottomNavigationBarList.map((e) {
+          return BottomBNavigationBarItem(
+            isSelected: false,
+            bottomNavigationBarEntity: BottomNavigationBarEntity(
+                inActiveIcon: e.inActiveIcon,
+                activeIcon: e.activeIcon,
+                name: ""),
+          );
+        }).toList(),
       ),
     );
   }
 }
 
-class InAcativeIcon extends StatelessWidget {
-  const InAcativeIcon({super.key, required this.pathImage});
-  final String pathImage;
-  @override
-  Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      pathImage,
-    );
-  }
-}
-
-class ActiveItem extends StatelessWidget {
-  const ActiveItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
-
-class BottomBNavigationBarItem extends StatelessWidget {
-  const BottomBNavigationBarItem({super.key, required this.isSelected});
-  final bool isSelected;
-  @override
-  Widget build(BuildContext context) {
-    return isSelected?
-        const ActiveItem() : const InAcativeIcon(pathImage: Assets.assetsImagesOutlineHomeIcon);
-  }
-}
