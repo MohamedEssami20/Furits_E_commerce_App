@@ -14,4 +14,20 @@ class UserModel extends UserEntity {
       uid: user.uid,
     );
   }
+
+  factory UserModel.formUserEntity({required UserEntity userEntity}){
+    return UserModel(
+      email: userEntity.email,
+      userName: userEntity.userName,
+      uid: userEntity.uid,
+    );
+  }
+
+    toMap() {
+    return {
+      "email": email,
+      "userName": userName,
+      "uid": uid,
+    };
+  }
 }

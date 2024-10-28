@@ -8,14 +8,6 @@ class UserEntity {
       required this.userName,
       required this.uid});
 
-  toMap() {
-    return {
-      "email": email,
-      "userName": userName,
-      "uid": uid,
-    };
-  }
-
   factory UserEntity.fromMap(Map<String, dynamic> map) {
     return UserEntity(
       email: map["email"],
