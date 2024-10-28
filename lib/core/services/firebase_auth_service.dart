@@ -150,4 +150,9 @@ class FirebaseAuthService {
         await FirebaseAuth.instance.signInWithCredential(oauthCredential);
     return userCredential.user!;
   }
+
+  // create method that check if user is authenticated
+  bool isUserAuthenticated()  {
+    return FirebaseAuth.instance.currentUser != null;
+  }
 }
