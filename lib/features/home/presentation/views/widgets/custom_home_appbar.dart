@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/helper/get_user_data.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
 import '../../../../../core/utils/Widgets/notification_widget.dart';
 import '../../../../../core/utils/app_text_style.dart';
@@ -16,7 +17,7 @@ class CustomHomeAppbar extends StatelessWidget {
           color: const Color(0xff949D9E),
         ),
       ),
-      subtitle: const Text("أحمد مصطفي", style: TextStyles.bold16),
+      subtitle:  Text(getUserData().userName, style: TextStyles.bold16),
       trailing: const NotificationWidget(),
     );
   }

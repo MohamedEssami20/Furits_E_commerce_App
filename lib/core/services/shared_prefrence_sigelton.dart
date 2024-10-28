@@ -18,4 +18,8 @@ class SharedPrefrenceSigelton {
   static Future< void >setString(String key, String value) async {
     await _instance.setString(key, value);
   }
+
+  static String? getString({required String key}) {
+    return _instance.getString(key);
+  }
 }
