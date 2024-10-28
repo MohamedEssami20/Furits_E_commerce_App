@@ -6,6 +6,6 @@ class InAcativeBottomNavigationIcon extends StatelessWidget {
   final String pathImage;
   @override
   Widget build(BuildContext context) {
-    return Expanded(flex: 3, child: SvgPicture.asset(pathImage));
+    return SvgPicture.asset(pathImage);
   }
 }
