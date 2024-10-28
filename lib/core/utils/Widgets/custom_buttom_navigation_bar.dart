@@ -18,7 +18,7 @@ class _CustomButtomNavigationBarState extends State<CustomButtomNavigationBar> {
   Widget build(BuildContext context) {
     return Container(
       height: 80,
-      width: 350,
+      width: 400,
       decoration: const ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
@@ -36,26 +36,27 @@ class _CustomButtomNavigationBarState extends State<CustomButtomNavigationBar> {
           ),
         ],
       ),
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: bottomNavigationBarList.asMap().entries.map((entry) {
-            int index = entry.key;
-            var value = entry.value;
-            return Expanded(
-              flex: selectedIndex == index ? 3 : 2,
-              child: GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () {
-                  selectedIndex = index;
-                  setState(() {});
-                },
-                child: BottomBNavigationBarItem(
-                  isSelected: selectedIndex == index,
-                  bottomNavigationBarEntity: value,
-                ),
+      child: Padding(
+        padding: const EdgeInsets.only(right: 40),
+        child: Row(
+            children: bottomNavigationBarList.asMap().entries.map((entry) {
+          int index = entry.key;
+          var value = entry.value;
+          return Expanded(
+            flex: selectedIndex == index ? 3 : 2,
+            child: GestureDetector(
+              onTap: () {
+                selectedIndex = index;
+                setState(() {});
+              },
+              child: BottomBNavigationBarItem(
+                isSelected: selectedIndex == index,
+                bottomNavigationBarEntity: value,
               ),
-            );
-          }).toList()),
+            ),
+          );
+        }).toList()),
+      ),
     );
   }
 }

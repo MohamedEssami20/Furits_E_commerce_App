@@ -23,8 +23,8 @@ class AcativeBottomNavigationIcon extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              width: 30,
-              height: 30,
+              width: 35,
+              height: 35,
               decoration: ShapeDecoration(
                 color: const Color(0xFF1B5E37),
                 shape: RoundedRectangleBorder(
@@ -34,6 +34,7 @@ class AcativeBottomNavigationIcon extends StatelessWidget {
               child: Center(
                 child: SvgPicture.asset(
                   image,
+                  width: 25,
                 ),
               ),
             ),
@@ -42,8 +43,8 @@ class AcativeBottomNavigationIcon extends StatelessWidget {
             ),
             Text(
               text,
-              style: TextStyles.semiBold11
-                  .copyWith(color: MyColors.kPrimaryColor),
+              style:
+                  TextStyles.semiBold16.copyWith(color: MyColors.kPrimaryColor),
             ),
           ],
         ),

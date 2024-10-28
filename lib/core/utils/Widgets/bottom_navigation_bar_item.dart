@@ -12,19 +12,16 @@ class BottomBNavigationBarItem extends StatelessWidget {
   final BottomNavigationBarEntity bottomNavigationBarEntity;
   @override
   Widget build(BuildContext context) {
-    return FittedBox(
-      fit: BoxFit.scaleDown,
-      child: AnimatedCrossFade(
-        firstChild: InAcativeBottomNavigationIcon(
-            pathImage: bottomNavigationBarEntity.inActiveIcon),
-        secondChild: AcativeBottomNavigationIcon(
-          image: bottomNavigationBarEntity.activeIcon,
-          text: bottomNavigationBarEntity.name,
-        ),
-        crossFadeState:
-            isSelected ? CrossFadeState.showSecond : CrossFadeState.showFirst,
-        duration: const Duration(milliseconds: 300),
+    return AnimatedCrossFade(
+      firstChild: InAcativeBottomNavigationIcon(
+          pathImage: bottomNavigationBarEntity.inActiveIcon),
+      secondChild: AcativeBottomNavigationIcon(
+        image: bottomNavigationBarEntity.activeIcon,
+        text: bottomNavigationBarEntity.name,
       ),
+      crossFadeState:
+          isSelected ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+      duration: const Duration(milliseconds: 300),
     );
   }
 }
