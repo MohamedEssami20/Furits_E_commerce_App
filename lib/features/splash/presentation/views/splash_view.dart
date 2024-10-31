@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/constant/constant.dart';
 import 'package:fruits_hub/core/services/firebase_auth_service.dart';
@@ -7,7 +6,7 @@ import 'package:fruits_hub/features/auth/presentation/views/signin_view.dart';
 import 'package:fruits_hub/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:fruits_hub/features/splash/presentation/views/widgets/splash_view_body.dart';
 
-import '../../../home/presentation/views/home_view.dart';
+import '../../../home/presentation/views/main_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -32,7 +31,7 @@ class _SplashViewState extends State<SplashView> {
       if (isOnBoardingView == true) {
         if (isLoggedIn) {
           Navigator.of(mounted ? context : context)
-              .pushReplacementNamed(HomeView.routeName);
+              .pushReplacementNamed(MainView.routeName);
         } else {
           Navigator.of(mounted ? context : context)
               .pushReplacementNamed(LoginView.routeName);

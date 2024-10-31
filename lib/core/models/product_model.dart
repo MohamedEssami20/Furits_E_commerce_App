@@ -36,7 +36,6 @@ class ProductModel {
       this.sellingCount = 0,
       this.iamgeUrl});
 
-  
   factory ProductModel.formJson(Map<String, dynamic> json) {
     return ProductModel(
       image: File(json["iamgeUrl"]),
@@ -52,8 +51,14 @@ class ProductModel {
       avgRating: json["avgRating"],
       ratingCount: json["ratingCount"],
       unitAmount: json["unitAmount"],
-      reviews: json["reviews"].map((e) => ReviewsModel.fromJson(e)).toList(),
-      sellingCount: json["sellingCount"],
+      reviews: json["reviews"] == null
+          ? []
+          : List<ReviewsModel>.from(
+              json["reviews"].map(
+                (e) => ReviewsModel.fromJson(e),
+              ),
+            ),
+      sellingCount: json["sellingCount"]?.toInt() ?? 0,
     );
   }
 
@@ -99,8 +104,7 @@ class ProductModel {
             (e) => e.toJson(),
           )
           .toList(),
-      "sellingCount":sellingCount,
+      "sellingCount": sellingCount,
     };
-
   }
 }

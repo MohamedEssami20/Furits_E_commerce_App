@@ -16,6 +16,7 @@ class ProductEntity {
   final num avgRating;
   final num ratingCount;
   final int unitAmount;
+  final int sellingCount;
   final List<ReviewsEntity> reviews;
   ProductEntity({
     required this.name,
@@ -30,6 +31,7 @@ class ProductEntity {
     required this.numberOfCalories,
     this.avgRating = 0,
     this.ratingCount = 0,
+    this.sellingCount=0,
     required this.unitAmount,
     required this.reviews,
   });

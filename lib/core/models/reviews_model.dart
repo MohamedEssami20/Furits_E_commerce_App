@@ -15,7 +15,7 @@ class ReviewsModel {
       required this.image,
       required this.reviewDescription});
 
-  factory ReviewsModel.fromJson(Map<String, dynamic> json) {
+  factory ReviewsModel.fromJson(dynamic json) {
     return ReviewsModel(
       name: json["name"],
       ratting: json["ratting"],

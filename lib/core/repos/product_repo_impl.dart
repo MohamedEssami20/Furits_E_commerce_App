@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/core/errors/failure.dart';
@@ -35,12 +37,17 @@ class ProductRepoImpl extends ProductRepos {
     try {
       var data = await dataBaseService.getData(
           path: BackendEndpoints.getProducts) as List<Map<String, dynamic>>;
+      log("data form firebase= $data");
       List<ProductEntity> products =
           data.map((e) => ProductModel.formJson(e).toEntity()).toList();
+      log("product list= $products");
       return right(products);
     } catch (e) {
-      return left(ServerFailure(
-          errorMessage: "there was an error when fetching products"));
+      log("error to get product = ${e.toString()}");
+      return left(
+        ServerFailure(
+            errorMessage: "there was an error when fetching products"),
+      );
     }
   }
 }
