@@ -6,5 +6,5 @@ abstract class ProductRepos {
   //create method that get product from firebase;
   Future<Either<Failure, List<ProductEntity>>> getProduct();
   // create method that get best selling product from firebase;
-  Future<Either<Failure, ProductEntity>> getBestSellingProduct();
+  Future<Either<Failure, List<ProductEntity>>> getBestSellingProduct();
 }
