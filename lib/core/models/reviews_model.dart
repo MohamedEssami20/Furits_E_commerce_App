@@ -1,5 +1,4 @@
 
-
 import '../entities/reviews_entity.dart';
 
 class ReviewsModel {
@@ -15,7 +14,7 @@ class ReviewsModel {
       required this.date,
       required this.image,
       required this.reviewDescription});
-  
+
   factory ReviewsModel.fromJson(Map<String, dynamic> json) {
     return ReviewsModel(
       name: json["name"],
@@ -44,5 +43,14 @@ class ReviewsModel {
       "image": image,
       "reviewDescription": reviewDescription,
     };
+  }
+
+  ReviewsEntity toEntity() {
+    return ReviewsEntity(
+        name: name,
+        ratting: ratting,
+        date: date,
+        image: image,
+        reviewDescription: reviewDescription);
   }
 }
