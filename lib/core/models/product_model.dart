@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import '../entities/product_entity.dart';
 import 'reviews_model.dart';
 
 class ProductModel {
@@ -17,6 +15,7 @@ class ProductModel {
   final num avgRating;
   final num ratingCount;
   final int unitAmount;
+  final int sellingCount;
   final List<ReviewsModel> reviews;
   ProductModel(
       {required this.name,
@@ -32,27 +31,28 @@ class ProductModel {
       required this.ratingCount,
       required this.unitAmount,
       required this.reviews,
+      this.sellingCount = 0,
       this.iamgeUrl});
 
-  factory ProductModel.fromProductEntity(
-      ProductEntity addProductInputEntity) {
+  
+  factory ProductModel.formJson(Map<String, dynamic> json) {
     return ProductModel(
-        reviews: addProductInputEntity.reviews
-            .map((e) => ReviewsModel.fromReviewsEntity(e))
-            .toList(),
-        name: addProductInputEntity.name,
-        code: addProductInputEntity.code,
-        price: addProductInputEntity.price,
-        image: addProductInputEntity.image,
-        isFeatured: addProductInputEntity.isFeatured,
-        description: addProductInputEntity.description,
-        iamgeUrl: addProductInputEntity.iamgeUrl,
-        expeireationMonths: addProductInputEntity.expeireationMonths,
-        isOraganic: addProductInputEntity.isOraganic,
-        numberOfCalories: addProductInputEntity.numberOfCalories,
-        avgRating: addProductInputEntity.avgRating,
-        ratingCount: addProductInputEntity.ratingCount,
-        unitAmount: addProductInputEntity.unitAmount);
+      image: File(json["iamgeUrl"]),
+      name: json["name"],
+      code: json["code"],
+      price: json["price"],
+      iamgeUrl: json["iamgeUrl"],
+      isFeatured: json["isFeatured"],
+      description: json["description"],
+      expeireationMonths: json["expeireationMonths"],
+      isOraganic: json["isOraganic"],
+      numberOfCalories: json["numberOfCalories"],
+      avgRating: json["avgRating"],
+      ratingCount: json["ratingCount"],
+      unitAmount: json["unitAmount"],
+      reviews: json["reviews"].map((e) => ReviewsModel.fromJson(e)).toList(),
+      sellingCount: json["sellingCount"],
+    );
   }
 
   toJson() {
@@ -74,6 +74,8 @@ class ProductModel {
             (e) => e.toJson(),
           )
           .toList(),
+      "sellingCount":sellingCount,
     };
+
   }
 }
