@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/core/repos/product_repos.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
 
 import '../../errors/failure.dart';
 

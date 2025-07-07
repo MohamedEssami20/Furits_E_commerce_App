@@ -15,7 +15,7 @@ class FeaturedItem extends StatelessWidget {
     return SizedBox(
       width: itemWidth,
       child: AspectRatio(
-        aspectRatio: 342 / 125,
+        aspectRatio: 220 / 125,
         child: Stack(
           children: [
             Positioned(

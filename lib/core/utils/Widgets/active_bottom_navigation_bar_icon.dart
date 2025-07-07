@@ -39,12 +39,14 @@ class AcativeBottomNavigationIcon extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              width: 8,
+              width: 6,
             ),
-            Text(
-              text,
-              style:
-                  TextStyles.semiBold16.copyWith(color: MyColors.kPrimaryColor),
+            Expanded(
+              child: Text(
+                text,
+                style: TextStyles.semiBold16
+                    .copyWith(color: MyColors.kPrimaryColor),
+              ),
             ),
           ],
         ),

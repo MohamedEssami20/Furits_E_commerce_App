@@ -26,35 +26,37 @@ class _TermsAndConditionState extends State<TermsAndCondition> {
           },
         ),
         const SizedBox(width: 10),
-        Text.rich(
-          TextSpan(
-            children: [
-              TextSpan(
-                text: "من خلال إنشاء حساب فإنك توافق على",
-                style: TextStyles.semiBold13.copyWith(
-                  color: const Color(0xff949D9E),
+        Expanded(
+          child: Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: "من خلال إنشاء حساب فإنك توافق على",
+                  style: TextStyles.semiBold13.copyWith(
+                    color: const Color(0xff949D9E),
+                  ),
                 ),
-              ),
-              TextSpan(
-                text: " الشروط والأحكام",
-                style: TextStyles.semiBold13
-                    .copyWith(color: MyColors.kLightPrimaryColor),
-              ),
-              const TextSpan(text: " ", style: TextStyles.semiBold13),
-              TextSpan(
-                text: "الخاصة",
-                style: TextStyles.semiBold13
-                    .copyWith(color: MyColors.kLightPrimaryColor),
-              ),
-              const TextSpan(text: " ", style: TextStyles.semiBold13),
-              TextSpan(
-                text: "بنا",
-                style: TextStyles.semiBold13
-                    .copyWith(color: MyColors.kLightPrimaryColor),
-              ),
-            ],
+                TextSpan(
+                  text: " الشروط والأحكام",
+                  style: TextStyles.semiBold13
+                      .copyWith(color: MyColors.kLightPrimaryColor),
+                ),
+                const TextSpan(text: " ", style: TextStyles.semiBold13),
+                TextSpan(
+                  text: "الخاصة",
+                  style: TextStyles.semiBold13
+                      .copyWith(color: MyColors.kLightPrimaryColor),
+                ),
+                const TextSpan(text: " ", style: TextStyles.semiBold13),
+                TextSpan(
+                  text: "بنا",
+                  style: TextStyles.semiBold13
+                      .copyWith(color: MyColors.kLightPrimaryColor),
+                ),
+              ],
+            ),
+            textAlign: TextAlign.right,
           ),
-          textAlign: TextAlign.right,
         ),
       ],
     );
