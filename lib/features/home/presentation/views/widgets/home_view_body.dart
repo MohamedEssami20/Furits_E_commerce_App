@@ -2,10 +2,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/cubit/product_cubit/products_cubit.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_search_text_field.dart';
-import 'package:fruits_hub/features/home/presentation/views/widgets/best_selling_grid_view.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/best_selling_header.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/custom_home_appbar.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/featured_item_list_view.dart';
+
+import 'best_selling_gridview_bloc_builder.dart';
 
 class HomeViewBody extends StatefulWidget {
   const HomeViewBody({
@@ -51,9 +52,10 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               ],
             ),
           ),
-          BestSellingGridView(),
+          BestSellingGridViewBlocBuilder(),
         ],
       ),
     );
   }
 }
+
