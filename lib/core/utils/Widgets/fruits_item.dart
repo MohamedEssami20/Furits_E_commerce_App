@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_hub/core/utils/assets.dart';
+import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/core/utils/my_colors.dart';
 
 import '../app_text_style.dart';
+import 'custom_network_image.dart';
 
 class FruitsItem extends StatelessWidget {
-  const FruitsItem({super.key});
-
+  const FruitsItem({
+    super.key,
+    required this.product,
+  });
+  final ProductEntity product;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,22 +19,28 @@ class FruitsItem extends StatelessWidget {
       color: const Color(0xfff3f5f7),
       child: Stack(
         children: [
-          Positioned(
-            child: IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.favorite_border),
-            ),
-          ),
           Positioned.fill(
             child: Column(
               children: [
                 const SizedBox(
                   height: 20,
                 ),
-                Image.asset(Assets.assetsImagesWaterMelonTestImage),
+                Flexible(
+                  child: product.iamgeUrl != null
+                      ? CustomNetowrkImage(
+                          imageUrl: product.iamgeUrl!,
+                        )
+                      : Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade200,
+                          ),
+                        ),
+                ),
                 ListTile(
-                  title: const Text(
-                    "بطيخ",
+                  title: Text(
+                    product.name,
                     style: TextStyles.semiBold16,
                     textAlign: TextAlign.right,
                   ),
@@ -38,7 +48,7 @@ class FruitsItem extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: '50جنيه',
+                          text: "${product.price} جنيه",
                           style: TextStyles.bold13
                               .copyWith(color: MyColors.kSecondaryColor),
                         ),
@@ -71,6 +81,12 @@ class FruitsItem extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ),
+          Positioned(
+            child: IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.favorite_border),
             ),
           ),
         ],

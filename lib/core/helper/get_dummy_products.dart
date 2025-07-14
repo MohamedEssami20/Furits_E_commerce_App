@@ -9,7 +9,7 @@ ProductEntity getInstance() {
     name: 'Dummy Product',
     code: 'DUMMY001',
     price: 10.0,
-    iamgeUrl: '',
+    iamgeUrl: null,
     isFeatured: false,
     description: 'This is a dummy product',
     expeireationMonths: 12,
