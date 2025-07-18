@@ -16,12 +16,10 @@ class LoginView extends StatelessWidget {
       child: SafeArea(
         top: false,
         child: Scaffold(
-          appBar: buildAppBar(context: context, title: "تسجيل الدخول"),
-          body:const SiginViewBodyBlocConsumer(),
+          appBar: buildAppBarOne(context: context, title: "تسجيل الدخول"),
+          body: const SiginViewBodyBlocConsumer(),
         ),
       ),
     );
   }
 }
-
-

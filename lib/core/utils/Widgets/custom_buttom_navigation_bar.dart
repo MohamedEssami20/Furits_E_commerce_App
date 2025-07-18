@@ -5,15 +5,17 @@ import 'package:fruits_hub/features/home/presentation/domain/entities/bottom_nav
 class CustomButtomNavigationBar extends StatefulWidget {
   const CustomButtomNavigationBar({
     super.key,
+    required this.onTap,
   });
-
+  final ValueChanged<int> onTap;
   @override
   State<CustomButtomNavigationBar> createState() =>
       _CustomButtomNavigationBarState();
 }
 
+int selectedIndex = 0;
+
 class _CustomButtomNavigationBarState extends State<CustomButtomNavigationBar> {
-  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,8 +48,10 @@ class _CustomButtomNavigationBarState extends State<CustomButtomNavigationBar> {
             flex: selectedIndex == index ? 3 : 2,
             child: GestureDetector(
               onTap: () {
-                selectedIndex = index;
-                setState(() {});
+                setState(() {
+                  selectedIndex = index;
+                  widget.onTap(index);
+                });
               },
               child: BottomBNavigationBarItem(
                 isSelected: selectedIndex == index,
