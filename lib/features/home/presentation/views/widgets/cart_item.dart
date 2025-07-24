@@ -9,7 +9,7 @@ import 'package:fruits_hub/features/home/presentation/views/widgets/cart_action_
 
 class CartItem extends StatelessWidget {
   const CartItem({super.key, required this.cartItems});
-  final List<CartItemEntity> cartItems;
+  final CartItemEntity cartItems;
   @override
   Widget build(BuildContext context) {
     return IntrinsicHeight(
@@ -21,8 +21,8 @@ class CartItem extends StatelessWidget {
             decoration: const BoxDecoration(
               color: Color(0xFFF3F5F7),
             ),
-            child: const CustomNetowrkImage(
-              imageUrl: "https://placehold.co/53x40",
+            child: CustomNetowrkImage(
+              imageUrl: cartItems.productEntity.iamgeUrl!,
             ),
           ),
           const SizedBox(
@@ -51,7 +51,7 @@ class CartItem extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  '3 كم',
+                  '${cartItems.calculateTotalWeight()} كم',
                   textAlign: TextAlign.right,
                   style: TextStyles.regular13.copyWith(
                     color: AppColors.secondaryColor,
@@ -62,7 +62,7 @@ class CartItem extends StatelessWidget {
                     const CartActionButtons(),
                     const Spacer(),
                     Text(
-                      "60 جنيه",
+                      "${cartItems.calculateTotalPrice()} جنيه",
                       style: TextStyles.bold16
                           .copyWith(color: const Color(0xFFF4A91F)),
                     )

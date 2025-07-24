@@ -16,7 +16,7 @@ class CartItemList extends StatelessWidget {
           horizontal: 18.0,
         ),
         child: CartItem(
-          cartItems: cartItems,
+          cartItems: cartItems[index],
         ),
       ),
       itemCount: cartItems.length,
