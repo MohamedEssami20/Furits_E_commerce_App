@@ -19,10 +19,11 @@ class CartViewBody extends StatelessWidget {
               child: Column(
                 children: [
                   buildAppBar(
-                      title: "المنتجات",
-                      context,
-                      showBackButton: true,
-                      showNotification: false),
+                    title: "المنتجات",
+                    context,
+                    showBackButton: true,
+                    showNotification: false,
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -36,7 +37,9 @@ class CartViewBody extends StatelessWidget {
             const SliverToBoxAdapter(
               child: CustomDivider(),
             ),
-            const CartItemList(),
+            const CartItemList(
+              cartItems: [],
+            ),
             const SliverToBoxAdapter(
               child: CustomDivider(),
             ),
