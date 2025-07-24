@@ -1,4 +1,4 @@
-import '../../../../../core/utils/assets.dart';
+import '../../../../core/utils/assets.dart';
 
 class BottomNavigationBarEntity {
   final String activeIcon;

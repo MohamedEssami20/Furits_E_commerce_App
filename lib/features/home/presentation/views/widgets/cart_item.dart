@@ -4,7 +4,7 @@ import 'package:fruits_hub/core/constant/app_colors.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_network_image.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
-import 'package:fruits_hub/features/home/presentation/domain/entities/cart_item_entity.dart';
+import 'package:fruits_hub/features/home/domain/entities/cart_item_entity.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/cart_action_buttons.dart';
 
 class CartItem extends StatelessWidget {

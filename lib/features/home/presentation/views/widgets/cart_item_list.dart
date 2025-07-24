@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/Widgets/custom_divider.dart';
-import '../../domain/entities/cart_item_entity.dart';
+import '../../../domain/entities/cart_item_entity.dart';
 import 'cart_item.dart';
 
 class CartItemList extends StatelessWidget {
