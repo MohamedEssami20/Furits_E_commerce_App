@@ -10,6 +10,11 @@ class CartEntity {
     cartItemsEntity.add(cartItemEntity);
   }
 
+  // remove cart item;
+  void removeCartItem(CartItemEntity cartItemEntity) {
+    cartItemsEntity.remove(cartItemEntity);
+  }
+
   // create method that claculate total price of all cart items;
   num calculateTotalPrice() => cartItemsEntity.fold(
       0,
