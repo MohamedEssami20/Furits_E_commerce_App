@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_buttom_navigation_bar.dart';
 import 'package:fruits_hub/features/home/presentation/manager/cart_cubit/cart_cubit.dart';
-import 'package:fruits_hub/features/home/presentation/views/cart_view.dart';
-import 'package:fruits_hub/features/home/presentation/views/widgets/home_view.dart';
-import 'package:fruits_hub/features/home/presentation/views/widgets/product_view.dart';
+import 'package:fruits_hub/features/home/presentation/views/widgets/main_view_body_bloc_listener.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -31,13 +29,8 @@ class _MainViewState extends State<MainView> {
           ),
           backgroundColor: const Color(0xFFFFFFFF),
           body: SafeArea(
-            child: IndexedStack(
-              index: selectedIndex,
-              children: const [
-                HomeView(),
-                ProductView(),
-                CartView(),
-              ],
+            child: MainViewBodyBlocListener(
+              selectedIndex: selectedIndex,
             ),
           )),
     );

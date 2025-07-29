@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../manager/cart_cubit/cart_cubit.dart';
 
 class CartViewHeader extends StatelessWidget {
   const CartViewHeader({super.key});
@@ -11,10 +14,10 @@ class CartViewHeader extends StatelessWidget {
       decoration: const BoxDecoration(
         color: Color(0xFFEBF9F1),
       ),
-      child: const Center(
+      child: Center(
         child: Text(
-          "لديك 3 منتجات في سلة التسوق",
-          style: TextStyle(
+          "لديك ${context.watch<CartCubit>().cartEntityList.cartItemsEntity.length} منتجات في سلة التسوق",
+          style: const TextStyle(
             color: Color(0xff1B5E37),
             fontSize: 13,
             fontWeight: FontWeight.w400,
