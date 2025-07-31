@@ -50,7 +50,7 @@ class CartItem extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          'بطيخ',
+                          cartItems.productEntity.name,
                           style: TextStyles.bold13.copyWith(
                             color: const Color(0xff0C0D0D),
                           ),
