@@ -4,6 +4,7 @@ import 'package:equatable/equatable.dart';
 
 import 'reviews_entity.dart';
 
+// ignore: must_be_immutable
 class ProductEntity extends Equatable {
   final String name;
   final String code;

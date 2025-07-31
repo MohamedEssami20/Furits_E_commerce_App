@@ -17,6 +17,10 @@ class MainViewBodyBlocListener extends StatelessWidget {
         if (state is CartItemAdded) {
           buildErrorSnackBar(context, "تمت اضافة المنتج بنجاح");
         }
+
+        if (state is CartItemRemoved) {
+          buildErrorSnackBar(context, "تم حذف المنتج بنجاح");
+        }
       },
       child: MainViewBody(
         currentIndex: selectedIndex,
