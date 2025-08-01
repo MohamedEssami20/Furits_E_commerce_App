@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'checkout_steps.dart';
+import 'package:fruits_hub/features/checkout/presentation/views/widgets/shipping_section.dart';
 
 class CheckOutPageView extends StatelessWidget {
   const CheckOutPageView({
@@ -12,13 +11,23 @@ class CheckOutPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageView.builder(
-      controller: _pageController,
-      physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) {
-        return const SizedBox();
-      },
-      itemCount: getSteps().length,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      child: PageView.builder(
+        controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index) {
+          return getStepsView()[index];
+        },
+        itemCount: getStepsView().length,
+      ),
     );
   }
+
+  List<Widget> getStepsView() => const [
+        ShippingSection(),
+        SizedBox(),
+        SizedBox(),
+        SizedBox(),
+      ];
 }
