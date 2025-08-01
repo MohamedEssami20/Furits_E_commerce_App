@@ -6,6 +6,7 @@ import 'package:fruits_hub/features/on_boarding/presentation/views/on_boarding_v
 import 'package:fruits_hub/features/splash/presentation/views/splash_view.dart';
 
 import '../../features/best_selling/presentation/views/best_selling_view.dart';
+import '../../features/checkout/presentation/views/checkout_view.dart';
 
 Route<dynamic>? onGenerateRoute(RouteSettings? routeSettings) {
   switch (routeSettings!.name) {
@@ -32,6 +33,10 @@ Route<dynamic>? onGenerateRoute(RouteSettings? routeSettings) {
     case BestSellingView.routeName:
       return MaterialPageRoute(
         builder: (context) => const BestSellingView(),
+      );
+    case CheckoutView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const CheckoutView(),
       );
     default:
       return MaterialPageRoute(
