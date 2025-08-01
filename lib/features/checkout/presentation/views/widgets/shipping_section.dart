@@ -2,23 +2,31 @@ import 'package:flutter/material.dart';
 
 import 'shipping_item.dart';
 
-class ShippingSection extends StatelessWidget {
+class ShippingSection extends StatefulWidget {
   const ShippingSection({super.key});
 
   @override
+  State<ShippingSection> createState() => _ShippingSectionState();
+}
+
+class _ShippingSectionState extends State<ShippingSection> {
+  int selectedIndex = -1;
+  @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        SizedBox(height: 32),
+        const SizedBox(height: 32),
         ShippingItem(
-          isActive: false,
+          onTap: () => setState(() => selectedIndex = 0),
+          isActive: selectedIndex == 0,
           title: "الدفع عند الاستلام",
           subTitle: "التسليم من المكان",
           price: "40",
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         ShippingItem(
-          isActive: true,
+          onTap: () => setState(() => selectedIndex = 1),
+          isActive: selectedIndex == 1,
           title: "اشتري أون لاين",
           subTitle: "التسليم من المكان",
           price: "40",
