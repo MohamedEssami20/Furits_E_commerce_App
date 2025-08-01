@@ -40,7 +40,12 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
             ),
           ),
           CustomButton(
-            onPressed: () {},
+            onPressed: () {
+              _pageController.nextPage(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.fastOutSlowIn,
+              );
+            },
             title: "التالى",
           ),
           const SizedBox(

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/shipping_section.dart';
 
+import 'address_input_section.dart';
+
 class CheckOutPageView extends StatelessWidget {
   const CheckOutPageView({
     super.key,
@@ -26,7 +28,7 @@ class CheckOutPageView extends StatelessWidget {
 
   List<Widget> getStepsView() => const [
         ShippingSection(),
-        SizedBox(),
+        AddressInputSection(),
         SizedBox(),
         SizedBox(),
       ];
