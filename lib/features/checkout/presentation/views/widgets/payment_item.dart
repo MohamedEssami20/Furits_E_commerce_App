@@ -6,20 +6,24 @@ class PaymentItem extends StatelessWidget {
   const PaymentItem({
     super.key,
     required this.title,
-    required this.child,
+    required this.child, required this.showTitle,
   });
   final String title;
   final Widget child;
+  final bool showTitle;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 8,
       children: [
-        Text(
-          title,
-          style: TextStyles.bold13.copyWith(
-            color: const Color(0xFF0C0D0D),
+        Visibility(
+          visible: showTitle,
+          child: Text(
+            title,
+            style: TextStyles.bold13.copyWith(
+              color: const Color(0xFF0C0D0D),
+            ),
           ),
         ),
         Container(

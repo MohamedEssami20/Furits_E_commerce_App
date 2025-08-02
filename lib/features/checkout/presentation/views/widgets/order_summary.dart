@@ -11,6 +11,7 @@ class OrderSummary extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PaymentItem(
+      showTitle: true,
       title: "ملخص الطلب :",
       child: Column(
         children: [

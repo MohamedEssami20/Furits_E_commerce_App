@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'order_address_details.dart';
 import 'order_summary.dart';
 
 class PaymentSection extends StatelessWidget {
@@ -9,8 +9,14 @@ class PaymentSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        SizedBox(height: 24),
-         OrderSummary(),
+        SizedBox(
+          height: 24,
+        ),
+        OrderSummary(),
+        SizedBox(
+          height: 16,
+        ),
+        OrderAddressDetails(),
       ],
     );
   }
