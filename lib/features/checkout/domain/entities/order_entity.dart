@@ -3,7 +3,7 @@ import '../../../home/domain/entities/cart_entity.dart';
 
 class OrderEntity {
   final CartEntity cartItems;
-  final bool? payWithCash;
+   bool? payWithCash;
   final OrderAddressDetailsEntity? orderAddressDetails;
 
   OrderEntity({

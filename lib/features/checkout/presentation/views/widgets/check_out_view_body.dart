@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_button.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps.dart';
 
+import '../../../domain/entities/order_entity.dart';
 import 'checkout_page_view.dart';
 
 class CheckOutViewBody extends StatefulWidget {
@@ -34,6 +37,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
+    final orderEntity = context.read<OrderEntity>();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -50,11 +54,15 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
           ),
           CustomButton(
             onPressed: () {
-              _pageController.animateToPage(
-                currentPageIndex + 1,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.fastOutSlowIn,
-              );
+              if (orderEntity.payWithCash != null) {
+                _pageController.animateToPage(
+                  currentPageIndex + 1,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.fastOutSlowIn,
+                );
+              } else {
+                buildErrorSnackBar(context, "اختر طريقة الدفع");
+              }
             },
             title: getTextPayment(),
           ),
