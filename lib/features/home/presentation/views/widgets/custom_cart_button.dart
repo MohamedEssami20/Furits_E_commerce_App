@@ -24,8 +24,11 @@ class CustomCartPaymentButton extends StatelessWidget {
                 .cartItemsEntity
                 .isNotEmpty;
             if (isProductInCart) {
-              Navigator.pushNamed(context, CheckoutView.routeName,
-                  arguments: context.read<CartCubit>().cartEntityList.cartItemsEntity,);
+              Navigator.pushNamed(
+                context,
+                CheckoutView.routeName,
+                arguments: context.read<CartCubit>().cartEntityList,
+              );
             } else {
               buildErrorSnackBar(context, "لا يوجد منتجات في السلة");
             }
