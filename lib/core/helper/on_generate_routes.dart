@@ -7,6 +7,7 @@ import 'package:fruits_hub/features/splash/presentation/views/splash_view.dart';
 
 import '../../features/best_selling/presentation/views/best_selling_view.dart';
 import '../../features/checkout/presentation/views/checkout_view.dart';
+import '../../features/home/domain/entities/cart_item_entity.dart';
 
 Route<dynamic>? onGenerateRoute(RouteSettings? routeSettings) {
   switch (routeSettings!.name) {
@@ -36,7 +37,9 @@ Route<dynamic>? onGenerateRoute(RouteSettings? routeSettings) {
       );
     case CheckoutView.routeName:
       return MaterialPageRoute(
-        builder: (context) => const CheckoutView(),
+        builder: (context) => CheckoutView(
+          cartItems: routeSettings.arguments as List<CartItemEntity>,
+        ),
       );
     default:
       return MaterialPageRoute(
