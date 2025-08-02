@@ -16,13 +16,13 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
 
   @override
   void initState() {
-    super.initState();
     _pageController = PageController(initialPage: 0);
     _pageController.addListener(() {
       setState(() {
         currentPageIndex = _pageController.page!.toInt();
       });
     });
+    super.initState();
   }
 
   @override
@@ -40,6 +40,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         children: [
           const SizedBox(height: 32),
           CheckoutSteps(
+            pageController: _pageController,
             currentStep: currentPageIndex,
           ),
           Expanded(
@@ -49,12 +50,13 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
           ),
           CustomButton(
             onPressed: () {
-              _pageController.nextPage(
+              _pageController.animateToPage(
+                currentPageIndex + 1,
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.fastOutSlowIn,
               );
             },
-            title: "التالى",
+            title: getTextPayment(),
           ),
           const SizedBox(
             height: 32,
@@ -62,5 +64,18 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         ],
       ),
     );
+  }
+
+  String getTextPayment() {
+    switch (currentPageIndex) {
+      case 0:
+        return "التالى";
+      case 1:
+        return "التالى";
+      case 2:
+        return " PayPalالدفع عبر";
+      default:
+        return "التالى";
+    }
   }
 }
