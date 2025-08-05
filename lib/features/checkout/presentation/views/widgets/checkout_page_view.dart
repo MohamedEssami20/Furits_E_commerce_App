@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/payment_section.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/shipping_section.dart';
@@ -8,10 +9,12 @@ class CheckOutPageView extends StatelessWidget {
   const CheckOutPageView({
     super.key,
     required PageController pageController,
+    required this.formKey, required this.autoValidateMode,
   }) : _pageController = pageController;
 
   final PageController _pageController;
-
+  final GlobalKey<FormState> formKey;
+  final ValueListenable<AutovalidateMode> autoValidateMode;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,9 +30,12 @@ class CheckOutPageView extends StatelessWidget {
     );
   }
 
-  List<Widget> getStepsView() => const [
-        ShippingSection(),
-        AddressInputSection(),
-        PaymentSection(),
+  List<Widget> getStepsView() => [
+        const ShippingSection(),
+        AddressInputSection(
+          formKey: formKey,
+          autoValidateMode: autoValidateMode,
+        ),
+        const PaymentSection(),
       ];
 }

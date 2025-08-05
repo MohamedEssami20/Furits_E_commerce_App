@@ -34,7 +34,10 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     super.dispose();
   }
 
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   int currentPageIndex = 0;
+  ValueNotifier<AutovalidateMode> autovalidateMode =
+      ValueNotifier(AutovalidateMode.disabled);
   @override
   Widget build(BuildContext context) {
     final orderEntity = context.read<OrderEntity>();
@@ -50,18 +53,16 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
           Expanded(
             child: CheckOutPageView(
               pageController: _pageController,
+              formKey: formKey,
+              autoValidateMode: autovalidateMode,
             ),
           ),
           CustomButton(
             onPressed: () {
-              if (orderEntity.payWithCash != null) {
-                _pageController.animateToPage(
-                  currentPageIndex + 1,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.fastOutSlowIn,
-                );
-              } else {
-                buildErrorSnackBar(context, "اختر طريقة الدفع");
+              if (currentPageIndex == 0) {
+                _handelpayWithCash(orderEntity, context);
+              } else if (currentPageIndex == 1) {
+                _handeladdressForm(formKey);
               }
             },
             title: getTextPayment(),
@@ -72,6 +73,31 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         ],
       ),
     );
+  }
+
+  void _handelpayWithCash(OrderEntity orderEntity, BuildContext context) {
+    if (orderEntity.payWithCash != null) {
+      _pageController.animateToPage(
+        currentPageIndex + 1,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.fastOutSlowIn,
+      );
+    } else {
+      buildErrorSnackBar(context, "اختر طريقة الدفع");
+    }
+  }
+
+  void _handeladdressForm(GlobalKey<FormState> formKey) {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      _pageController.animateToPage(
+        currentPageIndex + 1,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.fastOutSlowIn,
+      );
+    } else {
+      autovalidateMode.value = AutovalidateMode.always;
+    }
   }
 
   String getTextPayment() {

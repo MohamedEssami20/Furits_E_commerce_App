@@ -1,16 +1,16 @@
 class OrderAddressDetailsEntity {
-  final String fullName;
-  final String email;
-  final String address;
-  final String phone;
-  final String city;
-  final String addressDetails;
+  String? fullName;
+  String? email;
+  String? address;
+  String? phone;
+  String? city;
+  String? floorName;
 
   OrderAddressDetailsEntity(
-      {required this.fullName,
-      required this.email,
-      required this.address,
-      required this.phone,
-      required this.city,
-      required this.addressDetails});
+      {this.fullName,
+      this.email,
+      this.address,
+      this.phone,
+      this.city,
+      this.floorName});
 }
