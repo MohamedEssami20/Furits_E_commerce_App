@@ -2,6 +2,7 @@ import 'package:fruits_hub/features/checkout/domain/entities/order_address_detai
 import '../../../home/domain/entities/cart_entity.dart';
 
 class OrderEntity {
+  final String userId;
   final CartEntity cartItems;
   bool? payWithCash;
   OrderAddressDetailsEntity orderAddressDetails = OrderAddressDetailsEntity();
@@ -10,6 +11,7 @@ class OrderEntity {
     required this.cartItems,
     this.payWithCash,
     required this.orderAddressDetails,
+    required this.userId,
   });
 
   // create method that get address details;

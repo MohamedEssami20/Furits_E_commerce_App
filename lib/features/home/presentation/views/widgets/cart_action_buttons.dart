@@ -19,21 +19,21 @@ class CartActionButtons extends StatelessWidget {
           iconColor: Colors.white,
           backgroundColor: AppColors.primaryColor,
           onPressed: () {
-            cartItemEntity.increaseCount();
+            cartItemEntity.increaseQuantity();
             context.read<CartItemCubit>().updateQuantity(cartItemEntity);
           },
         ),
         Text(
-          cartItemEntity.count.toString(),
+          cartItemEntity.quantity.toString(),
           textAlign: TextAlign.center,
           style: TextStyles.bold13.copyWith(color: Colors.black),
         ),
-         CartActionButton(
+        CartActionButton(
           icon: Icons.remove,
           iconColor: Colors.grey,
           backgroundColor: const Color(0xFFF1F1F5),
           onPressed: () {
-            cartItemEntity.decreaseCount();
+            cartItemEntity.decreasequantity();
             context.read<CartItemCubit>().updateQuantity(cartItemEntity);
           },
         ),
