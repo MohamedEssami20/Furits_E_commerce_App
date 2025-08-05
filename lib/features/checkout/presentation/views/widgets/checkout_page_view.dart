@@ -9,7 +9,8 @@ class CheckOutPageView extends StatelessWidget {
   const CheckOutPageView({
     super.key,
     required PageController pageController,
-    required this.formKey, required this.autoValidateMode,
+    required this.formKey,
+    required this.autoValidateMode,
   }) : _pageController = pageController;
 
   final PageController _pageController;
@@ -36,6 +37,8 @@ class CheckOutPageView extends StatelessWidget {
           formKey: formKey,
           autoValidateMode: autoValidateMode,
         ),
-        const PaymentSection(),
+        PaymentSection(
+          pageController: _pageController,
+        ),
       ];
 }
