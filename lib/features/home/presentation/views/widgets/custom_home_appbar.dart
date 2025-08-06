@@ -17,10 +17,8 @@ class CustomHomeAppbar extends StatelessWidget {
           color: const Color(0xff949D9E),
         ),
       ),
-      subtitle:  Text(getUserData().userName, style: TextStyles.bold16),
+      subtitle: Text(getUserData().userName, style: TextStyles.bold16),
       trailing: const NotificationWidget(),
     );
   }
 }
-
-

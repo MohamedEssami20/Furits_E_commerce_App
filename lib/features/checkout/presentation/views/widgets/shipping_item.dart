@@ -11,7 +11,8 @@ class ShippingItem extends StatelessWidget {
     required this.title,
     required this.subTitle,
     required this.price,
-    required this.isActive, required this.onTap,
+    required this.isActive,
+    required this.onTap,
   });
   final String title, subTitle, price;
   final bool isActive;

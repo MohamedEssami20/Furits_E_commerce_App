@@ -5,13 +5,14 @@ import 'package:fruits_hub/features/home/presentation/views/widgets/product_view
 
 class MainViewBody extends StatelessWidget {
   const MainViewBody({
-    super.key, required this.currentIndex,
+    super.key,
+    required this.currentIndex,
   });
-  final int currentIndex ;
+  final int currentIndex;
   @override
   Widget build(BuildContext context) {
     return IndexedStack(
-      index:currentIndex ,
+      index: currentIndex,
       children: const [
         HomeView(),
         ProductView(),

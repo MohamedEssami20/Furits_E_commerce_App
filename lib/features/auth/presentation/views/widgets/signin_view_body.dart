@@ -121,7 +121,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                         ),
                       ],
                     )
-                  : const  SizedBox(),
+                  : const SizedBox(),
               SocialLoginButton(
                 title: "تسجيل بواسطة فيسبوك",
                 onPressed: () async {

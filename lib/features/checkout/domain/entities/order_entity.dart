@@ -19,4 +19,27 @@ class OrderEntity {
   String getAddressDetails() {
     return '${orderAddressDetails.city}, ${orderAddressDetails.address}, ${orderAddressDetails.floorName}';
   }
+
+  String getPaymentMethod() {
+    return payWithCash == true ? 'نقدا' : 'بطاقة بانكية';
+  }
+
+  double claculateShippingCost() {
+    if (payWithCash == true) {
+      return 30;
+    } else {
+      return 0;
+    }
+  }
+
+  double getShippingDiscount() {
+    return 0;
+  }
+
+  double calculateTotalPriceAfterShipping() {
+    return cartItems.calculateTotalPrice() +
+        claculateShippingCost() -
+        getShippingDiscount();
+  }
+
 }

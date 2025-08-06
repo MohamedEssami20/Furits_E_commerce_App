@@ -6,7 +6,8 @@ class PaymentItem extends StatelessWidget {
   const PaymentItem({
     super.key,
     required this.title,
-    required this.child, required this.showTitle,
+    required this.child,
+    required this.showTitle,
   });
   final String title;
   final Widget child;

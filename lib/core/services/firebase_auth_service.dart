@@ -12,7 +12,6 @@ class FirebaseAuthService {
   // create an signup method that takes email and password ;
   Future<User> createUserWithEmailAndPassword(
       {required String email, required String password}) async {
-      
     try {
       final credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -152,7 +151,7 @@ class FirebaseAuthService {
   }
 
   // create method that check if user is authenticated
-  bool isUserAuthenticated()  {
+  bool isUserAuthenticated() {
     return FirebaseAuth.instance.currentUser != null;
   }
 }

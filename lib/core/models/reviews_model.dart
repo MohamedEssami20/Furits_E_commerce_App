@@ -1,4 +1,3 @@
-
 import '../entities/reviews_entity.dart';
 
 class ReviewsModel {

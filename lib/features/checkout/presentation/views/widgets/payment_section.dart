@@ -7,7 +7,7 @@ class PaymentSection extends StatelessWidget {
   final PageController pageController;
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       children: [
         const SizedBox(
           height: 24,

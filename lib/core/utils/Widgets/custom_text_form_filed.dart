@@ -6,7 +6,9 @@ class CustomTextFormFiled extends StatelessWidget {
       {super.key,
       required this.hintText,
       required this.textInputType,
-      this.suffixIcon, this.onSaved,  this.obscureText=false});
+      this.suffixIcon,
+      this.onSaved,
+      this.obscureText = false});
   final String hintText;
   final TextInputType textInputType;
   final Widget? suffixIcon;
@@ -15,12 +17,12 @@ class CustomTextFormFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator:(value){
-        if(value!.isEmpty || value.isEmpty){
+      validator: (value) {
+        if (value!.isEmpty || value.isEmpty) {
           return "هذا الحقل مطلوب";
         }
         return null;
-      } ,
+      },
       obscureText: obscureText,
       onSaved: onSaved,
       keyboardType: textInputType,

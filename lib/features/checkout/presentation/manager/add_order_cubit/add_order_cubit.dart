@@ -18,7 +18,7 @@ class AddOrderCubit extends Cubit<AddOrderState> {
       (error) => emit(
         AddOrderError(message: error.errorMessage),
       ),
-      ( success) => emit(
+      (success) => emit(
         AddOrderSuccess(),
       ),
     );

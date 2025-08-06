@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart';
 import 'package:fruits_hub/core/utils/my_colors.dart';
 
-
 class HaveAnAccountWidget extends StatelessWidget {
   const HaveAnAccountWidget({
     super.key,

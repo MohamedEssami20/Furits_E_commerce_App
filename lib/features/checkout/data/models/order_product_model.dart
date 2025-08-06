@@ -1,4 +1,3 @@
-
 import '../../../home/domain/entities/cart_item_entity.dart';
 
 class OrderProductModel {

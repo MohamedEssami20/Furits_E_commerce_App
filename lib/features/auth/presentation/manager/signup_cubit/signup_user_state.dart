@@ -17,5 +17,4 @@ final class SignupUserFailure extends SignupUserState {
   final String errorMessage;
 
   SignupUserFailure({required this.errorMessage});
-
 }

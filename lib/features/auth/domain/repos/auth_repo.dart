@@ -8,19 +8,19 @@ abstract class AuthRepo {
 
   Future<Either<Failure, UserEntity>> signInWithEmailAndPassword(
       {required String email, required String password});
-  
+
   Future<Either<Failure, UserEntity>> signInWithGoogle();
 
   Future<Either<Failure, UserEntity>> signInWithFacebook();
 
   Future<Either<Failure, UserEntity>> signInWithApple();
 
-  Future<void>addUserData({required UserEntity userEntity, String? documnetId});
+  Future<void> addUserData(
+      {required UserEntity userEntity, String? documnetId});
 
-  Future<UserEntity>getUserData({required String uid});
+  Future<UserEntity> getUserData({required String uid});
 
-  Future<bool>isDataExists({required String path, required String documentId});
-   
+  Future<bool> isDataExists({required String path, required String documentId});
+
   Future<void> saveUserData({required UserEntity userEntity});
 }
- 

@@ -4,13 +4,14 @@ import 'package:fruits_hub/core/utils/assets.dart';
 import 'package:fruits_hub/core/utils/my_colors.dart';
 
 class CustomCheckbox extends StatelessWidget {
-  const CustomCheckbox({super.key, required this.isChecked, required this.onChanged});
+  const CustomCheckbox(
+      {super.key, required this.isChecked, required this.onChanged});
   final bool isChecked;
   final void Function(bool?) onChanged;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         onChanged(!isChecked);
       },
       child: AnimatedContainer(
@@ -22,7 +23,8 @@ class CustomCheckbox extends StatelessWidget {
           shape: RoundedRectangleBorder(
             side: BorderSide(
               width: 1.50,
-              color: isChecked ? MyColors.kPrimaryColor : const Color(0xffDCDEDE),
+              color:
+                  isChecked ? MyColors.kPrimaryColor : const Color(0xffDCDEDE),
             ),
             borderRadius: BorderRadius.circular(8),
           ),
