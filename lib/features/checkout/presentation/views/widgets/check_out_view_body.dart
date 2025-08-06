@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_button.dart';
+import 'package:fruits_hub/features/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps.dart';
 
 import '../../../domain/entities/order_entity.dart';
@@ -63,6 +64,11 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
                 _handelpayWithCash(orderEntity, context);
               } else if (currentPageIndex == 1) {
                 _handeladdressForm(formKey);
+              } else {
+                var orderEntity = context.read<OrderEntity>();
+                context
+                    .read<AddOrderCubit>()
+                    .addOrder(ordereEntity: orderEntity);
               }
             },
             title: getTextPayment(),
