@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
+import 'package:fruits_hub/core/helper/app_keys.dart';
 import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_button.dart';
-import 'package:fruits_hub/features/checkout/presentation/manager/add_order_cubit/add_order_cubit.dart';
+import 'package:fruits_hub/features/checkout/domain/entities/payPal_payment_entities/pay_pal_payment_entity/pay_pal_payment_entity.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps.dart';
 
 import '../../../domain/entities/order_entity.dart';
@@ -34,6 +37,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   void dispose() {
     _pageController.dispose();
     super.dispose();
+    autovalidateMode.dispose();
   }
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -66,10 +70,6 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
               } else if (currentPageIndex == 1) {
                 _handeladdressForm(formKey);
               } else {
-                // var orderEntity = context.read<OrderEntity>();
-                // context
-                //     .read<AddOrderCubit>()
-                //     .addOrder(ordereEntity: orderEntity);
                 _paymentMethod(orderEntity);
               }
             },
@@ -122,55 +122,30 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   }
 
   void _paymentMethod(OrderEntity orderEntity) {
+    final OrderEntity orderEntity = context.read<OrderEntity>();
+    final payPalPaymentEntity = PayPalPaymentEntity.fromEntity(orderEntity);
     Navigator.of(context).push(MaterialPageRoute(
       builder: (BuildContext context) => PaypalCheckoutView(
         sandboxMode: true,
-        clientId: "",
-        secretKey: "",
-        transactions: const [
-          {
-            "amount": {
-              "total": '70',
-              "currency": "USD",
-              "details": {
-                "subtotal": '70',
-                "shipping": '0',
-                "shipping_discount": 0
-              }
-            },
-            "description": "The payment transaction description.",
-            // "payment_options": {
-            //   "allowed_payment_method":
-            //       "INSTANT_FUNDING_SOURCE"
-            // },
-            "item_list": {
-              "items": [
-                {
-                  "name": "Apple",
-                  "quantity": 4,
-                  "price": '5',
-                  "currency": "USD"
-                },
-                {
-                  "name": "Pineapple",
-                  "quantity": 5,
-                  "price": '10',
-                  "currency": "USD"
-                }
-              ],
-            }
-          }
+        clientId: AppKeys.kPayPalClientId,
+        secretKey: AppKeys.kPayPalClientSecret,
+        transactions: [
+          payPalPaymentEntity.toJson(),
         ],
         note: "Contact us for any questions on your order.",
-        onSuccess: (Map params) async {
-          print("onSuccess: $params");
+        onSuccess: () {
+          Navigator.pop(context);
+          buildErrorSnackBar(context, "تم الدفع بنجاح");
         },
         onError: (error) {
-          print("onError: $error");
           Navigator.pop(context);
+          log("payment error= ${error.toString()}");
+          buildErrorSnackBar(context, "حدث خطأ ما يرجى المحاولة مرة أخرى");
         },
         onCancel: () {
-          print('cancelled:');
+          log("payment canceled");
+          Navigator.pop(context);
+          buildErrorSnackBar(context, "تم الغاء الدفع");
         },
       ),
     ));

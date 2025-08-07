@@ -41,5 +41,9 @@ class OrderEntity {
         claculateShippingCost() -
         getShippingDiscount();
   }
+  
 
+  String getPayPalDescription() {
+    return 'سلة المشتريات من المتجر';
+  }
 }
