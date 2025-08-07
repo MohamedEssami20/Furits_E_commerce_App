@@ -10,6 +10,7 @@ import 'package:fruits_hub/features/checkout/domain/entities/payPal_payment_enti
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps.dart';
 
 import '../../../domain/entities/order_entity.dart';
+import '../../manager/add_order_cubit/add_order_cubit.dart';
 import 'checkout_page_view.dart';
 
 class CheckOutViewBody extends StatefulWidget {
@@ -53,6 +54,31 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
         children: [
           const SizedBox(height: 32),
           CheckoutSteps(
+            onStepTapped: (index) {
+              if (currentPageIndex == 0) {
+                if (orderEntity.payWithCash != null) {
+                  _pageController.animateToPage(
+                    currentPageIndex + 1,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.fastOutSlowIn,
+                  );
+                } else {
+                  buildErrorSnackBar(context, "اختر طريقة الدفع");
+                }
+              } else if (index == 1) {
+                if (orderEntity.payWithCash != null) {
+                  _pageController.animateToPage(
+                    currentPageIndex + 1,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.fastOutSlowIn,
+                  );
+                } else {
+                  buildErrorSnackBar(context, "اختر طريقة الدفع");
+                }
+              } else {
+                _handeladdressForm(formKey);
+              }
+            },
             pageController: _pageController,
             currentStep: currentPageIndex,
           ),
@@ -124,6 +150,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
   void _paymentMethod(OrderEntity orderEntity) {
     final OrderEntity orderEntity = context.read<OrderEntity>();
     final payPalPaymentEntity = PayPalPaymentEntity.fromEntity(orderEntity);
+    var addOrderCubit = context.read<AddOrderCubit>();
     Navigator.of(context).push(MaterialPageRoute(
       builder: (BuildContext context) => PaypalCheckoutView(
         sandboxMode: true,
@@ -133,8 +160,9 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
           payPalPaymentEntity.toJson(),
         ],
         note: "Contact us for any questions on your order.",
-        onSuccess: () {
+        onSuccess: (Map parms) async {
           Navigator.pop(context);
+          addOrderCubit.addOrder(ordereEntity: orderEntity);
           buildErrorSnackBar(context, "تم الدفع بنجاح");
         },
         onError: (error) {
