@@ -18,10 +18,11 @@ class OrdersRepoImpl implements OrdersRepo {
   Future<Either<Failure, void>> addOrder(
       {required OrderEntity ordereEntity}) async {
     try {
+      OrderModel orderModel=OrderModel.fromEntity(ordereEntity);
       await dataBaseService.addData(
         path: BackendEndpoints.addOrder,
-        data: OrderModel.fromEntity(ordereEntity).toJson(),
-        documentId: ordereEntity.userId,
+        data: orderModel.toJson(),
+        documentId: orderModel.orderId,
       );
       return const Right(null);
     } catch (e) {
