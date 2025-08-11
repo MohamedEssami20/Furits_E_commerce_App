@@ -5,6 +5,7 @@ import 'package:fruits_hub/features/home/domain/entities/cart_entity.dart';
 import 'package:fruits_hub/features/home/presentation/views/main_view.dart';
 import 'package:fruits_hub/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:fruits_hub/features/splash/presentation/views/splash_view.dart';
+import '../../features/auth/presentation/views/check_code_view.dart';
 import '../../features/auth/presentation/views/forget_password_view.dart';
 import '../../features/best_selling/presentation/views/best_selling_view.dart';
 import '../../features/checkout/presentation/views/checkout_view.dart';
@@ -44,6 +45,10 @@ Route<dynamic>? onGenerateRoute(RouteSettings? routeSettings) {
     case ForgetPasswordView.routeName:
       return MaterialPageRoute(
         builder: (context) => const ForgetPasswordView(),
+      );
+    case CheckCodeView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const CheckCodeView(),
       );
     default:
       return MaterialPageRoute(
