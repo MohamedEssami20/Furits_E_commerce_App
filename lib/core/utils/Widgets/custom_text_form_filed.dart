@@ -1,24 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart';
 
 class CustomTextFormFiled extends StatelessWidget {
-  const CustomTextFormFiled(
-      {super.key,
-      required this.hintText,
-      required this.textInputType,
-      this.suffixIcon,
-      this.onSaved,
-      this.obscureText = false});
+  const CustomTextFormFiled({
+    super.key,
+    required this.hintText,
+    required this.textInputType,
+    this.suffixIcon,
+    this.onSaved,
+    this.obscureText = false,
+    this.maxLength,
+    this.inputFormatters,
+    this.onChanged,
+    this.controller,
+    this.textAlign = TextAlign.start,
+  });
+
   final String hintText;
   final TextInputType textInputType;
   final Widget? suffixIcon;
   final void Function(String?)? onSaved;
   final bool obscureText;
+  final int? maxLength;
+  final List<TextInputFormatter>? inputFormatters;
+  final void Function(String)? onChanged;
+  final TextEditingController? controller;
+  final TextAlign textAlign;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
+      maxLength: maxLength,
+      onChanged: onChanged,
+      inputFormatters: inputFormatters,
       validator: (value) {
-        if (value!.isEmpty || value.isEmpty) {
+        if (value == null || value.isEmpty) {
           return "هذا الحقل مطلوب";
         }
         return null;
@@ -26,7 +44,9 @@ class CustomTextFormFiled extends StatelessWidget {
       obscureText: obscureText,
       onSaved: onSaved,
       keyboardType: textInputType,
+      textAlign: textAlign,
       decoration: InputDecoration(
+        counterText: "", // hide counter when maxLength is set
         hintText: hintText,
         hintStyle: TextStyles.bold13.copyWith(
           color: const Color(0xff949E9D),
