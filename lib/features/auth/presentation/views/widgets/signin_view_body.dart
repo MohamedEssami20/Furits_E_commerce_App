@@ -13,6 +13,7 @@ import 'package:fruits_hub/features/auth/presentation/views/widgets/or_divider_w
 import 'package:fruits_hub/features/auth/presentation/views/widgets/social_login_button.dart';
 
 import '../../manager/signin_cubit/signin_cubit.dart';
+import '../forget_password_view.dart';
 
 class SigninViewBody extends StatefulWidget {
   const SigninViewBody({super.key});
@@ -59,10 +60,16 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
-                    "نسيت كلمة المرور؟",
-                    style: TextStyles.semiBold13
-                        .copyWith(color: MyColors.kLightPrimaryColor),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, ForgetPasswordView.routeName);
+                    },
+                    child: Text(
+                      "نسيت كلمة المرور؟",
+                      style: TextStyles.semiBold13
+                          .copyWith(color: MyColors.kLightPrimaryColor),
+                    ),
                   ),
                 ],
               ),

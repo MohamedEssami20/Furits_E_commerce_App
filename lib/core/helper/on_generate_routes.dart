@@ -5,6 +5,7 @@ import 'package:fruits_hub/features/home/domain/entities/cart_entity.dart';
 import 'package:fruits_hub/features/home/presentation/views/main_view.dart';
 import 'package:fruits_hub/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:fruits_hub/features/splash/presentation/views/splash_view.dart';
+import '../../features/auth/presentation/views/forget_password_view.dart';
 import '../../features/best_selling/presentation/views/best_selling_view.dart';
 import '../../features/checkout/presentation/views/checkout_view.dart';
 
@@ -39,6 +40,10 @@ Route<dynamic>? onGenerateRoute(RouteSettings? routeSettings) {
         builder: (context) => CheckoutView(
           cartEntity: routeSettings.arguments as CartEntity,
         ),
+      );
+    case ForgetPasswordView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const ForgetPasswordView(),
       );
     default:
       return MaterialPageRoute(
