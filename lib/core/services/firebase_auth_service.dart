@@ -154,4 +154,14 @@ class FirebaseAuthService {
   bool isUserAuthenticated() {
     return FirebaseAuth.instance.currentUser != null;
   }
+
+  // create method that sign out user
+  Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
+  // create method that send reset password link
+  Future<void> sendPasswordResetEmail({required String email}) async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+  }
 }
