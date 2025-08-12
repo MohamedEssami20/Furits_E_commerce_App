@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/constant/app_colors.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_button.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart' show TextStyles;
+import 'package:fruits_hub/features/auth/presentation/views/create_new_pssword_view.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/code_input_field.dart';
 
 class CheckCodeViewBody extends StatelessWidget {
@@ -31,7 +32,14 @@ class CheckCodeViewBody extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          CustomButton(onPressed: () {}, title: "تحقق من الرمز"),
+          CustomButton(
+              onPressed: () {
+                Navigator.pushNamed(
+                  context,
+                  CreateNewPsswordView.routeName,
+                );
+              },
+              title: "تحقق من الرمز"),
           const SizedBox(
             height: 30,
           ),
