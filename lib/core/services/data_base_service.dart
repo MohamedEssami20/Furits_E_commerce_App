@@ -12,4 +12,10 @@ abstract class DataBaseService {
   // create method that check if data is exits;
   Future<bool> checkDataExists(
       {required String path, required String documentId});
+
+  //create method to delete data from database;
+  Future<void> deleteData({required String path, required String documentId});
+
+  // create method that check if email of user is exits;
+  Future<bool> checkEmailExists({required String path, required String email});
 }

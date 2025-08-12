@@ -1,0 +1,92 @@
+import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
+import 'package:fruits_hub/core/errors/dio_errors.dart';
+
+import 'package:fruits_hub/core/errors/failure.dart';
+import 'package:fruits_hub/core/services/api_services.dart';
+import 'package:fruits_hub/core/services/data_base_service.dart';
+import 'package:fruits_hub/core/services/firestore_service.dart';
+
+import '../../../../core/utils/backend_endpoints.dart';
+import '../../domain/repos/reset_password_repo.dart';
+
+class ResetPasswordRepoImpl implements ResetPasswordRepo {
+  final ApiServices apiServices;
+  final DataBaseService dataBaseService;
+  final FirestoreService firestoreService = FirestoreService();
+  ResetPasswordRepoImpl(
+      {required this.apiServices,
+      required this.dataBaseService,});
+  @override
+  Future<Either<Failure, void>> sendEmailJs(
+      {required String email, required String code}) async {
+    final isUserExists = await firestoreService.checkEmailExists(
+      path: BackendEndpoints.addUserData,
+      email: email,
+    );
+    if (isUserExists) {
+      try {
+        await apiServices.post(
+          BackendEndpoints.sendEmailBaseUrl,
+          options: Options(
+            headers: {
+              'origin': 'http://localhost',
+              "Content-Type": "application/json",
+            },
+          ),
+          data: {
+            "body": {
+              "service_id": BackendEndpoints.sendEmailServiceId,
+              "template_id": BackendEndpoints.sendEmailTemplateId,
+              "user_id": BackendEndpoints.sendEmailPublicKey,
+              "template_params": {
+                'to_email': email,
+                'verification_code': code,
+              }
+            },
+          },
+        );
+        await saveCodeVerification(email, code);
+        return right(null);
+      } on DioException catch (error) {
+        // delete code from firestore
+        await deleteCodeVerification(email);
+        return left(
+          ApiServerErrors.fromDioError(error),
+        );
+      } catch (error) {
+        // delete code from firestore
+        await deleteCodeVerification(email);
+        return left(
+          ServerFailure(
+            errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+          ),
+        );
+      }
+    } else {
+      return Left(
+        ServerFailure(
+          errorMessage: "البريد الالكتروني غير موجود",
+        ),
+      );
+    }
+  }
+
+  Future<void> deleteCodeVerification(String email) async {
+    await dataBaseService.deleteData(
+      documentId: email,
+      path: BackendEndpoints.verifcationCodeColloection,
+    );
+  }
+
+  Future<void> saveCodeVerification(String email, String code) async {
+    await dataBaseService.addData(
+      path: BackendEndpoints.verifcationCodeColloection,
+      documentId: email,
+      data: {
+        "code": code,
+        "email": email,
+      },
+    );
+  }
+}

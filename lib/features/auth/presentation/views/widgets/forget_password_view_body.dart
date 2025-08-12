@@ -5,9 +5,15 @@ import 'package:fruits_hub/core/utils/app_text_style.dart' show TextStyles;
 
 import '../check_code_view.dart';
 
-class ForgetPasswordViewBody extends StatelessWidget {
+class ForgetPasswordViewBody extends StatefulWidget {
   const ForgetPasswordViewBody({super.key});
 
+  @override
+  State<ForgetPasswordViewBody> createState() => _ForgetPasswordViewBodyState();
+}
+
+class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
+  String email = '';
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,9 +33,13 @@ class ForgetPasswordViewBody extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          const CustomTextFormFiled(
+          CustomTextFormFiled(
             hintText: "البريد الالكتروني ",
             textInputType: TextInputType.text,
+            onSaved: (value) {
+              email = value!;
+              setState(() {});
+            },
           ),
           const SizedBox(
             height: 30,

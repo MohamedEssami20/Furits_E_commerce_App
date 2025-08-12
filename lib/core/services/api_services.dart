@@ -11,17 +11,17 @@ class ApiServices {
     return response.data;
   }
 
-  static Future<dynamic> post(String path, {Map<String, dynamic>? data}) async {
+   Future<dynamic> post(String path, {Map<String, dynamic>? data, Options? options}) async {
     var response = await _dio.post(path, data: data);
     return response.data;
   }
 
-  static Future<dynamic> put(String path, {Map<String, dynamic>? data}) async {
+   Future<dynamic> put(String path, {Map<String, dynamic>? data}) async {
     var response = await _dio.put(path, data: data);
     return response.data;
   }
 
-  static Future<dynamic> delete(String path,
+   Future<dynamic> delete(String path,
       {Map<String, dynamic>? data}) async {
     var response = await _dio.delete(path, data: data);
     return response.data;
