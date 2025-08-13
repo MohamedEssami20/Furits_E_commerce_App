@@ -22,7 +22,7 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
   });
   @override
   Future<Either<Failure, void>> sendCodeVerification(
-      {required String email, required String code}) async {
+      {required String email, required int code}) async {
     final isUserExists = await firestoreService.checkEmailExists(
       path: BackendEndpoints.addUserData,
       email: email,
@@ -83,7 +83,7 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
     );
   }
 
-  Future<void> saveCodeVerification(String email, String code) async {
+  Future<void> saveCodeVerification(String email, int code) async {
     await dataBaseService.addData(
       path: BackendEndpoints.verifcationCodeColloection,
       documentId: email,
@@ -92,5 +92,34 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
         "email": email,
       },
     );
+  }
+
+  @override
+  Future<Either<Failure, void>> checkVerificationCode(
+      {required int code, required String email}) async{
+    // fetch code from firestore;
+    try{
+      final result = await dataBaseService.getData(
+      path: BackendEndpoints.verifcationCodeColloection,
+      documentId: email,
+    );
+    if(result["code"] == code){
+      return right(null);
+    }else{
+      return left(
+        ServerFailure(
+          errorMessage: "الكود المدخل غير صحيح",
+        ),
+      );
+    }
+    }catch(e){
+      log("Exception in check verification code= ${e.toString()}");
+      return left(
+        ServerFailure(
+          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+        ),
+      );
+    }
+    
   }
 }

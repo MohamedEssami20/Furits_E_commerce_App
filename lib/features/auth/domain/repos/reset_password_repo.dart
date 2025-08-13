@@ -4,5 +4,8 @@ import '../../../../core/errors/failure.dart';
 
 abstract class ResetPasswordRepo {
   Future<Either<Failure, void>> sendCodeVerification(
-      {required String email, required String code});
+      {required String email, required int code});
+
+// create method that check verification code
+  Future<Either<Failure, void>> checkVerificationCode({required int code, required String email});
 }

@@ -11,7 +11,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   final ResetPasswordRepo resetPasswordRepo;
 
   Future<void> sendCodeVerification(
-      {required String email, required String code}) async {
+      {required String email, required int code}) async {
     emit(SendCodeVerificationLoading());
     final result =
         await resetPasswordRepo.sendCodeVerification(email: email, code: code);

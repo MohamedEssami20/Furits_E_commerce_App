@@ -55,7 +55,7 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
             formKey: formKey,
             email: email,
             onPressed: () {
-              final String code = generateCode();
+              final int code = generateCode();
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
                 context.read<ResetPasswordCubit>().sendCodeVerification(
