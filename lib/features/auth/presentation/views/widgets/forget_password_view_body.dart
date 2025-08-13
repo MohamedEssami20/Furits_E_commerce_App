@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_hub/core/utils/Widgets/custom_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/services/generate_code.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_text_form_filed.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart' show TextStyles;
-
-import '../check_code_view.dart';
+import '../../manager/reset_password_cubit/reset_password_cubit.dart';
+import 'reset_password_button_builder.dart';
 
 class ForgetPasswordViewBody extends StatefulWidget {
   const ForgetPasswordViewBody({super.key});
@@ -14,6 +15,8 @@ class ForgetPasswordViewBody extends StatefulWidget {
 
 class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
   String email = '';
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -33,25 +36,38 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
           const SizedBox(
             height: 30,
           ),
-          CustomTextFormFiled(
-            hintText: "البريد الالكتروني ",
-            textInputType: TextInputType.text,
-            onSaved: (value) {
-              email = value!;
-              setState(() {});
-            },
+          Form(
+            key: formKey,
+            autovalidateMode: autovalidateMode,
+            child: CustomTextFormFiled(
+              hintText: "البريد الالكتروني ",
+              textInputType: TextInputType.text,
+              onSaved: (value) {
+                email = value!;
+                setState(() {});
+              },
+            ),
           ),
           const SizedBox(
             height: 30,
           ),
-          CustomButton(
-              onPressed: () {
-                Navigator.pushNamed(
-                  context,
-                  CheckCodeView.routeName,
-                );
-              },
-              title: "نسيت كلمة المرور"),
+          ResetPasswordButtonBuilder(
+            formKey: formKey,
+            email: email,
+            onPressed: () {
+              final String code = generateCode();
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+                context.read<ResetPasswordCubit>().sendCodeVerification(
+                      email: email,
+                      code: code,
+                    );
+              } else {
+                autovalidateMode = AutovalidateMode.always;
+                setState(() {});
+              }
+            },
+          ),
         ],
       ),
     );

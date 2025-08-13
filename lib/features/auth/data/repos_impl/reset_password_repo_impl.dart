@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:fruits_hub/core/errors/dio_errors.dart';
@@ -14,11 +16,12 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
   final ApiServices apiServices;
   final DataBaseService dataBaseService;
   final FirestoreService firestoreService = FirestoreService();
-  ResetPasswordRepoImpl(
-      {required this.apiServices,
-      required this.dataBaseService,});
+  ResetPasswordRepoImpl({
+    required this.apiServices,
+    required this.dataBaseService,
+  });
   @override
-  Future<Either<Failure, void>> sendEmailJs(
+  Future<Either<Failure, void>> sendCodeVerification(
       {required String email, required String code}) async {
     final isUserExists = await firestoreService.checkEmailExists(
       path: BackendEndpoints.addUserData,
@@ -30,20 +33,19 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
           BackendEndpoints.sendEmailBaseUrl,
           options: Options(
             headers: {
-              'origin': 'http://localhost',
               "Content-Type": "application/json",
+              "Accept": "application/json",
             },
           ),
           data: {
-            "body": {
-              "service_id": BackendEndpoints.sendEmailServiceId,
-              "template_id": BackendEndpoints.sendEmailTemplateId,
-              "user_id": BackendEndpoints.sendEmailPublicKey,
-              "template_params": {
-                'to_email': email,
-                'verification_code': code,
-              }
-            },
+            "service_id": BackendEndpoints.sendEmailServiceId,
+            "template_id": BackendEndpoints.sendEmailTemplateId,
+            "user_id": BackendEndpoints.sendEmailPublicKey,
+            "accessToken": BackendEndpoints.sendEmailPrivateKey,
+            "template_params": {
+              'to_email': email,
+              'verification_code': code,
+            }
           },
         );
         await saveCodeVerification(email, code);
@@ -51,12 +53,14 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
       } on DioException catch (error) {
         // delete code from firestore
         await deleteCodeVerification(email);
+        log("Exception in reset password repo dio= ${error.toString()}");
         return left(
           ApiServerErrors.fromDioError(error),
         );
       } catch (error) {
         // delete code from firestore
         await deleteCodeVerification(email);
+        log("Exception in reset password repo= ${error.toString()}");
         return left(
           ServerFailure(
             errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/services/get_it_service.dart';
 import 'package:fruits_hub/core/utils/Widgets/build_app_bar.dart';
+import 'package:fruits_hub/features/auth/presentation/manager/reset_password_cubit/reset_password_cubit.dart';
 
+import '../../domain/repos/reset_password_repo.dart';
 import 'widgets/forget_password_view_body.dart';
 
 class ForgetPasswordView extends StatelessWidget {
@@ -8,14 +12,19 @@ class ForgetPasswordView extends StatelessWidget {
   static const String routeName = 'ForgetPasswordView';
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppBar(
-        context,
-        title: "نسيان كلمة المرور",
-        showBackButton: true,
-        showNotification: false,
+    return BlocProvider(
+      create: (context) => ResetPasswordCubit(
+        resetPasswordRepo: getIt.get<ResetPasswordRepo>(),
       ),
-      body: const ForgetPasswordViewBody(),
+      child: Scaffold(
+        appBar: buildAppBar(
+          context,
+          title: "نسيان كلمة المرور",
+          showBackButton: true,
+          showNotification: false,
+        ),
+        body: const ForgetPasswordViewBody(),
+      ),
     );
   }
 }
