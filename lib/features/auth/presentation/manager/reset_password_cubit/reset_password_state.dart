@@ -18,3 +18,13 @@ final class SendCodeVerificationFailure extends ResetPasswordState {
   final String errorMessage;
   const SendCodeVerificationFailure({required this.errorMessage});
 }
+
+// create all state of check verification code;
+final class CheckVerificationCodeLoading extends ResetPasswordState {}
+
+final class CheckVerificationCodeSuccess extends ResetPasswordState {}
+
+final class CheckVerificationCodeFailure extends ResetPasswordState {
+  final String errorMessage;
+  const CheckVerificationCodeFailure({required this.errorMessage});
+}

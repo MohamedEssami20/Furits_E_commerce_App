@@ -40,7 +40,10 @@ class ResetPasswordButtonBuilder extends StatelessWidget {
         }
 
         if (state is SendCodeVerificationSuccess) {
-          Navigator.of(context).pushNamed(CheckCodeView.routeName);
+          Navigator.of(context).pushNamed(
+            CheckCodeView.routeName,
+            arguments: email,
+          );
         }
       },
     );

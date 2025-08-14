@@ -49,7 +49,9 @@ Route<dynamic>? onGenerateRoute(RouteSettings? routeSettings) {
       );
     case CheckCodeView.routeName:
       return MaterialPageRoute(
-        builder: (context) => const CheckCodeView(),
+        builder: (context) =>  CheckCodeView(
+          email: routeSettings.arguments as String,
+        ),
       );
     case CreateNewPsswordView.routeName:
       return MaterialPageRoute(

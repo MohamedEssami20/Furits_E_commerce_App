@@ -24,4 +24,20 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
       ),
     );
   }
+
+  // create method that check verification code
+  Future<void> checkVerificationCode(
+      {required int code, required String email}) async {
+    emit(CheckVerificationCodeLoading());
+    final result =
+        await resetPasswordRepo.checkVerificationCode(code: code, email: email);
+    result.fold(
+      (l) => emit(
+        CheckVerificationCodeFailure(errorMessage: l.errorMessage),
+      ),
+      (r) => emit(
+        CheckVerificationCodeSuccess(),
+      ),
+    );
+  }
 }
