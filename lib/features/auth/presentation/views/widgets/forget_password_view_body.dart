@@ -4,6 +4,7 @@ import 'package:fruits_hub/core/services/generate_code.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_text_form_filed.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart' show TextStyles;
 import '../../manager/reset_password_cubit/reset_password_cubit.dart';
+import '../check_code_view.dart';
 import 'reset_password_button_builder.dart';
 
 class ForgetPasswordViewBody extends StatefulWidget {
@@ -62,6 +63,11 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
                       email: email,
                       code: code,
                     );
+                Navigator.pushNamed(
+                  context,
+                  CheckCodeView.routeName,
+                  arguments: email,
+                );
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});
