@@ -28,3 +28,13 @@ final class CheckVerificationCodeFailure extends ResetPasswordState {
   final String errorMessage;
   const CheckVerificationCodeFailure({required this.errorMessage});
 }
+
+// create all state of send password reset email
+final class SendPasswordResetEmailLoading extends ResetPasswordState {}
+
+final class SendPasswordResetEmailSuccess extends ResetPasswordState {}
+
+final class SendPasswordResetEmailFailure extends ResetPasswordState {
+  final String errorMessage;
+  const SendPasswordResetEmailFailure({required this.errorMessage});
+}

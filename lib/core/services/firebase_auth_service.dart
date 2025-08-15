@@ -165,4 +165,8 @@ class FirebaseAuthService {
     await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
   }
 
+  // create method that update passqord
+  Future<void> updatePassword({required String newPassword}) async {
+    await FirebaseAuth.instance.currentUser!.updatePassword(newPassword);
+  }
 }

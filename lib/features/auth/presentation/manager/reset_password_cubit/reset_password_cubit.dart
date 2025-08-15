@@ -40,4 +40,18 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
       ),
     );
   }
+
+  // create method that send password reset email
+  Future<void> sendPasswordResetEmail({required String email}) async {
+    emit(SendPasswordResetEmailLoading());
+    final result = await resetPasswordRepo.sendPasswordResetEmail(email: email);
+    result.fold(
+      (l) => emit(
+        SendPasswordResetEmailFailure(errorMessage: l.errorMessage),
+      ),
+      (r) => emit(
+        SendPasswordResetEmailSuccess(),
+      ),
+    );
+  }
 }

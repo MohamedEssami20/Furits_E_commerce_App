@@ -2,11 +2,13 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_hub/core/errors/dio_errors.dart';
 
 import 'package:fruits_hub/core/errors/failure.dart';
 import 'package:fruits_hub/core/services/api_services.dart';
 import 'package:fruits_hub/core/services/data_base_service.dart';
+import 'package:fruits_hub/core/services/firebase_auth_service.dart';
 import 'package:fruits_hub/core/services/firestore_service.dart';
 
 import '../../../../core/utils/backend_endpoints.dart';
@@ -16,6 +18,7 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
   final ApiServices apiServices;
   final DataBaseService dataBaseService;
   final FirestoreService firestoreService = FirestoreService();
+  final FirebaseAuthService firebaseAuthService = FirebaseAuthService();
   ResetPasswordRepoImpl({
     required this.apiServices,
     required this.dataBaseService,
@@ -96,23 +99,23 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
 
   @override
   Future<Either<Failure, void>> checkVerificationCode(
-      {required int code, required String email}) async{
+      {required int code, required String email}) async {
     // fetch code from firestore;
-    try{
+    try {
       final result = await dataBaseService.getData(
-      path: BackendEndpoints.verifcationCodeColloection,
-      documentId: email,
-    );
-    if(result["code"] == code){
-      return right(null);
-    }else{
-      return left(
-        ServerFailure(
-          errorMessage: "الكود المدخل غير صحيح",
-        ),
+        path: BackendEndpoints.verifcationCodeColloection,
+        documentId: email,
       );
-    }
-    }catch(e){
+      if (result["code"] == code) {
+        return right(null);
+      } else {
+        return left(
+          ServerFailure(
+            errorMessage: "الكود المدخل غير صحيح",
+          ),
+        );
+      }
+    } catch (e) {
       log("Exception in check verification code= ${e.toString()}");
       return left(
         ServerFailure(
@@ -120,6 +123,40 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
         ),
       );
     }
-    
+  }
+
+  // implementation of send password reset email with firebase;
+  @override
+  Future<Either<Failure, void>> sendPasswordResetEmail(
+      {required String email}) async {
+    try {
+      final List<Map<String, dynamic>> user =
+          await firestoreService.getData(path: BackendEndpoints.addUserData);
+      log("user= $user");
+      if (user.any((element) => element["email"] == email)) {
+        await firebaseAuthService.sendPasswordResetEmail(email: email);
+        return right(null);
+      } else {
+        return left(
+          ServerFailure(
+            errorMessage: "البريد الالكتروني غير موجود",
+          ),
+        );
+      }
+    } on FirebaseAuthException catch (error) {
+      log("Exception in reset password repo= ${error.toString()}");
+      return left(
+        ServerFailure(
+          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+        ),
+      );
+    } catch (error) {
+      log("Exception in reset password repo 22= ${error.toString()}");
+      return left(
+        ServerFailure(
+          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+        ),
+      );
+    }
   }
 }

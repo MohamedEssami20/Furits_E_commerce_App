@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruits_hub/core/services/generate_code.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_text_form_filed.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart' show TextStyles;
-import '../../manager/reset_password_cubit/reset_password_cubit.dart';
-import '../check_code_view.dart';
+import 'package:fruits_hub/features/auth/presentation/manager/reset_password_cubit/reset_password_cubit.dart';
+import 'package:provider/provider.dart';
 import 'reset_password_button_builder.dart';
 
 class ForgetPasswordViewBody extends StatefulWidget {
@@ -28,7 +26,7 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
             height: 40,
           ),
           Text(
-            'لا تقلق ، ما عليك سوى كتابة البريد الالكتروني وسنرسل رمز التحقق.',
+            'لا تقلق ، ما عليك سوى كتابة البريد الالكتروني وسنرسل لك رابط استعادة كلمة المرور .',
             textAlign: TextAlign.right,
             style: TextStyles.semiBold16.copyWith(
               color: const Color(0xFF616A6B),
@@ -55,22 +53,12 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
           ResetPasswordButtonBuilder(
             formKey: formKey,
             email: email,
-            onPressed: () {
-              final int code = generateCode();
+            onPressed: () async {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
-                context.read<ResetPasswordCubit>().sendCodeVerification(
-                      email: email,
-                      code: code,
-                    );
-                Navigator.pushNamed(
-                  context,
-                  CheckCodeView.routeName,
-                  arguments: email,
-                );
-              } else {
-                autovalidateMode = AutovalidateMode.always;
-                setState(() {});
+                await context
+                    .read<ResetPasswordCubit>()
+                    .sendPasswordResetEmail(email: email);
               }
             },
           ),

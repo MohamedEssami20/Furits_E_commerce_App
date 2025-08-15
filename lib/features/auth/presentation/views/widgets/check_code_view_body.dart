@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/constant/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart' show TextStyles;
@@ -89,7 +88,7 @@ class _CheckCodeViewBodyState extends State<CheckCodeViewBody> {
                 context.read<ResetPasswordCubit>().checkVerificationCode(
                       email: widget.email,
                       code: getCurrentCode(),
-                );
+                    );
               } else {
                 setState(() {
                   autoValidateMode = [
