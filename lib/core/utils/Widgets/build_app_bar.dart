@@ -19,7 +19,7 @@ AppBar buildAppBar(BuildContext context,
       ),
     ],
     leading: Visibility(
-      visible: true,
+      visible: showBackButton,
       child: IconButton(
         onPressed: () {
           Navigator.of(context).pop();

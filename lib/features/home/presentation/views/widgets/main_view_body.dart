@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/features/home/presentation/views/cart_view.dart';
-import 'package:fruits_hub/features/home/presentation/views/widgets/home_view.dart';
+import 'package:fruits_hub/features/home/presentation/views/home_view.dart';
+import 'package:fruits_hub/features/home/presentation/views/profile_view.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/product_view.dart';
 
 class MainViewBody extends StatelessWidget {
@@ -17,6 +18,7 @@ class MainViewBody extends StatelessWidget {
         HomeView(),
         ProductView(),
         CartView(),
+        ProfileView(),
       ],
     );
   }
