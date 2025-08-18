@@ -9,4 +9,6 @@ class BackendEndpoints {
   static const sendEmailPrivateKey = "4xubcrEZwLGgj1ZAVvaMM";
   static const sendEmailBaseUrl = "https://api.emailjs.com/api/v1.0/email/send";
   static const verifcationCodeColloection = "verificationCode";
+  static const String defaultImage =
+      "https://nzyzfagaxchrgmnurlwo.supabase.co/storage/v1/object/public/userImages/images/profile_image1.jpeg";
 }

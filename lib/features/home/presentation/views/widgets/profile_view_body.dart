@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/Widgets/build_app_bar.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
 import 'package:fruits_hub/features/home/domain/entities/profile_item_entity.dart';
+import 'package:fruits_hub/features/home/presentation/views/widgets/builder/profile_account_and_image_builder.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/notification_and_mode_item.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import 'change_language.dart';
 import 'custom_profile_divider.dart';
-import 'profile_account_and_image.dart';
 import 'profile_item.dart';
 import 'sign_out_item.dart';
 
@@ -30,7 +30,7 @@ class ProfileViewBody extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          const ProfileAccountAndImage(),
+          const ProfileAccountAndImageBuilder(),
           const SizedBox(
             height: 22,
           ),

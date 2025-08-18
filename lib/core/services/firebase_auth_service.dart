@@ -169,4 +169,7 @@ class FirebaseAuthService {
   Future<void> updatePassword({required String newPassword}) async {
     await FirebaseAuth.instance.currentUser!.updatePassword(newPassword);
   }
+
+  // create methodt that get current user;
+  String? getCurrentUser() => FirebaseAuth.instance.currentUser!.uid;
 }

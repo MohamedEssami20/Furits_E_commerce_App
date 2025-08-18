@@ -16,7 +16,7 @@ class ProductRepoImpl extends ProductRepos {
   @override
   Future<Either<Failure, List<ProductEntity>>> getBestSellingProduct() async {
     try {
-      var data = await dataBaseService.getData(
+      List<Map<String, dynamic>> data = await dataBaseService.getData(
         path: BackendEndpoints.getProducts,
         query: {
           "orderBy": "rating",

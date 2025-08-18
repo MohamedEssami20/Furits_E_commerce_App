@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import 'package:fruits_hub/core/errors/failure.dart';
 import 'package:fruits_hub/core/services/data_base_service.dart';
+import 'package:fruits_hub/core/services/firebase_auth_service.dart';
 import 'package:fruits_hub/features/auth/data/models/user_model.dart';
 
 import 'package:fruits_hub/features/auth/domain/entity/user_entity.dart';
@@ -12,13 +13,15 @@ import '../../domain/repos/home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
   final DataBaseService dataBaseService;
-
+  FirebaseAuthService firebaseAuthService = FirebaseAuthService();
   HomeRepoImpl({required this.dataBaseService});
   @override
-  Future<Either<Failure, UserEntity>> getUserData({required String uid}) async {
+  Future<Either<Failure, UserEntity>> getUserData() async {
     try {
       Map<String, dynamic> data = await dataBaseService.getData(
-          path: BackendEndpoints.addUsersData, documentId: uid);
+        path: BackendEndpoints.addUsersData,
+        documentId: firebaseAuthService.getCurrentUser(),
+      );
       UserEntity user = UserModel.fromJson(data);
       return right(
         user,

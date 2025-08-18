@@ -29,15 +29,22 @@ class AuthRepoImpl extends AuthRepo {
     try {
       user = await firebaseAuthService.createUserWithEmailAndPassword(
           email: email, password: password);
-      UserEntity userEntity =
-          UserEntity(email: user.email!, userName: name, uid: user.uid);
+      UserEntity userEntity = UserEntity(
+        email: user.email!,
+        userName: name,
+        uid: user.uid,
+        image: BackendEndpoints.defaultImage,
+      );
       Map<String, dynamic> userData =
           UserModel.formUserEntity(userEntity: userEntity).toMap();
+
       await dataBaseService.addData(
         path: BackendEndpoints.addUserData,
         data: userData,
         documentId: user.uid,
       );
+      log("user data = $userData");
+      await saveUserData(userEntity: userEntity);
       return right(
         userEntity,
       );
