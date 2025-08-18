@@ -6,7 +6,8 @@ import '../app_text_style.dart';
 AppBar buildAppBar(BuildContext context,
     {required String title,
     required bool showBackButton,
-    required bool showNotification}) {
+    required bool showNotification,
+    VoidCallback? onBackPress}) {
   return AppBar(
     backgroundColor: Colors.transparent,
     actions: [
@@ -21,9 +22,7 @@ AppBar buildAppBar(BuildContext context,
     leading: Visibility(
       visible: showBackButton,
       child: IconButton(
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
+        onPressed: onBackPress ?? () => Navigator.of(context).pop(),
         icon: const Icon(Icons.arrow_back_ios_new_outlined),
       ),
     ),
