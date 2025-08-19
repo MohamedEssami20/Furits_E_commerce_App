@@ -10,6 +10,7 @@ import 'package:fruits_hub/core/utils/my_colors.dart';
 import 'package:fruits_hub/features/splash/presentation/views/splash_view.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 
+import 'core/services/supabase_storage_services.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -17,6 +18,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  SupabaseStorageServices.initSupabase();
   setupGetIt();
   Bloc.observer = CustomBlocObserver();
   await SharedPrefrenceSigelton.init();
