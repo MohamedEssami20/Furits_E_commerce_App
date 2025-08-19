@@ -15,6 +15,7 @@ class CustomTextFormFiled extends StatelessWidget {
     this.onChanged,
     this.controller,
     this.textAlign = TextAlign.start,
+    this.initialValue,
   });
 
   final String hintText;
@@ -27,6 +28,7 @@ class CustomTextFormFiled extends StatelessWidget {
   final void Function(String)? onChanged;
   final TextEditingController? controller;
   final TextAlign textAlign;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +45,7 @@ class CustomTextFormFiled extends StatelessWidget {
         return null;
       },
       obscureText: obscureText,
+      initialValue: initialValue,
       onSaved: onSaved,
       keyboardType: textInputType,
       textAlign: textAlign,
