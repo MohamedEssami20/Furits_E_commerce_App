@@ -1,6 +1,9 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/features/auth/domain/entity/user_entity.dart';
 import 'package:fruits_hub/features/home/domain/repos/home_repo.dart';
-import '../get_user_cubit/get_user_cubit.dart';
+
+part 'get_user_state.dart';
 
 class GetUserCubit extends Cubit<GetUserState> {
   GetUserCubit({required this.homeRepo}) : super(GetUserInitial());

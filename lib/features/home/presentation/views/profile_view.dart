@@ -4,7 +4,7 @@ import 'package:fruits_hub/core/services/get_it_service.dart';
 import 'package:fruits_hub/features/home/presentation/manager/profile_view_cubit/profile_view_cubit.dart';
 
 import '../../domain/repos/home_repo.dart';
-import '../manager/user_cubit/get_user_cubit.dart';
+import '../manager/get_user_cubit/get_user_cubit.dart';
 import 'widgets/profile_view_body.dart';
 
 class ProfileView extends StatelessWidget {
