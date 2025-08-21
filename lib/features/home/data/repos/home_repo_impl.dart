@@ -20,24 +20,26 @@ class HomeRepoImpl implements HomeRepo {
   final StorageServices storageServices;
   HomeRepoImpl({required this.dataBaseService, required this.storageServices});
   @override
-  Future<Either<Failure, UserEntity>> getUserData() async {
+  Stream<Either<Failure, UserEntity>> getUserData() async* {
     try {
-      Map<String, dynamic> data = await dataBaseService.getData(
+      Stream<Map<String, dynamic>> data = dataBaseService.getStreamData(
         path: BackendEndpoints.addUsersData,
-        documentId: firebaseAuthService.getCurrentUser(),
+        documentId: firebaseAuthService.getCurrentUser()!,
       );
-      UserEntity user = UserModel.fromJson(data);
-      return right(
-        user,
-      );
+      await for (var element in data) {
+        UserEntity user = UserModel.fromJson(element);
+        yield right(user);
+      }
     } on FirebaseException catch (e) {
-      return left(
+      log("error to get user data 1 = ${e.message.toString()}");
+      yield left(
         ServerFailure(
           errorMessage: e.message.toString(),
         ),
       );
     } catch (e) {
-      return left(
+      log("error to get user data 2 = ${e.toString()}");
+      yield left(
         ServerFailure(
           errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
         ),

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/helper/get_user_dummu_data.dart';
@@ -6,8 +7,21 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../manager/get_user_cubit/get_user_cubit.dart';
 
-class ProfileAccountAndImageBuilder extends StatelessWidget {
+class ProfileAccountAndImageBuilder extends StatefulWidget {
   const ProfileAccountAndImageBuilder({super.key});
+
+  @override
+  State<ProfileAccountAndImageBuilder> createState() =>
+      _ProfileAccountAndImageBuilderState();
+}
+
+class _ProfileAccountAndImageBuilderState
+    extends State<ProfileAccountAndImageBuilder> {
+  @override
+  void initState() {
+    context.read<GetUserCubit>().getUserData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +37,7 @@ class ProfileAccountAndImageBuilder extends StatelessWidget {
           );
         } else {
           return Skeletonizer(
-            child:  ProfileAccountAndImage(
+            child: ProfileAccountAndImage(
               userEntity: getDummyUserEntity(),
             ),
           );

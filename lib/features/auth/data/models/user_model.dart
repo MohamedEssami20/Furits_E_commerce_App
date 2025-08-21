@@ -44,4 +44,13 @@ class UserModel extends UserEntity {
       "image": image,
     };
   }
+
+  toEntity() {
+    return UserEntity(
+      email: email,
+      userName: userName,
+      uid: uid,
+      image: image,
+    );
+  }
 }

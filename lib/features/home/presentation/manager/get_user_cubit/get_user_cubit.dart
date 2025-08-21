@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/features/auth/domain/entity/user_entity.dart';
 import 'package:fruits_hub/features/home/domain/repos/home_repo.dart';
@@ -9,18 +9,26 @@ class GetUserCubit extends Cubit<GetUserState> {
   GetUserCubit({required this.homeRepo}) : super(GetUserInitial());
 
   final HomeRepo homeRepo;
+  StreamSubscription? _streamSubscription;
 
-  // create method that get user data
-  Future<void> getUserData() async {
+  // create stream metod that get user;
+  void getUserData() {
     emit(GetUserLoading());
-    final result = await homeRepo.getUserData();
-    result.fold(
-      (failure) => emit(
-        GetUserFailure(errorMessage: failure.errorMessage),
-      ),
-      (user) => emit(
-        GetUserSuccess(user: user),
-      ),
-    );
+    _streamSubscription = homeRepo.getUserData().listen(
+          (event) => emit(
+            event.fold(
+              (l) => GetUserFailure(
+                errorMessage: l.errorMessage,
+              ),
+              (r) => GetUserSuccess(user: r),
+            ),
+          ),
+        );
+  }
+
+  @override
+  Future<void> close() {
+    _streamSubscription?.cancel();
+    return super.close();
   }
 }

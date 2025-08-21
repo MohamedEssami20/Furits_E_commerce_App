@@ -7,10 +7,12 @@ import 'package:fruits_hub/core/services/custom_bloc_observer.dart';
 import 'package:fruits_hub/core/services/get_it_service.dart';
 import 'package:fruits_hub/core/services/shared_prefrence_sigelton.dart';
 import 'package:fruits_hub/core/utils/my_colors.dart';
+import 'package:fruits_hub/features/home/presentation/manager/edit_user_info_cubit/user_cubit.dart';
 import 'package:fruits_hub/features/splash/presentation/views/splash_view.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 
 import 'core/services/supabase_storage_services.dart';
+import 'features/home/domain/repos/home_repo.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -30,23 +32,28 @@ class FruitsHub extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        fontFamily: 'Cairo',
-        colorScheme: ColorScheme.fromSeed(seedColor: MyColors.kPrimaryColor),
-        scaffoldBackgroundColor: Colors.white,
+    return BlocProvider(
+      create: (context) => UserCubit(
+        homeRepo: getIt.get<HomeRepo>(),
       ),
-      localizationsDelegates: const [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      locale: const Locale("ar"),
-      onGenerateRoute: onGenerateRoute,
-      initialRoute: SplashView.splashViewRoute,
-      debugShowCheckedModeBanner: false,
+      child: MaterialApp(
+        theme: ThemeData(
+          fontFamily: 'Cairo',
+          colorScheme: ColorScheme.fromSeed(seedColor: MyColors.kPrimaryColor),
+          scaffoldBackgroundColor: Colors.white,
+        ),
+        localizationsDelegates: const [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        locale: const Locale("ar"),
+        onGenerateRoute: onGenerateRoute,
+        initialRoute: SplashView.splashViewRoute,
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

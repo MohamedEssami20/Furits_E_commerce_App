@@ -73,4 +73,15 @@ class FirestoreService implements DataBaseService {
     log("user exists= ${result.docs.isNotEmpty}");
     return result.docs.isNotEmpty;
   }
+
+  @override
+  Stream<Map<String, dynamic>> getStreamData(
+      {required String path,
+      String? documentId,
+      Map<String, dynamic>? query}) async* {
+    Stream<DocumentSnapshot<Map<String, dynamic>>> documentSnapshot =
+        firebaseFirestore.collection(path).doc(documentId).snapshots();
+
+    yield* documentSnapshot.map((event) => event.data()!);
+  }
 }

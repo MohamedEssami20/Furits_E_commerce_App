@@ -9,7 +9,11 @@ abstract class DataBaseService {
   Future<dynamic> getData(
       {required String path, String? documentId, Map<String, dynamic>? query});
 
+  // create get stream to get data from database;
+  Stream<Map<String, dynamic>> getStreamData(
+      {required String path, String? documentId, Map<String, dynamic>? query});
   // create method that check if data is exits;
+
   Future<bool> checkDataExists(
       {required String path, required String documentId});
 

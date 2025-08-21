@@ -1,10 +1,7 @@
 part of 'get_user_cubit.dart';
 
-sealed class GetUserState extends Equatable {
+sealed class GetUserState  {
   const GetUserState();
-
-  @override
-  List<Object> get props => [];
 }
 
 final class GetUserInitial extends GetUserState {}

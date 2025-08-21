@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:equatable/equatable.dart';
@@ -10,15 +9,19 @@ part 'user_state.dart';
 class UserCubit extends Cubit<UserState> {
   UserCubit({required this.homeRepo}) : super(UserInitial());
 
-  final HomeRepo homeRepo ;
+  final HomeRepo homeRepo;
 
   //create method that handel state of update user image
   Future<void> updateUserImage({required File file}) async {
     emit(EditUserImageLoading());
     final result = await homeRepo.uploadUserImage(file: file);
     result.fold(
-      (failure) => emit(EditUserImageFailure(errorMessage: failure.errorMessage)),
-      (url) => emit(const EditUserImageSuccess()),
+      (failure) => emit(
+        EditUserImageFailure(errorMessage: failure.errorMessage),
+      ),
+      (url) => emit(
+        EditUserImageSuccess(imageUrl: url),
+      ),
     );
   }
 }
