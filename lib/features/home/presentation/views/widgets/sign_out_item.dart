@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
+import 'package:fruits_hub/features/auth/presentation/views/signin_view.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 
@@ -24,8 +26,14 @@ class SignOut extends StatelessWidget {
                 color: const Color(0xFF1B5E37),
               ),
             ),
-            SvgPicture.asset(
-              Assets.assetsImagesExitIcon,
+            GestureDetector(
+              onTap: () async {
+                await FirebaseAuth.instance.signOut();
+                Navigator.of(context).pushNamed(LoginView.routeName);
+              },
+              child: SvgPicture.asset(
+                Assets.assetsImagesExitIcon,
+              ),
             )
           ],
         ),

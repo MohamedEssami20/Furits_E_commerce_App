@@ -10,11 +10,11 @@ class SupabaseStorageServices implements StorageServices {
 
   // inialize supabase
   static initSupabase() async {
-    await Supabase.initialize(
+    _supabase = await Supabase.initialize(
       url: AppKeys.supabaseProjectUrl,
       anonKey: AppKeys.supabasseProjectApoKey,
     );
-    log("subabase initialized****");
+    log("supabase initialized ***");
   }
 
   // create supabase buket

@@ -1,13 +1,27 @@
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/features/home/presentation/manager/edit_user_info_cubit/user_cubit.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../core/constant/app_colors.dart';
 import '../../../../../core/utils/app_text_style.dart';
 
-class AddProfileImageBottomSheet extends StatelessWidget {
+class AddProfileImageBottomSheet extends StatefulWidget {
   const AddProfileImageBottomSheet({
     super.key,
   });
 
+  @override
+  State<AddProfileImageBottomSheet> createState() =>
+      _AddProfileImageBottomSheetState();
+}
+
+class _AddProfileImageBottomSheetState
+    extends State<AddProfileImageBottomSheet> {
+  File? image;
   @override
   Widget build(BuildContext context) {
     return BottomSheet(
@@ -35,7 +49,11 @@ class AddProfileImageBottomSheet extends StatelessWidget {
                 Expanded(
                   child: ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.pop(context);
+                      pickImageFromCamera(context).then((context) {
+                        updateImage();
+                      }).catchError((error) {
+                        log("error to pick image from camer = ${error.toString()}");
+                      });
                     },
                     label: const Text('من الكاميرا'),
                     icon: const Icon(
@@ -47,7 +65,11 @@ class AddProfileImageBottomSheet extends StatelessWidget {
                 Expanded(
                   child: ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.pop(context);
+                      pickImageFromGallery(context).then((context) {
+                        updateImage();
+                      }).catchError((error) {
+                        log("error to pick image from gallery = ${error.toString()}");
+                      });
                     },
                     label: const Text('من المجلد'),
                     icon: const Icon(
@@ -63,4 +85,28 @@ class AddProfileImageBottomSheet extends StatelessWidget {
       ),
     );
   }
+
+  Future<void> pickImageFromCamera(BuildContext context) async {
+    final pickedFile = await ImagePicker().pickImage(
+      source: ImageSource.camera,
+    );
+    if (pickedFile != null) {
+      image = File(pickedFile.path);
+
+      log("image path from camera = ${image!.path}");
+    }
+  }
+
+  Future<void> pickImageFromGallery(BuildContext context) async {
+    final XFile? pickedFile = await ImagePicker().pickImage(
+      source: ImageSource.gallery,
+    );
+    if (pickedFile != null) {
+      image = File(pickedFile.path);
+      log("image path from gallery = ${image!.path}");
+    }
+  }
+
+  // create method that trigger the cubit to update user image
+  void updateImage() => context.read<UserCubit>().updateUserImage(file: image!);
 }

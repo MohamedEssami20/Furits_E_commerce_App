@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fruits_hub/core/services/get_it_service.dart';
+import 'package:fruits_hub/features/home/presentation/manager/edit_user_info_cubit/user_cubit.dart';
 import '../../../../../core/utils/assets.dart';
+import '../../../domain/repos/home_repo.dart';
 import 'add_profile_image_bottom_sheet.dart';
 
 class ProfilePicture extends StatelessWidget {
@@ -35,7 +39,12 @@ class ProfilePicture extends StatelessWidget {
                 showModalBottomSheet(
                   context: context,
                   builder: (context) {
-                    return const AddProfileImageBottomSheet();
+                    return BlocProvider(
+                      create: (context) => UserCubit(
+                        homeRepo: getIt.get<HomeRepo>(),
+                      ),
+                      child: const AddProfileImageBottomSheet(),
+                    );
                   },
                 );
               },

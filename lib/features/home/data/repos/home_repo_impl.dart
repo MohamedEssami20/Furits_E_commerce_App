@@ -1,8 +1,8 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'package:fruits_hub/core/errors/failure.dart';
 import 'package:fruits_hub/core/services/data_base_service.dart';
 import 'package:fruits_hub/core/services/firebase_auth_service.dart';
@@ -53,24 +53,27 @@ class HomeRepoImpl implements HomeRepo {
         file: file,
         path: BackendEndpoints.userImages,
       );
+      log("image upload url = $result");
       // add new user image path to firestore;
       if (result.isNotEmpty) {
         await dataBaseService.addData(
           path: BackendEndpoints.addUsersData,
           documentId: firebaseAuthService.getCurrentUser()!,
           data: {
-            "image": result,
+            "image": BackendEndpoints.baseImageUrl + result,
           },
         );
       }
-      return right(result);
+      return right(BackendEndpoints.baseImageUrl + result);
     } on FirebaseException catch (e) {
+      log("error to upload image to storage = ${e.message.toString()}");
       return left(
         ServerFailure(
           errorMessage: e.message.toString(),
         ),
       );
     } catch (e) {
+      log("error to upload image to storage 2 = ${e.toString()}");
       return left(
         ServerFailure(
           errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",

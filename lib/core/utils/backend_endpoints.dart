@@ -3,7 +3,7 @@ class BackendEndpoints {
   static const addUsersData = "users";
   static const getProducts = "products";
   static const addOrder = "orders";
-  static const userImages = "userImages";
+  static const userImages = "images";
   static const sendEmailServiceId = "service_46jbjc3";
   static const sendEmailTemplateId = "template_18yyg18";
   static const sendEmailPublicKey = "wzh-2LK909LXoWBFa";
@@ -12,4 +12,6 @@ class BackendEndpoints {
   static const verifcationCodeColloection = "verificationCode";
   static const String defaultImage =
       "https://nzyzfagaxchrgmnurlwo.supabase.co/storage/v1/object/public/userImages/images/profile_image1.jpeg";
+    static const String baseImageUrl =
+      "https://nzyzfagaxchrgmnurlwo.supabase.co/storage/v1/object/public/";
 }

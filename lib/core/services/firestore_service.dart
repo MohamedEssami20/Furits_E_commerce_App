@@ -13,7 +13,10 @@ class FirestoreService implements DataBaseService {
     if (documentId == null) {
       await firebaseFirestore.collection(path).add(data);
     } else {
-      await firebaseFirestore.collection(path).doc(documentId).set(data);
+      await firebaseFirestore.collection(path).doc(documentId).set(
+            data,
+            SetOptions(merge: true),
+          );
     }
   }
 
@@ -53,15 +56,20 @@ class FirestoreService implements DataBaseService {
         await firebaseFirestore.collection(path).doc(documentId).get();
     return documentSnapshot.exists;
   }
-  
+
   @override
-  Future<void> deleteData({required String path, required String documentId})async {
+  Future<void> deleteData(
+      {required String path, required String documentId}) async {
     await firebaseFirestore.collection(path).doc(documentId).delete();
   }
-  
+
   @override
-  Future<bool> checkEmailExists({required String path, required String email}) async{
-    final result = await firebaseFirestore.collection(path).where('email',isEqualTo: email).get();
+  Future<bool> checkEmailExists(
+      {required String path, required String email}) async {
+    final result = await firebaseFirestore
+        .collection(path)
+        .where('email', isEqualTo: email)
+        .get();
     log("user exists= ${result.docs.isNotEmpty}");
     return result.docs.isNotEmpty;
   }
