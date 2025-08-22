@@ -21,5 +21,15 @@ final class EditUserImageFailure extends UserState {
   const EditUserImageFailure({required this.errorMessage});
 }
 
-final class EditUserImageLoading extends UserState {
+final class EditUserImageLoading extends UserState {}
+
+// create all state of update user info;
+
+final class EditUserInfoSuccess extends UserState {}
+
+final class EditUserInfoFailure extends UserState {
+  final String errorMessage;
+  const EditUserInfoFailure({required this.errorMessage});
 }
+
+final class EditUserInfoLoading extends UserState {}

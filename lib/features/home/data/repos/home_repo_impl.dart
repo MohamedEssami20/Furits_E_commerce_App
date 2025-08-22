@@ -12,6 +12,7 @@ import 'package:fruits_hub/features/auth/data/models/user_model.dart';
 import 'package:fruits_hub/features/auth/domain/entity/user_entity.dart';
 
 import '../../../../core/utils/backend_endpoints.dart';
+import '../../domain/entities/edit_user_info_entity.dart';
 import '../../domain/repos/home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
@@ -81,6 +82,52 @@ class HomeRepoImpl implements HomeRepo {
           errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
         ),
       );
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> updateUserEmail(
+      {required EditUserInfoEntity userInfoEntity}) async {
+    try {
+      // update email from firebase;
+      await firebaseAuthService.updateEmail(email: userInfoEntity.email!);
+      await dataBaseService.addData(
+        path: BackendEndpoints.addUsersData,
+        documentId: firebaseAuthService.getCurrentUser()!,
+        data: {"email": userInfoEntity.email, "userName": userInfoEntity.name},
+      );
+      return right(null);
+    } on FirebaseException catch (e) {
+      log("error to update user data = ${e.message.toString()}");
+      return left(ServerFailure(errorMessage: e.message.toString()));
+    } catch (e) {
+      log("error to update user data 2 = ${e.toString()}");
+      return left(
+          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> updatePassword(
+      {required EditUserInfoEntity userInfoEntity}) async {
+    try {
+      await firebaseAuthService.reAuth(
+          email: firebaseAuthService.getCurrentUser()!,
+          password: userInfoEntity.oldPassword!);
+      await firebaseAuthService.updatePassword(
+          newPassword: userInfoEntity.newPassword!);
+      return right(null);
+    } on FirebaseException catch (e) {
+      log("error to change password = ${e.message.toString()}");
+      return left(
+        ServerFailure(
+          errorMessage: e.message.toString(),
+        ),
+      );
+    } catch (e) {
+      log("error to change password 2 = ${e.toString()}");
+      return left(
+          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
     }
   }
 }

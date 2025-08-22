@@ -32,12 +32,15 @@ class SupabaseStorageServices implements StorageServices {
   @override
   Future<String> addPhotoToStorage(
       {required File file, required String path}) async {
-    String fileName = p.basename(file.path);
+    String fileName = p.basenameWithoutExtension(file.path);
     String fileExetension = p.extension(file.path);
-    String result = await _supabase.client.storage
-        .from("userImages")
-        .upload("$path/$fileName.$fileExetension", file);
-    log("image upload = $result");
+    String result = await _supabase.client.storage.from("userImages").upload(
+          "$path/$fileName$fileExetension",
+          file,
+          fileOptions: const FileOptions(
+            upsert: true,
+          ),
+        );
     return result;
   }
 }

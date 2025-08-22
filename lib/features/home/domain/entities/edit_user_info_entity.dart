@@ -1,17 +1,16 @@
-import 'dart:io';
 
 class EditUserInfoEntity {
   String? name;
   String? email;
   String? newPassword;
-  File? image;
+  String ?oldPassword;
 
-  EditUserInfoEntity({this.name, this.email, this.image});
+  EditUserInfoEntity({this.name, this.email, this.oldPassword, this.newPassword});
 
   EditUserInfoEntity.fromJson(Map<String, dynamic> json) {
     name = json['userName'];
     email = json['email'];
-    image = json['image'];
+    oldPassword= json['oldPassword'];
     newPassword = json['newPassword'];
   }
 }

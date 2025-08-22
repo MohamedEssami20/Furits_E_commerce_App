@@ -172,4 +172,16 @@ class FirebaseAuthService {
 
   // create methodt that get current user;
   String? getCurrentUser() => FirebaseAuth.instance.currentUser!.uid;
+
+  // create method that make reAuth
+  Future<void> reAuth({required String email, required String password}) async {
+    await FirebaseAuth.instance.currentUser!.reauthenticateWithCredential(
+      EmailAuthProvider.credential(email: email, password: password),
+    );
+  }
+
+  // create method that update email
+  Future<void> updateEmail({required String email}) async {
+    await FirebaseAuth.instance.currentUser!.verifyBeforeUpdateEmail(email);
+  }
 }
