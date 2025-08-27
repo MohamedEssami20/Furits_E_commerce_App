@@ -22,4 +22,8 @@ class SharedPrefrenceSigelton {
   static String? getString({required String key}) {
     return _instance.getString(key);
   }
+
+  static void remove(String key,) async {
+    await _instance.remove(key);
+  }
 }

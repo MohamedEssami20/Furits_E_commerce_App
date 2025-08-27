@@ -43,6 +43,12 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                 onSaved: (value) {
                   email = value!;
                 },
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'البريد الالكتروني مطلوب';
+                }
+                  return null;
+                },
                 hintText: "البريد الالكتروني",
                 textInputType: TextInputType.emailAddress,
               ),

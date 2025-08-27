@@ -29,23 +29,53 @@ class UserCubit extends Cubit<UserState> {
   // create methodt that handel state of update user info
   Future<void> updateUserInfo(
       {required EditUserInfoEntity userInfoEntity}) async {
-    emit(EditUserInfoLoading());
-    final result =
-        await homeRepo.updateUserEmail(userInfoEntity: userInfoEntity);
-    result.fold(
+
+        // update user name
+    if(userInfoEntity.name != null && userInfoEntity.name!.isNotEmpty) {
+      emit(EditUserNameLoading());
+      final result = await homeRepo.updateName(name: userInfoEntity.name!);
+      result.fold(
         (failure) => emit(
-              EditUserInfoFailure(errorMessage: failure.errorMessage),
-            ), (success) async {
-      final updatePasswordResult =
-          await homeRepo.updatePassword(userInfoEntity: userInfoEntity);
-      updatePasswordResult.fold(
-        (failure) => emit(
-          EditUserInfoFailure(errorMessage: failure.errorMessage),
+          EditUserNameFailure(errorMessage: failure.errorMessage),
         ),
-        (success) => emit(
-          EditUserInfoSuccess(),
+        (_) => emit(
+          EditUserNameSuccess(),
         ),
       );
-    });
+    }
+
+    // update user email
+    if(userInfoEntity.email != null && userInfoEntity.email!.isNotEmpty) {
+      emit(EditUserEmailLoading());
+      final result = await homeRepo.updateEmail(
+        newEmail: userInfoEntity.email!,
+        oldPassword: userInfoEntity.oldPassword!,
+      );
+      result.fold(
+        (failure) => emit(
+          EditUserEmailFailure(errorMessage: failure.errorMessage),
+        ),
+        (_) => emit(
+          EditUserEmailSuccess(),
+        ),
+      );
+    }
+
+    // update user password 
+    if(userInfoEntity.newPassword != null && userInfoEntity.newPassword!.isNotEmpty) {
+      emit(EditUserPasswordLoading());
+      final result = await homeRepo.updatePassword(
+        newPassword: userInfoEntity.newPassword!,
+        oldPassword: userInfoEntity.oldPassword!,
+      );
+      result.fold(
+        (failure) => emit(
+          EditUserPasswordFailure(errorMessage: failure.errorMessage),
+        ),
+        (_) => emit(
+          EditUserPasswordSuccess(),
+        ),
+      );
+    }
   }
 }

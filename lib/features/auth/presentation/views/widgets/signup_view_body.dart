@@ -35,6 +35,12 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 height: 30,
               ),
               CustomTextFormFiled(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'الاسم كامل مطلوب';
+                  }
+                  return null;
+                },
                 onSaved: (value) {
                   userName = value!;
                 },
@@ -45,6 +51,12 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                 height: 20,
               ),
               CustomTextFormFiled(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'البريد الالكتروني مطلوب';
+                  }
+                  return null;
+                },
                 onSaved: (value) {
                   email = value!;
                 },

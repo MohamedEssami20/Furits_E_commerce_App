@@ -10,20 +10,23 @@ class GetUserCubit extends Cubit<GetUserState> {
 
   final HomeRepo homeRepo;
   StreamSubscription? _streamSubscription;
+  //create get userEntity;
+  UserEntity? userEntity;
 
   // create stream metod that get user;
   void getUserData() {
     emit(GetUserLoading());
-    _streamSubscription = homeRepo.getUserData().listen(
-          (event) => emit(
-            event.fold(
-              (l) => GetUserFailure(
-                errorMessage: l.errorMessage,
-              ),
-              (r) => GetUserSuccess(user: r),
-            ),
-          ),
-        );
+    _streamSubscription = homeRepo.getUserData().listen((event) {
+      event.fold(
+        (failure) => emit(GetUserFailure(errorMessage: failure.errorMessage)),
+        (user) {
+          userEntity = user;
+          emit(
+            GetUserSuccess(user: user),
+          );
+        },
+      );
+    });
   }
 
   @override

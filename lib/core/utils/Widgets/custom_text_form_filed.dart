@@ -15,7 +15,7 @@ class CustomTextFormFiled extends StatelessWidget {
     this.onChanged,
     this.controller,
     this.textAlign = TextAlign.start,
-    this.initialValue,
+    this.initialValue, this.validator,
   });
 
   final String hintText;
@@ -29,6 +29,7 @@ class CustomTextFormFiled extends StatelessWidget {
   final TextEditingController? controller;
   final TextAlign textAlign;
   final String? initialValue;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +39,7 @@ class CustomTextFormFiled extends StatelessWidget {
       maxLength: maxLength,
       onChanged: onChanged,
       inputFormatters: inputFormatters,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return "هذا الحقل مطلوب";
-        }
-        return null;
-      },
+      validator: validator,
       obscureText: obscureText,
       initialValue: initialValue,
       onSaved: onSaved,

@@ -23,13 +23,35 @@ final class EditUserImageFailure extends UserState {
 
 final class EditUserImageLoading extends UserState {}
 
-// create all state of update user info;
+// create all state of update user name;
 
-final class EditUserInfoSuccess extends UserState {}
+final class EditUserNameSuccess extends UserState {}
 
-final class EditUserInfoFailure extends UserState {
+final class EditUserNameFailure extends UserState {
   final String errorMessage;
-  const EditUserInfoFailure({required this.errorMessage});
+  const EditUserNameFailure({required this.errorMessage});
 }
 
-final class EditUserInfoLoading extends UserState {}
+final class EditUserNameLoading extends UserState {}
+
+// create all state of update user email;
+
+final class EditUserEmailSuccess extends UserState {}
+
+final class EditUserEmailFailure extends UserState {
+  final String errorMessage;
+  const EditUserEmailFailure({required this.errorMessage});
+}
+
+final class EditUserEmailLoading extends UserState {}
+
+// create all state of update user password;
+
+final class EditUserPasswordSuccess extends UserState {}
+
+final class EditUserPasswordFailure extends UserState {
+  final String errorMessage;
+  const EditUserPasswordFailure({required this.errorMessage});
+}
+
+final class EditUserPasswordLoading extends UserState {}

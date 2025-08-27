@@ -2,8 +2,9 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_hub/core/errors/failure.dart';
+import 'package:fruits_hub/core/errors/firebase_auth_exceptions.dart';
 import 'package:fruits_hub/core/services/data_base_service.dart';
 import 'package:fruits_hub/core/services/firebase_auth_service.dart';
 import 'package:fruits_hub/core/services/storage_services.dart';
@@ -86,46 +87,102 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<Either<Failure, void>> updateUserEmail(
-      {required EditUserInfoEntity userInfoEntity}) async {
+  Future<Either<Failure, void>> updateEmail(
+      {required String newEmail, required String oldPassword}) async {
     try {
-      // update email from firebase;
-      await firebaseAuthService.updateEmail(email: userInfoEntity.email!);
-      await dataBaseService.addData(
-        path: BackendEndpoints.addUsersData,
-        documentId: firebaseAuthService.getCurrentUser()!,
-        data: {"email": userInfoEntity.email, "userName": userInfoEntity.name},
+      await updateEmailandSaveInFireStore(
+        EditUserInfoEntity(email: newEmail, oldPassword: oldPassword),
       );
+      await firebaseAuthService.signOut();
       return right(null);
-    } on FirebaseException catch (e) {
-      log("error to update user data = ${e.message.toString()}");
-      return left(ServerFailure(errorMessage: e.message.toString()));
-    } catch (e) {
-      log("error to update user data 2 = ${e.toString()}");
+    } on FirebaseAuthException catch (e) {
       return left(
-          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
-    }
-  }
-
-  @override
-  Future<Either<Failure, void>> updatePassword(
-      {required EditUserInfoEntity userInfoEntity}) async {
-    try {
-      await firebaseAuthService.reAuth(
-          email: firebaseAuthService.getCurrentUser()!,
-          password: userInfoEntity.oldPassword!);
-      await firebaseAuthService.updatePassword(
-          newPassword: userInfoEntity.newPassword!);
-      return right(null);
+        FirebaseAuthErrorHandler.fromFirebaseAuthException(e),
+      );
     } on FirebaseException catch (e) {
-      log("error to change password = ${e.message.toString()}");
+      log("error to update user email = ${e.message.toString()}");
       return left(
         ServerFailure(
           errorMessage: e.message.toString(),
         ),
       );
     } catch (e) {
-      log("error to change password 2 = ${e.toString()}");
+      log("error to update user email 2 = ${e.toString()}");
+      return left(
+        ServerFailure(
+          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+        ),
+      );
+    }
+  }
+
+  Future<void> updateEmailandSaveInFireStore(
+      EditUserInfoEntity userInfoEntity) async {
+    // reauth and update email from firebase;
+    String? email = firebaseAuthService.getCurrentUserEmail();
+    log("current user email= $email");
+    await firebaseAuthService.reAuth(
+      email: email!,
+      password: userInfoEntity.oldPassword!,
+    );
+    await firebaseAuthService.updateEmail(email: userInfoEntity.email!);
+    await dataBaseService.addData(
+      path: BackendEndpoints.addUsersData,
+      documentId: firebaseAuthService.getCurrentUser()!,
+      data: {
+        "email": userInfoEntity.email,
+      },
+    );
+  }
+
+  @override
+  Future<Either<Failure, void>> updatePassword(
+      {required String newPassword, required String oldPassword}) async {
+    try {
+      await firebaseAuthService.reAuth(
+        email: firebaseAuthService.getCurrentUserEmail()!,
+        password: oldPassword,
+      );
+      await firebaseAuthService.updatePassword(newPassword: newPassword);
+      await firebaseAuthService.signOut();
+      return right(null);
+    } on FirebaseAuthException catch (e) {
+      return left(FirebaseAuthErrorHandler.fromFirebaseAuthException(e));
+    } on FirebaseException catch (e) {
+      log("error to update user password = ${e.message.toString()}");
+      return left(ServerFailure(errorMessage: e.message.toString()));
+    } catch (e) {
+      log("error to update user password 2 = ${e.toString()}");
+      return left(
+          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+    }
+  }
+
+  @override
+  Future<void> signOut() async {
+    try {
+      await firebaseAuthService.signOut();
+    } catch (e) {
+      log("error to sign out = ${e.toString()}");
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> updateName({required String name}) async {
+    try {
+      await dataBaseService.addData(
+        path: BackendEndpoints.addUsersData,
+        documentId: firebaseAuthService.getCurrentUser()!,
+        data: {
+          "userName": name,
+        },
+      );
+      return right(null);
+    } on FirebaseException catch (e) {
+      log("error to update user name data = ${e.message.toString()}");
+      return left(ServerFailure(errorMessage: e.message.toString()));
+    } catch (e) {
+      log("error to update user name data 2 = ${e.toString()}");
       return left(
           ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
     }

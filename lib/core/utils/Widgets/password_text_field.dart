@@ -17,6 +17,14 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
   @override
   Widget build(BuildContext context) {
     return CustomTextFormFiled(
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'كلمة المرور مطلوبة';
+        } else if (value.length < 8) {
+          return 'كلمة المرور يجب ان تكون على الاقل 8 حروف';
+        }
+        return null;
+      },
       obscureText: obscureText,
       onSaved: widget.onSaved,
       hintText: "كلمة المرور",

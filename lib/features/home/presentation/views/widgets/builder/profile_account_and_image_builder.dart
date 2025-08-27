@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/helper/get_user_dummu_data.dart';
@@ -32,8 +31,10 @@ class _ProfileAccountAndImageBuilderState
             userEntity: state.user,
           );
         } else if (state is GetUserFailure) {
-          return const ProfileAccountAndImage(
-            userEntity: null,
+          return Skeletonizer(
+            child: ProfileAccountAndImage(
+              userEntity: getDummyUserEntity(),
+            ),
           );
         } else {
           return Skeletonizer(

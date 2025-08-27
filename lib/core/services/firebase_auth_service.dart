@@ -184,4 +184,39 @@ class FirebaseAuthService {
   Future<void> updateEmail({required String email}) async {
     await FirebaseAuth.instance.currentUser!.verifyBeforeUpdateEmail(email);
   }
+
+  // create method that check if user login;
+  bool isUserLogin() => FirebaseAuth.instance.currentUser != null;
+
+  // create meethod that get email of current user
+  String? getCurrentUserEmail() {
+    return FirebaseAuth.instance.currentUser!.email;
+  }
+
+  // create methodt that reload user data after any change in email and password;
+  Future<void> reloadUserData() async {
+    await FirebaseAuth.instance.currentUser!.reload();
+  }
+
+  // create method that listen to auth state changes
+  void authStateChanges() {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) async {
+      if (user == null) {
+        log('User is currently signed out!');
+      } else {
+        log('User is signed in!');
+      }
+    });
+  }
+
+  // create method that listen to auth state changes
+  void idTokenChanges() {
+    FirebaseAuth.instance.userChanges().listen((User? user) {
+      if (user == null) {
+        log('User Changes is currently signed out!');
+      } else {
+        log('User Changes is signed in!');
+      }
+    });
+  }
 }
