@@ -25,4 +25,5 @@ abstract class HomeRepo {
 
   // create method that sign out from firebase
   Future<void> signOut();
+
 }
