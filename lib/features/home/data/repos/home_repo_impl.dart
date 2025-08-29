@@ -11,8 +11,10 @@ import 'package:fruits_hub/core/services/storage_services.dart';
 import 'package:fruits_hub/features/auth/data/models/user_model.dart';
 
 import 'package:fruits_hub/features/auth/domain/entity/user_entity.dart';
+import 'package:fruits_hub/features/checkout/domain/entities/my_orders_entity/my_orders_entity.dart';
 
 import '../../../../core/utils/backend_endpoints.dart';
+import '../../../checkout/data/models/order_model.dart';
 import '../../domain/entities/edit_user_info_entity.dart';
 import '../../domain/repos/home_repo.dart';
 
@@ -184,6 +186,32 @@ class HomeRepoImpl implements HomeRepo {
     } catch (e) {
       log("error to update user name data 2 = ${e.toString()}");
       return left(
+          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+    }
+  }
+
+  @override
+  Stream<Either<Failure, List<MyOrdersEntity>>> getUserOrders() async* {
+    try {
+      List<MyOrdersEntity> orders = [];
+      Stream<Map<String, dynamic>> data = dataBaseService.getStreamData(
+        path: BackendEndpoints.addOrder,
+        documentId: firebaseAuthService.getCurrentUser()!,
+        query: {
+          "orderBy": "orderDate",
+          "descending": true,
+        },
+      );
+      await for (var element in data) {
+        orders.add(OrderModel.fromJson(element).toEntity());
+        yield right(orders);
+      }
+    } on FirebaseException catch (e) {
+      log("error to get user orders = ${e.message.toString()}");
+      yield left(ServerFailure(errorMessage: e.message.toString()));
+    } catch (e) {
+      log("error to get user orders 2 = ${e.toString()}");
+      yield left(
           ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
     }
   }

@@ -1,3 +1,4 @@
+import 'package:fruits_hub/features/checkout/domain/entities/my_orders_entity/my_orders_address_details_entity.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/order_address_details_entity.dart';
 
 class OrderAddressDetailsModel {
@@ -28,6 +29,17 @@ class OrderAddressDetailsModel {
         floorName: entity.floorName,
       );
 
+  // create from json method;
+  factory OrderAddressDetailsModel.fromJson(Map<String, dynamic> json) =>
+      OrderAddressDetailsModel(
+        fullName: json["fullName"],
+        email: json["email"],
+        address: json["address"],
+        phone: json["phone"],
+        city: json["city"],
+        floorName: json["floorName"],
+      );
+
   // create toJson method;
   toJson() {
     return {
@@ -39,4 +51,24 @@ class OrderAddressDetailsModel {
       "floorName": floorName
     };
   }
+
+  // create toEntity method;
+  OrderAddressDetailsEntity toEntity() => OrderAddressDetailsEntity(
+        fullName: fullName,
+        email: email,
+        address: address,
+        phone: phone,
+        city: city,
+        floorName: floorName,
+      );
+
+  // create toEntiy two method;
+  MyOrdersAddressDetailsEntity toEntityTwo() => MyOrdersAddressDetailsEntity(
+        fullName: fullName,
+        email: email,
+        address: address,
+        phone: phone,
+        city: city,
+        floorName: floorName,
+      );
 }

@@ -1,5 +1,6 @@
 import 'package:fruits_hub/features/checkout/data/models/order_address_details_model.dart';
 import 'package:fruits_hub/features/checkout/data/models/order_product_model.dart';
+import 'package:fruits_hub/features/checkout/domain/entities/my_orders_entity/my_orders_entity.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
 import 'package:uuid/uuid.dart';
 
@@ -32,6 +33,19 @@ class OrderModel {
         orderId: generateOrderId(),
       );
 
+  // create from json method;
+  factory OrderModel.fromJson(Map<String, dynamic> json) => OrderModel(
+        userId: json['userId'],
+        totalPrice: json['totalPrice'],
+        orderAddressDetailsModel: OrderAddressDetailsModel.fromJson(
+            json['orderAddressDetailsModel']),
+        orderProductModel: json['orderProductModel']
+            .map((e) => OrderProductModel.fromJson(e))
+            .toList(),
+        paymentMethod: json['paymentMethod'],
+        orderId: json['orderId'],
+      );
+
   // create to json method
   Map<String, dynamic> toJson() => {
         'orderId': orderId,
@@ -43,6 +57,18 @@ class OrderModel {
         'orderProductModel': orderProductModel.map((e) => e.toJson()).toList(),
         'paymentMethod': paymentMethod,
       };
+  
+
+  // create entity method from MyOrdersEntity
+  MyOrdersEntity toEntity() => MyOrdersEntity(
+        userId: userId,
+        totalPrice: totalPrice,
+        myOrdersAddressDetailsEntity: orderAddressDetailsModel.toEntityTwo(),
+        orderProductEntity: orderProductModel.map((e) => e.toEntityTwo()).toList(),
+        paymentMethod: paymentMethod,
+        orderId: orderId,
+      );
 }
+
 // creat merthod that generate code of order
-  String generateOrderId() => const Uuid().v4();
+String generateOrderId() => const Uuid().v4();

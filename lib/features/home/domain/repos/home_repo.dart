@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
+import 'package:fruits_hub/features/checkout/domain/entities/my_orders_entity/my_orders_entity.dart';
 import '../../../../core/errors/failure.dart';
 import '../../../auth/domain/entity/user_entity.dart';
-
 abstract class HomeRepo {
   // create method that get user data from firebase
   Stream<Either<Failure, UserEntity>> getUserData();
@@ -25,5 +25,7 @@ abstract class HomeRepo {
 
   // create method that sign out from firebase
   Future<void> signOut();
-
+  
+  // create method that get user orders from firebase
+  Stream<Either<Failure, List<MyOrdersEntity>>> getUserOrders();
 }

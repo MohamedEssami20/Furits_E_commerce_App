@@ -3,6 +3,7 @@ class BackendEndpoints {
   static const addUsersData = "users";
   static const getProducts = "products";
   static const addOrder = "orders";
+  static const getOrders = "orders";
   static const userImages = "images";
   static const sendEmailServiceId = "service_46jbjc3";
   static const sendEmailTemplateId = "template_18yyg18";
