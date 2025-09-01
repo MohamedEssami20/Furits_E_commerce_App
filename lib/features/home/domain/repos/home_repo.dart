@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/my_orders_entity/my_orders_entity.dart';
 import '../../../../core/errors/failure.dart';
 import '../../../auth/domain/entity/user_entity.dart';
+
 abstract class HomeRepo {
   // create method that get user data from firebase
   Stream<Either<Failure, UserEntity>> getUserData();
@@ -13,7 +14,6 @@ abstract class HomeRepo {
 
   // create method that update user name data in firebase;
   Future<Either<Failure, void>> updateName({required String name});
-
 
   // create method that update email data in firebase
   Future<Either<Failure, void>> updateEmail(

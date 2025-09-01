@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/services/get_it_service.dart';
+import 'package:fruits_hub/features/home/domain/repos/home_repo.dart';
+import 'package:fruits_hub/features/home/presentation/manager/get_user_orders_cubit/get_user_orders_cubit.dart';
 import '../../manager/profile_view_cubit/profile_view_cubit.dart';
 import 'account_section.dart';
 import 'edit_profile_section.dart';
@@ -18,7 +21,11 @@ class ProfileViewBody extends StatelessWidget {
       case 1:
         return const EditProfileSection();
       case 2:
-        return const MyOrdersSection();
+        return BlocProvider(
+          create: (context) =>
+              GetUserOrdersCubit(homeRepo: getIt.get<HomeRepo>()),
+          child: const MyOrdersSection(),
+        );
       case 3:
         return const WalletSection();
       case 4:

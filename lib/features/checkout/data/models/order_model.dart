@@ -6,6 +6,7 @@ import 'package:uuid/uuid.dart';
 
 class OrderModel {
   final String userId;
+  final String orderDate;
   final String totalPrice;
   final OrderAddressDetailsModel orderAddressDetailsModel;
   final List<OrderProductModel> orderProductModel;
@@ -14,6 +15,7 @@ class OrderModel {
 
   OrderModel(
       {required this.userId,
+      required this.orderDate,
       required this.totalPrice,
       required this.orderAddressDetailsModel,
       required this.orderProductModel,
@@ -23,6 +25,7 @@ class OrderModel {
   factory OrderModel.fromEntity(OrderEntity orderEntity) => OrderModel(
         userId: orderEntity.userId,
         totalPrice: orderEntity.cartItems.calculateTotalPrice().toString(),
+        orderDate: DateTime.now().toString(),
         orderAddressDetailsModel: OrderAddressDetailsModel.fromEntity(
           orderEntity.orderAddressDetails,
         ),
@@ -36,12 +39,15 @@ class OrderModel {
   // create from json method;
   factory OrderModel.fromJson(Map<String, dynamic> json) => OrderModel(
         userId: json['userId'],
+        orderDate: json['date'],
         totalPrice: json['totalPrice'],
-        orderAddressDetailsModel: OrderAddressDetailsModel.fromJson(
-            json['orderAddressDetailsModel']),
-        orderProductModel: json['orderProductModel']
-            .map((e) => OrderProductModel.fromJson(e))
-            .toList(),
+        orderAddressDetailsModel:
+            OrderAddressDetailsModel.fromJson(json['orderAddressDetailsModel']),
+        orderProductModel: List<OrderProductModel>.from(
+          json['orderProductModel'].map(
+            (e) => OrderProductModel.fromJson(e),
+          ),
+        ),
         paymentMethod: json['paymentMethod'],
         orderId: json['orderId'],
       );
@@ -50,21 +56,32 @@ class OrderModel {
   Map<String, dynamic> toJson() => {
         'orderId': orderId,
         'userId': userId,
-        'status': "pending",
+        'status': sendOrderStatus,
         'date': DateTime.now().toString(),
         'totalPrice': totalPrice,
         'orderAddressDetailsModel': orderAddressDetailsModel.toJson(),
         'orderProductModel': orderProductModel.map((e) => e.toJson()).toList(),
         'paymentMethod': paymentMethod,
       };
-  
+
+  Map<String, dynamic> get sendOrderStatus {
+    return <String, dynamic>{
+        'trackingOrder':DateTime.now().toString(),
+        'acceptedOrder':"قيد الإنتظار",
+        'orderShipped':"قيد الإنتظار",
+        'orderOnWay':"قيد الإنتظار",
+        'orderReceived':"قيد الإنتظار",
+      };
+  }
 
   // create entity method from MyOrdersEntity
   MyOrdersEntity toEntity() => MyOrdersEntity(
         userId: userId,
+        orderDate: orderDate,
         totalPrice: totalPrice,
         myOrdersAddressDetailsEntity: orderAddressDetailsModel.toEntityTwo(),
-        orderProductEntity: orderProductModel.map((e) => e.toEntityTwo()).toList(),
+        orderProductEntity:
+            orderProductModel.map((e) => e.toEntityTwo()).toList(),
         paymentMethod: paymentMethod,
         orderId: orderId,
       );

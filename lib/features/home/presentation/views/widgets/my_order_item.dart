@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/my_order_state_item.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
+import '../../../../checkout/domain/entities/my_orders_entity/my_orders_entity.dart';
 
 class MyOrderItem extends StatefulWidget {
-  const MyOrderItem({super.key});
-
+  const MyOrderItem({super.key, required this.myOrdersEntity});
+  final MyOrdersEntity myOrdersEntity;
   @override
   State<MyOrderItem> createState() => _MyOrderItemState();
 }
@@ -17,7 +19,12 @@ class _MyOrderItemState extends State<MyOrderItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 16, bottom: 4, left: 16, right: 16),
+      padding: const EdgeInsets.only(
+        top: 16,
+        bottom: 4,
+        left: 16,
+        right: 16,
+      ),
       color: const Color(0x7FF2F3F3),
       child: Column(
         children: [
@@ -44,13 +51,13 @@ class _MyOrderItemState extends State<MyOrderItem> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "طلب رقم #123456",
+                    "طلب رقم #${widget.myOrdersEntity.orderId.substring(0, 8)}",
                     style: TextStyles.bold13.copyWith(
                       color: Colors.black,
                     ),
                   ),
                   Text(
-                    'تم الطلب :22 مارس ,2024',
+                    'تم الطلب :${convertDate(widget.myOrdersEntity.orderDate)}',
                     style: TextStyles.regular13.copyWith(
                       color: const Color(0xFF949D9E),
                     ),
@@ -64,7 +71,8 @@ class _MyOrderItemState extends State<MyOrderItem> {
                               color: const Color(0xFF949D9E),
                             )),
                         TextSpan(
-                          text: '10',
+                          text:
+                              '${widget.myOrdersEntity.orderProductEntity.length}',
                           style: TextStyles.bold13.copyWith(
                             color: Colors.black,
                           ),
@@ -81,7 +89,7 @@ class _MyOrderItemState extends State<MyOrderItem> {
                               color: const Color(0xFF949D9E),
                             )),
                         TextSpan(
-                          text: '200 جنيه',
+                          text: '${widget.myOrdersEntity.totalPrice} جنيه',
                           style: TextStyles.bold13.copyWith(
                             color: Colors.black,
                           ),
@@ -115,5 +123,12 @@ class _MyOrderItemState extends State<MyOrderItem> {
         ],
       ),
     );
+  }
+
+  // create method that take data form my order entity and convert it with intl package;
+  String convertDate(String date) {
+    DateTime orderDate = DateTime.parse(date);
+    Intl.defaultLocale = 'ar';
+    return DateFormat.yMMMd().format(orderDate);
   }
 }
