@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_hub/core/errors/failure.dart';
@@ -193,17 +194,18 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Stream<Either<Failure, List<MyOrdersEntity>>> getUserOrders() async* {
     try {
-      List<MyOrdersEntity> orders = [];
-      Stream<Map<String, dynamic>> data = dataBaseService.getStreamData(
-        path: BackendEndpoints.addOrder,
-        documentId: firebaseAuthService.getCurrentUser()!,
-        query: {
-          "orderBy": "orderDate",
-          "descending": true,
-        },
-      );
+      Stream<List<QueryDocumentSnapshot<Map<String, dynamic>>>> data =
+          dataBaseService.getStreamDataWithDocumentId(
+              mainPath: BackendEndpoints.addOrder,
+              subPath: BackendEndpoints.addUserOrders,
+              documentId: firebaseAuthService.getCurrentUser()!,
+              query: {
+            "descending": true,
+          });
       await for (var element in data) {
-        orders.add(OrderModel.fromJson(element).toEntity());
+        final orders = element
+            .map((order) => OrderModel.fromJson(order.data()).toEntity())
+            .toList();
         yield right(orders);
       }
     } on FirebaseException catch (e) {

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/my_order_state_item.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../checkout/domain/entities/my_orders_entity/my_orders_entity.dart';
@@ -57,7 +56,7 @@ class _MyOrderItemState extends State<MyOrderItem> {
                     ),
                   ),
                   Text(
-                    'تم الطلب :${convertDate(widget.myOrdersEntity.orderDate)}',
+                    'تم الطلب :${(widget.myOrdersEntity.orderDate)}',
                     style: TextStyles.regular13.copyWith(
                       color: const Color(0xFF949D9E),
                     ),
@@ -119,16 +118,12 @@ class _MyOrderItemState extends State<MyOrderItem> {
           const SizedBox(
             height: 20,
           ),
-          MyOrderStateItem(isShowOrderDetails: isShowOrderDetails),
+          MyOrderStateItem(
+            isShowOrderDetails: isShowOrderDetails,
+            orderStatus: widget.myOrdersEntity.status,
+          ),
         ],
       ),
     );
-  }
-
-  // create method that take data form my order entity and convert it with intl package;
-  String convertDate(String date) {
-    DateTime orderDate = DateTime.parse(date);
-    Intl.defaultLocale = 'ar';
-    return DateFormat.yMMMd().format(orderDate);
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/my_orders_entity/my_orders_entity.dart';
 import 'package:fruits_hub/features/home/domain/repos/home_repo.dart';

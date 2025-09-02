@@ -38,6 +38,14 @@ class _MyOrdersSectionState extends State<MyOrdersSection> {
         Expanded(
           child: BlocBuilder<GetUserOrdersCubit, GetUserOrdersState>(
             builder: (context, state) {
+
+              if (state is GetUserOrdersSuccess && state.ordersList.isEmpty) {
+                return Center(
+                    child: Text(
+                  "لا يوجد طلبات",
+                  style: TextStyles.semiBold16.copyWith(color: Colors.black),
+                ));
+              }
               if (state is GetUserOrdersLoading) {
                 return const Center(
                   child: CircularProgressIndicator(
@@ -47,13 +55,6 @@ class _MyOrdersSectionState extends State<MyOrdersSection> {
               }
               if (state is GetUserOrdersSuccess) {
                 return  MyOrdersListView(myOrders: state.ordersList,);
-              }
-              if (state is GetUserOrdersSuccess && state.ordersList.isEmpty) {
-                return Center(
-                    child: Text(
-                  "لا يوجد طلبات",
-                  style: TextStyles.semiBold16.copyWith(color: Colors.black),
-                ));
               }
               return const Text("حدث خطاء حاول مرة اخرى");
             },

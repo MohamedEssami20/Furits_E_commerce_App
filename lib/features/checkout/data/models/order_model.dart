@@ -2,6 +2,7 @@ import 'package:fruits_hub/features/checkout/data/models/order_address_details_m
 import 'package:fruits_hub/features/checkout/data/models/order_product_model.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/my_orders_entity/my_orders_entity.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
+import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
 class OrderModel {
@@ -12,9 +13,11 @@ class OrderModel {
   final List<OrderProductModel> orderProductModel;
   final String paymentMethod;
   final String orderId;
+  final Map<String, dynamic> orderStatus;
 
   OrderModel(
       {required this.userId,
+      required this.orderStatus,
       required this.orderDate,
       required this.totalPrice,
       required this.orderAddressDetailsModel,
@@ -34,50 +37,54 @@ class OrderModel {
             .toList(),
         paymentMethod: orderEntity.payWithCash! ? "cash" : "online",
         orderId: generateOrderId(),
+        orderStatus: sendOrderStatus(),
       );
 
   // create from json method;
-  factory OrderModel.fromJson(Map<String, dynamic> json) => OrderModel(
-        userId: json['userId'],
-        orderDate: json['date'],
-        totalPrice: json['totalPrice'],
-        orderAddressDetailsModel:
-            OrderAddressDetailsModel.fromJson(json['orderAddressDetailsModel']),
-        orderProductModel: List<OrderProductModel>.from(
-          json['orderProductModel'].map(
-            (e) => OrderProductModel.fromJson(e),
-          ),
+  factory OrderModel.fromJson(Map<String, dynamic> json) {
+    final rawStatus = Map<String, dynamic>.from(json['status'] ?? {});
+
+    final orderedStatus = {
+      'trackingOrder': rawStatus['trackingOrder'] ?? "قيد الإنتظار",
+      'acceptedOrder': rawStatus['acceptedOrder'] ?? "قيد الإنتظار",
+      'orderShipped': rawStatus['orderShipped'] ?? "قيد الإنتظار",
+      'orderOnWay': rawStatus['orderOnWay'] ?? "قيد الإنتظار",
+      'orderReceived': rawStatus['orderReceived'] ?? "قيد الإنتظار",
+    };
+    return OrderModel(
+      userId: json['userId'],
+      orderDate: json['date'],
+      totalPrice: json['totalPrice'],
+      orderAddressDetailsModel:
+          OrderAddressDetailsModel.fromJson(json['orderAddressDetailsModel']),
+      orderProductModel: List<OrderProductModel>.from(
+        json['orderProductModel'].map(
+          (e) => OrderProductModel.fromJson(e),
         ),
-        paymentMethod: json['paymentMethod'],
-        orderId: json['orderId'],
-      );
+      ),
+      paymentMethod: json['paymentMethod'],
+      orderId: json['orderId'],
+      orderStatus: orderedStatus,
+    );
+  }
 
   // create to json method
   Map<String, dynamic> toJson() => {
         'orderId': orderId,
         'userId': userId,
-        'status': sendOrderStatus,
-        'date': DateTime.now().toString(),
+        'status': orderStatus,
+        'date': getDateTimeNow(),
         'totalPrice': totalPrice,
         'orderAddressDetailsModel': orderAddressDetailsModel.toJson(),
         'orderProductModel': orderProductModel.map((e) => e.toJson()).toList(),
         'paymentMethod': paymentMethod,
       };
 
-  Map<String, dynamic> get sendOrderStatus {
-    return <String, dynamic>{
-        'trackingOrder':DateTime.now().toString(),
-        'acceptedOrder':"قيد الإنتظار",
-        'orderShipped':"قيد الإنتظار",
-        'orderOnWay':"قيد الإنتظار",
-        'orderReceived':"قيد الإنتظار",
-      };
-  }
-
   // create entity method from MyOrdersEntity
   MyOrdersEntity toEntity() => MyOrdersEntity(
         userId: userId,
         orderDate: orderDate,
+        status: orderStatus,
         totalPrice: totalPrice,
         myOrdersAddressDetailsEntity: orderAddressDetailsModel.toEntityTwo(),
         orderProductEntity:
@@ -89,3 +96,18 @@ class OrderModel {
 
 // creat merthod that generate code of order
 String generateOrderId() => const Uuid().v4();
+Map<String, String> sendOrderStatus() {
+  return {
+    'trackingOrder': getDateTimeNow(),
+    'acceptedOrder': "قيد الإنتظار",
+    'orderShipped': "قيد الإنتظار",
+    'orderOnWay': "قيد الإنتظار",
+    'orderReceived': "قيد الإنتظار",
+  };
+}
+
+String getDateTimeNow() {
+  Intl.defaultLocale = 'ar';
+  DateTime now = DateTime.now();
+  return DateFormat.yMMMd().format(now).toString();
+}

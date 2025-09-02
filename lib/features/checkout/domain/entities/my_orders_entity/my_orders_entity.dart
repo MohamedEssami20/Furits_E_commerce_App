@@ -9,10 +9,12 @@ class MyOrdersEntity {
   final List<MyOrdersProductEntity> orderProductEntity;
   final String paymentMethod;
   final String orderId;
+  final Map<String, dynamic> status;
 
   MyOrdersEntity({
     required this.userId,
     required this.orderDate,
+    required this.status,
     required this.totalPrice,
     required this.myOrdersAddressDetailsEntity,
     required this.orderProductEntity,

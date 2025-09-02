@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/constant/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart';
@@ -7,10 +8,10 @@ class MyOrderStateItem extends StatelessWidget {
   const MyOrderStateItem({
     super.key,
     required this.isShowOrderDetails,
+    required this.orderStatus,
   });
-
+  final Map<String, dynamic> orderStatus;
   final bool isShowOrderDetails;
-  final int currentStep = 3;
   @override
   Widget build(BuildContext context) {
     return AnimatedSize(
@@ -29,9 +30,12 @@ class MyOrderStateItem extends StatelessWidget {
                     nodePosition: 0,
                   ),
                   builder: TimelineTileBuilder.connected(
-                    itemCount: OrderStatusItem.statuses.length,
+                    itemCount: orderStatus.length,
                     indicatorBuilder: (_, index) {
-                      final isDone = index <= currentStep;
+                      final key = OrderStatusItem.statuses[index].key;
+                      final statusValue = orderStatus[key];
+                      final isDone =
+                          statusValue != "قيد الإنتظار" && statusValue != null;
                       return DotIndicator(
                         color: isDone
                             ? AppColors.primaryColor
@@ -40,7 +44,7 @@ class MyOrderStateItem extends StatelessWidget {
                       );
                     },
                     connectorBuilder: (_, index, ___) {
-                      final isDone = index < currentStep;
+                      bool isDone = isOldOrderStatusDone(index);
                       return SolidLineConnector(
                         color: isDone
                             ? AppColors.lightSecondaryColor
@@ -54,19 +58,19 @@ class MyOrderStateItem extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            /// التاريخ على اليسار
+                            /// اسم الحالة
                             Text(
-                              OrderStatusItem.statuses[index],
+                              OrderStatusItem.statuses[index].value,
                               style: TextStyles.semiBold13.copyWith(
-                                color: index <= currentStep
+                                color: index <= orderStatus.length
                                     ? Colors.black
                                     : Colors.grey,
                               ),
                             ),
 
-                            /// اسم الحالة على اليمين
+                            /// تاريخ الحالة
                             Text(
-                              OrderStatusItem.dates[index],
+                              orderStatus[OrderStatusItem.statuses[index].key],
                               style: TextStyles.semiBold13.copyWith(
                                 color: const Color(0xFF949D9E),
                               ),
@@ -82,22 +86,29 @@ class MyOrderStateItem extends StatelessWidget {
           : const SizedBox.shrink(),
     );
   }
+
+  bool isOldOrderStatusDone(int index) {
+    final currentKey = OrderStatusItem.statuses[index].key;
+    final nextKey = index + 1 < OrderStatusItem.statuses.length
+        ? OrderStatusItem.statuses[index + 1].key
+        : null;
+    final currentStatusValue = orderStatus[currentKey];
+    final nextStatusValue = nextKey != null ? orderStatus[nextKey] : null;
+    final isDone = currentStatusValue != "قيد الإنتظار" &&
+        currentStatusValue != null &&
+        nextStatusValue != "قيد الإنتظار" &&
+        nextStatusValue != null &&
+        nextStatusValue != "قيد الإنتظار";
+    return isDone;
+  }
 }
 
 class OrderStatusItem {
-  static final List<String> statuses = [
-    "تتبع الطلب",
-    "قبول الطلب",
-    "تم شحن الطلب",
-    "خرج التوصيل",
-    "تم تسليم",
-  ];
-
-  static final List<String> dates = [
-    "22 مارس , 2024",
-    "22 مارس , 2024",
-    "22 مارس , 2025",
-    "قيدالإنتظار",
-    "تم التسليم",
+  static final List<MapEntry<String, String>> statuses = [
+    const MapEntry("trackingOrder", "تتبع الطلب"),
+    const MapEntry("acceptedOrder", "قبول الطلب"),
+    const MapEntry("orderShipped", "تم شحن الطلب"),
+    const MapEntry("orderOnWay", "خرج التوصيل"),
+    const MapEntry("orderReceived", "تم التسليم"),
   ];
 }

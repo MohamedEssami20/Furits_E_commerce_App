@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:fruits_hub/core/errors/failure.dart';
 import 'package:fruits_hub/core/services/data_base_service.dart';
@@ -20,18 +23,20 @@ class OrdersRepoImpl implements OrdersRepo {
       {required OrderEntity ordereEntity}) async {
     try {
       OrderModel orderModel = OrderModel.fromEntity(ordereEntity);
-      await dataBaseService.addData(
-        path: BackendEndpoints.addOrder,
+      await dataBaseService.addDataWithDocumentId(
+        mainPath: BackendEndpoints.addOrder,
+        subPath: BackendEndpoints.addUserOrders,
         data: orderModel.toJson(),
         documentId: firebaseAuthService.getCurrentUser()!,
       );
       return const Right(null);
+    } on FirebaseException catch (e) {
+      log("error to add order = ${e.message.toString()}");
+      return left(ServerFailure(errorMessage: e.message.toString()));
     } catch (e) {
-      return Left(
-        ServerFailure(
-          errorMessage: e.toString(),
-        ),
-      );
+      log("error to add order 2 = ${e.toString()}");
+      return left(
+          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
     }
   }
 }
