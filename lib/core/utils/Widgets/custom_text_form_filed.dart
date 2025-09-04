@@ -15,7 +15,7 @@ class CustomTextFormFiled extends StatelessWidget {
     this.onChanged,
     this.controller,
     this.textAlign = TextAlign.start,
-    this.initialValue, this.validator,
+    this.initialValue, this.validator, this.enabled,
   });
 
   final String hintText;
@@ -30,10 +30,11 @@ class CustomTextFormFiled extends StatelessWidget {
   final TextAlign textAlign;
   final String? initialValue;
   final String? Function(String?)? validator;
-
+  final bool? enabled;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enabled,
       onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
       controller: controller,
       maxLength: maxLength,

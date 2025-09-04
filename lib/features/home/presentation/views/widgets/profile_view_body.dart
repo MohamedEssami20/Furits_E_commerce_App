@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/services/get_it_service.dart';
 import 'package:fruits_hub/features/home/domain/repos/home_repo.dart';
 import 'package:fruits_hub/features/home/presentation/manager/get_user_orders_cubit/get_user_orders_cubit.dart';
+import 'package:fruits_hub/features/home/presentation/manager/wallet_cubit/wallet_cubit.dart';
 import '../../manager/profile_view_cubit/profile_view_cubit.dart';
 import 'account_section.dart';
 import 'edit_profile_section.dart';
@@ -27,7 +28,10 @@ class ProfileViewBody extends StatelessWidget {
           child: const MyOrdersSection(),
         );
       case 3:
-        return const WalletSection();
+        return BlocProvider(
+          create: (context) => WalletCubit(),
+          child: const WalletSection(),
+        );
       case 4:
         return const FavoriteSection();
       case 5:

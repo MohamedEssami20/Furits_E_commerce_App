@@ -122,6 +122,10 @@ class Assets {
   /// assets/images/outline/user_icon.svg
   static const String assetsImagesOutlineUserIcon = "assets/images/outline/user_icon.svg";
 
+  /// Assets for assetsImagesPaypalColorSvgrepoCom
+  /// assets/images/paypal-color-svgrepo-com.svg
+  static const String assetsImagesPaypalColorSvgrepoCom = "assets/images/paypal-color-svgrepo-com.svg";
+
   /// Assets for assetsImagesProfileImage
   /// assets/images/profile_image.png
   static const String assetsImagesProfileImage = "assets/images/profile_image.png";
