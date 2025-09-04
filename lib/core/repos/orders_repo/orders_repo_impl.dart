@@ -27,7 +27,8 @@ class OrdersRepoImpl implements OrdersRepo {
         mainPath: BackendEndpoints.addOrder,
         subPath: BackendEndpoints.addUserOrders,
         data: orderModel.toJson(),
-        documentId: firebaseAuthService.getCurrentUser()!,
+        mainDocumentId: firebaseAuthService.getCurrentUser()!,
+        subDocumentId: orderModel.orderId,
       );
       return const Right(null);
     } on FirebaseException catch (e) {
