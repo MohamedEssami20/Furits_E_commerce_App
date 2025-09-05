@@ -11,8 +11,10 @@ class FruitsItem extends StatelessWidget {
   const FruitsItem({
     super.key,
     required this.product,
+    this.isFav,
   });
   final ProductEntity product;
+  final bool? isFav;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -94,7 +96,10 @@ class FruitsItem extends StatelessWidget {
           Positioned(
             child: IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.favorite_border),
+              icon: Icon(
+                isFav ?? false ? Icons.favorite : Icons.favorite_border,
+                color: isFav ?? false ? const Color(0xffEB5757) : Colors.grey,
+              ),
             ),
           ),
         ],

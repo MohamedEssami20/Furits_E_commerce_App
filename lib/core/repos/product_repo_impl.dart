@@ -50,4 +50,11 @@ class ProductRepoImpl extends ProductRepos {
       );
     }
   }
+
+  // implementation of add to favorites;
+  @override
+  Future<Either<Failure, void>> addToFavorites(
+      {required ProductEntity product}) {
+    throw UnimplementedError();
+  }
 }

@@ -5,6 +5,8 @@ class BackendEndpoints {
   static const addOrder = "orders";
   static const addUserOrders = "userOrders";
   static const getOrders = "orders";
+  static const addToFavorites = "favorites";
+  static const getFavorites = "favorites";
   static const userImages = "images";
   static const sendEmailServiceId = "service_46jbjc3";
   static const sendEmailTemplateId = "template_18yyg18";
