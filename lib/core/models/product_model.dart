@@ -4,6 +4,7 @@ import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'reviews_model.dart';
 
 class ProductModel {
+  final String productId;
   final String name;
   final String code;
   final num price;
@@ -20,7 +21,7 @@ class ProductModel {
   final int sellingCount;
   final List<ReviewsModel> reviews;
   ProductModel(
-      {required this.name,
+      {required this.productId,required this.name,
       required this.code,
       required this.price,
       required this.image,
@@ -38,6 +39,7 @@ class ProductModel {
 
   factory ProductModel.formJson(Map<String, dynamic> json) {
     return ProductModel(
+      productId: json["productId"],
       image: File(json["iamgeUrl"]),
       name: json["name"],
       code: json["code"],
@@ -62,8 +64,31 @@ class ProductModel {
     );
   }
 
+  factory ProductModel.fromProductEntity(ProductEntity product) {
+    return ProductModel(
+      productId: product.id,
+      image: product.image,
+      name: product.name,
+      code: product.code,
+      price: product.price,
+      iamgeUrl: product.iamgeUrl,
+      isFeatured: product.isFeatured,
+      description: product.description,
+      expeireationMonths: product.expeireationMonths,
+      isOraganic: product.isOraganic,
+      numberOfCalories: product.numberOfCalories,
+      avgRating: product.avgRating,
+      ratingCount: product.ratingCount,
+      unitAmount: product.unitAmount,
+      reviews: product.reviews
+          .map((e) => ReviewsModel.fromReviewsEntity(e))
+          .toList(),
+    );
+  }
+
   ProductEntity toEntity() {
     return ProductEntity(
+      id: productId,
       image: image,
       name: name,
       code: code,

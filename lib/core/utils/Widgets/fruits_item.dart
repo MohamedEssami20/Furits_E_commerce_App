@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/core/utils/my_colors.dart';
+import 'package:fruits_hub/features/best_selling/presentation/manager/favorite_product_cubit/favorite_products_cubit.dart';
 
 import '../../../features/home/presentation/manager/cart_cubit/cart_cubit.dart';
 import '../app_text_style.dart';
@@ -95,7 +96,13 @@ class FruitsItem extends StatelessWidget {
           ),
           Positioned(
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                if (isFav == null) {
+                  context
+                      .read<FavoriteProductsCubit>()
+                      .addToFavorite(productId: product.id);
+                }
+              },
               icon: Icon(
                 isFav ?? false ? Icons.favorite : Icons.favorite_border,
                 color: isFav ?? false ? const Color(0xffEB5757) : Colors.grey,

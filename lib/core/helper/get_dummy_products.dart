@@ -5,6 +5,7 @@ import 'package:fruits_hub/core/entities/reviews_entity.dart';
 
 ProductEntity getInstance() {
   return ProductEntity(
+    id: '1',
     image: File(''),
     name: 'Dummy Product',
     code: 'DUMMY001',

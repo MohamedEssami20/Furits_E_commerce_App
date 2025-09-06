@@ -12,7 +12,8 @@ abstract class DataBaseService {
       {required String mainPath,
       required String subPath,
       required Map<String, dynamic> data,
-      required String mainDocumentId, required String subDocumentId});
+      required String mainDocumentId,
+      required String subDocumentId});
 
   //create method to get usesr data from database;
   Future<dynamic> getData(
@@ -24,11 +25,12 @@ abstract class DataBaseService {
   // create method that check if data is exits;
 
   // create method that get stream data from extends document id;
-  Stream <List<QueryDocumentSnapshot<Map<String, dynamic>>>> getStreamDataWithDocumentId(
-      {required String mainPath,
-      required String subPath,
-      String? documentId,
-      Map<String, dynamic>? query});
+  Stream<List<QueryDocumentSnapshot<Map<String, dynamic>>>>
+      getStreamDataWithDocumentId(
+          {required String mainPath,
+          required String subPath,
+          String? documentId,
+          Map<String, dynamic>? query});
 
   Future<bool> checkDataExists(
       {required String path, required String documentId});
@@ -38,4 +40,5 @@ abstract class DataBaseService {
 
   // create method that check if email of user is exits;
   Future<bool> checkEmailExists({required String path, required String email});
+
 }

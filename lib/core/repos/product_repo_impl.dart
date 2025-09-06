@@ -1,11 +1,12 @@
 import 'dart:developer';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/core/errors/failure.dart';
 import 'package:fruits_hub/core/models/product_model.dart';
 import 'package:fruits_hub/core/repos/product_repos.dart';
 import 'package:fruits_hub/core/services/data_base_service.dart';
+import 'package:fruits_hub/core/services/firebase_auth_service.dart';
 
 import '../utils/backend_endpoints.dart';
 
@@ -13,6 +14,8 @@ class ProductRepoImpl extends ProductRepos {
   final DataBaseService dataBaseService;
 
   ProductRepoImpl({required this.dataBaseService});
+
+  FirebaseAuthService firebaseAuthService = FirebaseAuthService();
   @override
   Future<Either<Failure, List<ProductEntity>>> getBestSellingProduct() async {
     try {
@@ -52,9 +55,29 @@ class ProductRepoImpl extends ProductRepos {
   }
 
   // implementation of add to favorites;
+
   @override
   Future<Either<Failure, void>> addToFavorites(
-      {required ProductEntity product}) {
-    throw UnimplementedError();
+      {required String productId}) async {
+    try {
+      await dataBaseService.addDataWithDocumentId(
+        mainPath: BackendEndpoints.addToFavorites,
+        subPath: BackendEndpoints.addUserFavorites,
+        data: {
+          "productId": productId,
+        },
+        mainDocumentId: firebaseAuthService.getCurrentUser()!,
+        subDocumentId: productId,
+      );
+      return right(null);
+    } on FirebaseException catch (e) {
+      log("error to add to favorites = ${e.message.toString()}");
+      return left(
+          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+    } catch (e) {
+      log("error to add to favorites 2 = ${e.toString()}");
+      return left(
+          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+    }
   }
 }

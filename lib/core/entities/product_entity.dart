@@ -6,6 +6,7 @@ import 'reviews_entity.dart';
 
 // ignore: must_be_immutable
 class ProductEntity extends Equatable {
+  final String id;
   final String name;
   final String code;
   final num price;
@@ -22,6 +23,7 @@ class ProductEntity extends Equatable {
   final int sellingCount;
   final List<ReviewsEntity> reviews;
   ProductEntity({
+    required this.id,
     required this.name,
     required this.code,
     required this.price,
@@ -40,5 +42,5 @@ class ProductEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => [code];
+  List<Object?> get props => [code, id];
 }

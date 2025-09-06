@@ -90,25 +90,29 @@ class FirestoreService implements DataBaseService {
       {required String mainPath,
       required String subPath,
       required Map<String, dynamic> data,
-      required String mainDocumentId, required String subDocumentId}) async {
+      required String mainDocumentId,
+      required String subDocumentId}) async {
     await firebaseFirestore
         .collection(mainPath)
         .doc(mainDocumentId)
         .collection(subPath)
-        .doc(subDocumentId).set(data);
+        .doc(subDocumentId)
+        .set(data, SetOptions(merge: true));
   }
 
   @override
-  Stream <List<QueryDocumentSnapshot<Map<String, dynamic>>>> getStreamDataWithDocumentId(
-      {required String mainPath,
-      required String subPath,
-      String? documentId,
-      Map<String, dynamic>? query}) async* {
+  Stream<List<QueryDocumentSnapshot<Map<String, dynamic>>>>
+      getStreamDataWithDocumentId(
+          {required String mainPath,
+          required String subPath,
+          String? documentId,
+          Map<String, dynamic>? query}) async* {
     Stream<QuerySnapshot<Map<String, dynamic>>> documentSnapshot =
         firebaseFirestore
             .collection(mainPath)
             .doc(documentId)
-            .collection(subPath).snapshots();
+            .collection(subPath)
+            .snapshots();
 
     yield* documentSnapshot.map((event) => event.docs);
   }

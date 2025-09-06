@@ -11,4 +11,5 @@ class ReviewsEntity {
       required this.date,
       required this.image,
       required this.reviewDescription});
+
 }

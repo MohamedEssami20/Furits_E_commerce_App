@@ -6,6 +6,7 @@ class BackendEndpoints {
   static const addUserOrders = "userOrders";
   static const getOrders = "orders";
   static const addToFavorites = "favorites";
+  static const addUserFavorites = "userFavorites";
   static const getFavorites = "favorites";
   static const userImages = "images";
   static const sendEmailServiceId = "service_46jbjc3";
