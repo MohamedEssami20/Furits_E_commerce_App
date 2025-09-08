@@ -13,4 +13,5 @@ abstract class ProductRepos {
 
   // create method that get favorites products from database as Stream;
   Stream<Either<Failure, List<ProductEntity>>> getFavoritesProducts();
+
 }

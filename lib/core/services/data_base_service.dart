@@ -47,4 +47,11 @@ abstract class DataBaseService {
       required String subPath,
       String? mainDocumentId,
       Map<String, dynamic>? query});
+
+  // create get stream of Map<String, dynamic> to get data from database;
+  Stream<QuerySnapshot<Map<String, dynamic>>> getStreamMapData(
+      {required String mainPath,
+      required String subPath,
+      String? mainDocumentId,
+      Map<String, dynamic>? query});
 }

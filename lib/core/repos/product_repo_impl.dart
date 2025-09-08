@@ -9,6 +9,7 @@ import 'package:fruits_hub/core/services/data_base_service.dart';
 import 'package:fruits_hub/core/services/firebase_auth_service.dart';
 
 import '../utils/backend_endpoints.dart';
+import 'package:rxdart/rxdart.dart' as rx;
 
 class ProductRepoImpl extends ProductRepos {
   final DataBaseService dataBaseService;
@@ -88,14 +89,14 @@ class ProductRepoImpl extends ProductRepos {
         mainDocumentId: firebaseAuthService.getCurrentUser()!,
       );
 
-      yield* idsStream.asyncExpand((ids) async* {
+      yield* idsStream.switchMap((ids) async* {
         if (ids.isEmpty) {
           yield right([]);
         } else {
           // get favorite products with whereIn;
           final result = FirebaseFirestore.instance
               .collection(BackendEndpoints.getProducts)
-              .where(FieldPath.documentId, whereIn: ids.take(10).toList())
+              .where("productId", whereIn: ids.take(10).toList())
               .snapshots()
               .map((event) => event.docs
                   .map((e) => ProductModel.formJson(e.data()).toEntity())

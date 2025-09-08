@@ -128,7 +128,24 @@ class FirestoreService implements DataBaseService {
         .doc(mainDocumentId)
         .collection(subPath)
         .snapshots()
-        .map((event) => event.docs.map((e) => e.id).toList());
+        .map((e) {
+      log("length of favorites = ${e.docs.length}");
+      return e.docs.map((e) => e.id).toList();
+    });
+    return result;
+  }
+
+  @override
+  Stream<QuerySnapshot<Map<String, dynamic>>> getStreamMapData(
+      {required String mainPath,
+      required String subPath,
+      String? mainDocumentId,
+      Map<String, dynamic>? query}) {
+    final result = firebaseFirestore
+        .collection(mainPath)
+        .doc(mainDocumentId)
+        .collection(subPath)
+        .snapshots();
     return result;
   }
 }

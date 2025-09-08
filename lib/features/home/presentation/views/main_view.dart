@@ -29,7 +29,7 @@ class _MainViewState extends State<MainView> {
         BlocProvider(
           create: (context) => GetFavoriteProductCubit(
             productRepos: getIt.get<ProductRepos>(),
-          )..getFavoriteProducts(),
+          ),
         ),
       ],
       child: Scaffold(

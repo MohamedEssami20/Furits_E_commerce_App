@@ -36,6 +36,7 @@ class GetFavoriteProductCubit extends Cubit<GetFavoriteProductState> {
     });
   }
 
+
   @override
   Future<void> close() {
     streamSubscription?.cancel();
