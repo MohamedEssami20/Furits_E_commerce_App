@@ -4,6 +4,7 @@ import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
 import 'package:fruits_hub/features/home/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/main_view_body.dart';
 
+
 class MainViewBodyBlocListener extends StatelessWidget {
   const MainViewBodyBlocListener({
     super.key,

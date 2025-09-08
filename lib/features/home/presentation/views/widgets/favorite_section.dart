@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruits_hub/core/helper/get_dummy_products.dart';
+import 'package:fruits_hub/features/home/presentation/views/widgets/builder/get_favorite_product_builder.dart';
 import '../../../../../core/utils/Widgets/build_app_bar.dart';
 import '../../manager/profile_view_cubit/profile_view_cubit.dart';
-import 'favorite_products_grid_view.dart';
 
 class FavoriteSection extends StatelessWidget {
   const FavoriteSection({super.key});
@@ -21,14 +20,12 @@ class FavoriteSection extends StatelessWidget {
         const SizedBox(
           height: 28,
         ),
-        Expanded(
+        const Expanded(
           child: CustomScrollView(
-            physics: const BouncingScrollPhysics(),
+            physics: BouncingScrollPhysics(),
             shrinkWrap: true,
             slivers: [
-              FavoriteProductsGridView(
-                products: getDummyProducts(),
-              ),
+              GetFavoriteProductBuilder(),
             ],
           ),
         ),

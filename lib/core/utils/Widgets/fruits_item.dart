@@ -104,8 +104,12 @@ class FruitsItem extends StatelessWidget {
                 }
               },
               icon: Icon(
-                isFav ?? false ? Icons.favorite : Icons.favorite_border,
-                color: isFav ?? false ? const Color(0xffEB5757) : Colors.grey,
+                isFav ?? false 
+                    ? Icons.favorite
+                    : Icons.favorite_border,
+                color: isFav ?? false 
+                    ? const Color(0xffEB5757)
+                    : Colors.grey,
               ),
             ),
           ),

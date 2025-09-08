@@ -41,4 +41,10 @@ abstract class DataBaseService {
   // create method that check if email of user is exits;
   Future<bool> checkEmailExists({required String path, required String email});
 
+  // create get stream of List<String> to get data from database;
+  Stream<List<String>> getStreamStringData(
+      {required String mainPath,
+      required String subPath,
+      String? mainDocumentId,
+      Map<String, dynamic>? query});
 }

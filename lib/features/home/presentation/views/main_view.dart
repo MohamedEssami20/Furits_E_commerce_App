@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/services/get_it_service.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_buttom_navigation_bar.dart';
 import 'package:fruits_hub/features/home/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/main_view_body_bloc_listener.dart';
+
+import '../../../../core/repos/product_repos.dart';
+import '../manager/get_favorite_products_cubit/get_favorite_product_cubit.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -17,8 +21,17 @@ int selectedIndex = 0;
 class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CartCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => CartCubit(),
+        ),
+        BlocProvider(
+          create: (context) => GetFavoriteProductCubit(
+            productRepos: getIt.get<ProductRepos>(),
+          )..getFavoriteProducts(),
+        ),
+      ],
       child: Scaffold(
           bottomNavigationBar: CustomButtomNavigationBar(
             onTap: (index) {
