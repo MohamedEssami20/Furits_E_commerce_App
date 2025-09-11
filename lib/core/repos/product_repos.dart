@@ -9,9 +9,12 @@ abstract class ProductRepos {
   Future<Either<Failure, List<ProductEntity>>> getBestSellingProduct();
 
   // create method that add product to favorites into database as Stream;
-  Future<Either<Failure, void>> addToFavorites({required String productId});  
+  Future<Either<Failure, void>> addToFavorites({required String productId});
 
   // create method that get favorites products from database as Stream;
   Stream<Either<Failure, List<ProductEntity>>> getFavoritesProducts();
 
+  // create method that remove product from favorites into database as Stream;
+  Future<Either<Failure, void>> removeFavoriteProduct(
+      {required String productId});
 }

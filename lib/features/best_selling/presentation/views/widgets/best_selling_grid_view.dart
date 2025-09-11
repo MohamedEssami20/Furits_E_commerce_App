@@ -13,6 +13,8 @@ class BestSellingGridView extends StatelessWidget {
   final List<ProductEntity> products;
   @override
   Widget build(BuildContext context) {
+    final isFavNow = context.read<FavoriteProductsCubit>().state
+        is AddFavoriteProductsSuccess;
     return SliverGrid.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
@@ -25,6 +27,7 @@ class BestSellingGridView extends StatelessWidget {
         child: AddFavoriteProductsListener(
           child: FruitsItem(
             product: products[index],
+            isFav: isFavNow,
           ),
         ),
       ),

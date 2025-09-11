@@ -11,10 +11,10 @@ class AddFavoriteProductsListener extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<FavoriteProductsCubit, FavoriteProductsState>(
       listener: (context, state) {
-        if (state is FavoriteProductsSuccess) {
+        if (state is AddFavoriteProductsSuccess) {
           buildErrorSnackBar(context, "تم حفظ المنتج في المفضلة بنجاح");
         }
-        if (state is FavoriteProductsFailure) {
+        if (state is AddFavoriteProductsFailure) {
           buildErrorSnackBar(context, state.errormessage);
         }
       },

@@ -115,4 +115,26 @@ class ProductRepoImpl extends ProductRepos {
           ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> removeFavoriteProduct(
+      {required String productId}) async {
+    try {
+      await dataBaseService.deleteDataWithDocumentId(
+        mainPath: BackendEndpoints.addToFavorites,
+        subPath: BackendEndpoints.addUserFavorites,
+        mainDocumentId: firebaseAuthService.getCurrentUser()!,
+        subDocumentId: productId,
+      );
+      return right(null);
+    } on FirebaseException catch (e) {
+      log("error to remove from favorites = ${e.message.toString()}");
+      return left(
+          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+    } catch (e) {
+      log("error to remove from favorites 2 = ${e.toString()}");
+      return left(
+          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+    }
+  }
 }

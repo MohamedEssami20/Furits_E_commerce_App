@@ -148,4 +148,18 @@ class FirestoreService implements DataBaseService {
         .snapshots();
     return result;
   }
+
+  @override
+  Future<void> deleteDataWithDocumentId(
+      {required String mainPath,
+      required String subPath,
+      required String mainDocumentId,
+      required String subDocumentId})async {
+    await firebaseFirestore
+        .collection(mainPath)
+        .doc(mainDocumentId)
+        .collection(subPath)
+        .doc(subDocumentId)
+        .delete();
+  }
 }

@@ -54,4 +54,12 @@ abstract class DataBaseService {
       required String subPath,
       String? mainDocumentId,
       Map<String, dynamic>? query});
+  
+
+  // create method that delete docs from extends document id;
+  Future<void> deleteDataWithDocumentId(
+      {required String mainPath,
+      required String subPath,
+      required String mainDocumentId,
+      required String subDocumentId});
 }

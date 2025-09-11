@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/cubit/remove_favorite_product/remove_favorite_product_cubit.dart';
 import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/core/utils/my_colors.dart';
 import 'package:fruits_hub/features/best_selling/presentation/manager/favorite_product_cubit/favorite_products_cubit.dart';
 
 import '../../../features/home/presentation/manager/cart_cubit/cart_cubit.dart';
 import '../app_text_style.dart';
+import 'builder/adding_and_remove_product_builder.dart';
 import 'custom_network_image.dart';
 
 class FruitsItem extends StatelessWidget {
   const FruitsItem({
     super.key,
     required this.product,
-    this.isFav,
+    required this.isFav,
   });
   final ProductEntity product;
-  final bool? isFav;
+  final bool isFav;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -95,21 +97,34 @@ class FruitsItem extends StatelessWidget {
             ),
           ),
           Positioned(
-            child: IconButton(
-              onPressed: () {
-                if (isFav == null) {
-                  context
-                      .read<FavoriteProductsCubit>()
-                      .addToFavorite(productId: product.id);
-                }
-              },
-              icon: Icon(
-                isFav ?? false 
-                    ? Icons.favorite
-                    : Icons.favorite_border,
-                color: isFav ?? false 
-                    ? const Color(0xffEB5757)
-                    : Colors.grey,
+            child: AddAndRemovingProductBuilder(
+              productId: product.id,
+              widget: IconButton(
+                onPressed: () {
+                  if (isFav == false) {
+                    context
+                        .read<FavoriteProductsCubit>()
+                        .addToFavorite(productId: product.id);
+                  } else if (isFav == true ||
+                      context.read<FavoriteProductsCubit>().state
+                          is AddFavoriteProductsSuccess) {
+                    context
+                        .read<RemoveFavoriteProductCubit>()
+                        .removeFavoriteProduct(productId: product.id);
+                  }
+                },
+                icon: Icon(
+                  isFav ||
+                          context.read<FavoriteProductsCubit>().state
+                              is AddFavoriteProductsSuccess
+                      ? Icons.favorite
+                      : Icons.favorite_border,
+                  color: isFav ||
+                          context.read<FavoriteProductsCubit>().state
+                              is AddFavoriteProductsSuccess
+                      ? const Color(0xffEB5757)
+                      : Colors.grey,
+                ),
               ),
             ),
           ),
