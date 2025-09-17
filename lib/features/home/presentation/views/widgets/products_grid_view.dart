@@ -16,7 +16,6 @@ class ProductsGridView extends StatelessWidget {
           childAspectRatio: 163 / 214),
       itemBuilder: (context, index) => FruitsItem(
         product: products[index],
-        isFav: true,
       ),
       itemCount: products.length,
     );

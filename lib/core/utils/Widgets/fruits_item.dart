@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruits_hub/core/cubit/remove_favorite_product/remove_favorite_product_cubit.dart';
 import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/core/utils/my_colors.dart';
 import 'package:fruits_hub/features/best_selling/presentation/manager/favorite_product_cubit/favorite_products_cubit.dart';
@@ -14,12 +13,12 @@ class FruitsItem extends StatelessWidget {
   const FruitsItem({
     super.key,
     required this.product,
-    required this.isFav,
   });
   final ProductEntity product;
-  final bool isFav;
   @override
   Widget build(BuildContext context) {
+    final favoriteCubit = context.watch<FavoriteProductsCubit>();
+    var isFavorite = favoriteCubit.isFavoriteProduct(product.id);
     return Container(
       width: 200,
       height: 220,
@@ -101,29 +100,19 @@ class FruitsItem extends StatelessWidget {
               productId: product.id,
               widget: IconButton(
                 onPressed: () {
-                  if (isFav == false) {
+                  if (isFavorite == false) {
                     context
                         .read<FavoriteProductsCubit>()
                         .addToFavorite(productId: product.id);
-                  } else if (isFav == true ||
-                      context.read<FavoriteProductsCubit>().state
-                          is AddFavoriteProductsSuccess) {
+                  } else if (isFavorite == true) {
                     context
-                        .read<RemoveFavoriteProductCubit>()
+                        .read<FavoriteProductsCubit>()
                         .removeFavoriteProduct(productId: product.id);
                   }
                 },
                 icon: Icon(
-                  isFav ||
-                          context.read<FavoriteProductsCubit>().state
-                              is AddFavoriteProductsSuccess
-                      ? Icons.favorite
-                      : Icons.favorite_border,
-                  color: isFav ||
-                          context.read<FavoriteProductsCubit>().state
-                              is AddFavoriteProductsSuccess
-                      ? const Color(0xffEB5757)
-                      : Colors.grey,
+                  isFavorite ? Icons.favorite : Icons.favorite_border,
+                  color: isFavorite ? const Color(0xffEB5757) : Colors.grey,
                 ),
               ),
             ),

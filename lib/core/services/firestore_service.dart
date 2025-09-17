@@ -154,12 +154,52 @@ class FirestoreService implements DataBaseService {
       {required String mainPath,
       required String subPath,
       required String mainDocumentId,
-      required String subDocumentId})async {
+      required String subDocumentId}) async {
     await firebaseFirestore
         .collection(mainPath)
         .doc(mainDocumentId)
         .collection(subPath)
         .doc(subDocumentId)
         .delete();
+  }
+
+  @override
+  Future<List<Map<String, dynamic>>> getDataWithDocumentId(
+      {required String mainPath,
+      required String subPath,
+      String? mainDocumentId,
+      Map<String, dynamic>? query}) async {
+    if (mainDocumentId != null) {
+      final result = await firebaseFirestore
+          .collection(mainPath)
+          .doc(mainDocumentId)
+          .collection(subPath)
+          .get();
+      return result.docs.map((e) => e.data()).toList();
+    } else {
+      if (query != null) {
+        Query<Map<String, dynamic>> documentSnapshot =
+            firebaseFirestore.collection(mainPath);
+        if (query['orderBy'] != null) {
+          String orderBy = query['orderBy'];
+          bool isAscending = query['descending'];
+          documentSnapshot =
+              documentSnapshot.orderBy(orderBy, descending: isAscending);
+        }
+        if (query['limit'] != null) {
+          int limit = query['limit'];
+          documentSnapshot = documentSnapshot.limit(limit);
+        }
+        QuerySnapshot<Map<String, dynamic>> result =
+            await documentSnapshot.get();
+        return result.docs.map((e) => e.data()).toList();
+      }
+    }
+    Query<Map<String, dynamic>> documentSnapshot = firebaseFirestore
+        .collection(mainPath)
+        .doc(mainDocumentId)
+        .collection(subPath);
+    QuerySnapshot<Map<String, dynamic>> result = await documentSnapshot.get();
+    return result.docs.map((e) => e.data()).toList();
   }
 }

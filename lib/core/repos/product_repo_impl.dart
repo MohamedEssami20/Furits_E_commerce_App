@@ -29,7 +29,18 @@ class ProductRepoImpl extends ProductRepos {
       ) as List<Map<String, dynamic>>;
       List<ProductEntity> products =
           data.map((e) => ProductModel.formJson(e).toEntity()).toList();
-      return right(products);
+
+      var favSanpShot = await dataBaseService.getDataWithDocumentId(
+          mainPath: BackendEndpoints.getFavorites,
+          subPath: BackendEndpoints.getUserFavorites,
+          mainDocumentId: firebaseAuthService.getCurrentUser()!,
+          query: {
+            "orderBy": "rating",
+            "descending": true,
+          });
+      List<ProductEntity> finalProducts =
+          getFinalProducts(favSanpShot, products);
+      return right(finalProducts);
     } catch (e) {
       return left(ServerFailure(
           errorMessage: "there was an error when fetching products"));
@@ -39,11 +50,22 @@ class ProductRepoImpl extends ProductRepos {
   @override
   Future<Either<Failure, List<ProductEntity>>> getProduct() async {
     try {
-      var data = await dataBaseService.getData(
+      List<Map<String, dynamic>> data = await dataBaseService.getData(
           path: BackendEndpoints.getProducts) as List<Map<String, dynamic>>;
       List<ProductEntity> products =
           data.map((e) => ProductModel.formJson(e).toEntity()).toList();
-      return right(products);
+
+      var favSanpShot = await dataBaseService.getDataWithDocumentId(
+          mainPath: BackendEndpoints.getFavorites,
+          subPath: BackendEndpoints.getUserFavorites,
+          mainDocumentId: firebaseAuthService.getCurrentUser()!);
+
+      List<ProductEntity> finalProducts =
+          getFinalProducts(favSanpShot, products);
+      for (int counter = 0; counter < finalProducts.length; counter++) {
+        log("${finalProducts[counter].name} isFavorite = ${finalProducts[counter].isFavorite}");
+      }
+      return right(finalProducts);
     } catch (e) {
       log("error to get product = ${e.toString()}");
       return left(
@@ -51,6 +73,34 @@ class ProductRepoImpl extends ProductRepos {
             errorMessage: "there was an error when fetching products"),
       );
     }
+  }
+
+  List<ProductEntity> getFinalProducts(
+      List<Map<String, dynamic>> favSanpShot, List<ProductEntity> products) {
+    List<String> ids = [];
+    for (var element in favSanpShot) {
+      ids.add(element["productId"]);
+    }
+
+    List<ProductEntity> finalProducts = products.map((e) {
+      return ProductEntity(
+        id: e.id,
+        name: e.name,
+        code: e.code,
+        price: e.price,
+        iamgeUrl: e.iamgeUrl,
+        image: e.image,
+        isOraganic: e.isOraganic,
+        isFeatured: e.isFeatured,
+        description: e.description,
+        expeireationMonths: e.expeireationMonths,
+        numberOfCalories: e.numberOfCalories,
+        unitAmount: e.unitAmount,
+        reviews: e.reviews,
+        isFavorite: ids.contains(e.id),
+      );
+    }).toList();
+    return finalProducts;
   }
 
   // implementation of add to favorites;

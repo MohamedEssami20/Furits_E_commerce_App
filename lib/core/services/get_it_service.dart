@@ -11,6 +11,7 @@ import 'package:fruits_hub/features/auth/data/repos_impl/reset_password_repo_imp
 import 'package:fruits_hub/features/auth/domain/repos/auth_repo.dart';
 import 'package:fruits_hub/features/auth/data/repos_impl/auth_repo_impl.dart';
 import 'package:fruits_hub/features/auth/domain/repos/reset_password_repo.dart';
+import 'package:fruits_hub/features/best_selling/presentation/manager/favorite_product_cubit/favorite_products_cubit.dart';
 import 'package:fruits_hub/features/home/data/repos/home_repo_impl.dart';
 import 'package:fruits_hub/features/home/domain/repos/home_repo.dart';
 import 'package:get_it/get_it.dart';
@@ -62,6 +63,12 @@ void setupGetIt() {
     HomeRepoImpl(
       dataBaseService: getIt.get<DataBaseService>(),
       storageServices: getIt.get<StorageServices>(),
+    ),
+  );
+
+  getIt.registerSingleton<FavoriteProductsCubit>(
+    FavoriteProductsCubit(
+      productRepos: getIt.get<ProductRepos>(),
     ),
   );
 }

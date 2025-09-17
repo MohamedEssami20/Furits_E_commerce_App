@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/cubit/product_cubit/products_cubit.dart';
+import 'package:fruits_hub/features/best_selling/presentation/manager/favorite_product_cubit/favorite_products_cubit.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/helper/get_dummy_products.dart';
@@ -17,6 +18,9 @@ class BestSellingGridViewBlocBuilder extends StatelessWidget {
     return BlocBuilder<ProductsCubit, ProductsState>(
       builder: (context, state) {
         if (state is ProductsSuccess) {
+          context
+              .read<FavoriteProductsCubit>()
+              .setFavoriteProducts(state.products);
           return BestSellingGridView(
             products: state.products,
           );

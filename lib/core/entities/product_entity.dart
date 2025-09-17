@@ -22,7 +22,9 @@ class ProductEntity extends Equatable {
   final int unitAmount;
   final int sellingCount;
   final List<ReviewsEntity> reviews;
+  final bool isFavorite;
   ProductEntity({
+    this.isFavorite = false,
     required this.id,
     required this.name,
     required this.code,

@@ -18,6 +18,13 @@ abstract class DataBaseService {
   //create method to get usesr data from database;
   Future<dynamic> getData(
       {required String path, String? documentId, Map<String, dynamic>? query});
+  
+  // create method that get data from extends document id;
+  Future<List<Map<String, dynamic>>> getDataWithDocumentId(
+      {required String mainPath,
+      required String subPath,
+      String? mainDocumentId,
+      Map<String, dynamic>? query});
 
   // create get stream to get data from database;
   Stream<Map<String, dynamic>> getStreamData(
