@@ -13,11 +13,18 @@ import 'change_language.dart';
 import 'notification_and_mode_item.dart';
 import 'profile_item.dart';
 
-class AccountSection extends StatelessWidget {
+class AccountSection extends StatefulWidget {
   const AccountSection({
     super.key,
   });
 
+  @override
+  State<AccountSection> createState() => _AccountSectionState();
+}
+
+class _AccountSectionState extends State<AccountSection> {
+  bool isDarkMode = false;
+  bool isNotification = false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -62,17 +69,27 @@ class AccountSection extends StatelessWidget {
         ),
         const CustomProfileDivider(),
         NotificationAndModeItem(
+          value: isNotification,
           title: "الاشعارات",
           icon: Assets.assetsImagesNotificationIcon,
-          onToggle: (value) {},
+          onToggle: (value) {
+            setState(() {
+              isNotification = value;
+            });
+          },
         ),
         const CustomProfileDivider(),
         const ChangeLangauge(),
         const CustomProfileDivider(),
         NotificationAndModeItem(
+          value: isDarkMode,
           title: "الوضع ",
           icon: Assets.assetsImagesMagicpenIcon,
-          onToggle: (value) {},
+          onToggle: (value) {
+            setState(() {
+              isDarkMode = value;
+            });
+          },
         ),
         const CustomProfileDivider(),
         const SizedBox(

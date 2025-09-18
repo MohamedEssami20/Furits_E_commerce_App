@@ -21,5 +21,214 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "Our": MessageLookupByLibrary.simpleMessage("Our"),
+    "aboutUs": MessageLookupByLibrary.simpleMessage("About Us"),
+    "aboutUsTextPart1": MessageLookupByLibrary.simpleMessage(
+      "At Fruits Store, we believe that healthy living starts with fresh and natural choices. Our mission is to bring you the finest selection of fruits, handpicked with care to ensure quality and freshness.",
+    ),
+    "aboutUsTextPart2": MessageLookupByLibrary.simpleMessage(
+      "We work closely with trusted farmers and suppliers who share our passion for excellence. Every fruit in our collection is carefully sourced to deliver both taste and nutrition to your table.",
+    ),
+    "aboutUsTextPart3": MessageLookupByLibrary.simpleMessage(
+      "Our team is dedicated to creating a simple and enjoyable shopping experience. From browsing to checkout, we make it easy to discover, choose, and enjoy your favorite fruits.",
+    ),
+    "aboutUsTextPart4": MessageLookupByLibrary.simpleMessage(
+      "With Fruit Store, you get more than just fruits—you get convenience, quality, and a promise of healthy living. Join us today and experience the difference of shopping with care.",
+    ),
+    "acceptOrder": MessageLookupByLibrary.simpleMessage("Accept Order"),
+    "addNewAddress": MessageLookupByLibrary.simpleMessage("Add New Address"),
+    "addNewCard": MessageLookupByLibrary.simpleMessage("Add New Card"),
+    "addNewPaymentMethod": MessageLookupByLibrary.simpleMessage(
+      "Add New Payment Method",
+    ),
+    "addToCart": MessageLookupByLibrary.simpleMessage("Add To Cart"),
+    "address": MessageLookupByLibrary.simpleMessage("Address"),
+    "addressLine1": MessageLookupByLibrary.simpleMessage("Address Line 1"),
+    "addressLine2": MessageLookupByLibrary.simpleMessage("Address Line 2"),
+    "alphabetical": MessageLookupByLibrary.simpleMessage("Alphabetical"),
+    "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "Already have an account?",
+    ),
+    "bestSellingFruits": MessageLookupByLibrary.simpleMessage("Best Selling"),
+    "buyNowPayLater": MessageLookupByLibrary.simpleMessage(
+      "Buy Now, Pay Later",
+    ),
+    "byCreatingAccount": MessageLookupByLibrary.simpleMessage(
+      "By creating an account, you agree to",
+    ),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "cardHolderName": MessageLookupByLibrary.simpleMessage("Card Holder Name"),
+    "cardNumber": MessageLookupByLibrary.simpleMessage("Card Number"),
+    "cart": MessageLookupByLibrary.simpleMessage("Cart"),
+    "changePassword": MessageLookupByLibrary.simpleMessage("Change Password"),
+    "changePasswordDone": MessageLookupByLibrary.simpleMessage(
+      "Change Password Done",
+    ),
+    "city": MessageLookupByLibrary.simpleMessage("City"),
+    "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+    "confirmNewPassword": MessageLookupByLibrary.simpleMessage(
+      "Confirm New Password",
+    ),
+    "confirmOrder": MessageLookupByLibrary.simpleMessage("Confirm Order"),
+    "confirmPasswordHint": MessageLookupByLibrary.simpleMessage(
+      "Confirm Password",
+    ),
+    "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
+    "createNewAccount": MessageLookupByLibrary.simpleMessage(
+      "Create New Account",
+    ),
+    "createNewPassword": MessageLookupByLibrary.simpleMessage(
+      "Create New Password",
+    ),
+    "currentPassword": MessageLookupByLibrary.simpleMessage("Current Password"),
+    "cvv": MessageLookupByLibrary.simpleMessage("CVV"),
+    "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+    "delivered": MessageLookupByLibrary.simpleMessage("Delivered"),
+    "delivery": MessageLookupByLibrary.simpleMessage("Delivery"),
+    "doYouWantToLogout": MessageLookupByLibrary.simpleMessage(
+      "Do you want to logout?",
+    ),
+    "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
+      "Don\'t have an account?",
+    ),
+    "egp": MessageLookupByLibrary.simpleMessage("EGP"),
+    "emailHint": MessageLookupByLibrary.simpleMessage("Email"),
+    "english": MessageLookupByLibrary.simpleMessage("English"),
+    "enterNewPasswordHint": MessageLookupByLibrary.simpleMessage(
+      "Enter new password",
+    ),
+    "enterVerificationCode": MessageLookupByLibrary.simpleMessage(
+      "Enter the code we sent to the following email address",
+    ),
+    "expiry": MessageLookupByLibrary.simpleMessage("Expiry"),
+    "expiryDate": MessageLookupByLibrary.simpleMessage("Expiry Date"),
+    "favourites": MessageLookupByLibrary.simpleMessage("Favourites"),
+    "filter": MessageLookupByLibrary.simpleMessage("Filter"),
+    "floorNumber": MessageLookupByLibrary.simpleMessage("Floor Number"),
+    "forgetPasswordButton": MessageLookupByLibrary.simpleMessage(
+      "Forget Password",
+    ),
+    "forgotPassword": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
+    "forgotPasswordText": MessageLookupByLibrary.simpleMessage(
+      "Forgot Password",
+    ),
+    "fullNameHint": MessageLookupByLibrary.simpleMessage("Full Name"),
+    "general": MessageLookupByLibrary.simpleMessage("General"),
+    "goodMorning": MessageLookupByLibrary.simpleMessage("Good Morning!"),
+    "grams": MessageLookupByLibrary.simpleMessage("Grams"),
+    "helloInApp": MessageLookupByLibrary.simpleMessage("Welcome to"),
+    "help": MessageLookupByLibrary.simpleMessage("Help"),
+    "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "inCart": MessageLookupByLibrary.simpleMessage("In Cart"),
+    "kg": MessageLookupByLibrary.simpleMessage("Kg"),
+    "language": MessageLookupByLibrary.simpleMessage("Language"),
+    "lightMode": MessageLookupByLibrary.simpleMessage("Light Mode"),
+    "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "makeAddressDefault": MessageLookupByLibrary.simpleMessage(
+      "Make Address Default",
+    ),
+    "makeCardDefault": MessageLookupByLibrary.simpleMessage(
+      "Make Card Default",
+    ),
+    "mode": MessageLookupByLibrary.simpleMessage("Mode"),
+    "more": MessageLookupByLibrary.simpleMessage("More"),
+    "myAccount": MessageLookupByLibrary.simpleMessage("My Account"),
+    "myOrders": MessageLookupByLibrary.simpleMessage("My Orders"),
+    "newAccount": MessageLookupByLibrary.simpleMessage("New Account"),
+    "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
+    "newText": MessageLookupByLibrary.simpleMessage("New"),
+    "next": MessageLookupByLibrary.simpleMessage("Next"),
+    "noRsultFound": MessageLookupByLibrary.simpleMessage("No Result Found"),
+    "notification": MessageLookupByLibrary.simpleMessage("Notification"),
+    "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+    "numberOfOrders": MessageLookupByLibrary.simpleMessage("Number of Orders"),
+    "onboardingText1": MessageLookupByLibrary.simpleMessage(
+      "Discover a unique shopping experience with FruitHUB. Explore our wide selection of premium fresh fruits and enjoy the best deals with top quality.",
+    ),
+    "onboardingText2": MessageLookupByLibrary.simpleMessage(
+      "We bring you the finest carefully selected fruits. Check out details, photos, and reviews to make sure you choose the perfect fruit.",
+    ),
+    "oppsNotAvailable": MessageLookupByLibrary.simpleMessage(
+      "Oops... this information is not available at the moment.",
+    ),
+    "or": MessageLookupByLibrary.simpleMessage("Or"),
+    "orderNumber": MessageLookupByLibrary.simpleMessage("Order Number"),
+    "orderPlaced": MessageLookupByLibrary.simpleMessage("Order Placed"),
+    "orderShipping": MessageLookupByLibrary.simpleMessage("Order Shipping"),
+    "orderSummary": MessageLookupByLibrary.simpleMessage("Order Summary:"),
+    "orders": MessageLookupByLibrary.simpleMessage("Orders"),
+    "organic": MessageLookupByLibrary.simpleMessage("Organic"),
+    "outForDelivery": MessageLookupByLibrary.simpleMessage("Out For Delivery"),
+    "passwordHint": MessageLookupByLibrary.simpleMessage("Password"),
+    "pay": MessageLookupByLibrary.simpleMessage("Pay"),
+    "payWhenYouGetIt": MessageLookupByLibrary.simpleMessage("Cash on Delivery"),
+    "payment": MessageLookupByLibrary.simpleMessage("Payment"),
+    "payments": MessageLookupByLibrary.simpleMessage("Payments"),
+    "pending": MessageLookupByLibrary.simpleMessage("pending"),
+    "pickupFromStore": MessageLookupByLibrary.simpleMessage(
+      "Pickup From Store",
+    ),
+    "price": MessageLookupByLibrary.simpleMessage("Price"),
+    "priceHighToLow": MessageLookupByLibrary.simpleMessage(
+      "Price (High to Low)",
+    ),
+    "priceLowToHigh": MessageLookupByLibrary.simpleMessage(
+      "Price (Low to High)",
+    ),
+    "products": MessageLookupByLibrary.simpleMessage("Products"),
+    "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+    "profileInfo": MessageLookupByLibrary.simpleMessage("Profile Info"),
+    "resendverificationCode": MessageLookupByLibrary.simpleMessage(
+      "Resend verification code",
+    ),
+    "resetPasswordTitle": MessageLookupByLibrary.simpleMessage(
+      "Don’t worry, just enter your phone number and we’ll send you a verification code.",
+    ),
+    "review": MessageLookupByLibrary.simpleMessage("Review"),
+    "reviews": MessageLookupByLibrary.simpleMessage("Reviews"),
+    "saveChanges": MessageLookupByLibrary.simpleMessage("Save Changes"),
+    "search": MessageLookupByLibrary.simpleMessage("Search"),
+    "searchAboutFruits": MessageLookupByLibrary.simpleMessage(
+      "Search about fruits",
+    ),
+    "searchAndShop": MessageLookupByLibrary.simpleMessage("Search and Shop"),
+    "selectAllAsRead": MessageLookupByLibrary.simpleMessage(
+      "Select All As Read",
+    ),
+    "selectPaymentMethod": MessageLookupByLibrary.simpleMessage(
+      "Please select a payment method",
+    ),
+    "shipping": MessageLookupByLibrary.simpleMessage("Shipping"),
+    "shippingAddress": MessageLookupByLibrary.simpleMessage("Shipping Address"),
+    "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
+    "signInWithApple": MessageLookupByLibrary.simpleMessage(
+      "Sign In With Apple",
+    ),
+    "signInWithFacebook": MessageLookupByLibrary.simpleMessage(
+      "Sign In With Facebook",
+    ),
+    "signInWithGoogle": MessageLookupByLibrary.simpleMessage(
+      "Sign In With Google",
+    ),
+    "sortBy": MessageLookupByLibrary.simpleMessage("Sort By"),
+    "specialText": MessageLookupByLibrary.simpleMessage("Special"),
+    "startNow": MessageLookupByLibrary.simpleMessage("Start Now"),
+    "subTotal": MessageLookupByLibrary.simpleMessage("Subtotal"),
+    "success": MessageLookupByLibrary.simpleMessage("Success"),
+    "summary": MessageLookupByLibrary.simpleMessage("Summary"),
+    "termsAndConditions": MessageLookupByLibrary.simpleMessage(
+      "Terms & Conditions",
+    ),
+    "to": MessageLookupByLibrary.simpleMessage("To"),
+    "total": MessageLookupByLibrary.simpleMessage("Total"),
+    "trackOrder": MessageLookupByLibrary.simpleMessage("Track Order"),
+    "verificationCode": MessageLookupByLibrary.simpleMessage(
+      "Verification Code",
+    ),
+    "verifyCode": MessageLookupByLibrary.simpleMessage("Verify Code"),
+    "writeComment": MessageLookupByLibrary.simpleMessage("Write Comment"),
+    "youHave": MessageLookupByLibrary.simpleMessage("You have"),
+  };
 }

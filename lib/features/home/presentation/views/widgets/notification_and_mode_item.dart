@@ -10,9 +10,10 @@ class NotificationAndModeItem extends StatelessWidget {
       {super.key,
       required this.icon,
       required this.title,
-      required this.onToggle});
+      required this.onToggle, required this.value});
   final String icon, title;
   final ValueChanged<bool> onToggle;
+  final bool value;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,7 @@ class NotificationAndModeItem extends StatelessWidget {
             toggleSize: 20,
             toggleColor: Colors.white,
             padding: 1,
-            value: false,
+            value: value,
             borderRadius: 25.0,
             onToggle: onToggle,
           ),
