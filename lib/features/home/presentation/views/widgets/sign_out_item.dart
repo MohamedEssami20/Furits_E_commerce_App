@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:fruits_hub/core/utils/assets.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/utils/app_text_style.dart';
+import '../../manager/sign_out_cubit/sign_out_cubit.dart';
+import 'builder/signout_builder.dart';
 
 class SignOut extends StatelessWidget {
   const SignOut({super.key});
@@ -11,7 +11,7 @@ class SignOut extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 30,
+      height: 35,
       color: const Color(0xFFEBF9F1),
       child: Center(
         child: Row(
@@ -26,12 +26,9 @@ class SignOut extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () async {
-                // await FirebaseAuth.instance.signOut();
-                // Navigator.of(context).pushNamed(LoginView.routeName);
+                await context.read<SignOutCubit>().signOut();
               },
-              child: SvgPicture.asset(
-                Assets.assetsImagesExitIcon,
-              ),
+              child: const SignOutBuilder(),
             )
           ],
         ),

@@ -24,7 +24,7 @@ abstract class HomeRepo {
       {required String newPassword, required String oldPassword});
 
   // create method that sign out from firebase
-  Future<void> signOut();
+  Future<Either<Failure, void>> signOut();
   
   // create method that get user orders from firebase
   Stream<Either<Failure, List<MyOrdersEntity>>> getUserOrders();

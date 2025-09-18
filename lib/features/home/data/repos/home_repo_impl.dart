@@ -162,11 +162,24 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Future<void> signOut() async {
+  Future<Either<Failure, void>> signOut() async {
     try {
       await firebaseAuthService.signOut();
-    } catch (e) {
+      return right(null);
+    } on FirebaseException catch (e) {
       log("error to sign out = ${e.toString()}");
+      return left(
+        ServerFailure(
+          errorMessage: e.message.toString(),
+        ),
+      );
+    } catch (e) {
+      log("error to sign out 2 = ${e.toString()}");
+      return left(
+        ServerFailure(
+          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+        ),
+      );
     }
   }
 
