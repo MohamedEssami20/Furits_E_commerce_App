@@ -22,7 +22,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "Our": MessageLookupByLibrary.simpleMessage("Our"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("About Us"),
     "aboutUsTextPart1": MessageLookupByLibrary.simpleMessage(
       "At Fruits Store, we believe that healthy living starts with fresh and natural choices. Our mission is to bring you the finest selection of fruits, handpicked with care to ensure quality and freshness.",
@@ -49,6 +48,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "alphabetical": MessageLookupByLibrary.simpleMessage("Alphabetical"),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
+    ),
+    "areYouSureYouWantToExit": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to exit?",
     ),
     "bestSellingFruits": MessageLookupByLibrary.simpleMessage("Best Selling"),
     "buyNowPayLater": MessageLookupByLibrary.simpleMessage(
@@ -94,6 +96,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "egp": MessageLookupByLibrary.simpleMessage("EGP"),
     "emailHint": MessageLookupByLibrary.simpleMessage("Email"),
+    "emailIsRequired": MessageLookupByLibrary.simpleMessage(
+      "Email is required",
+    ),
     "english": MessageLookupByLibrary.simpleMessage("English"),
     "enterNewPasswordHint": MessageLookupByLibrary.simpleMessage(
       "Enter new password",
@@ -101,6 +106,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterVerificationCode": MessageLookupByLibrary.simpleMessage(
       "Enter the code we sent to the following email address",
     ),
+    "exitApp": MessageLookupByLibrary.simpleMessage("Exit App"),
     "expiry": MessageLookupByLibrary.simpleMessage("Expiry"),
     "expiryDate": MessageLookupByLibrary.simpleMessage("Expiry Date"),
     "favourites": MessageLookupByLibrary.simpleMessage("Favourites"),
@@ -111,9 +117,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "forgotPassword": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
     "forgotPasswordText": MessageLookupByLibrary.simpleMessage(
-      "Forgot Password",
+      "Forgot Password?",
     ),
     "fullNameHint": MessageLookupByLibrary.simpleMessage("Full Name"),
+    "fullNameIsRequired": MessageLookupByLibrary.simpleMessage(
+      "Full name is required",
+    ),
     "general": MessageLookupByLibrary.simpleMessage("General"),
     "goodMorning": MessageLookupByLibrary.simpleMessage("Good Morning!"),
     "grams": MessageLookupByLibrary.simpleMessage("Grams"),
@@ -144,6 +153,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notification": MessageLookupByLibrary.simpleMessage("Notification"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "numberOfOrders": MessageLookupByLibrary.simpleMessage("Number of Orders"),
+    "ok": MessageLookupByLibrary.simpleMessage("Ok"),
     "onboardingText1": MessageLookupByLibrary.simpleMessage(
       "Discover a unique shopping experience with FruitHUB. Explore our wide selection of premium fresh fruits and enjoy the best deals with top quality.",
     ),
@@ -160,8 +170,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "orderSummary": MessageLookupByLibrary.simpleMessage("Order Summary:"),
     "orders": MessageLookupByLibrary.simpleMessage("Orders"),
     "organic": MessageLookupByLibrary.simpleMessage("Organic"),
+    "our": MessageLookupByLibrary.simpleMessage("Our"),
     "outForDelivery": MessageLookupByLibrary.simpleMessage("Out For Delivery"),
     "passwordHint": MessageLookupByLibrary.simpleMessage("Password"),
+    "passwordLength": MessageLookupByLibrary.simpleMessage(
+      "Password must be at least 8 characters long",
+    ),
+    "passwordNotMatch": MessageLookupByLibrary.simpleMessage(
+      "Password not match",
+    ),
+    "passwordeIsRequired": MessageLookupByLibrary.simpleMessage(
+      "Password is required",
+    ),
     "pay": MessageLookupByLibrary.simpleMessage("Pay"),
     "payWhenYouGetIt": MessageLookupByLibrary.simpleMessage("Cash on Delivery"),
     "payment": MessageLookupByLibrary.simpleMessage("Payment"),
@@ -184,7 +204,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Resend verification code",
     ),
     "resetPasswordTitle": MessageLookupByLibrary.simpleMessage(
-      "Don’t worry, just enter your phone number and we’ll send you a verification code.",
+      "Don’t worry, just enter your email and we’ll send you a link to reset your password.",
     ),
     "review": MessageLookupByLibrary.simpleMessage("Review"),
     "reviews": MessageLookupByLibrary.simpleMessage("Reviews"),
@@ -200,8 +220,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectPaymentMethod": MessageLookupByLibrary.simpleMessage(
       "Please select a payment method",
     ),
+    "sendEmailVerification": MessageLookupByLibrary.simpleMessage(
+      "Send Email Verification",
+    ),
+    "sendlinkToEmail": MessageLookupByLibrary.simpleMessage(
+      "We Send reset password link to email ",
+    ),
     "shipping": MessageLookupByLibrary.simpleMessage("Shipping"),
     "shippingAddress": MessageLookupByLibrary.simpleMessage("Shipping Address"),
+    "shouldAcceptTermsAndConditions": MessageLookupByLibrary.simpleMessage(
+      "Please accept terms and conditions",
+    ),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
     "signInWithApple": MessageLookupByLibrary.simpleMessage(
       "Sign In With Apple",
@@ -217,6 +246,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "startNow": MessageLookupByLibrary.simpleMessage("Start Now"),
     "subTotal": MessageLookupByLibrary.simpleMessage("Subtotal"),
     "success": MessageLookupByLibrary.simpleMessage("Success"),
+    "successMessageOfCreateAccount": MessageLookupByLibrary.simpleMessage(
+      "Account created successfully, please lgoin now.",
+    ),
+    "successMessageOfLogin": MessageLookupByLibrary.simpleMessage(
+      "Login successfully, welcome back.",
+    ),
     "summary": MessageLookupByLibrary.simpleMessage("Summary"),
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(
       "Terms & Conditions",

@@ -22,7 +22,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "Our": MessageLookupByLibrary.simpleMessage("خاصتنا"),
     "aboutUs": MessageLookupByLibrary.simpleMessage("من نحن"),
     "aboutUsTextPart1": MessageLookupByLibrary.simpleMessage(
       "في متجر الفواكه، نؤمن أن الحياة الصحية تبدأ بالاختيارات الطازجة والطبيعية. مهمتنا هي أن نقدم لك أفضل مجموعة من الفواكه المختارة بعناية لضمان الجودة والانتعاش.",
@@ -49,6 +48,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "alphabetical": MessageLookupByLibrary.simpleMessage("أبجدي"),
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب بالفعل؟",
+    ),
+    "areYouSureYouWantToExit": MessageLookupByLibrary.simpleMessage(
+      "هل تريد الاغلاق؟",
     ),
     "bestSellingFruits": MessageLookupByLibrary.simpleMessage("الأكثر مبيعًا"),
     "buyNowPayLater": MessageLookupByLibrary.simpleMessage(
@@ -89,9 +91,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "doYouWantToLogout": MessageLookupByLibrary.simpleMessage(
       "هل تريد تسجيل الخروج؟",
     ),
-    "dontHaveAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+    "dontHaveAccount": MessageLookupByLibrary.simpleMessage("لا تمتلك حساب؟"),
     "egp": MessageLookupByLibrary.simpleMessage("جنيه"),
     "emailHint": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+    "emailIsRequired": MessageLookupByLibrary.simpleMessage(
+      "البريد الالكتروني مطلوب",
+    ),
     "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
     "enterNewPasswordHint": MessageLookupByLibrary.simpleMessage(
       "أدخل كلمة مرور جديدة",
@@ -99,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterVerificationCode": MessageLookupByLibrary.simpleMessage(
       "أدخل الرمز الذي أرسلناه إلى عنوان البريد التالي",
     ),
+    "exitApp": MessageLookupByLibrary.simpleMessage("اغلاق التطبيق"),
     "expiry": MessageLookupByLibrary.simpleMessage("الصلاحية"),
     "expiryDate": MessageLookupByLibrary.simpleMessage("تاريخ الانتهاء"),
     "favourites": MessageLookupByLibrary.simpleMessage("المفضلة"),
@@ -111,9 +117,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل نسيت كلمة المرور؟",
     ),
     "forgotPasswordText": MessageLookupByLibrary.simpleMessage(
-      "نسيت كلمة المرور",
+      "نسيت كلمة المرور؟",
     ),
     "fullNameHint": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+    "fullNameIsRequired": MessageLookupByLibrary.simpleMessage(
+      "الاسم الكامل مطلوب",
+    ),
     "general": MessageLookupByLibrary.simpleMessage("عام"),
     "goodMorning": MessageLookupByLibrary.simpleMessage("صباح الخير!"),
     "grams": MessageLookupByLibrary.simpleMessage("جرام"),
@@ -146,6 +155,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "notification": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "numberOfOrders": MessageLookupByLibrary.simpleMessage("عدد الطلبات"),
+    "ok": MessageLookupByLibrary.simpleMessage("موافق"),
     "onboardingText1": MessageLookupByLibrary.simpleMessage(
       "اكتشف تجربة تسوق فريدة مع Fruits Store. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واستمتع بأفضل العروض والجودة العالية.",
     ),
@@ -162,8 +172,18 @@ class MessageLookup extends MessageLookupByLibrary {
     "orderSummary": MessageLookupByLibrary.simpleMessage("ملخص الطلب:"),
     "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
     "organic": MessageLookupByLibrary.simpleMessage("أورجانيك"),
+    "our": MessageLookupByLibrary.simpleMessage("بنا"),
     "outForDelivery": MessageLookupByLibrary.simpleMessage("خرج للتوصيل"),
     "passwordHint": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+    "passwordLength": MessageLookupByLibrary.simpleMessage(
+      "كلمة المرور يجب ان تكون على الاقل 8 حروف",
+    ),
+    "passwordNotMatch": MessageLookupByLibrary.simpleMessage(
+      "كلمة المرور غير متطابقة",
+    ),
+    "passwordeIsRequired": MessageLookupByLibrary.simpleMessage(
+      "كلمة المرور مطلوبة",
+    ),
     "pay": MessageLookupByLibrary.simpleMessage("ادفع"),
     "payWhenYouGetIt": MessageLookupByLibrary.simpleMessage(
       "الدفع عند الاستلام",
@@ -188,7 +208,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "إعادة إرسال رمز التحقق",
     ),
     "resetPasswordTitle": MessageLookupByLibrary.simpleMessage(
-      "لا تقلق، ما عليك سوى إدخال رقم هاتفك وسنرسل لك رمز التحقق.",
+      "لا تقلق، ما عليك سوى إدخال بريدك الإلكتروني وسنرسل لك رابط تغيير كلمة المرور .",
     ),
     "review": MessageLookupByLibrary.simpleMessage("مراجعة"),
     "reviews": MessageLookupByLibrary.simpleMessage("المراجعات"),
@@ -204,8 +224,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectPaymentMethod": MessageLookupByLibrary.simpleMessage(
       "يرجى تحديد طريقة الدفع",
     ),
+    "sendEmailVerification": MessageLookupByLibrary.simpleMessage(
+      "تم ارسال بريد التحقق بنجاح",
+    ),
+    "sendlinkToEmail": MessageLookupByLibrary.simpleMessage(
+      "تم ارسال بريد التحقق لتغيير كلمة المرور للبريد ",
+    ),
     "shipping": MessageLookupByLibrary.simpleMessage("التوصيل"),
     "shippingAddress": MessageLookupByLibrary.simpleMessage("عنوان التوصيل"),
+    "shouldAcceptTermsAndConditions": MessageLookupByLibrary.simpleMessage(
+      "يرجى قبول الشروط والاحكام",
+    ),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signInWithApple": MessageLookupByLibrary.simpleMessage("تسجيل بواسطة آبل"),
     "signInWithFacebook": MessageLookupByLibrary.simpleMessage(
@@ -215,10 +244,16 @@ class MessageLookup extends MessageLookupByLibrary {
       "تسجيل بواسطة جوجل",
     ),
     "sortBy": MessageLookupByLibrary.simpleMessage("تصنيف حسب"),
-    "specialText": MessageLookupByLibrary.simpleMessage("مميز"),
+    "specialText": MessageLookupByLibrary.simpleMessage("الخاصة"),
     "startNow": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
     "subTotal": MessageLookupByLibrary.simpleMessage("المجموع الفرعي"),
     "success": MessageLookupByLibrary.simpleMessage("تم بنجاح"),
+    "successMessageOfCreateAccount": MessageLookupByLibrary.simpleMessage(
+      "تم انشاء الحساب بنجاح، يرجى تسجيل الدخول الان",
+    ),
+    "successMessageOfLogin": MessageLookupByLibrary.simpleMessage(
+      "تم تسجيل الدخول بنجاح",
+    ),
     "summary": MessageLookupByLibrary.simpleMessage("الملخص"),
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(
       "الشروط والأحكام",

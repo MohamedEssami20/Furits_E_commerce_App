@@ -4,6 +4,7 @@ import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
 import 'package:fruits_hub/features/auth/presentation/manager/reset_password_cubit/reset_password_cubit.dart';
 import 'package:fruits_hub/features/auth/presentation/views/signin_view.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/custom_verification_button.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 import '../../../../../core/utils/app_text_style.dart';
 
 class ResetPasswordButtonBuilder extends StatelessWidget {
@@ -29,7 +30,7 @@ class ResetPasswordButtonBuilder extends StatelessWidget {
                   color: Colors.white,
                 )
               : Text(
-                  "نسيت كلمة المرور",
+                  S.of(context).forgetPasswordButton,
                   style: TextStyles.bold16.copyWith(color: Colors.white),
                 ),
         );
@@ -49,9 +50,9 @@ class ResetPasswordButtonBuilder extends StatelessWidget {
             context: context,
             builder: (context) => Center(
               child: AlertDialog(
-                title: const Text("تم ارسال بريد التحقق بنجاح"),
+                title: Text(S.of(context).sendEmailVerification),
                 content: Text(
-                  "تم ارسال بريد التحقق لتغيير كلمة المرور للبريد $email",
+                  "${S.of(context).sendlinkToEmail}$email",
                 ),
               ),
             ),

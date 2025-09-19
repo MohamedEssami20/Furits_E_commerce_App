@@ -7,6 +7,7 @@ import 'package:fruits_hub/core/constant/constant.dart';
 import 'package:fruits_hub/core/errors/custom_exception.dart';
 
 import 'package:fruits_hub/core/errors/failure.dart';
+import 'package:fruits_hub/core/errors/firebase_auth_exceptions.dart';
 import 'package:fruits_hub/core/services/data_base_service.dart';
 import 'package:fruits_hub/core/services/firebase_auth_service.dart';
 import 'package:fruits_hub/core/services/shared_prefrence_sigelton.dart';
@@ -83,12 +84,12 @@ class AuthRepoImpl extends AuthRepo {
       return right(
         userEntity,
       );
-    } on CustomException catch (error) {
+    } on FirebaseAuthException catch (error) {
       return left(
-        ServerFailure(errorMessage: error.errorMessage),
+        FirebaseAuthErrorHandler.fromFirebaseAuthException(error),
       );
     } catch (error) {
-      log("Exception in auth repo impl signin= ${error.toString()}");
+      log("Exception in auth repo impl signin= $error");
       return left(
         ServerFailure(
           errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",

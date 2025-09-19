@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_text_form_filed.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 class PasswordTextField extends StatefulWidget {
   const PasswordTextField({
@@ -19,15 +20,15 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
     return CustomTextFormFiled(
       validator: (value) {
         if (value!.isEmpty) {
-          return 'كلمة المرور مطلوبة';
+          return S.of(context).passwordeIsRequired;
         } else if (value.length < 8) {
-          return 'كلمة المرور يجب ان تكون على الاقل 8 حروف';
+          return S.of(context).passwordLength;
         }
         return null;
       },
       obscureText: obscureText,
       onSaved: widget.onSaved,
-      hintText: "كلمة المرور",
+      hintText: S.of(context).passwordHint,
       textInputType: TextInputType.visiblePassword,
       suffixIcon: GestureDetector(
         onTap: () {

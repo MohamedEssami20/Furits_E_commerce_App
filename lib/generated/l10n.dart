@@ -210,8 +210,8 @@ class S {
   }
 
   /// `Our`
-  String get Our {
-    return Intl.message('Our', name: 'Our', desc: '', args: []);
+  String get our {
+    return Intl.message('Our', name: 'our', desc: '', args: []);
   }
 
   /// `Create New Account`
@@ -239,20 +239,20 @@ class S {
     return Intl.message('Sign In', name: 'signIn', desc: '', args: []);
   }
 
-  /// `Forgot Password`
+  /// `Forgot Password?`
   String get forgotPasswordText {
     return Intl.message(
-      'Forgot Password',
+      'Forgot Password?',
       name: 'forgotPasswordText',
       desc: '',
       args: [],
     );
   }
 
-  /// `Don’t worry, just enter your phone number and we’ll send you a verification code.`
+  /// `Don’t worry, just enter your email and we’ll send you a link to reset your password.`
   String get resetPasswordTitle {
     return Intl.message(
-      'Don’t worry, just enter your phone number and we’ll send you a verification code.',
+      'Don’t worry, just enter your email and we’ll send you a link to reset your password.',
       name: 'resetPasswordTitle',
       desc: '',
       args: [],
@@ -1059,6 +1059,126 @@ class S {
   /// `Cancel`
   String get cancel {
     return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `Email is required`
+  String get emailIsRequired {
+    return Intl.message(
+      'Email is required',
+      name: 'emailIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password is required`
+  String get passwordeIsRequired {
+    return Intl.message(
+      'Password is required',
+      name: 'passwordeIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full name is required`
+  String get fullNameIsRequired {
+    return Intl.message(
+      'Full name is required',
+      name: 'fullNameIsRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password not match`
+  String get passwordNotMatch {
+    return Intl.message(
+      'Password not match',
+      name: 'passwordNotMatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password must be at least 8 characters long`
+  String get passwordLength {
+    return Intl.message(
+      'Password must be at least 8 characters long',
+      name: 'passwordLength',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account created successfully, please lgoin now.`
+  String get successMessageOfCreateAccount {
+    return Intl.message(
+      'Account created successfully, please lgoin now.',
+      name: 'successMessageOfCreateAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login successfully, welcome back.`
+  String get successMessageOfLogin {
+    return Intl.message(
+      'Login successfully, welcome back.',
+      name: 'successMessageOfLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please accept terms and conditions`
+  String get shouldAcceptTermsAndConditions {
+    return Intl.message(
+      'Please accept terms and conditions',
+      name: 'shouldAcceptTermsAndConditions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Email Verification`
+  String get sendEmailVerification {
+    return Intl.message(
+      'Send Email Verification',
+      name: 'sendEmailVerification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We Send reset password link to email `
+  String get sendlinkToEmail {
+    return Intl.message(
+      'We Send reset password link to email ',
+      name: 'sendlinkToEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exit App`
+  String get exitApp {
+    return Intl.message('Exit App', name: 'exitApp', desc: '', args: []);
+  }
+
+  /// `Are you sure you want to exit?`
+  String get areYouSureYouWantToExit {
+    return Intl.message(
+      'Are you sure you want to exit?',
+      name: 'areYouSureYouWantToExit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ok`
+  String get ok {
+    return Intl.message('Ok', name: 'ok', desc: '', args: []);
   }
 }
 

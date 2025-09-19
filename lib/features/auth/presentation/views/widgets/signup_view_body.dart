@@ -6,6 +6,7 @@ import 'package:fruits_hub/core/utils/Widgets/custom_text_form_filed.dart';
 import 'package:fruits_hub/features/auth/presentation/manager/signup_cubit/signup_user_cubit.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/have_an_account.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/terms_and_condition.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../../../../core/utils/Widgets/password_text_field.dart';
 
@@ -37,14 +38,14 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               CustomTextFormFiled(
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'الاسم كامل مطلوب';
+                    return S.of(context).fullNameIsRequired;
                   }
                   return null;
                 },
                 onSaved: (value) {
                   userName = value!;
                 },
-                hintText: "الاسم كامل",
+                hintText: S.of(context).fullNameHint,
                 textInputType: TextInputType.name,
               ),
               const SizedBox(
@@ -53,14 +54,14 @@ class _SignupViewBodyState extends State<SignupViewBody> {
               CustomTextFormFiled(
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'البريد الالكتروني مطلوب';
+                    return S.of(context).emailIsRequired;
                   }
                   return null;
                 },
                 onSaved: (value) {
                   email = value!;
                 },
-                hintText: "البريد الالكتروني",
+                hintText: S.of(context).emailHint,
                 textInputType: TextInputType.emailAddress,
               ),
               const SizedBox(
@@ -97,14 +98,14 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                           );
                     } else {
                       buildErrorSnackBar(
-                          context, "يجب ان تقبل الشروط والاحكام");
+                          context, S.of(context).shouldAcceptTermsAndConditions);
                     }
                   } else {
                     autoValidateMode = AutovalidateMode.always;
                     setState(() {});
                   }
                 },
-                title: "إنشاء حساب جديد",
+                title: S.of(context).createNewAccount,
               ),
               const SizedBox(
                 height: 40,

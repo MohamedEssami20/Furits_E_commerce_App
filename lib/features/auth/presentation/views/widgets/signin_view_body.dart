@@ -11,6 +11,7 @@ import 'package:fruits_hub/core/utils/my_colors.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/dont_have_account_widget.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/or_divider_widget.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/social_login_button.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../manager/signin_cubit/signin_cubit.dart';
 import '../forget_password_view.dart';
@@ -45,11 +46,11 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                 },
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'البريد الالكتروني مطلوب';
+                    return S.of(context).emailIsRequired;
                 }
                   return null;
                 },
-                hintText: "البريد الالكتروني",
+                hintText: S.of(context).emailHint,
                 textInputType: TextInputType.emailAddress,
               ),
               const SizedBox(
@@ -72,7 +73,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                           context, ForgetPasswordView.routeName);
                     },
                     child: Text(
-                      "نسيت كلمة المرور؟",
+                      S.of(context).forgotPassword,
                       style: TextStyles.semiBold13
                           .copyWith(color: MyColors.kLightPrimaryColor),
                     ),
@@ -98,7 +99,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                     });
                   }
                 },
-                title: "تسجيل الدخول",
+                title: S.of(context).login,
               ),
               const SizedBox(
                 height: 20,
@@ -112,7 +113,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                 height: 20,
               ),
               SocialLoginButton(
-                title: "تسجيل بواسطة جوجل",
+                title: S.of(context).signInWithGoogle,
                 onPressed: () async {
                   await context.read<SigninCubit>().signInWithGoogle();
                 },
@@ -125,7 +126,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                   ? Column(
                       children: [
                         SocialLoginButton(
-                          title: "تسجيل بواسطة أبل",
+                          title: S.of(context).signInWithApple,
                           onPressed: () {},
                           image: Assets.assetsImagesAppleIcons,
                         ),
@@ -136,7 +137,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                     )
                   : const SizedBox(),
               SocialLoginButton(
-                title: "تسجيل بواسطة فيسبوك",
+                title: S.of(context).signInWithFacebook,
                 onPressed: () async {
                   await context.read<SigninCubit>().signInWithFacebook();
                 },

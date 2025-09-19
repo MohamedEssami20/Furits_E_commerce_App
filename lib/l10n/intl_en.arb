@@ -19,12 +19,12 @@
     "byCreatingAccount":"By creating an account, you agree to",
     "termsAndConditions":"Terms & Conditions",
     "specialText":"Special",
-    "Our":"Our",
+    "our":"Our",
     "createNewAccount":"Create New Account",
     "alreadyHaveAccount":"Already have an account?",
     "signIn":"Sign In",
-    "forgotPasswordText":"Forgot Password",
-    "resetPasswordTitle":"Don’t worry, just enter your phone number and we’ll send you a verification code.", 
+    "forgotPasswordText":"Forgot Password?",
+    "resetPasswordTitle":"Don’t worry, just enter your email and we’ll send you a link to reset your password.", 
     "forgetPasswordButton":"Forget Password",
     "verificationCode":"Verification Code",
     "enterVerificationCode":"Enter the code we sent to the following email address",
@@ -133,5 +133,20 @@
     "aboutUsTextPart4":"With Fruit Store, you get more than just fruits—you get convenience, quality, and a promise of healthy living. Join us today and experience the difference of shopping with care.",
     "doYouWantToLogout":"Do you want to logout?",
     "confirm":"Confirm",
-    "cancel":"Cancel"
+    "cancel":"Cancel",
+    "emailIsRequired":"Email is required",
+    "passwordeIsRequired":"Password is required",
+    "fullNameIsRequired":"Full name is required",
+    "passwordNotMatch":"Password not match",
+    "passwordLength":"Password must be at least 8 characters long",
+    "successMessageOfCreateAccount":"Account created successfully, please lgoin now.",
+    "successMessageOfLogin":"Login successfully, welcome back.",
+    "shouldAcceptTermsAndConditions":"Please accept terms and conditions",
+    "sendEmailVerification":"Send Email Verification",
+    "sendlinkToEmail" :"We Send reset password link to email ",
+    "exitApp":"Exit App",
+    "areYouSureYouWantToExit":"Are you sure you want to exit?",
+    "ok":"Ok"
+
+
 }
