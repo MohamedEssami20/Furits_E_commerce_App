@@ -4,6 +4,7 @@ import 'package:fruits_hub/core/utils/Widgets/custom_divider.dart';
 import 'package:fruits_hub/features/home/presentation/manager/cart_cubit/cart_cubit.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/cart_item_list.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/custom_cart_button.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../../../../core/utils/Widgets/build_app_bar.dart';
 import 'cart_view_header.dart';
@@ -23,7 +24,7 @@ class CartViewBody extends StatelessWidget {
               child: Column(
                 children: [
                   buildAppBar(
-                    title: "المنتجات",
+                    title: S.of(context).cart,
                     context,
                     showBackButton: true,
                     showNotification: false,

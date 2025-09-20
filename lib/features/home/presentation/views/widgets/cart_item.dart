@@ -8,6 +8,7 @@ import 'package:fruits_hub/core/utils/assets.dart';
 import 'package:fruits_hub/features/home/domain/entities/cart_item_entity.dart';
 import 'package:fruits_hub/features/home/presentation/manager/cart_item_cubit/cart_item_cubit.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/cart_action_buttons.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../manager/cart_cubit/cart_cubit.dart';
 
@@ -69,7 +70,7 @@ class CartItem extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      '${cartItems.calculateTotalWeight()} كم',
+                      '${cartItems.calculateTotalWeight()} ${S.of(context).kg}',
                       textAlign: TextAlign.right,
                       style: TextStyles.regular13.copyWith(
                         color: AppColors.secondaryColor,
@@ -82,7 +83,7 @@ class CartItem extends StatelessWidget {
                         ),
                         const Spacer(),
                         Text(
-                          "${cartItems.calculateTotalPrice()} جنيه",
+                          "${cartItems.calculateTotalPrice()} ${S.of(context).egp}",
                           style: TextStyles.bold16
                               .copyWith(color: const Color(0xFFF4A91F)),
                         )

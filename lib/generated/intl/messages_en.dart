@@ -149,6 +149,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
     "newText": MessageLookupByLibrary.simpleMessage("New"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
+    "noProductIntoCart": MessageLookupByLibrary.simpleMessage(
+      "No Product into Cart",
+    ),
     "noRsultFound": MessageLookupByLibrary.simpleMessage("No Result Found"),
     "notification": MessageLookupByLibrary.simpleMessage("Notification"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
@@ -197,7 +200,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "priceLowToHigh": MessageLookupByLibrary.simpleMessage(
       "Price (Low to High)",
     ),
+    "product": MessageLookupByLibrary.simpleMessage("Product"),
     "products": MessageLookupByLibrary.simpleMessage("Products"),
+    "productsIntoCart": MessageLookupByLibrary.simpleMessage(
+      "Products into Cart",
+    ),
+    "productsTwo": MessageLookupByLibrary.simpleMessage("Products"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "profileInfo": MessageLookupByLibrary.simpleMessage("Profile Info"),
     "resendverificationCode": MessageLookupByLibrary.simpleMessage(

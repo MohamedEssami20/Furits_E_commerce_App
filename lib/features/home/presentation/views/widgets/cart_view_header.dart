@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../manager/cart_cubit/cart_cubit.dart';
 
@@ -16,7 +17,7 @@ class CartViewHeader extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          "لديك ${context.watch<CartCubit>().cartEntityList.cartItemsEntity.length} منتجات في سلة التسوق",
+          "${S.of(context).youHave} ${context.watch<CartCubit>().cartEntityList.cartItemsEntity.length} ${S.of(context).productsIntoCart}",
           style: const TextStyle(
             color: Color(0xff1B5E37),
             fontSize: 13,

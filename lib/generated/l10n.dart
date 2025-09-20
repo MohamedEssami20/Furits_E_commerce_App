@@ -409,11 +409,41 @@ class S {
     return Intl.message('Products', name: 'products', desc: '', args: []);
   }
 
+  /// `Product`
+  String get product {
+    return Intl.message('Product', name: 'product', desc: '', args: []);
+  }
+
+  /// `Products`
+  String get productsTwo {
+    return Intl.message('Products', name: 'productsTwo', desc: '', args: []);
+  }
+
+  /// `No Product into Cart`
+  String get noProductIntoCart {
+    return Intl.message(
+      'No Product into Cart',
+      name: 'noProductIntoCart',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `No Result Found`
   String get noRsultFound {
     return Intl.message(
       'No Result Found',
       name: 'noRsultFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Products into Cart`
+  String get productsIntoCart {
+    return Intl.message(
+      'Products into Cart',
+      name: 'productsIntoCart',
       desc: '',
       args: [],
     );

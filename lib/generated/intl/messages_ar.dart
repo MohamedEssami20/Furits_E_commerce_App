@@ -149,6 +149,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "newPassword": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
     "newText": MessageLookupByLibrary.simpleMessage("جديد"),
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
+    "noProductIntoCart": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد منتجات في سلة التسوق",
+    ),
     "noRsultFound": MessageLookupByLibrary.simpleMessage(
       "لم يتم العثور على نتائج",
     ),
@@ -201,7 +204,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "priceLowToHigh": MessageLookupByLibrary.simpleMessage(
       "السعر (الأقل إلى الأعلى)",
     ),
+    "product": MessageLookupByLibrary.simpleMessage("المنتج"),
     "products": MessageLookupByLibrary.simpleMessage("المنتجات"),
+    "productsIntoCart": MessageLookupByLibrary.simpleMessage(
+      "منتجات في سلة التسوق",
+    ),
+    "productsTwo": MessageLookupByLibrary.simpleMessage("منتجات"),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "profileInfo": MessageLookupByLibrary.simpleMessage("المعلومات الشخصية"),
     "resendverificationCode": MessageLookupByLibrary.simpleMessage(
