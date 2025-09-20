@@ -206,6 +206,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetPasswordTitle": MessageLookupByLibrary.simpleMessage(
       "Don’t worry, just enter your email and we’ll send you a link to reset your password.",
     ),
+    "results": MessageLookupByLibrary.simpleMessage("Results"),
     "review": MessageLookupByLibrary.simpleMessage("Review"),
     "reviews": MessageLookupByLibrary.simpleMessage("Reviews"),
     "saveChanges": MessageLookupByLibrary.simpleMessage("Save Changes"),

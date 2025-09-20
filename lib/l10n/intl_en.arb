@@ -147,7 +147,8 @@
     "exitApp":"Exit App",
     "areYouSureYouWantToExit":"Are you sure you want to exit?",
     "ok":"Ok",
-    "shoppingNow":"Shopping Now"
+    "shoppingNow":"Shopping Now",
+    "results":"Results"
 
 
 }

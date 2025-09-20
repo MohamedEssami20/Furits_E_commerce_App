@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
 import 'package:fruits_hub/features/best_selling/presentation/views/widgets/best_selling_gridview_bloc_builder.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 import '../../../../../core/cubit/product_cubit/products_cubit.dart';
 import '../../../../../core/utils/Widgets/build_app_bar.dart';
 import '../../../../../core/utils/Widgets/custom_search_text_field.dart';
@@ -32,7 +33,7 @@ class _ProductViewBodyState extends State<ProductViewBody> {
             child: Column(
               children: [
                 buildAppBar(
-                    title: "المنتجات",
+                    title: S.of(context).products,
                     context,
                     showBackButton: false,
                     showNotification: false),
@@ -46,7 +47,7 @@ class _ProductViewBodyState extends State<ProductViewBody> {
                 Row(
                   children: [
                     Text(
-                        " ${context.read<ProductsCubit>().resultOfProduct} نتايج",
+                        " ${context.read<ProductsCubit>().resultOfProduct} ${S.of(context).results}",
                         style: TextStyles.bold16),
                     const Spacer(),
                     SvgPicture.asset(Assets.assetsImagesFilterIconTwo),

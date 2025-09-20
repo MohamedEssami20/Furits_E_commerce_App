@@ -210,6 +210,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resetPasswordTitle": MessageLookupByLibrary.simpleMessage(
       "لا تقلق، ما عليك سوى إدخال بريدك الإلكتروني وسنرسل لك رابط تغيير كلمة المرور .",
     ),
+    "results": MessageLookupByLibrary.simpleMessage("نتايج"),
     "review": MessageLookupByLibrary.simpleMessage("مراجعة"),
     "reviews": MessageLookupByLibrary.simpleMessage("المراجعات"),
     "saveChanges": MessageLookupByLibrary.simpleMessage("حفظ التغييرات"),
