@@ -11,7 +11,7 @@ class NotificationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(14),
+      padding: const EdgeInsetsDirectional.all(14),
       decoration: const ShapeDecoration(
         color: Color(0xffEEF8ED),
         shape: OvalBorder(),

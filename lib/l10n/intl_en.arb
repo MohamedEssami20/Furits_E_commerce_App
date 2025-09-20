@@ -146,7 +146,8 @@
     "sendlinkToEmail" :"We Send reset password link to email ",
     "exitApp":"Exit App",
     "areYouSureYouWantToExit":"Are you sure you want to exit?",
-    "ok":"Ok"
+    "ok":"Ok",
+    "shoppingNow":"Shopping Now"
 
 
 }

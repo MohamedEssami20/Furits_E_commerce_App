@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 class CustomSearchTextField extends StatelessWidget {
   const CustomSearchTextField({super.key});
@@ -19,7 +20,7 @@ class CustomSearchTextField extends StatelessWidget {
       child: TextField(
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
-          hintText: "ابحث عن.......",
+          hintText: S.of( context).search,
           hintStyle: TextStyles.regular13.copyWith(
             color: const Color(0xff949E9D),
           ),

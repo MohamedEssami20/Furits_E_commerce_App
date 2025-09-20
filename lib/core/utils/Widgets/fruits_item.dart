@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/core/utils/my_colors.dart';
 import 'package:fruits_hub/features/best_selling/presentation/manager/favorite_product_cubit/favorite_products_cubit.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../../features/home/presentation/manager/cart_cubit/cart_cubit.dart';
 import '../app_text_style.dart';
@@ -54,7 +55,7 @@ class FruitsItem extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: "${product.price} جنيه",
+                          text: "${product.price} ${S.of(context).egp}",
                           style: TextStyles.bold13
                               .copyWith(color: MyColors.kSecondaryColor),
                         ),
@@ -69,7 +70,7 @@ class FruitsItem extends StatelessWidget {
                               .copyWith(color: MyColors.kLightSecondaryColor),
                         ),
                         TextSpan(
-                          text: 'الكيلو',
+                          text: S.of(context).kg,
                           style: TextStyles.semiBold13
                               .copyWith(color: MyColors.kLightSecondaryColor),
                         ),

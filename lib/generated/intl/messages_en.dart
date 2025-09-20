@@ -228,6 +228,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "shipping": MessageLookupByLibrary.simpleMessage("Shipping"),
     "shippingAddress": MessageLookupByLibrary.simpleMessage("Shipping Address"),
+    "shoppingNow": MessageLookupByLibrary.simpleMessage("Shopping Now"),
     "shouldAcceptTermsAndConditions": MessageLookupByLibrary.simpleMessage(
       "Please accept terms and conditions",
     ),

@@ -1180,6 +1180,16 @@ class S {
   String get ok {
     return Intl.message('Ok', name: 'ok', desc: '', args: []);
   }
+
+  /// `Shopping Now`
+  String get shoppingNow {
+    return Intl.message(
+      'Shopping Now',
+      name: 'shoppingNow',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -46,6 +46,10 @@ class Assets {
   /// assets/images/facebook_icon.svg
   static const String assetsImagesFacebookIcon = "assets/images/facebook_icon.svg";
 
+  /// Assets for assetsImagesFeaturedBackgroundIamgeEnglish
+  /// assets/images/featured_background_iamge_english.svg
+  static const String assetsImagesFeaturedBackgroundIamgeEnglish = "assets/images/featured_background_iamge_english.svg";
+
   /// Assets for assetsImagesFeaturedBackgroundImage
   /// assets/images/featured_background_image.svg
   static const String assetsImagesFeaturedBackgroundImage = "assets/images/featured_background_image.svg";

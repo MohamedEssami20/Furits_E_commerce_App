@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/my_colors.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 
@@ -18,10 +19,13 @@ class FeaturedButtonItem extends StatelessWidget {
         ),
         onPressed: onPressed,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 4),
-          child: Text(
-            "تسوق الان",
-            style: TextStyles.bold13.copyWith(color: MyColors.kPrimaryColor),
+          padding: const EdgeInsetsDirectional.symmetric(
+              horizontal: 28, vertical: 4),
+          child: FittedBox(
+            child: Text(
+              S.of(context).shoppingNow,
+              style: TextStyles.bold13.copyWith(color: MyColors.kPrimaryColor),
+            ),
           ),
         ),
       ),

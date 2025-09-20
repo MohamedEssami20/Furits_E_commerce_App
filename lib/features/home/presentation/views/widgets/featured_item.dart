@@ -12,30 +12,38 @@ class FeaturedItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double itemWidth = MediaQuery.sizeOf(context).width - 50;
+    final directionality = Directionality.of(context);
     return SizedBox(
       width: itemWidth,
       child: AspectRatio(
-        aspectRatio: 220 / 125,
+        aspectRatio: 220 / 126,
         child: Stack(
           children: [
-            Positioned(
-              left: 0,
-              right: itemWidth * 0.4,
+            Positioned.directional(
+              textDirection: Directionality.of(context),
+              start: itemWidth * 0.4,
+              top: 0,
               bottom: 0,
               child: SvgPicture.asset(
-                Assets.assetsImagesOnboardingImage2,
+                Assets.assetsImagesOnboardingImage2, // image of fruit;
                 fit: BoxFit.fill,
               ),
             ),
             Container(
               width: itemWidth * 0.5,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: svg.Svg(Assets.assetsImagesFeaturedBackgroundImage),
+                    image: svg.Svg(
+                      directionality == TextDirection.rtl
+                          ? Assets.assetsImagesFeaturedBackgroundImage
+                          : Assets.assetsImagesFeaturedBackgroundIamgeEnglish,
+                    ), // green background;
                     fit: BoxFit.fill),
               ),
               child: Padding(
-                padding: const EdgeInsets.only(right: 33),
+                padding: const EdgeInsetsDirectional.only(
+                  start: 16,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -52,7 +60,10 @@ class FeaturedItem extends StatelessWidget {
                       style: TextStyles.bold19.copyWith(color: Colors.white),
                     ),
                     const Spacer(),
-                    FeaturedButtonItem(onPressed: () {}),
+                    Padding(
+                      padding: const EdgeInsetsDirectional.only(end: 16),
+                      child: FeaturedButtonItem(onPressed: () {}),
+                    ),
                     const SizedBox(
                       height: 40,
                     ),
