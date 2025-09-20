@@ -7,6 +7,7 @@ class SplashViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool isArabicLang = isArabic(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -14,7 +15,9 @@ class SplashViewBody extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            SvgPicture.asset(Assets.assetsImagesSplashPlanet),
+            Transform.rotate(
+                angle: isArabicLang ? 0 : 1.8,
+                child: SvgPicture.asset(Assets.assetsImagesSplashPlanet)),
           ],
         ),
         SvgPicture.asset(Assets.assetsImagesSplash1Icon),
@@ -24,5 +27,10 @@ class SplashViewBody extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  bool isArabic(BuildContext context) {
+    final locale = Localizations.localeOf(context);
+    return locale.languageCode == 'ar';
   }
 }

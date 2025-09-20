@@ -12,7 +12,7 @@ class AcativeBottomNavigationIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        padding: const EdgeInsets.only(left: 20),
+        padding: const EdgeInsetsDirectional.only(start: 8),
         decoration: ShapeDecoration(
           color: const Color(0xFFEEEEEE),
           shape: RoundedRectangleBorder(

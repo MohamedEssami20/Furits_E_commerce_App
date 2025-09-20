@@ -20,7 +20,7 @@ class _CustomButtomNavigationBarState extends State<CustomButtomNavigationBar> {
   Widget build(BuildContext context) {
     return Container(
       height: 80,
-      width: 400,
+      width: double.infinity,
       decoration: const ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
@@ -39,9 +39,14 @@ class _CustomButtomNavigationBarState extends State<CustomButtomNavigationBar> {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.only(right: 40),
+        padding: const EdgeInsetsDirectional.only(
+          start: 20,
+        ),
         child: Row(
-            children: bottomNavigationBarList.asMap().entries.map((entry) {
+            children: getBottomNavigationBarEntityList(context)
+                .asMap()
+                .entries
+                .map((entry) {
           int index = entry.key;
           var value = entry.value;
           return Expanded(

@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:fruits_hub/generated/l10n.dart';
+
 import '../../../../core/utils/assets.dart';
 
 class BottomNavigationBarEntity {
@@ -29,3 +32,25 @@ List<BottomNavigationBarEntity> get bottomNavigationBarList => [
           inActiveIcon: Assets.assetsImagesOutlineUserIcon,
           name: "حسابي"),
     ];
+
+// create methodt that return list of BottomNavigationBarEntity with context as parameter;
+
+List<BottomNavigationBarEntity> getBottomNavigationBarEntityList(BuildContext context) {
+  return [   BottomNavigationBarEntity(
+          activeIcon: Assets.assetsImagesBoldHomeIcon,
+          inActiveIcon: Assets.assetsImagesOutlineHomeIcon,
+          name: S.of(context).home),
+      BottomNavigationBarEntity(
+          activeIcon: Assets.assetsImagesBoldProductIcon,
+          inActiveIcon: Assets.assetsImagesOutlineProductIcon,
+          name: S.of(context).products),
+      BottomNavigationBarEntity(
+          activeIcon: Assets.assetsImagesBoldShoppingCart,
+          inActiveIcon: Assets.assetsImagesOutlineShoppingCart,
+          name: S.of(context).cart),
+      BottomNavigationBarEntity(
+          activeIcon: Assets.assetsImagesBoldUserIcon,
+          inActiveIcon: Assets.assetsImagesOutlineUserIcon,
+          name: S.of(context).profile),
+    ];
+}
