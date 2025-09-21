@@ -153,6 +153,13 @@
     "areYouSureYouWantToExit":"هل تريد الاغلاق؟",
     "ok":"موافق",
     "shoppingNow":"تسوق الان",
-    "results":"نتايج"
+    "results":"نتايج",
+    "orderAddedSuccess":"تم اضافة الطلب بنجاح",
+    "choosePaymentMethod":"اختر طريقة الدفع",
+    "payWithPayPal": " الدفع عبر PayPal",
+    "paymentSuccess":"تم الدفع بنجاح",
+    "errorMessageOfPayment":"حدث خطأ اثناء الدفع, يرجى المحاولة مرة اخرى",
+    "errorMessage":"حدث خطأ, يرجى المحاولة مرة اخرى",
+    "paymentCaceled":"تم الغاء الدفع"
     
 }

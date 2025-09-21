@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/constant/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 import 'active_shipping_item_dot.dart';
 import 'in_active_shipping_item_dot.dart';
@@ -75,7 +76,7 @@ class ShippingItem extends StatelessWidget {
               const Spacer(),
               Center(
                 child: Text(
-                  '$price جنيه',
+                  '$price ${S.of(context).egp}',
                   style: TextStyles.bold13
                       .copyWith(color: AppColors.lightSecondaryColor),
                 ),

@@ -2,15 +2,15 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
-import 'package:fruits_hub/core/helper/app_keys.dart';
 import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_button.dart';
-import 'package:fruits_hub/features/checkout/domain/entities/payPal_payment_entities/pay_pal_payment_entity/pay_pal_payment_entity.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
+import '../../../../../core/helper/handel_address_form.dart';
+import '../../../../../core/helper/handel_pay_with_cash.dart';
+import '../../../../../core/helper/paypal_payment_method.dart';
 import '../../../domain/entities/order_entity.dart';
-import '../../manager/add_order_cubit/add_order_cubit.dart';
 import 'checkout_page_view.dart';
 
 class CheckOutViewBody extends StatefulWidget {
@@ -55,6 +55,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
           const SizedBox(height: 32),
           CheckoutSteps(
             onStepTapped: (index) {
+              log("current page index= $currentPageIndex");
               if (currentPageIndex == 0) {
                 if (orderEntity.payWithCash != null) {
                   _pageController.animateToPage(
@@ -63,7 +64,8 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
                     curve: Curves.fastOutSlowIn,
                   );
                 } else {
-                  buildErrorSnackBar(context, "اختر طريقة الدفع");
+                  buildErrorSnackBar(
+                      context, S.of(context).choosePaymentMethod);
                 }
               } else if (index == 1) {
                 if (orderEntity.payWithCash != null) {
@@ -73,10 +75,12 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
                     curve: Curves.fastOutSlowIn,
                   );
                 } else {
-                  buildErrorSnackBar(context, "اختر طريقة الدفع");
+                  buildErrorSnackBar(
+                      context, S.of(context).choosePaymentMethod);
                 }
               } else {
-                _handeladdressForm(formKey);
+                handeladdressForm(formKey, autovalidateMode.value,
+                    _pageController, currentPageIndex);
               }
             },
             pageController: _pageController,
@@ -92,14 +96,19 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
           CustomButton(
             onPressed: () {
               if (currentPageIndex == 0) {
-                _handelpayWithCash(orderEntity, context);
+                handelpayWithCash(
+                    orderEntity, context, currentPageIndex, _pageController);
               } else if (currentPageIndex == 1) {
-                _handeladdressForm(formKey);
+                handeladdressForm(
+                    formKey,
+                    autovalidateMode.value,
+                    _pageController,
+                    currentPageIndex); // bug here that when pressing the button to go to the payment screen it not valid or listen if user enter the shipping address details or not
               } else {
-                _paymentMethod(orderEntity);
+                paymentMethod(orderEntity, context);
               }
             },
-            title: getTextPayment(),
+            title: getTextPayment(context),
           ),
           const SizedBox(
             height: 32,
@@ -109,73 +118,16 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
     );
   }
 
-  void _handelpayWithCash(OrderEntity orderEntity, BuildContext context) {
-    if (orderEntity.payWithCash != null) {
-      _pageController.animateToPage(
-        currentPageIndex + 1,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.fastOutSlowIn,
-      );
-    } else {
-      buildErrorSnackBar(context, "اختر طريقة الدفع");
-    }
-  }
-
-  void _handeladdressForm(GlobalKey<FormState> formKey) {
-    if (formKey.currentState!.validate()) {
-      formKey.currentState!.save();
-      _pageController.animateToPage(
-        currentPageIndex + 1,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.fastOutSlowIn,
-      );
-    } else {
-      autovalidateMode.value = AutovalidateMode.always;
-    }
-  }
-
-  String getTextPayment() {
+  String getTextPayment(BuildContext context) {
     switch (currentPageIndex) {
       case 0:
-        return "التالى";
+        return S.of(context).next;
       case 1:
-        return "التالى";
+        return S.of(context).next;
       case 2:
-        return " الدفع عبر PayPal";
+        return S.of(context).payWithPayPal;
       default:
-        return "التالى";
+        return S.of(context).next;
     }
-  }
-
-  void _paymentMethod(OrderEntity orderEntity) {
-    final OrderEntity orderEntity = context.read<OrderEntity>();
-    final payPalPaymentEntity = PayPalPaymentEntity.fromEntity(orderEntity);
-    var addOrderCubit = context.read<AddOrderCubit>();
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (BuildContext context) => PaypalCheckoutView(
-        sandboxMode: true,
-        clientId: AppKeys.kPayPalClientId,
-        secretKey: AppKeys.kPayPalClientSecret,
-        transactions: [
-          payPalPaymentEntity.toJson(),
-        ],
-        note: "Contact us for any questions on your order.",
-        onSuccess: (Map parms) async {
-          Navigator.pop(context);
-          addOrderCubit.addOrder(ordereEntity: orderEntity);
-          buildErrorSnackBar(context, "تم الدفع بنجاح");
-        },
-        onError: (error) {
-          Navigator.pop(context);
-          log("payment error= ${error.toString()}");
-          buildErrorSnackBar(context, "حدث خطأ ما يرجى المحاولة مرة أخرى");
-        },
-        onCancel: () {
-          log("payment canceled");
-          Navigator.pop(context);
-          buildErrorSnackBar(context, "تم الغاء الدفع");
-        },
-      ),
-    ));
   }
 }

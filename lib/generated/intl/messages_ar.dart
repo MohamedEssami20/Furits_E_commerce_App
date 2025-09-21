@@ -67,6 +67,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "changePasswordDone": MessageLookupByLibrary.simpleMessage(
       "تم تغيير كلمة المرور",
     ),
+    "choosePaymentMethod": MessageLookupByLibrary.simpleMessage(
+      "اختر طريقة الدفع",
+    ),
     "city": MessageLookupByLibrary.simpleMessage("المدينة"),
     "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
     "confirmNewPassword": MessageLookupByLibrary.simpleMessage(
@@ -103,6 +106,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "enterVerificationCode": MessageLookupByLibrary.simpleMessage(
       "أدخل الرمز الذي أرسلناه إلى عنوان البريد التالي",
+    ),
+    "errorMessage": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ, يرجى المحاولة مرة اخرى",
+    ),
+    "errorMessageOfPayment": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ اثناء الدفع, يرجى المحاولة مرة اخرى",
     ),
     "exitApp": MessageLookupByLibrary.simpleMessage("اغلاق التطبيق"),
     "expiry": MessageLookupByLibrary.simpleMessage("الصلاحية"),
@@ -169,6 +178,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "عفوًا... هذه المعلومات غير متوفرة في الوقت الحالي.",
     ),
     "or": MessageLookupByLibrary.simpleMessage("أو"),
+    "orderAddedSuccess": MessageLookupByLibrary.simpleMessage(
+      "تم اضافة الطلب بنجاح",
+    ),
     "orderNumber": MessageLookupByLibrary.simpleMessage("رقم الطلب"),
     "orderPlaced": MessageLookupByLibrary.simpleMessage("تم الطلب"),
     "orderShipping": MessageLookupByLibrary.simpleMessage("تم شحن الطلب"),
@@ -191,7 +203,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "payWhenYouGetIt": MessageLookupByLibrary.simpleMessage(
       "الدفع عند الاستلام",
     ),
+    "payWithPayPal": MessageLookupByLibrary.simpleMessage(" الدفع عبر PayPal"),
     "payment": MessageLookupByLibrary.simpleMessage("الدفع"),
+    "paymentCaceled": MessageLookupByLibrary.simpleMessage("تم الغاء الدفع"),
+    "paymentSuccess": MessageLookupByLibrary.simpleMessage("تم الدفع بنجاح"),
     "payments": MessageLookupByLibrary.simpleMessage("المدفوعات"),
     "pending": MessageLookupByLibrary.simpleMessage("قيد الانتظار"),
     "pickupFromStore": MessageLookupByLibrary.simpleMessage(

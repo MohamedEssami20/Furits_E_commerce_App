@@ -152,7 +152,13 @@
     "areYouSureYouWantToExit":"Are you sure you want to exit?",
     "ok":"Ok",
     "shoppingNow":"Shopping Now",
-    "results":"Results"
-
+    "results":"Results",
+    "orderAddedSuccess":"Order added successfully",
+    "choosePaymentMethod":"Choose Payment Method",
+    "payWithPayPal": "pay with PayPal",
+    "paymentSuccess":"Payment Success",
+    "errorMessageOfPayment": "Payment failed, please try again.",
+    "errorMessage":"Opps, something went wrong, please try again later.",
+    "paymentCaceled":"Payment Caceled"
 
 }

@@ -67,6 +67,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "changePasswordDone": MessageLookupByLibrary.simpleMessage(
       "Change Password Done",
     ),
+    "choosePaymentMethod": MessageLookupByLibrary.simpleMessage(
+      "Choose Payment Method",
+    ),
     "city": MessageLookupByLibrary.simpleMessage("City"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirmNewPassword": MessageLookupByLibrary.simpleMessage(
@@ -105,6 +108,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "enterVerificationCode": MessageLookupByLibrary.simpleMessage(
       "Enter the code we sent to the following email address",
+    ),
+    "errorMessage": MessageLookupByLibrary.simpleMessage(
+      "Opps, something went wrong, please try again later.",
+    ),
+    "errorMessageOfPayment": MessageLookupByLibrary.simpleMessage(
+      "Payment failed, please try again.",
     ),
     "exitApp": MessageLookupByLibrary.simpleMessage("Exit App"),
     "expiry": MessageLookupByLibrary.simpleMessage("Expiry"),
@@ -167,6 +176,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Oops... this information is not available at the moment.",
     ),
     "or": MessageLookupByLibrary.simpleMessage("Or"),
+    "orderAddedSuccess": MessageLookupByLibrary.simpleMessage(
+      "Order added successfully",
+    ),
     "orderNumber": MessageLookupByLibrary.simpleMessage("Order Number"),
     "orderPlaced": MessageLookupByLibrary.simpleMessage("Order Placed"),
     "orderShipping": MessageLookupByLibrary.simpleMessage("Order Shipping"),
@@ -187,7 +199,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "pay": MessageLookupByLibrary.simpleMessage("Pay"),
     "payWhenYouGetIt": MessageLookupByLibrary.simpleMessage("Cash on Delivery"),
+    "payWithPayPal": MessageLookupByLibrary.simpleMessage("pay with PayPal"),
     "payment": MessageLookupByLibrary.simpleMessage("Payment"),
+    "paymentCaceled": MessageLookupByLibrary.simpleMessage("Payment Caceled"),
+    "paymentSuccess": MessageLookupByLibrary.simpleMessage("Payment Success"),
     "payments": MessageLookupByLibrary.simpleMessage("Payments"),
     "pending": MessageLookupByLibrary.simpleMessage("pending"),
     "pickupFromStore": MessageLookupByLibrary.simpleMessage(

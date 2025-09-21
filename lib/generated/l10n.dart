@@ -1225,6 +1225,76 @@ class S {
   String get results {
     return Intl.message('Results', name: 'results', desc: '', args: []);
   }
+
+  /// `Order added successfully`
+  String get orderAddedSuccess {
+    return Intl.message(
+      'Order added successfully',
+      name: 'orderAddedSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose Payment Method`
+  String get choosePaymentMethod {
+    return Intl.message(
+      'Choose Payment Method',
+      name: 'choosePaymentMethod',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `pay with PayPal`
+  String get payWithPayPal {
+    return Intl.message(
+      'pay with PayPal',
+      name: 'payWithPayPal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Success`
+  String get paymentSuccess {
+    return Intl.message(
+      'Payment Success',
+      name: 'paymentSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment failed, please try again.`
+  String get errorMessageOfPayment {
+    return Intl.message(
+      'Payment failed, please try again.',
+      name: 'errorMessageOfPayment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Opps, something went wrong, please try again later.`
+  String get errorMessage {
+    return Intl.message(
+      'Opps, something went wrong, please try again later.',
+      name: 'errorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payment Caceled`
+  String get paymentCaceled {
+    return Intl.message(
+      'Payment Caceled',
+      name: 'paymentCaceled',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 import 'shipping_item.dart';
@@ -27,8 +28,8 @@ class _ShippingSectionState extends State<ShippingSection>
             setState(() => selectedIndex = 0);
           },
           isActive: selectedIndex == 0,
-          title: "الدفع عند الاستلام",
-          subTitle: "التسليم من المكان",
+          title: S.of(context).payWhenYouGetIt,
+          subTitle: S.of(context).pickupFromStore,
           price: "${orderEntity.cartItems.calculateTotalPrice() + 30}",
         ),
         const SizedBox(height: 16),
@@ -38,8 +39,8 @@ class _ShippingSectionState extends State<ShippingSection>
             setState(() => selectedIndex = 1);
           },
           isActive: selectedIndex == 1,
-          title: "اشتري أون لاين",
-          subTitle: "التسليم من المكان",
+          title: S.of(context).buyNowPayLater,
+          subTitle: S.of(context).pickupFromStore,
           price: "${orderEntity.cartItems.calculateTotalPrice()}",
         ),
       ],

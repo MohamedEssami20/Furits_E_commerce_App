@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_progress_hud.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../manager/add_order_cubit/add_order_cubit.dart';
 
@@ -19,7 +20,7 @@ class AddOrderCubitBlocConsumer extends StatelessWidget {
       },
       listener: (context, state) {
         if (state is AddOrderSuccess) {
-          buildErrorSnackBar(context, "تم اضافة الطلب بنجاح");
+          buildErrorSnackBar(context, S.of(context).orderAddedSuccess);
         }
         if (state is AddOrderError) {
           buildErrorSnackBar(
