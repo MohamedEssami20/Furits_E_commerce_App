@@ -173,6 +173,8 @@
     "pleaseEnterConfirmPassword":"يرجى ادخال تاكيد كلمة المرور",
     "passwordChangedReauth":"تم تغيير كلمة المرور بنجاح، يرجى تسجيل الدخول مرة اخرى",
     "sendLikOfChangeEmail":"تم ارسال رابط تغيير البريد الالكتروني للبريد الالكتروني الجديد",
-    "nameIsChanged":"تم تغيير الاسم بنجاح"
+    "nameIsChanged":"تم تغيير الاسم بنجاح",
+    "edit":"تعديل",
+    "phoneNumber":"رقم الهاتف"
     
 }

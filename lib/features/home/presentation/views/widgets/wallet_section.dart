@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_button.dart';
 import 'package:fruits_hub/features/home/presentation/manager/wallet_cubit/wallet_cubit.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 import '../../../../../core/utils/Widgets/build_app_bar.dart';
 import '../../manager/profile_view_cubit/profile_view_cubit.dart';
 import 'add_new_payment_card.dart';
@@ -19,7 +20,9 @@ class WalletSection extends StatelessWidget {
       children: [
         buildAppBar(
           context,
-          title: inAddNewCard == false ? "المدفوعات" : "إضافة بطاقة جديدة",
+          title: inAddNewCard == false
+              ? S.of(context).payments
+              : S.of(context).addNewCard,
           showBackButton: true,
           showNotification: false,
           onBackPress: () {
@@ -68,7 +71,7 @@ class WalletSection extends StatelessWidget {
               context.read<WalletCubit>().changeIndex(1);
             }
           },
-          title: "أضف وسيلة دفع جديدة",
+          title: S.of(context).addNewPaymentMethod,
         ),
       ],
     );

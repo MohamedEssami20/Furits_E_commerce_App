@@ -95,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل تريد تسجيل الخروج؟",
     ),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage("لا تمتلك حساب؟"),
+    "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
     "editProfile": MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
     "editProfileFailure": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ اثناء تعديل الملف الشخصي, يرجى المحاولة مرة اخرى",
@@ -232,6 +233,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "paymentSuccess": MessageLookupByLibrary.simpleMessage("تم الدفع بنجاح"),
     "payments": MessageLookupByLibrary.simpleMessage("المدفوعات"),
     "pending": MessageLookupByLibrary.simpleMessage("قيد الانتظار"),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "pickupFromStore": MessageLookupByLibrary.simpleMessage(
       "الاستلام من المتجر",
     ),

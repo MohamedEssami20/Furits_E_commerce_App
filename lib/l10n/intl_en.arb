@@ -172,7 +172,9 @@
     "pleaseEnterConfirmNewPassword":"Please enter confirm new password",
     "passwordChangedReauth":"Password changed successfully, please login again",
     "sendLikOfChangeEmail":"we sent you an email to verify your new email address",
-    "nameIsChanged":"Name is changed successfully"
+    "nameIsChanged":"Name is changed successfully",
+    "edit":"Edit",
+    "phoneNumber":"Phone Number"
 
 
 }

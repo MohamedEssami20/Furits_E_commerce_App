@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_text_form_filed.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
 
+import '../../../../../generated/l10n.dart';
+
 class AddressInputSection extends StatelessWidget {
   const AddressInputSection(
       {super.key, required this.formKey, required this.autoValidateMode});
@@ -27,7 +29,7 @@ class AddressInputSection extends StatelessWidget {
                   context.read<OrderEntity>().orderAddressDetails.fullName =
                       value!;
                 },
-                hintText: "الاسم كامل",
+                hintText: S.of(context).fullNameHint,
                 textInputType: TextInputType.text,
               ),
               const SizedBox(
@@ -37,7 +39,7 @@ class AddressInputSection extends StatelessWidget {
                 onSaved: (value) {
                   context.read<OrderEntity>().orderAddressDetails.email = value;
                 },
-                hintText: "البريد الإلكتروني",
+                hintText: S.of(context).emailHint,
                 textInputType: TextInputType.text,
               ),
               const SizedBox(
@@ -48,7 +50,7 @@ class AddressInputSection extends StatelessWidget {
                   context.read<OrderEntity>().orderAddressDetails.address =
                       value;
                 },
-                hintText: "العنوان",
+                hintText: S.of(context).address,
                 textInputType: TextInputType.text,
               ),
               const SizedBox(
@@ -58,7 +60,7 @@ class AddressInputSection extends StatelessWidget {
                 onSaved: (value) {
                   context.read<OrderEntity>().orderAddressDetails.phone = value;
                 },
-                hintText: "رقم الجوال",
+                hintText: S.of(context).phoneNumber,
                 textInputType: TextInputType.text,
               ),
               const SizedBox(
@@ -68,7 +70,7 @@ class AddressInputSection extends StatelessWidget {
                 onSaved: (value) {
                   context.read<OrderEntity>().orderAddressDetails.city = value;
                 },
-                hintText: "المدينة",
+                hintText: S.of(context).city,
                 textInputType: TextInputType.text,
               ),
               const SizedBox(
@@ -79,7 +81,7 @@ class AddressInputSection extends StatelessWidget {
                   context.read<OrderEntity>().orderAddressDetails.floorName =
                       value;
                 },
-                hintText: "رقم الطابق , رقم الشقه ..",
+                hintText: S.of(context).floorNumber,
                 textInputType: TextInputType.text,
               ),
               const SizedBox(

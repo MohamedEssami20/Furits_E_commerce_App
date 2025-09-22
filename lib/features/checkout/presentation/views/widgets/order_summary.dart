@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/payment_item.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 
@@ -14,20 +15,20 @@ class OrderSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return PaymentItem(
       showTitle: true,
-      title: "ملخص الطلب :",
+      title: "${S.of(context).orderSummary} :",
       child: Column(
         children: [
           Row(
             children: [
               Text(
-                'المجموع الفرعي :',
+                '${S.of(context).subTotal} :',
                 style: TextStyles.regular13.copyWith(
                   color: const Color(0xFF4E5556),
                 ),
               ),
               const Spacer(),
               Text(
-                '${context.read<OrderEntity>().cartItems.calculateTotalPrice()} جنيه',
+                '${context.read<OrderEntity>().cartItems.calculateTotalPrice()} ${S.of(context).egp}',
                 textAlign: TextAlign.right,
                 style: TextStyles.semiBold16.copyWith(
                   color: const Color(0xFF0C0D0D),
@@ -41,14 +42,14 @@ class OrderSummary extends StatelessWidget {
           Row(
             children: [
               Text(
-                'التوصيل :',
+                '${S.of(context).delivery} :',
                 style: TextStyles.regular13.copyWith(
                   color: const Color(0xFF4E5556),
                 ),
               ),
               const Spacer(),
               Text(
-                '50 جنيه',
+                '50 ${S.of(context).egp}',
                 textAlign: TextAlign.right,
                 style: TextStyles.semiBold13.copyWith(
                   color: const Color(0xFF4E5556),
@@ -69,14 +70,14 @@ class OrderSummary extends StatelessWidget {
           Row(
             children: [
               Text(
-                ' الكلي',
+                S.of(context).total,
                 style: TextStyles.bold16.copyWith(
                   color: const Color(0xFF0C0D0D),
                 ),
               ),
               const Spacer(),
               Text(
-                '${context.read<OrderEntity>().cartItems.calculateTotalPrice() + 50} جنيه',
+                '${context.read<OrderEntity>().cartItems.calculateTotalPrice() + 50} ${S.of(context).egp}',
                 textAlign: TextAlign.right,
                 style: TextStyles.bold16.copyWith(
                   color: const Color(0xFF0C0D0D),

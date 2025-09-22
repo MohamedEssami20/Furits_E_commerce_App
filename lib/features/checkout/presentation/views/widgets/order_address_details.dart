@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/assets.dart' show Assets;
 import 'payment_item.dart';
@@ -20,7 +21,7 @@ class OrderAddressDetails extends StatelessWidget {
           Row(
             children: [
               Text(
-                'عنوان التوصيل',
+                S.of(context).shippingAddress,
                 style: TextStyles.bold13.copyWith(
                   color: const Color(0xFF0C0D0D),
                 ),
@@ -39,7 +40,7 @@ class OrderAddressDetails extends StatelessWidget {
                   children: [
                     SvgPicture.asset(Assets.assetsImagesEditIcon),
                     Text(
-                      'تعديل',
+                      S.of(context).edit,
                       style: TextStyles.semiBold13.copyWith(
                         color: const Color(0xFF949D9E),
                       ),

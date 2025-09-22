@@ -97,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
+    "edit": MessageLookupByLibrary.simpleMessage("Edit"),
     "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
     "editProfileFailure": MessageLookupByLibrary.simpleMessage(
       "Failed to edit profile",
@@ -226,6 +227,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "paymentSuccess": MessageLookupByLibrary.simpleMessage("Payment Success"),
     "payments": MessageLookupByLibrary.simpleMessage("Payments"),
     "pending": MessageLookupByLibrary.simpleMessage("pending"),
+    "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "pickupFromStore": MessageLookupByLibrary.simpleMessage(
       "Pickup From Store",
     ),
