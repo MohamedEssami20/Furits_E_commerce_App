@@ -1295,6 +1295,126 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit Profile`
+  String get editProfile {
+    return Intl.message(
+      'Edit Profile',
+      name: 'editProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile edited successfully`
+  String get editProfileSuccess {
+    return Intl.message(
+      'Profile edited successfully',
+      name: 'editProfileSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to edit profile`
+  String get editProfileFailure {
+    return Intl.message(
+      'Failed to edit profile',
+      name: 'editProfileFailure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `when you change your email, we will send you an email to verify your new email address`
+  String get noticOfEditEmail {
+    return Intl.message(
+      'when you change your email, we will send you an email to verify your new email address',
+      name: 'noticOfEditEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email is not valid`
+  String get emailNotValid {
+    return Intl.message(
+      'Email is not valid',
+      name: 'emailNotValid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can't change your email because it is already in use`
+  String get notChangeEmailAlreadyExist {
+    return Intl.message(
+      'You can\'t change your email because it is already in use',
+      name: 'notChangeEmailAlreadyExist',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter current password`
+  String get pleaseEnterCurrentPassword {
+    return Intl.message(
+      'Please enter current password',
+      name: 'pleaseEnterCurrentPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter new password`
+  String get pleaseEnterNewPassword {
+    return Intl.message(
+      'Please enter new password',
+      name: 'pleaseEnterNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter confirm new password`
+  String get pleaseEnterConfirmNewPassword {
+    return Intl.message(
+      'Please enter confirm new password',
+      name: 'pleaseEnterConfirmNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password changed successfully, please login again`
+  String get passwordChangedReauth {
+    return Intl.message(
+      'Password changed successfully, please login again',
+      name: 'passwordChangedReauth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `we sent you an email to verify your new email address`
+  String get sendLikOfChangeEmail {
+    return Intl.message(
+      'we sent you an email to verify your new email address',
+      name: 'sendLikOfChangeEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name is changed successfully`
+  String get nameIsChanged {
+    return Intl.message(
+      'Name is changed successfully',
+      name: 'nameIsChanged',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

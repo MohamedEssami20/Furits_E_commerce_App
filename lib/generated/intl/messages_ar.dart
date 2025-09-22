@@ -95,10 +95,20 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل تريد تسجيل الخروج؟",
     ),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage("لا تمتلك حساب؟"),
+    "editProfile": MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
+    "editProfileFailure": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ اثناء تعديل الملف الشخصي, يرجى المحاولة مرة اخرى",
+    ),
+    "editProfileSuccess": MessageLookupByLibrary.simpleMessage(
+      "تم تعديل الملف الشخصي بنجاح",
+    ),
     "egp": MessageLookupByLibrary.simpleMessage("جنيه"),
     "emailHint": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "emailIsRequired": MessageLookupByLibrary.simpleMessage(
       "البريد الالكتروني مطلوب",
+    ),
+    "emailNotValid": MessageLookupByLibrary.simpleMessage(
+      "البريد الالكتروني غير صحيح",
     ),
     "english": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
     "enterNewPasswordHint": MessageLookupByLibrary.simpleMessage(
@@ -154,6 +164,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "more": MessageLookupByLibrary.simpleMessage("المزيد"),
     "myAccount": MessageLookupByLibrary.simpleMessage("حسابي"),
     "myOrders": MessageLookupByLibrary.simpleMessage("طلباتي"),
+    "nameIsChanged": MessageLookupByLibrary.simpleMessage(
+      "تم تغيير الاسم بنجاح",
+    ),
     "newAccount": MessageLookupByLibrary.simpleMessage("حساب جديد"),
     "newPassword": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
     "newText": MessageLookupByLibrary.simpleMessage("جديد"),
@@ -163,6 +176,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "noRsultFound": MessageLookupByLibrary.simpleMessage(
       "لم يتم العثور على نتائج",
+    ),
+    "notChangeEmailAlreadyExist": MessageLookupByLibrary.simpleMessage(
+      "لا يمكن تغيير البريد الالكتروني لانه مستخدم بالفعل",
+    ),
+    "noticOfEditEmail": MessageLookupByLibrary.simpleMessage(
+      "في حالة تغيير البريد الالكتروني سوف يتم إرسال رابط تأكيد البريد الالكتروني على البريد الالكتروني الجديد",
     ),
     "notification": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
@@ -189,6 +208,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "organic": MessageLookupByLibrary.simpleMessage("أورجانيك"),
     "our": MessageLookupByLibrary.simpleMessage("بنا"),
     "outForDelivery": MessageLookupByLibrary.simpleMessage("خرج للتوصيل"),
+    "passwordChangedReauth": MessageLookupByLibrary.simpleMessage(
+      "تم تغيير كلمة المرور بنجاح، يرجى تسجيل الدخول مرة اخرى",
+    ),
     "passwordHint": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
     "passwordLength": MessageLookupByLibrary.simpleMessage(
       "كلمة المرور يجب ان تكون على الاقل 8 حروف",
@@ -211,6 +233,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "pending": MessageLookupByLibrary.simpleMessage("قيد الانتظار"),
     "pickupFromStore": MessageLookupByLibrary.simpleMessage(
       "الاستلام من المتجر",
+    ),
+    "pleaseEnterCurrentPassword": MessageLookupByLibrary.simpleMessage(
+      "يرجى ادخال كلمة المرور الحالية",
+    ),
+    "pleaseEnterNewPassword": MessageLookupByLibrary.simpleMessage(
+      "يرجى ادخال كلمة المرور الجديدة",
     ),
     "price": MessageLookupByLibrary.simpleMessage("السعر"),
     "priceHighToLow": MessageLookupByLibrary.simpleMessage(
@@ -250,6 +278,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "sendEmailVerification": MessageLookupByLibrary.simpleMessage(
       "تم ارسال بريد التحقق بنجاح",
+    ),
+    "sendLikOfChangeEmail": MessageLookupByLibrary.simpleMessage(
+      "تم ارسال رابط تغيير البريد الالكتروني للبريد الالكتروني الجديد",
     ),
     "sendlinkToEmail": MessageLookupByLibrary.simpleMessage(
       "تم ارسال بريد التحقق لتغيير كلمة المرور للبريد ",

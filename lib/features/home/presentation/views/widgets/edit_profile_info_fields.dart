@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart' show TextStyles;
 
 import '../../../../../core/utils/Widgets/custom_text_form_filed.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../auth/domain/entity/user_entity.dart';
 
 class EditProfileInfoTextFields extends StatefulWidget {
@@ -37,9 +38,9 @@ class _EditProfileInfoTextFieldsState extends State<EditProfileInfoTextFields> {
             validator: (value) {
               RegExp emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
               if (!emailRegExp.hasMatch(value!) && value.isNotEmpty) {
-                return 'البريد الالكتروني غير صحيح';
+                return S.of(context).emailNotValid;
               } else if (value == widget.userEntity.email) {
-                return 'لا يمكن تغيير بريد الكتروني موجود بالفعل';
+                return S.of(context).notChangeEmailAlreadyExist;
               }
               return null;
             }),
@@ -48,7 +49,7 @@ class _EditProfileInfoTextFieldsState extends State<EditProfileInfoTextFields> {
         ),
         Text(
           textAlign: TextAlign.right,
-          'تغيير كلمة المرور',
+          S.of(context).changePassword,
           style: TextStyles.semiBold13.copyWith(
             color: Colors.black,
           ),
@@ -59,11 +60,11 @@ class _EditProfileInfoTextFieldsState extends State<EditProfileInfoTextFields> {
             if (widget.controllers[3].text.isNotEmpty &&
                 widget.controllers[4].text.isNotEmpty &&
                 value!.isEmpty) {
-              return 'الرجاء ادخال كلمة المرور الحالية';
+              return S.of(context).pleaseEnterCurrentPassword;
             }
             return null;
           },
-          hintText: 'كلمة المرور الحالية',
+          hintText: S.of(context).currentPassword,
           textInputType: TextInputType.visiblePassword,
           obscureText: currentPassword,
           suffixIcon: IconButton(
@@ -80,13 +81,13 @@ class _EditProfileInfoTextFieldsState extends State<EditProfileInfoTextFields> {
           controller: widget.controllers[3],
           validator: (value) {
             if (widget.controllers[2].text.isNotEmpty && value!.isEmpty) {
-              return 'الرجاء ادخال كلمة المرور الجديدة';
+              return S.of(context).pleaseEnterNewPassword;
             } else if (value!.length < 8 && value.isNotEmpty) {
-              return 'كلمة المرور يجب ان تكون على الاقل 8 حروف';
+              return S.of(context).passwordLength;
             }
             return null;
           },
-          hintText: 'كلمة المرور الجديدة',
+          hintText: S.of(context).newPassword,
           textInputType: TextInputType.visiblePassword,
           obscureText: newPassword,
           suffixIcon: IconButton(
@@ -103,14 +104,14 @@ class _EditProfileInfoTextFieldsState extends State<EditProfileInfoTextFields> {
           controller: widget.controllers[4],
           validator: (value) {
             if (widget.controllers[3].text.isNotEmpty && value!.isEmpty) {
-              return 'الرجاء ادخال تأكيد كلمة المرور الجديدة';
+              return S.of(context).pleaseEnterConfirmNewPassword;
             } else if (widget.controllers[3].text !=
                 widget.controllers[4].text) {
-              return 'كلمة المرور غير متطابقة';
+              return S.of(context).passwordNotMatch;
             }
             return null;
           },
-          hintText: 'تأكيد كلمة المرور الجديدة',
+          hintText: S.of(context).confirmNewPassword,
           textInputType: TextInputType.visiblePassword,
           obscureText: confirmPassword,
           suffixIcon: IconButton(

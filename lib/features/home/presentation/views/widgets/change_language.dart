@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../../core/utils/assets.dart';
+import '../../../../../generated/l10n.dart';
 
 class ChangeLangauge extends StatelessWidget {
   const ChangeLangauge({super.key});
@@ -24,7 +25,7 @@ class ChangeLangauge extends StatelessWidget {
                 Assets.assetsImagesWorldIcon,
               ),
               Text(
-                "اللغة",
+               S.of(context).language,
                 style: TextStyles.semiBold13.copyWith(
                   color: const Color(0xFF949D9E),
                 ),

@@ -97,11 +97,19 @@ class MessageLookup extends MessageLookupByLibrary {
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
+    "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
+    "editProfileFailure": MessageLookupByLibrary.simpleMessage(
+      "Failed to edit profile",
+    ),
+    "editProfileSuccess": MessageLookupByLibrary.simpleMessage(
+      "Profile edited successfully",
+    ),
     "egp": MessageLookupByLibrary.simpleMessage("EGP"),
     "emailHint": MessageLookupByLibrary.simpleMessage("Email"),
     "emailIsRequired": MessageLookupByLibrary.simpleMessage(
       "Email is required",
     ),
+    "emailNotValid": MessageLookupByLibrary.simpleMessage("Email is not valid"),
     "english": MessageLookupByLibrary.simpleMessage("English"),
     "enterNewPasswordHint": MessageLookupByLibrary.simpleMessage(
       "Enter new password",
@@ -154,6 +162,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "more": MessageLookupByLibrary.simpleMessage("More"),
     "myAccount": MessageLookupByLibrary.simpleMessage("My Account"),
     "myOrders": MessageLookupByLibrary.simpleMessage("My Orders"),
+    "nameIsChanged": MessageLookupByLibrary.simpleMessage(
+      "Name is changed successfully",
+    ),
     "newAccount": MessageLookupByLibrary.simpleMessage("New Account"),
     "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
     "newText": MessageLookupByLibrary.simpleMessage("New"),
@@ -162,6 +173,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "No Product into Cart",
     ),
     "noRsultFound": MessageLookupByLibrary.simpleMessage("No Result Found"),
+    "notChangeEmailAlreadyExist": MessageLookupByLibrary.simpleMessage(
+      "You can\'t change your email because it is already in use",
+    ),
+    "noticOfEditEmail": MessageLookupByLibrary.simpleMessage(
+      "when you change your email, we will send you an email to verify your new email address",
+    ),
     "notification": MessageLookupByLibrary.simpleMessage("Notification"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "numberOfOrders": MessageLookupByLibrary.simpleMessage("Number of Orders"),
@@ -187,6 +204,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "organic": MessageLookupByLibrary.simpleMessage("Organic"),
     "our": MessageLookupByLibrary.simpleMessage("Our"),
     "outForDelivery": MessageLookupByLibrary.simpleMessage("Out For Delivery"),
+    "passwordChangedReauth": MessageLookupByLibrary.simpleMessage(
+      "Password changed successfully, please login again",
+    ),
     "passwordHint": MessageLookupByLibrary.simpleMessage("Password"),
     "passwordLength": MessageLookupByLibrary.simpleMessage(
       "Password must be at least 8 characters long",
@@ -207,6 +227,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "pending": MessageLookupByLibrary.simpleMessage("pending"),
     "pickupFromStore": MessageLookupByLibrary.simpleMessage(
       "Pickup From Store",
+    ),
+    "pleaseEnterConfirmNewPassword": MessageLookupByLibrary.simpleMessage(
+      "Please enter confirm new password",
+    ),
+    "pleaseEnterCurrentPassword": MessageLookupByLibrary.simpleMessage(
+      "Please enter current password",
+    ),
+    "pleaseEnterNewPassword": MessageLookupByLibrary.simpleMessage(
+      "Please enter new password",
     ),
     "price": MessageLookupByLibrary.simpleMessage("Price"),
     "priceHighToLow": MessageLookupByLibrary.simpleMessage(
@@ -246,6 +275,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "sendEmailVerification": MessageLookupByLibrary.simpleMessage(
       "Send Email Verification",
+    ),
+    "sendLikOfChangeEmail": MessageLookupByLibrary.simpleMessage(
+      "we sent you an email to verify your new email address",
     ),
     "sendlinkToEmail": MessageLookupByLibrary.simpleMessage(
       "We Send reset password link to email ",

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/helper/build_error_snackbar.dart';
 import '../../../../../../core/utils/app_text_style.dart' show TextStyles;
+import '../../../../../../generated/l10n.dart';
 import '../../../../../auth/presentation/views/signin_view.dart';
 import '../../../manager/edit_user_info_cubit/user_cubit.dart';
 import '../../../manager/profile_view_cubit/profile_view_cubit.dart';
@@ -21,11 +22,11 @@ class SendEditingUserInfoBuilder extends StatelessWidget {
             LoginView.routeName,
             (route) => false,
           );
-          buildErrorSnackBar(context, getUserEditingMessageSuccess(state));
+          buildErrorSnackBar(context, getUserEditingMessageSuccess(state, context));
         }
         if (state is EditUserNameSuccess) {
           context.read<ProfileViewCubit>().changeIndex(0);
-          buildErrorSnackBar(context, getUserEditingMessageSuccess(state));
+          buildErrorSnackBar(context, getUserEditingMessageSuccess(state, context));
         }
         if (state is EditUserPasswordFailure ||
             state is EditUserEmailFailure ||
@@ -41,7 +42,7 @@ class SendEditingUserInfoBuilder extends StatelessWidget {
                 color: Colors.white,
               )
             : Text(
-                "حفظ التغييرات",
+                S.of(context).saveChanges,
                 style: TextStyles.bold16.copyWith(color: Colors.white),
               );
       },
@@ -49,13 +50,13 @@ class SendEditingUserInfoBuilder extends StatelessWidget {
   }
 }
 
-String getUserEditingMessageSuccess(UserState state) {
+String getUserEditingMessageSuccess(UserState state, BuildContext context) {
   if (state is EditUserPasswordSuccess) {
-    return "تم تغيير كلمة المرور بنجاح برجاء تسجيل الدخول مرة اخرى";
+    return S.of(context).passwordChangedReauth;
   } else if (state is EditUserEmailSuccess) {
-    return "لقد تم إرسال رابط تاكيد البريد الالكتروني على البريد الالكتروني الجديد";
+    return S.of(context).sendLikOfChangeEmail;
   } else if (state is EditUserNameSuccess) {
-    return "تم تغيير الاسم بنجاح";
+    return S.of(context).nameIsChanged;
   } else {
     return "";
   }

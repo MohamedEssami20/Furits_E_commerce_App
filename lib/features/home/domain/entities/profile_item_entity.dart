@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
+
+import '../../../../generated/l10n.dart';
 
 class ProfileItemEntity {
   final String title;
@@ -10,31 +13,31 @@ class ProfileItemEntity {
   });
 
   // create list of 4 items
-  static List<ProfileItemEntity> getProfileItems() {
+  static List<ProfileItemEntity> getProfileItems(BuildContext context) {
     return [
       ProfileItemEntity(
-        title: "الملف الشخصي",
+        title: S.of(context).profile,
         image: Assets.assetsImagesUserIcon,
       ),
       ProfileItemEntity(
-        title: "طلباتي",
+        title: S.of(context).myOrders,
         image: Assets.assetsImagesOrdersIcon,
       ),
       ProfileItemEntity(
-        title: "المدفوعات",
+        title: S.of(context).payments,
         image: Assets.assetsImagesWalletIcon,
       ),
       ProfileItemEntity(
-        title: "المفضلة",
+        title: S.of(context).favourites,
         image: Assets.assetsImagesHeartIcon,
       ),
     ];
   }
 
-  static List<ProfileItemEntity> getHelpItems() {
+  static List<ProfileItemEntity> getHelpItems(BuildContext context) {
     return [
       ProfileItemEntity(
-        title: " من نحن",
+        title: S.of(context).aboutUs,
         image: Assets.assetsImagesInfoCircleIcon,
       ),
     ];

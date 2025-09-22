@@ -160,6 +160,18 @@
     "paymentSuccess":"تم الدفع بنجاح",
     "errorMessageOfPayment":"حدث خطأ اثناء الدفع, يرجى المحاولة مرة اخرى",
     "errorMessage":"حدث خطأ, يرجى المحاولة مرة اخرى",
-    "paymentCaceled":"تم الغاء الدفع"
+    "paymentCaceled":"تم الغاء الدفع",
+    "editProfile":"تعديل الملف الشخصي",
+    "editProfileSuccess":"تم تعديل الملف الشخصي بنجاح",
+    "editProfileFailure":"حدث خطأ اثناء تعديل الملف الشخصي, يرجى المحاولة مرة اخرى",
+    "noticOfEditEmail": "في حالة تغيير البريد الالكتروني سوف يتم إرسال رابط تأكيد البريد الالكتروني على البريد الالكتروني الجديد",
+    "emailNotValid":"البريد الالكتروني غير صحيح",
+    "notChangeEmailAlreadyExist":"لا يمكن تغيير البريد الالكتروني لانه مستخدم بالفعل",
+    "pleaseEnterCurrentPassword":"يرجى ادخال كلمة المرور الحالية",
+    "pleaseEnterNewPassword":"يرجى ادخال كلمة المرور الجديدة",
+    "pleaseEnterConfirmPassword":"يرجى ادخال تاكيد كلمة المرور",
+    "passwordChangedReauth":"تم تغيير كلمة المرور بنجاح، يرجى تسجيل الدخول مرة اخرى",
+    "sendLikOfChangeEmail":"تم ارسال رابط تغيير البريد الالكتروني للبريد الالكتروني الجديد",
+    "nameIsChanged":"تم تغيير الاسم بنجاح"
     
 }

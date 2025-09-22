@@ -159,6 +159,19 @@
     "paymentSuccess":"Payment Success",
     "errorMessageOfPayment": "Payment failed, please try again.",
     "errorMessage":"Opps, something went wrong, please try again later.",
-    "paymentCaceled":"Payment Caceled"
+    "paymentCaceled":"Payment Caceled",
+    "editProfile":"Edit Profile",
+    "editProfileSuccess": "Profile edited successfully",
+    "editProfileFailure": "Failed to edit profile",
+    "noticOfEditEmail": "when you change your email, we will send you an email to verify your new email address",
+    "emailNotValid":"Email is not valid",
+    "notChangeEmailAlreadyExist":"You can't change your email because it is already in use",
+    "pleaseEnterCurrentPassword":"Please enter current password",
+    "pleaseEnterNewPassword":"Please enter new password",
+    "pleaseEnterConfirmNewPassword":"Please enter confirm new password",
+    "passwordChangedReauth":"Password changed successfully, please login again",
+    "sendLikOfChangeEmail":"we sent you an email to verify your new email address",
+    "nameIsChanged":"Name is changed successfully"
+
 
 }

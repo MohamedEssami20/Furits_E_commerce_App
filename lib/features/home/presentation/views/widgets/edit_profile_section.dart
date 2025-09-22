@@ -4,6 +4,7 @@ import 'package:fruits_hub/features/auth/domain/entity/user_entity.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/custom_verification_button.dart';
 import 'package:fruits_hub/features/home/domain/entities/edit_user_info_entity.dart';
 import 'package:fruits_hub/features/home/presentation/manager/edit_user_info_cubit/user_cubit.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 import '../../../../../core/utils/Widgets/build_app_bar.dart';
 import '../../../../../core/utils/app_text_style.dart';
 import '../../manager/get_user_cubit/get_user_cubit.dart';
@@ -47,7 +48,7 @@ class _EditProfileSectionState extends State<EditProfileSection> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             buildAppBar(context,
-                title: "تعديل الملف الشخصي",
+                title: S.of(context).editProfile,
                 showBackButton: true,
                 showNotification: false, onBackPress: () {
               context.read<ProfileViewCubit>().changeIndex(0);
@@ -55,12 +56,12 @@ class _EditProfileSectionState extends State<EditProfileSection> {
             const SizedBox(
               height: 20,
             ),
-            const Text("المعلومات الشخصية", style: TextStyles.semiBold13),
+            Text(S.of(context).profileInfo, style: TextStyles.semiBold13),
             EditProfileInfoTextFields(
                 userEntity: userEntity!, controllers: _controllers),
             // add text that tell user that when he change email he will receive a mail to confirm;
             Text(
-              "في حالة تغيير البريد الالكتروني سوف يتم ارسال رابط تاكيد البريد الالكتروني على البريد الالكتروني الجديد",
+              S.of(context).noticOfEditEmail,
               style: TextStyles.semiBold13.copyWith(
                 color: Colors.black,
               ),

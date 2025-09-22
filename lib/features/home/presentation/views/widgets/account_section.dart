@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/custom_profile_divider.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/sign_out_item.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../../../../core/utils/Widgets/build_app_bar.dart';
 import '../../../../../core/utils/app_text_style.dart';
@@ -32,7 +33,7 @@ class _AccountSectionState extends State<AccountSection> {
       children: [
         buildAppBar(
           context,
-          title: "حسابي",
+          title: S.of(context).myAccount,
           showBackButton: false,
           showNotification: false,
         ),
@@ -44,7 +45,7 @@ class _AccountSectionState extends State<AccountSection> {
           height: 22,
         ),
         Text(
-          'عام',
+          S.of(context).general,
           style: TextStyles.semiBold13.copyWith(
             color: Colors.black,
           ),
@@ -55,12 +56,13 @@ class _AccountSectionState extends State<AccountSection> {
         ListView.separated(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: ProfileItemEntity.getProfileItems().length,
+          itemCount: ProfileItemEntity.getProfileItems(context).length,
           separatorBuilder: (context, index) => const CustomProfileDivider(),
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.only(top: 9),
             child: ProfileItem(
-              profileItemEntity: ProfileItemEntity.getProfileItems()[index],
+              profileItemEntity:
+                  ProfileItemEntity.getProfileItems(context)[index],
               onPress: () {
                 context.read<ProfileViewCubit>().changeIndex(index + 1);
               },
@@ -70,7 +72,7 @@ class _AccountSectionState extends State<AccountSection> {
         const CustomProfileDivider(),
         NotificationAndModeItem(
           value: isNotification,
-          title: "الاشعارات",
+          title: S.of(context).notification,
           icon: Assets.assetsImagesNotificationIcon,
           onToggle: (value) {
             setState(() {
@@ -83,7 +85,7 @@ class _AccountSectionState extends State<AccountSection> {
         const CustomProfileDivider(),
         NotificationAndModeItem(
           value: isDarkMode,
-          title: "الوضع ",
+          title: S.of(context).mode,
           icon: Assets.assetsImagesMagicpenIcon,
           onToggle: (value) {
             setState(() {
@@ -96,7 +98,7 @@ class _AccountSectionState extends State<AccountSection> {
           height: 20,
         ),
         Text(
-          'المساعده',
+          S.of(context).help,
           style: TextStyles.semiBold13.copyWith(
             color: Colors.black,
           ),
@@ -105,7 +107,7 @@ class _AccountSectionState extends State<AccountSection> {
           height: 25,
         ),
         ProfileItem(
-          profileItemEntity: ProfileItemEntity.getHelpItems()[0],
+          profileItemEntity: ProfileItemEntity.getHelpItems(context)[0],
           onPress: () {
             context.read<ProfileViewCubit>().changeIndex(5);
           },
