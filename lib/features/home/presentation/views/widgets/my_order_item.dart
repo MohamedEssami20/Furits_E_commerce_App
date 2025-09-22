@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/my_order_state_item.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../../../../core/utils/app_text_style.dart';
 import '../../../../checkout/domain/entities/my_orders_entity/my_orders_entity.dart';
@@ -17,6 +18,7 @@ class _MyOrderItemState extends State<MyOrderItem> {
   bool isShowOrderDetails = false;
   @override
   Widget build(BuildContext context) {
+    final direconiality = Directionality.of(context);
     return Container(
       padding: const EdgeInsets.only(
         top: 16,
@@ -50,13 +52,15 @@ class _MyOrderItemState extends State<MyOrderItem> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "طلب رقم #${widget.myOrdersEntity.orderId.substring(0, 8)}",
+                    direconiality == TextDirection.rtl
+                        ? "طلب رقم #${widget.myOrdersEntity.orderId.substring(0, 8)} "
+                        : "Order Number #${widget.myOrdersEntity.orderId.substring(0, 8)}",
                     style: TextStyles.bold13.copyWith(
                       color: Colors.black,
                     ),
                   ),
                   Text(
-                    'تم الطلب :${(widget.myOrdersEntity.orderDate)}',
+                    '${S.of(context).orderPlaced} :${(widget.myOrdersEntity.orderDate)}',
                     style: TextStyles.regular13.copyWith(
                       color: const Color(0xFF949D9E),
                     ),
@@ -65,7 +69,7 @@ class _MyOrderItemState extends State<MyOrderItem> {
                     TextSpan(
                       children: [
                         TextSpan(
-                            text: 'عدد الطلبات : ',
+                            text: '${S.of(context).numberOfOrders}: ',
                             style: TextStyles.regular13.copyWith(
                               color: const Color(0xFF949D9E),
                             )),
@@ -83,12 +87,13 @@ class _MyOrderItemState extends State<MyOrderItem> {
                     TextSpan(
                       children: [
                         TextSpan(
-                            text: 'سعر الطلب الكلي : ',
+                            text: '${S.of(context).total}: ',
                             style: TextStyles.regular13.copyWith(
                               color: const Color(0xFF949D9E),
                             )),
                         TextSpan(
-                          text: '${widget.myOrdersEntity.totalPrice} جنيه',
+                          text:
+                              '${widget.myOrdersEntity.totalPrice} ${S.of(context).egp}',
                           style: TextStyles.bold13.copyWith(
                             color: Colors.black,
                           ),

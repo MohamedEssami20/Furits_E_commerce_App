@@ -85,6 +85,7 @@
     "city":"City",
     "floorNumber":"Floor Number",
     "orderSummary":"Order Summary:",
+    "noOrders": "No orders yet",
     "subTotal":"Subtotal",
     "delivery":"Delivery",
     "total":"Total",

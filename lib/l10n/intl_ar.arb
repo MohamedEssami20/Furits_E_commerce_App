@@ -86,6 +86,7 @@
     "city": "المدينة",
     "floorNumber": "رقم الطابق",
     "orderSummary": "ملخص الطلب:",
+    "noOrders": "لا يوجد طلبات",
     "subTotal": "المجموع الفرعي",
     "delivery": "التوصيل",
     "total": "الإجمالي",

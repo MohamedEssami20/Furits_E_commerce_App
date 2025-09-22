@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/constant/app_colors.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart';
@@ -14,6 +13,7 @@ class MyOrderStateItem extends StatelessWidget {
   final bool isShowOrderDetails;
   @override
   Widget build(BuildContext context) {
+    final directionality = Directionality.of(context);
     return AnimatedSize(
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
@@ -60,7 +60,9 @@ class MyOrderStateItem extends StatelessWidget {
                           children: [
                             /// اسم الحالة
                             Text(
-                              OrderStatusItem.statuses[index].value,
+                              directionality == TextDirection.rtl
+                                  ? OrderStatusItem.statuses[index].value
+                                  : OrderStatusItem.statuses[index].key,
                               style: TextStyles.semiBold13.copyWith(
                                 color: index <= orderStatus.length
                                     ? Colors.black

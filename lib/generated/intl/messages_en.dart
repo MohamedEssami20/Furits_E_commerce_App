@@ -169,6 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
     "newText": MessageLookupByLibrary.simpleMessage("New"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
+    "noOrders": MessageLookupByLibrary.simpleMessage("No orders yet"),
     "noProductIntoCart": MessageLookupByLibrary.simpleMessage(
       "No Product into Cart",
     ),

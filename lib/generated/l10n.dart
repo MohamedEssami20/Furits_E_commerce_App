@@ -696,6 +696,11 @@ class S {
     );
   }
 
+  /// `No orders yet`
+  String get noOrders {
+    return Intl.message('No orders yet', name: 'noOrders', desc: '', args: []);
+  }
+
   /// `Subtotal`
   String get subTotal {
     return Intl.message('Subtotal', name: 'subTotal', desc: '', args: []);
