@@ -5,6 +5,8 @@ import 'package:fruits_hub/features/home/presentation/manager/get_favorite_produ
 import 'package:fruits_hub/features/home/presentation/views/widgets/favorite_products_grid_view.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import '../../../../../../generated/l10n.dart';
+
 class GetFavoriteProductBuilder extends StatefulWidget {
   const GetFavoriteProductBuilder({super.key});
 
@@ -26,12 +28,18 @@ class _GetFavoriteProductBuilderState extends State<GetFavoriteProductBuilder> {
       builder: (context, state) {
         if (state is GetFavoriteProductsSuccess) {
           if (state.products.isEmpty) {
-            return const SliverToBoxAdapter(
-              child: Center(
-                child: Text(
-                  "لا يوجد منتجات في المفضلة",
-                  style: TextStyle(color: Colors.black),
-                ),
+            return SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Text(
+                      S.of(context).noProductsInFavorite,
+                      style: const TextStyle(color: Colors.black),
+                    ),
+                  ),
+                ],
               ),
             );
           } else {

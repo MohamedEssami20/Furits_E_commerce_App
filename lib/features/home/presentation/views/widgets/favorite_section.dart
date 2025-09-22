@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/builder/get_favorite_product_builder.dart';
 import '../../../../../core/utils/Widgets/build_app_bar.dart';
+import '../../../../../generated/l10n.dart';
 import '../../manager/profile_view_cubit/profile_view_cubit.dart';
 
 class FavoriteSection extends StatelessWidget {
@@ -12,7 +13,7 @@ class FavoriteSection extends StatelessWidget {
     return Column(
       children: [
         buildAppBar(context,
-            title: "المفضلة",
+            title: S.of(context).favourites,
             showBackButton: true,
             showNotification: false, onBackPress: () {
           context.read<ProfileViewCubit>().changeIndex(0);

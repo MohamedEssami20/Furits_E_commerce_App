@@ -175,6 +175,11 @@
     "sendLikOfChangeEmail":"تم ارسال رابط تغيير البريد الالكتروني للبريد الالكتروني الجديد",
     "nameIsChanged":"تم تغيير الاسم بنجاح",
     "edit":"تعديل",
-    "phoneNumber":"رقم الهاتف"
+    "phoneNumber":"رقم الهاتف",
+    "noProductsInFavorite":"لا يوجد منتجات في المفضلة",
+    "addProductToFavoriteSuccess":"تم اضافة المنتج للمفضلة بنجاح",
+    "removeProductFromFavoriteSuccess":"تم حذف المنتج من المفضلة بنجاح",
+    "addProductToCartSuccess":"تم اضافة المنتج للسلة بنجاح",
+    "removeProductFromCartSuccess":"تم حذف المنتج من السلة بنجاح"
     
 }

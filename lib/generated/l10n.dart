@@ -1435,6 +1435,56 @@ class S {
       args: [],
     );
   }
+
+  /// `No products in favorite yet`
+  String get noProductsInFavorite {
+    return Intl.message(
+      'No products in favorite yet',
+      name: 'noProductsInFavorite',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product added to favorite successfully`
+  String get addProductToFavoriteSuccess {
+    return Intl.message(
+      'Product added to favorite successfully',
+      name: 'addProductToFavoriteSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product removed from favorite successfully`
+  String get removeProductFromFavoriteSuccess {
+    return Intl.message(
+      'Product removed from favorite successfully',
+      name: 'removeProductFromFavoriteSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product added to cart successfully`
+  String get addProductToCartSuccess {
+    return Intl.message(
+      'Product added to cart successfully',
+      name: 'addProductToCartSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product removed from cart successfully`
+  String get removeProductFromCartSuccess {
+    return Intl.message(
+      'Product removed from cart successfully',
+      name: 'removeProductFromCartSuccess',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

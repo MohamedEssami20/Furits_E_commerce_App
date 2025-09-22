@@ -41,6 +41,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "addNewPaymentMethod": MessageLookupByLibrary.simpleMessage(
       "Add New Payment Method",
     ),
+    "addProductToCartSuccess": MessageLookupByLibrary.simpleMessage(
+      "Product added to cart successfully",
+    ),
+    "addProductToFavoriteSuccess": MessageLookupByLibrary.simpleMessage(
+      "Product added to favorite successfully",
+    ),
     "addToCart": MessageLookupByLibrary.simpleMessage("Add To Cart"),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
     "addressLine1": MessageLookupByLibrary.simpleMessage("Address Line 1"),
@@ -174,6 +180,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "noProductIntoCart": MessageLookupByLibrary.simpleMessage(
       "No Product into Cart",
     ),
+    "noProductsInFavorite": MessageLookupByLibrary.simpleMessage(
+      "No products in favorite yet",
+    ),
     "noRsultFound": MessageLookupByLibrary.simpleMessage("No Result Found"),
     "notChangeEmailAlreadyExist": MessageLookupByLibrary.simpleMessage(
       "You can\'t change your email because it is already in use",
@@ -255,6 +264,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "productsTwo": MessageLookupByLibrary.simpleMessage("Products"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "profileInfo": MessageLookupByLibrary.simpleMessage("Profile Info"),
+    "removeProductFromCartSuccess": MessageLookupByLibrary.simpleMessage(
+      "Product removed from cart successfully",
+    ),
+    "removeProductFromFavoriteSuccess": MessageLookupByLibrary.simpleMessage(
+      "Product removed from favorite successfully",
+    ),
     "resendverificationCode": MessageLookupByLibrary.simpleMessage(
       "Resend verification code",
     ),

@@ -174,7 +174,10 @@
     "sendLikOfChangeEmail":"we sent you an email to verify your new email address",
     "nameIsChanged":"Name is changed successfully",
     "edit":"Edit",
-    "phoneNumber":"Phone Number"
-
-
+    "phoneNumber":"Phone Number",
+    "noProductsInFavorite":"No products in favorite yet",
+    "addProductToFavoriteSuccess":"Product added to favorite successfully",
+    "removeProductFromFavoriteSuccess":"Product removed from favorite successfully",
+    "addProductToCartSuccess":"Product added to cart successfully",
+     "removeProductFromCartSuccess":"Product removed from cart successfully"
 }

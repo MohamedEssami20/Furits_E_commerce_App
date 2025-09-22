@@ -41,6 +41,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "addNewPaymentMethod": MessageLookupByLibrary.simpleMessage(
       "إضافة وسيلة دفع جديدة",
     ),
+    "addProductToCartSuccess": MessageLookupByLibrary.simpleMessage(
+      "تم اضافة المنتج للسلة بنجاح",
+    ),
+    "addProductToFavoriteSuccess": MessageLookupByLibrary.simpleMessage(
+      "تم اضافة المنتج للمفضلة بنجاح",
+    ),
     "addToCart": MessageLookupByLibrary.simpleMessage("أضف إلى السلة"),
     "address": MessageLookupByLibrary.simpleMessage("العنوان"),
     "addressLine1": MessageLookupByLibrary.simpleMessage("العنوان الأول"),
@@ -176,6 +182,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "noProductIntoCart": MessageLookupByLibrary.simpleMessage(
       "لا يوجد منتجات في سلة التسوق",
     ),
+    "noProductsInFavorite": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد منتجات في المفضلة",
+    ),
     "noRsultFound": MessageLookupByLibrary.simpleMessage(
       "لم يتم العثور على نتائج",
     ),
@@ -258,6 +267,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "productsTwo": MessageLookupByLibrary.simpleMessage("منتجات"),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "profileInfo": MessageLookupByLibrary.simpleMessage("المعلومات الشخصية"),
+    "removeProductFromCartSuccess": MessageLookupByLibrary.simpleMessage(
+      "تم حذف المنتج من السلة بنجاح",
+    ),
+    "removeProductFromFavoriteSuccess": MessageLookupByLibrary.simpleMessage(
+      "تم حذف المنتج من المفضلة بنجاح",
+    ),
     "resendverificationCode": MessageLookupByLibrary.simpleMessage(
       "إعادة إرسال رمز التحقق",
     ),
