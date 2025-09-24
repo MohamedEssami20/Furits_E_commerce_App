@@ -26,7 +26,7 @@ class CartViewBody extends StatelessWidget {
                   buildAppBar(
                     title: S.of(context).cart,
                     context,
-                    showBackButton: true,
+                    showBackButton: false,
                     showNotification: false,
                   ),
                   const SizedBox(

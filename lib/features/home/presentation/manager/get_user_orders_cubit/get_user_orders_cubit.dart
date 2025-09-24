@@ -13,9 +13,10 @@ class GetUserOrdersCubit extends Cubit<GetUserOrdersState> {
   final HomeRepo homeRepo;
   StreamSubscription? _streamSubscription;
   // create method that get user orders;
-  void getUserOrders() {
+  void getUserOrders({required String genralErrorMessage}) {
     emit(GetUserOrdersLoading());
-    _streamSubscription = homeRepo.getUserOrders().listen(
+    _streamSubscription =
+        homeRepo.getUserOrders(genralErrorMessage: genralErrorMessage).listen(
       (event) {
         event.fold(
           (failure) {

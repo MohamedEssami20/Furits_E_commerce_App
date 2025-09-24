@@ -174,12 +174,15 @@
     "passwordChangedReauth":"تم تغيير كلمة المرور بنجاح، يرجى تسجيل الدخول مرة اخرى",
     "sendLikOfChangeEmail":"تم ارسال رابط تغيير البريد الالكتروني للبريد الالكتروني الجديد",
     "nameIsChanged":"تم تغيير الاسم بنجاح",
+    "pictureIsChanged":"تم تغيير الصورة بنجاح",
     "edit":"تعديل",
     "phoneNumber":"رقم الهاتف",
     "noProductsInFavorite":"لا يوجد منتجات في المفضلة",
     "addProductToFavoriteSuccess":"تم اضافة المنتج للمفضلة بنجاح",
     "removeProductFromFavoriteSuccess":"تم حذف المنتج من المفضلة بنجاح",
     "addProductToCartSuccess":"تم اضافة المنتج للسلة بنجاح",
-    "removeProductFromCartSuccess":"تم حذف المنتج من السلة بنجاح"
-    
+    "removeProductFromCartSuccess":"تم حذف المنتج من السلة بنجاح",
+    "chooseFrom":"اختر من",
+    "fromCamera":"من الكاميرا",
+    "fromGallery":"من المعرض"
 }

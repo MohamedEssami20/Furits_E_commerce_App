@@ -13,9 +13,9 @@ class UserCubit extends Cubit<UserState> {
   final HomeRepo homeRepo;
 
   //create method that handel state of update user image
-  Future<void> updateUserImage({required File file}) async {
+  Future<void> updateUserImage({required File file, required String genralErrorMessage}) async {
     emit(EditUserImageLoading());
-    final result = await homeRepo.uploadUserImage(file: file);
+    final result = await homeRepo.uploadUserImage(file: file, genralErrorMessage: genralErrorMessage);
     result.fold(
       (failure) => emit(
         EditUserImageFailure(errorMessage: failure.errorMessage),
@@ -28,12 +28,12 @@ class UserCubit extends Cubit<UserState> {
 
   // create methodt that handel state of update user info
   Future<void> updateUserInfo(
-      {required EditUserInfoEntity userInfoEntity}) async {
+      {required EditUserInfoEntity userInfoEntity, required String genralErrorMessage}) async {
 
         // update user name
     if(userInfoEntity.name != null && userInfoEntity.name!.isNotEmpty) {
       emit(EditUserNameLoading());
-      final result = await homeRepo.updateName(name: userInfoEntity.name!);
+      final result = await homeRepo.updateName(name: userInfoEntity.name!, genralErrorMessage: genralErrorMessage);
       result.fold(
         (failure) => emit(
           EditUserNameFailure(errorMessage: failure.errorMessage),
@@ -50,6 +50,7 @@ class UserCubit extends Cubit<UserState> {
       final result = await homeRepo.updateEmail(
         newEmail: userInfoEntity.email!,
         oldPassword: userInfoEntity.oldPassword!,
+        genralErrorMessage: genralErrorMessage
       );
       result.fold(
         (failure) => emit(
@@ -67,6 +68,7 @@ class UserCubit extends Cubit<UserState> {
       final result = await homeRepo.updatePassword(
         newPassword: userInfoEntity.newPassword!,
         oldPassword: userInfoEntity.oldPassword!,
+        genralErrorMessage: genralErrorMessage
       );
       result.fold(
         (failure) => emit(

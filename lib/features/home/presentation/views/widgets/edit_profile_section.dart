@@ -106,9 +106,9 @@ class _EditProfileSectionState extends State<EditProfileSection> {
                       newPassword: newPassword,
                       oldPassword: currentPassword,
                     );
-                    context
-                        .read<UserCubit>()
-                        .updateUserInfo(userInfoEntity: userInfoEntity);
+                    context.read<UserCubit>().updateUserInfo(
+                        userInfoEntity: userInfoEntity,
+                        genralErrorMessage: S.of(context).errorMessage);
                   } else {
                     setState(() {
                       autoValidateMode = AutovalidateMode.always;

@@ -14,9 +14,11 @@ class GetUserCubit extends Cubit<GetUserState> {
   UserEntity? userEntity;
 
   // create stream metod that get user;
-  void getUserData() {
+  void getUserData({required String genralErrorMessage}) {
     emit(GetUserLoading());
-    _streamSubscription = homeRepo.getUserData().listen((event) {
+    _streamSubscription = homeRepo
+        .getUserData(genralErrorMessage: genralErrorMessage)
+        .listen((event) {
       event.fold(
         (failure) => emit(GetUserFailure(errorMessage: failure.errorMessage)),
         (user) {

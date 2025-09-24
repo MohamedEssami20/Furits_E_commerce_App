@@ -173,11 +173,15 @@
     "passwordChangedReauth":"Password changed successfully, please login again",
     "sendLikOfChangeEmail":"we sent you an email to verify your new email address",
     "nameIsChanged":"Name is changed successfully",
+    "pictureIsChanged":"Picture is changed successfully",
     "edit":"Edit",
     "phoneNumber":"Phone Number",
     "noProductsInFavorite":"No products in favorite yet",
     "addProductToFavoriteSuccess":"Product added to favorite successfully",
     "removeProductFromFavoriteSuccess":"Product removed from favorite successfully",
     "addProductToCartSuccess":"Product added to cart successfully",
-     "removeProductFromCartSuccess":"Product removed from cart successfully"
+    "removeProductFromCartSuccess":"Product removed from cart successfully",
+    "chooseFrom":"Choose From",
+    "fromCamera":"From Camera",
+    "fromGallery":"From Gallery"
 }

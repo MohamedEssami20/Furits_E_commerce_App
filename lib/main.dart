@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fruits_hub/core/cubit/change_language_cubit.dart/change_language_cubit.dart';
 import 'package:fruits_hub/core/helper/on_generate_routes.dart';
 import 'package:fruits_hub/core/services/custom_bloc_observer.dart';
 import 'package:fruits_hub/core/services/firebase_auth_service.dart';
@@ -36,27 +37,39 @@ class FruitsHub extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => UserCubit(
-        homeRepo: getIt.get<HomeRepo>(),
-      ),
-      child: MaterialApp(
-        theme: ThemeData(
-          fontFamily: 'Cairo',
-          colorScheme: ColorScheme.fromSeed(seedColor: MyColors.kPrimaryColor),
-          scaffoldBackgroundColor: Colors.white,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => UserCubit(
+            homeRepo: getIt.get<HomeRepo>(),
+          ),
         ),
-        localizationsDelegates: const [
-          S.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: S.delegate.supportedLocales,
-        locale: const Locale("en"),
-        onGenerateRoute: onGenerateRoute,
-        initialRoute: SplashView.splashViewRoute,
-        debugShowCheckedModeBanner: false,
+        BlocProvider(
+          create: (context) => ChangeLanguageCubit()..loadSavedLanguage(),
+        ),
+      ],
+      child: BlocBuilder<ChangeLanguageCubit, ChangeLanguageState>(
+        builder: (context, state) {
+          return MaterialApp(
+            theme: ThemeData(
+              fontFamily: 'Cairo',
+              colorScheme:
+                  ColorScheme.fromSeed(seedColor: MyColors.kPrimaryColor),
+              scaffoldBackgroundColor: Colors.white,
+            ),
+            localizationsDelegates: const [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: S.delegate.supportedLocales,
+            locale: state.locale,
+            onGenerateRoute: onGenerateRoute,
+            initialRoute: SplashView.splashViewRoute,
+            debugShowCheckedModeBanner: false,
+          );
+        },
       ),
     );
   }

@@ -7,25 +7,33 @@ import '../../../auth/domain/entity/user_entity.dart';
 
 abstract class HomeRepo {
   // create method that get user data from firebase
-  Stream<Either<Failure, UserEntity>> getUserData();
+  Stream<Either<Failure, UserEntity>> getUserData(
+      {required String genralErrorMessage});
 
   // create method that upload and update user image in firebase
-  Future<Either<Failure, String>> uploadUserImage({required File file});
+  Future<Either<Failure, String>> uploadUserImage(
+      {required File file, required String genralErrorMessage});
 
   // create method that update user name data in firebase;
-  Future<Either<Failure, void>> updateName({required String name});
+  Future<Either<Failure, void>> updateName(
+      {required String name, required String genralErrorMessage});
 
   // create method that update email data in firebase
   Future<Either<Failure, void>> updateEmail(
-      {required String newEmail, required String oldPassword});
+      {required String newEmail,
+      required String oldPassword,
+      required String genralErrorMessage});
 
   // create method that change user password in firebase
   Future<Either<Failure, void>> updatePassword(
-      {required String newPassword, required String oldPassword});
+      {required String newPassword,
+      required String oldPassword,
+      required String genralErrorMessage});
 
   // create method that sign out from firebase
-  Future<Either<Failure, void>> signOut();
-  
+  Future<Either<Failure, void>> signOut({required String genralErrorMessage});
+
   // create method that get user orders from firebase
-  Stream<Either<Failure, List<MyOrdersEntity>>> getUserOrders();
+  Stream<Either<Failure, List<MyOrdersEntity>>> getUserOrders(
+      {required String genralErrorMessage});
 }

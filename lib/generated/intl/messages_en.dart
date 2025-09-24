@@ -73,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "changePasswordDone": MessageLookupByLibrary.simpleMessage(
       "Change Password Done",
     ),
+    "chooseFrom": MessageLookupByLibrary.simpleMessage("Choose From"),
     "choosePaymentMethod": MessageLookupByLibrary.simpleMessage(
       "Choose Payment Method",
     ),
@@ -143,6 +144,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "forgotPasswordText": MessageLookupByLibrary.simpleMessage(
       "Forgot Password?",
     ),
+    "fromCamera": MessageLookupByLibrary.simpleMessage("From Camera"),
+    "fromGallery": MessageLookupByLibrary.simpleMessage("From Gallery"),
     "fullNameHint": MessageLookupByLibrary.simpleMessage("Full Name"),
     "fullNameIsRequired": MessageLookupByLibrary.simpleMessage(
       "Full name is required",
@@ -239,6 +242,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "pickupFromStore": MessageLookupByLibrary.simpleMessage(
       "Pickup From Store",
+    ),
+    "pictureIsChanged": MessageLookupByLibrary.simpleMessage(
+      "Picture is changed successfully",
     ),
     "pleaseEnterConfirmNewPassword": MessageLookupByLibrary.simpleMessage(
       "Please enter confirm new password",

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../../../../core/utils/Widgets/custom_text_form_filed.dart';
 import '../../../domain/entities/edit_user_info_entity.dart';
@@ -59,6 +60,7 @@ class ShowAlertToAddCurrentPassword extends StatelessWidget {
                   );
                   context.read<UserCubit>().updateUserInfo(
                         userInfoEntity: userInfoEntity,
+                        genralErrorMessage: S.of(context).errorMessage,
                       );
                   Navigator.pop(context);
                 }

@@ -1421,6 +1421,16 @@ class S {
     );
   }
 
+  /// `Picture is changed successfully`
+  String get pictureIsChanged {
+    return Intl.message(
+      'Picture is changed successfully',
+      name: 'pictureIsChanged',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Edit`
   String get edit {
     return Intl.message('Edit', name: 'edit', desc: '', args: []);
@@ -1481,6 +1491,26 @@ class S {
     return Intl.message(
       'Product removed from cart successfully',
       name: 'removeProductFromCartSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose From`
+  String get chooseFrom {
+    return Intl.message('Choose From', name: 'chooseFrom', desc: '', args: []);
+  }
+
+  /// `From Camera`
+  String get fromCamera {
+    return Intl.message('From Camera', name: 'fromCamera', desc: '', args: []);
+  }
+
+  /// `From Gallery`
+  String get fromGallery {
+    return Intl.message(
+      'From Gallery',
+      name: 'fromGallery',
       desc: '',
       args: [],
     );

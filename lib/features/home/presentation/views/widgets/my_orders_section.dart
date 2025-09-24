@@ -19,7 +19,9 @@ class MyOrdersSection extends StatefulWidget {
 class _MyOrdersSectionState extends State<MyOrdersSection> {
   @override
   void initState() {
-    context.read<GetUserOrdersCubit>().getUserOrders();
+    context.read<GetUserOrdersCubit>().getUserOrders(
+          genralErrorMessage: S.of(context).errorMessage,
+        );
     super.initState();
   }
 
@@ -58,7 +60,7 @@ class _MyOrdersSectionState extends State<MyOrdersSection> {
                   myOrders: state.ordersList,
                 );
               }
-              return  Text(S.of(context).errorMessage);
+              return Text(S.of(context).errorMessage);
             },
           ),
         ),

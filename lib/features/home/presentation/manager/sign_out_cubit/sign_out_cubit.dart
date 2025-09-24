@@ -11,9 +11,9 @@ class SignOutCubit extends Cubit<SignOutState> {
 
 
   // create methodt that signout user
- Future< void> signOut() async {
+ Future< void> signOut({required String genralErrorMessage}) async {
     emit(SignOutLoading());
-    final result = await homeRepo.signOut();
+    final result = await homeRepo.signOut(genralErrorMessage: genralErrorMessage);
     result.fold(
       (failure) => emit(SignOutFailure(errorMessage: failure.errorMessage)),
       (_) => emit(SignOutSuccess()),

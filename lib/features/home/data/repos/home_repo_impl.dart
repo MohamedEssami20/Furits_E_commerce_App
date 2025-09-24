@@ -13,7 +13,6 @@ import 'package:fruits_hub/features/auth/data/models/user_model.dart';
 
 import 'package:fruits_hub/features/auth/domain/entity/user_entity.dart';
 import 'package:fruits_hub/features/checkout/domain/entities/my_orders_entity/my_orders_entity.dart';
-
 import '../../../../core/utils/backend_endpoints.dart';
 import '../../../checkout/data/models/order_model.dart';
 import '../../domain/entities/edit_user_info_entity.dart';
@@ -25,7 +24,8 @@ class HomeRepoImpl implements HomeRepo {
   final StorageServices storageServices;
   HomeRepoImpl({required this.dataBaseService, required this.storageServices});
   @override
-  Stream<Either<Failure, UserEntity>> getUserData() async* {
+  Stream<Either<Failure, UserEntity>> getUserData(
+      {required String genralErrorMessage}) async* {
     try {
       Stream<Map<String, dynamic>> data = dataBaseService.getStreamData(
         path: BackendEndpoints.addUsersData,
@@ -46,7 +46,7 @@ class HomeRepoImpl implements HomeRepo {
       log("error to get user data 2 = ${e.toString()}");
       yield left(
         ServerFailure(
-          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+          errorMessage: genralErrorMessage,
         ),
       );
     }
@@ -54,7 +54,8 @@ class HomeRepoImpl implements HomeRepo {
 
 // implement uploadUserImage;
   @override
-  Future<Either<Failure, String>> uploadUserImage({required File file}) async {
+  Future<Either<Failure, String>> uploadUserImage(
+      {required File file, required String genralErrorMessage}) async {
     try {
       final String result = await storageServices.addPhotoToStorage(
         file: file,
@@ -83,7 +84,7 @@ class HomeRepoImpl implements HomeRepo {
       log("error to upload image to storage 2 = ${e.toString()}");
       return left(
         ServerFailure(
-          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+          errorMessage: genralErrorMessage,
         ),
       );
     }
@@ -91,7 +92,9 @@ class HomeRepoImpl implements HomeRepo {
 
   @override
   Future<Either<Failure, void>> updateEmail(
-      {required String newEmail, required String oldPassword}) async {
+      {required String newEmail,
+      required String oldPassword,
+      required String genralErrorMessage}) async {
     try {
       await updateEmailandSaveInFireStore(
         EditUserInfoEntity(email: newEmail, oldPassword: oldPassword),
@@ -113,7 +116,7 @@ class HomeRepoImpl implements HomeRepo {
       log("error to update user email 2 = ${e.toString()}");
       return left(
         ServerFailure(
-          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+          errorMessage: genralErrorMessage,
         ),
       );
     }
@@ -140,7 +143,9 @@ class HomeRepoImpl implements HomeRepo {
 
   @override
   Future<Either<Failure, void>> updatePassword(
-      {required String newPassword, required String oldPassword}) async {
+      {required String newPassword,
+      required String oldPassword,
+      required String genralErrorMessage}) async {
     try {
       await firebaseAuthService.reAuth(
         email: firebaseAuthService.getCurrentUserEmail()!,
@@ -156,13 +161,13 @@ class HomeRepoImpl implements HomeRepo {
       return left(ServerFailure(errorMessage: e.message.toString()));
     } catch (e) {
       log("error to update user password 2 = ${e.toString()}");
-      return left(
-          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+      return left(ServerFailure(errorMessage: genralErrorMessage));
     }
   }
 
   @override
-  Future<Either<Failure, void>> signOut() async {
+  Future<Either<Failure, void>> signOut(
+      {required String genralErrorMessage}) async {
     try {
       await firebaseAuthService.signOut();
       return right(null);
@@ -177,14 +182,15 @@ class HomeRepoImpl implements HomeRepo {
       log("error to sign out 2 = ${e.toString()}");
       return left(
         ServerFailure(
-          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+          errorMessage: genralErrorMessage,
         ),
       );
     }
   }
 
   @override
-  Future<Either<Failure, void>> updateName({required String name}) async {
+  Future<Either<Failure, void>> updateName(
+      {required String name, required String genralErrorMessage}) async {
     try {
       await dataBaseService.addData(
         path: BackendEndpoints.addUsersData,
@@ -205,7 +211,8 @@ class HomeRepoImpl implements HomeRepo {
   }
 
   @override
-  Stream<Either<Failure, List<MyOrdersEntity>>> getUserOrders() async* {
+  Stream<Either<Failure, List<MyOrdersEntity>>> getUserOrders(
+      {required String genralErrorMessage}) async* {
     try {
       Stream<List<QueryDocumentSnapshot<Map<String, dynamic>>>> data =
           dataBaseService.getStreamDataWithDocumentId(
@@ -226,8 +233,7 @@ class HomeRepoImpl implements HomeRepo {
       yield left(ServerFailure(errorMessage: e.message.toString()));
     } catch (e) {
       log("error to get user orders 2 = ${e.toString()}");
-      yield left(
-          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+      yield left(ServerFailure(errorMessage: genralErrorMessage));
     }
   }
 }

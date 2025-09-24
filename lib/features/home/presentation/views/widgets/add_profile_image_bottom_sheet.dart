@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
 import 'package:fruits_hub/features/home/presentation/manager/edit_user_info_cubit/user_cubit.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../../core/constant/app_colors.dart';
@@ -29,11 +30,11 @@ class _AddProfileImageBottomSheetState
       listener: (context, state) {
         if (state is EditUserImageSuccess) {
           Navigator.of(context).pop();
-          buildErrorSnackBar(context, "تم التعديل بنجاح");
+          buildErrorSnackBar(context, S.of(context).pictureIsChanged);
         }
         if (state is EditUserImageFailure) {
           Navigator.of(context).pop();
-          buildErrorSnackBar(context, " حدث خطاء حاول مرة اخرى");
+          buildErrorSnackBar(context, S.of(context).errorMessage);
         }
       },
       child: BottomSheet(
@@ -48,7 +49,7 @@ class _AddProfileImageBottomSheetState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'اختر من',
+                S.of(context).chooseFrom,
                 style: TextStyles.semiBold13.copyWith(
                   color: const Color(0xFF1B5E37),
                 ),
@@ -67,7 +68,7 @@ class _AddProfileImageBottomSheetState
                           log("error to pick image from camer = ${error.toString()}");
                         });
                       },
-                      label: const Text('من الكاميرا'),
+                      label: Text(S.of(context).fromCamera),
                       icon: const Icon(
                         Icons.camera_alt_outlined,
                         color: AppColors.lightSecondaryColor,
@@ -83,7 +84,7 @@ class _AddProfileImageBottomSheetState
                           log("error to pick image from gallery = ${error.toString()}");
                         });
                       },
-                      label: const Text('من المجلد'),
+                      label: Text(S.of(context).fromGallery),
                       icon: const Icon(
                         Icons.folder_outlined,
                         color: AppColors.lightSecondaryColor,
@@ -121,5 +122,8 @@ class _AddProfileImageBottomSheetState
   }
 
   // create method that trigger the cubit to update user image
-  void updateImage() => context.read<UserCubit>().updateUserImage(file: image!);
+  void updateImage() => context.read<UserCubit>().updateUserImage(
+        file: image!,
+        genralErrorMessage: S.of(context).errorMessage,
+      );
 }

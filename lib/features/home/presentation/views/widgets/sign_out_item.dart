@@ -27,7 +27,9 @@ class SignOut extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () async {
-                await context.read<SignOutCubit>().signOut();
+                await context
+                    .read<SignOutCubit>()
+                    .signOut(genralErrorMessage: S.of(context).errorMessage);
               },
               child: const SignOutBuilder(),
             )

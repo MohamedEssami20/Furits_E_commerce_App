@@ -73,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "changePasswordDone": MessageLookupByLibrary.simpleMessage(
       "تم تغيير كلمة المرور",
     ),
+    "chooseFrom": MessageLookupByLibrary.simpleMessage("اختر من"),
     "choosePaymentMethod": MessageLookupByLibrary.simpleMessage(
       "اختر طريقة الدفع",
     ),
@@ -145,6 +146,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "forgotPasswordText": MessageLookupByLibrary.simpleMessage(
       "نسيت كلمة المرور؟",
     ),
+    "fromCamera": MessageLookupByLibrary.simpleMessage("من الكاميرا"),
+    "fromGallery": MessageLookupByLibrary.simpleMessage("من المعرض"),
     "fullNameHint": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
     "fullNameIsRequired": MessageLookupByLibrary.simpleMessage(
       "الاسم الكامل مطلوب",
@@ -245,6 +248,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "pickupFromStore": MessageLookupByLibrary.simpleMessage(
       "الاستلام من المتجر",
+    ),
+    "pictureIsChanged": MessageLookupByLibrary.simpleMessage(
+      "تم تغيير الصورة بنجاح",
     ),
     "pleaseEnterCurrentPassword": MessageLookupByLibrary.simpleMessage(
       "يرجى ادخال كلمة المرور الحالية",

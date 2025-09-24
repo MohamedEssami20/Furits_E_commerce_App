@@ -4,6 +4,7 @@ import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
 import 'package:fruits_hub/features/home/presentation/manager/edit_user_info_cubit/user_cubit.dart';
 import 'package:fruits_hub/features/home/presentation/manager/get_user_cubit/get_user_cubit.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/profile_account_and_image.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../../../../../core/helper/get_user_data.dart';
 
@@ -15,7 +16,9 @@ class EditUserIamgeBuilder extends StatelessWidget {
     return BlocConsumer<UserCubit, UserState>(
       builder: (context1, state) {
         if (state is EditUserImageSuccess) {
-          context.read<GetUserCubit>().getUserData();
+          context
+              .read<GetUserCubit>()
+              .getUserData(genralErrorMessage: S.of(context).errorMessage);
           return child;
         } else {
           return ProfileAccountAndImage(
