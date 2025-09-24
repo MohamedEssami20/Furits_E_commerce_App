@@ -11,10 +11,16 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   final ResetPasswordRepo resetPasswordRepo;
 
   Future<void> sendCodeVerification(
-      {required String email, required int code}) async {
+      {required String email,
+      required int code,
+      required String genralErrorMessage,
+      required String emailErrorMessage}) async {
     emit(SendCodeVerificationLoading());
-    final result =
-        await resetPasswordRepo.sendCodeVerification(email: email, code: code);
+    final result = await resetPasswordRepo.sendCodeVerification(
+        email: email,
+        code: code,
+        genralErrorMessage: genralErrorMessage,
+        emailErrorMessage: emailErrorMessage);
     result.fold(
       (l) => emit(
         SendCodeVerificationFailure(errorMessage: l.errorMessage),
@@ -27,10 +33,16 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
 
   // create method that check verification code
   Future<void> checkVerificationCode(
-      {required int code, required String email}) async {
+      {required int code,
+      required String email,
+      required String genralErrorMessage,
+      required String codeErrorMessage}) async {
     emit(CheckVerificationCodeLoading());
-    final result =
-        await resetPasswordRepo.checkVerificationCode(code: code, email: email);
+    final result = await resetPasswordRepo.checkVerificationCode(
+        code: code,
+        email: email,
+        genralErrorMessage: genralErrorMessage,
+        codeErrorMessage: codeErrorMessage);
     result.fold(
       (l) => emit(
         CheckVerificationCodeFailure(errorMessage: l.errorMessage),
@@ -42,9 +54,15 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   }
 
   // create method that send password reset email
-  Future<void> sendPasswordResetEmail({required String email}) async {
+  Future<void> sendPasswordResetEmail(
+      {required String email,
+      required String genralErrorMessage,
+      required String emailErrorMessage}) async {
     emit(SendPasswordResetEmailLoading());
-    final result = await resetPasswordRepo.sendPasswordResetEmail(email: email);
+    final result = await resetPasswordRepo.sendPasswordResetEmail(
+        email: email,
+        genralErrorMessage: genralErrorMessage,
+        emailErrorMessage: emailErrorMessage);
     result.fold(
       (l) => emit(
         SendPasswordResetEmailFailure(errorMessage: l.errorMessage),

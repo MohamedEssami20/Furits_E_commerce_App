@@ -57,9 +57,10 @@ class _ForgetPasswordViewBodyState extends State<ForgetPasswordViewBody> {
             onPressed: () async {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
-                await context
-                    .read<ResetPasswordCubit>()
-                    .sendPasswordResetEmail(email: email);
+                await context.read<ResetPasswordCubit>().sendPasswordResetEmail(
+                    email: email,
+                    genralErrorMessage: S.of(context).errorMessage,
+                    emailErrorMessage: S.of(context).emailNotValid);
               }
             },
           ),

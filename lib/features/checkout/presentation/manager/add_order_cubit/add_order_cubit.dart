@@ -11,9 +11,12 @@ class AddOrderCubit extends Cubit<AddOrderState> {
   final OrdersRepo ordersRepo;
 
   // create method that add order form order repos;
-  Future<void> addOrder({required OrderEntity ordereEntity}) async {
+  Future<void> addOrder(
+      {required OrderEntity ordereEntity,
+      required String genralErrorMessage}) async {
     emit(AddOrderLoading());
-    final result = await ordersRepo.addOrder(ordereEntity: ordereEntity);
+    final result = await ordersRepo.addOrder(
+        ordereEntity: ordereEntity, genralErrorMessage: genralErrorMessage);
     result.fold(
       (error) => emit(
         AddOrderError(message: error.errorMessage),

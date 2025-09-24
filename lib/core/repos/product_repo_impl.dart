@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/core/errors/failure.dart';
+import 'package:fruits_hub/core/errors/firebase_exception.dart';
 import 'package:fruits_hub/core/models/product_model.dart';
 import 'package:fruits_hub/core/repos/product_repos.dart';
 import 'package:fruits_hub/core/services/data_base_service.dart';
@@ -18,7 +19,8 @@ class ProductRepoImpl extends ProductRepos {
 
   FirebaseAuthService firebaseAuthService = FirebaseAuthService();
   @override
-  Future<Either<Failure, List<ProductEntity>>> getBestSellingProduct() async {
+  Future<Either<Failure, List<ProductEntity>>> getBestSellingProduct(
+      {required String genralErrorMessage}) async {
     try {
       List<Map<String, dynamic>> data = await dataBaseService.getData(
         path: BackendEndpoints.getProducts,
@@ -42,13 +44,15 @@ class ProductRepoImpl extends ProductRepos {
           getFinalProducts(favSanpShot, products);
       return right(finalProducts);
     } catch (e) {
-      return left(ServerFailure(
-          errorMessage: "there was an error when fetching products"));
+      return left(
+        ServerFailure(errorMessage: genralErrorMessage),
+      );
     }
   }
 
   @override
-  Future<Either<Failure, List<ProductEntity>>> getProduct() async {
+  Future<Either<Failure, List<ProductEntity>>> getProduct(
+      {required String genralErrorMessage}) async {
     try {
       List<Map<String, dynamic>> data = await dataBaseService.getData(
           path: BackendEndpoints.getProducts) as List<Map<String, dynamic>>;
@@ -69,8 +73,7 @@ class ProductRepoImpl extends ProductRepos {
     } catch (e) {
       log("error to get product = ${e.toString()}");
       return left(
-        ServerFailure(
-            errorMessage: "there was an error when fetching products"),
+        ServerFailure(errorMessage: genralErrorMessage),
       );
     }
   }
@@ -107,7 +110,7 @@ class ProductRepoImpl extends ProductRepos {
 
   @override
   Future<Either<Failure, void>> addToFavorites(
-      {required String productId}) async {
+      {required String productId, required String genralErrorMessage}) async {
     try {
       await dataBaseService.addDataWithDocumentId(
         mainPath: BackendEndpoints.addToFavorites,
@@ -122,16 +125,17 @@ class ProductRepoImpl extends ProductRepos {
     } on FirebaseException catch (e) {
       log("error to add to favorites = ${e.message.toString()}");
       return left(
-          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+        FirebaseExceptionHandler.fromFirebaseException(e),
+      );
     } catch (e) {
       log("error to add to favorites 2 = ${e.toString()}");
-      return left(
-          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+      return left(ServerFailure(errorMessage: genralErrorMessage));
     }
   }
 
   @override
-  Stream<Either<Failure, List<ProductEntity>>> getFavoritesProducts() async* {
+  Stream<Either<Failure, List<ProductEntity>>> getFavoritesProducts(
+      {required String genralErrorMessage}) async* {
     try {
       Stream<List<String>> idsStream = dataBaseService.getStreamStringData(
         mainPath: BackendEndpoints.getFavorites,
@@ -158,17 +162,18 @@ class ProductRepoImpl extends ProductRepos {
       });
     } on FirebaseException catch (e) {
       log("error to get favorites products = ${e.message.toString()}");
-      yield left(ServerFailure(errorMessage: e.message.toString()));
+      yield left(
+        FirebaseExceptionHandler.fromFirebaseException(e),
+      );
     } catch (e) {
       log("error to get favorites products 2 = ${e.toString()}");
-      yield left(
-          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+      yield left(ServerFailure(errorMessage: genralErrorMessage));
     }
   }
 
   @override
   Future<Either<Failure, void>> removeFavoriteProduct(
-      {required String productId}) async {
+      {required String productId, required String genralErrorMessage}) async {
     try {
       await dataBaseService.deleteDataWithDocumentId(
         mainPath: BackendEndpoints.addToFavorites,
@@ -180,11 +185,11 @@ class ProductRepoImpl extends ProductRepos {
     } on FirebaseException catch (e) {
       log("error to remove from favorites = ${e.message.toString()}");
       return left(
-          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+        FirebaseExceptionHandler.fromFirebaseException(e),
+      );
     } catch (e) {
       log("error to remove from favorites 2 = ${e.toString()}");
-      return left(
-          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+      return left(ServerFailure(errorMessage: genralErrorMessage));
     }
   }
 }

@@ -25,7 +25,10 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
   });
   @override
   Future<Either<Failure, void>> sendCodeVerification(
-      {required String email, required int code}) async {
+      {required String email,
+      required int code,
+      required String genralErrorMessage,
+      required String emailErrorMessage}) async {
     final isUserExists = await firestoreService.checkEmailExists(
       path: BackendEndpoints.addUserData,
       email: email,
@@ -66,14 +69,14 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
         log("Exception in reset password repo= ${error.toString()}");
         return left(
           ServerFailure(
-            errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+            errorMessage: genralErrorMessage,
           ),
         );
       }
     } else {
       return Left(
         ServerFailure(
-          errorMessage: "البريد الالكتروني غير موجود",
+          errorMessage: emailErrorMessage,
         ),
       );
     }
@@ -99,7 +102,10 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
 
   @override
   Future<Either<Failure, void>> checkVerificationCode(
-      {required int code, required String email}) async {
+      {required int code,
+      required String email,
+      required String genralErrorMessage,
+      required String codeErrorMessage}) async {
     // fetch code from firestore;
     try {
       final result = await dataBaseService.getData(
@@ -111,7 +117,7 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
       } else {
         return left(
           ServerFailure(
-            errorMessage: "الكود المدخل غير صحيح",
+            errorMessage: codeErrorMessage,
           ),
         );
       }
@@ -119,7 +125,7 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
       log("Exception in check verification code= ${e.toString()}");
       return left(
         ServerFailure(
-          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+          errorMessage: genralErrorMessage,
         ),
       );
     }
@@ -128,7 +134,9 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
   // implementation of send password reset email with firebase;
   @override
   Future<Either<Failure, void>> sendPasswordResetEmail(
-      {required String email}) async {
+      {required String email,
+      required String genralErrorMessage,
+      required String emailErrorMessage}) async {
     try {
       final List<Map<String, dynamic>> user =
           await firestoreService.getData(path: BackendEndpoints.addUserData);
@@ -139,7 +147,7 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
       } else {
         return left(
           ServerFailure(
-            errorMessage: "البريد الالكتروني غير موجود",
+            errorMessage: emailErrorMessage,
           ),
         );
       }
@@ -147,14 +155,14 @@ class ResetPasswordRepoImpl implements ResetPasswordRepo {
       log("Exception in reset password repo= ${error.toString()}");
       return left(
         ServerFailure(
-          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+          errorMessage: genralErrorMessage,
         ),
       );
     } catch (error) {
       log("Exception in reset password repo 22= ${error.toString()}");
       return left(
         ServerFailure(
-          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+          errorMessage: genralErrorMessage,
         ),
       );
     }

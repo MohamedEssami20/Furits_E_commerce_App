@@ -171,6 +171,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "Don\'t have an account?",
     ),
     "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+    "editImageSuccess": MessageLookupByLibrary.simpleMessage(
+      "Image edited successfully",
+    ),
     "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
     "editProfileFailure": MessageLookupByLibrary.simpleMessage(
       "Failed to edit profile",
@@ -202,6 +205,72 @@ class MessageLookup extends MessageLookupByLibrary {
     "expiryDate": MessageLookupByLibrary.simpleMessage("Expiry Date"),
     "favourites": MessageLookupByLibrary.simpleMessage("Favourites"),
     "filter": MessageLookupByLibrary.simpleMessage("Filter"),
+    "firebase_aborted": MessageLookupByLibrary.simpleMessage(
+      "The operation was aborted due to a conflict.",
+    ),
+    "firebase_already_exists": MessageLookupByLibrary.simpleMessage(
+      "The resource already exists.",
+    ),
+    "firebase_bucket_not_found": MessageLookupByLibrary.simpleMessage(
+      "The specified storage bucket was not found.",
+    ),
+    "firebase_cancelled": MessageLookupByLibrary.simpleMessage(
+      "The operation was cancelled.",
+    ),
+    "firebase_data_loss": MessageLookupByLibrary.simpleMessage(
+      "Data loss occurred.",
+    ),
+    "firebase_deadline_exceeded": MessageLookupByLibrary.simpleMessage(
+      "The operation took too long to complete.",
+    ),
+    "firebase_failed_precondition": MessageLookupByLibrary.simpleMessage(
+      "Operation could not be executed in the current system state.",
+    ),
+    "firebase_internal": MessageLookupByLibrary.simpleMessage(
+      "An internal error occurred.",
+    ),
+    "firebase_invalid_argument": MessageLookupByLibrary.simpleMessage(
+      "Invalid argument provided.",
+    ),
+    "firebase_not_found": MessageLookupByLibrary.simpleMessage(
+      "The requested resource was not found.",
+    ),
+    "firebase_object_not_found": MessageLookupByLibrary.simpleMessage(
+      "The requested object was not found in Storage.",
+    ),
+    "firebase_out_of_range": MessageLookupByLibrary.simpleMessage(
+      "The operation attempted to access out of range values.",
+    ),
+    "firebase_permission_denied": MessageLookupByLibrary.simpleMessage(
+      "You do not have permission to perform this action.",
+    ),
+    "firebase_project_not_found": MessageLookupByLibrary.simpleMessage(
+      "The specified Firebase project was not found.",
+    ),
+    "firebase_quota_exceeded": MessageLookupByLibrary.simpleMessage(
+      "Storage quota exceeded.",
+    ),
+    "firebase_resource_exhausted": MessageLookupByLibrary.simpleMessage(
+      "Resource quota exceeded. Try again later.",
+    ),
+    "firebase_unauthenticated": MessageLookupByLibrary.simpleMessage(
+      "You must be authenticated to perform this action.",
+    ),
+    "firebase_unauthorized": MessageLookupByLibrary.simpleMessage(
+      "You are not authorized to access this resource.",
+    ),
+    "firebase_unavailable": MessageLookupByLibrary.simpleMessage(
+      "The service is currently unavailable.",
+    ),
+    "firebase_unexpected_error": MessageLookupByLibrary.simpleMessage(
+      "An unexpected Firebase error occurred.",
+    ),
+    "firebase_unimplemented": MessageLookupByLibrary.simpleMessage(
+      "This operation is not implemented.",
+    ),
+    "firebase_unknown": MessageLookupByLibrary.simpleMessage(
+      "An unknown error occurred.",
+    ),
     "floorNumber": MessageLookupByLibrary.simpleMessage("Floor Number"),
     "forgetPasswordButton": MessageLookupByLibrary.simpleMessage(
       "Forget Password",
@@ -226,6 +295,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "kg": MessageLookupByLibrary.simpleMessage("Kg"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
     "lightMode": MessageLookupByLibrary.simpleMessage("Light Mode"),
+    "logOutSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Logout Successfully",
+    ),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "makeAddressDefault": MessageLookupByLibrary.simpleMessage(
@@ -408,6 +480,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "trackOrder": MessageLookupByLibrary.simpleMessage("Track Order"),
     "verificationCode": MessageLookupByLibrary.simpleMessage(
       "Verification Code",
+    ),
+    "verificationCodeError": MessageLookupByLibrary.simpleMessage(
+      "Please enter a valid verification code.",
     ),
     "verifyCode": MessageLookupByLibrary.simpleMessage("Verify Code"),
     "writeComment": MessageLookupByLibrary.simpleMessage("Write Comment"),

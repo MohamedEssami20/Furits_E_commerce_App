@@ -29,10 +29,10 @@ class EditUserIamgeBuilder extends StatelessWidget {
       listener: (context, state) {
         if (state is EditUserImageSuccess) {
           Navigator.of(context).pop();
-          buildErrorSnackBar(context, "تم التعديل بنجاح");
+          buildErrorSnackBar(context, S.of(context).editImageSuccess);
         }
         if (state is EditUserImageFailure) {
-          buildErrorSnackBar(context, " حدث خطأ حاول مرة اخرى");
+          buildErrorSnackBar(context, S.of(context).errorMessage);
         }
       },
     );

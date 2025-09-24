@@ -4,6 +4,7 @@ import 'package:fruits_hub/core/utils/app_text_style.dart' show TextStyles;
 import 'package:fruits_hub/features/auth/presentation/manager/reset_password_cubit/reset_password_cubit.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/code_input_field.dart';
 import 'package:provider/provider.dart';
+import '../../../../../generated/l10n.dart';
 import 'check_code_verification_builder.dart';
 
 class CheckCodeViewBody extends StatefulWidget {
@@ -88,6 +89,8 @@ class _CheckCodeViewBodyState extends State<CheckCodeViewBody> {
                 context.read<ResetPasswordCubit>().checkVerificationCode(
                       email: widget.email,
                       code: getCurrentCode(),
+                      genralErrorMessage: S.of(context).errorMessage,
+                      codeErrorMessage: S.of(context).verificationCodeError,
                     );
               } else {
                 setState(() {

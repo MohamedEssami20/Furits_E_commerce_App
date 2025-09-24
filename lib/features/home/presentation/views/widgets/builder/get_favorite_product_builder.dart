@@ -5,6 +5,7 @@ import 'package:fruits_hub/features/home/presentation/manager/get_favorite_produ
 import 'package:fruits_hub/features/home/presentation/views/widgets/favorite_products_grid_view.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import '../../../../../../core/helper/localization_helper.dart';
 import '../../../../../../generated/l10n.dart';
 
 class GetFavoriteProductBuilder extends StatefulWidget {
@@ -17,9 +18,12 @@ class GetFavoriteProductBuilder extends StatefulWidget {
 
 class _GetFavoriteProductBuilderState extends State<GetFavoriteProductBuilder> {
   @override
-  void initState() {
-    context.read<GetFavoriteProductCubit>().getFavoriteProducts();
-    super.initState();
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    context
+        .read<GetFavoriteProductCubit>()
+        .getFavoriteProducts(genralErrorMessage: S.of(context).errorMessage);
   }
 
   @override
@@ -48,10 +52,13 @@ class _GetFavoriteProductBuilderState extends State<GetFavoriteProductBuilder> {
             );
           }
         } else if (state is GetFavoriteProductsFailure) {
+          final String errorTranslation =
+              LocalizationHelper.getFirebaseErrorMessage(
+                  context, state.errormessage);
           return SliverToBoxAdapter(
             child: Center(
               child: Text(
-                state.errormessage,
+                errorTranslation,
                 style: const TextStyle(color: Colors.black),
               ),
             ),

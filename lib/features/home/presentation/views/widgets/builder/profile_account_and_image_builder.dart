@@ -19,9 +19,11 @@ class _ProfileAccountAndImageBuilderState
     extends State<ProfileAccountAndImageBuilder> {
   @override
   void initState() {
-    context
-        .read<GetUserCubit>()
-        .getUserData(genralErrorMessage: S.of(context).errorMessage);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context
+          .read<GetUserCubit>()
+          .getUserData(genralErrorMessage: S.of(context).errorMessage);
+    });
     super.initState();
   }
 

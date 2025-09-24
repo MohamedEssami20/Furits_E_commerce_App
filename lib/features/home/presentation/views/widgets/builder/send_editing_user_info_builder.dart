@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../../core/helper/build_error_snackbar.dart';
+import '../../../../../../core/helper/localization_helper.dart';
 import '../../../../../../core/utils/app_text_style.dart' show TextStyles;
 import '../../../../../../generated/l10n.dart';
 import '../../../../../auth/presentation/views/signin_view.dart';
@@ -22,16 +23,19 @@ class SendEditingUserInfoBuilder extends StatelessWidget {
             LoginView.routeName,
             (route) => false,
           );
-          buildErrorSnackBar(context, getUserEditingMessageSuccess(state, context));
+          buildErrorSnackBar(
+              context, getUserEditingMessageSuccess(state, context));
         }
         if (state is EditUserNameSuccess) {
           context.read<ProfileViewCubit>().changeIndex(0);
-          buildErrorSnackBar(context, getUserEditingMessageSuccess(state, context));
+          buildErrorSnackBar(
+              context, getUserEditingMessageSuccess(state, context));
         }
         if (state is EditUserPasswordFailure ||
             state is EditUserEmailFailure ||
             state is EditUserNameFailure) {
-          buildErrorSnackBar(context, getUserEditingMessageError(state));
+          buildErrorSnackBar(
+              context, getUserEditingMessageError(state, context));
         }
       },
       builder: (context, state) {
@@ -62,13 +66,19 @@ String getUserEditingMessageSuccess(UserState state, BuildContext context) {
   }
 }
 
-String getUserEditingMessageError(UserState state) {
+String getUserEditingMessageError(UserState state, BuildContext context) {
   if (state is EditUserPasswordFailure) {
-    return state.errorMessage;
+    final String errorTranslation =
+        LocalizationHelper.getFirebaseErrorMessage(context, state.errorMessage);
+    return errorTranslation;
   } else if (state is EditUserEmailFailure) {
-    return state.errorMessage;
+    final String errorTranslation =
+        LocalizationHelper.getFirebaseErrorMessage(context, state.errorMessage);
+    return errorTranslation;
   } else if (state is EditUserNameFailure) {
-    return state.errorMessage;
+    final String errorTranslation =
+        LocalizationHelper.getFirebaseErrorMessage(context, state.errorMessage);
+    return errorTranslation;
   } else {
     return "";
   }

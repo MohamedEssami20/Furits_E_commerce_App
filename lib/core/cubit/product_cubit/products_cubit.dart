@@ -13,10 +13,10 @@ class ProductsCubit extends Cubit<ProductsState> {
   final ProductRepos productRepos;
   int resultOfProduct = 0;
   // create method to get products;
-  Future<void> getProducts() async {
+  Future<void> getProducts({required String genralErrorMessage}) async {
     emit(ProductsLoading());
     Either<Failure, List<ProductEntity>> result =
-        await productRepos.getProduct();
+        await productRepos.getProduct(genralErrorMessage: genralErrorMessage);
     result.fold(
       (failure) => emit(ProductsFailure(errormessage: failure.errorMessage)),
       (products) => emit(ProductsSuccess(products: products)),
@@ -24,10 +24,11 @@ class ProductsCubit extends Cubit<ProductsState> {
   }
 
   //create metod to get best selling products
-  Future<void> getBestSellingProducts() async {
+  Future<void> getBestSellingProducts(
+      {required String genralErrorMessage}) async {
     emit(ProductsLoading());
-    Either<Failure, List<ProductEntity>> result =
-        await productRepos.getBestSellingProduct();
+    Either<Failure, List<ProductEntity>> result = await productRepos
+        .getBestSellingProduct(genralErrorMessage: genralErrorMessage);
     result.fold(
       (failure) => emit(ProductsFailure(errormessage: failure.errorMessage)),
       (products) {

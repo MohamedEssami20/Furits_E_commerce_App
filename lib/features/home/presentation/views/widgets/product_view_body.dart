@@ -18,9 +18,11 @@ class ProductViewBody extends StatefulWidget {
 
 class _ProductViewBodyState extends State<ProductViewBody> {
   @override
-  void initState() {
-    context.read<ProductsCubit>().getProducts();
-    super.initState();
+  void didChangeDependencies() {
+    context
+        .read<ProductsCubit>()
+        .getProducts(genralErrorMessage: S.of(context).errorMessage);
+    super.didChangeDependencies();
   }
 
   @override

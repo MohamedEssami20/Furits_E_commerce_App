@@ -102,13 +102,13 @@ class FruitsItem extends StatelessWidget {
               widget: IconButton(
                 onPressed: () {
                   if (isFavorite == false) {
-                    context
-                        .read<FavoriteProductsCubit>()
-                        .addToFavorite(productId: product.id);
+                    context.read<FavoriteProductsCubit>().addToFavorite(
+                        productId: product.id,
+                        genralErrorMessage: S.of(context).errorMessage);
                   } else if (isFavorite == true) {
-                    context
-                        .read<FavoriteProductsCubit>()
-                        .removeFavoriteProduct(productId: product.id);
+                    context.read<FavoriteProductsCubit>().removeFavoriteProduct(
+                        productId: product.id,
+                        genralErrorMessage: S.of(context).errorMessage);
                   }
                 },
                 icon: Icon(

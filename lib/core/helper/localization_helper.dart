@@ -48,4 +48,53 @@ class LocalizationHelper {
     return _appleErrorMap[messageKey]?.call(context) ??
         S.of(context).apple_unknown;
   }
+
+  // create static map that get tarnslation of firebase exceptions;
+  static final Map<String, String Function(BuildContext)> _firebaseErrorMap = {
+    // Firestore specific errors
+    'firebase_cancelled': (context) => S.of(context).firebase_cancelled,
+    'firebase_unknown': (context) => S.of(context).firebase_unknown,
+    'firebase_invalid_argument': (context) =>
+        S.of(context).firebase_invalid_argument,
+    'firebase_deadline_exceeded': (context) =>
+        S.of(context).firebase_deadline_exceeded,
+    'firebase_not_found': (context) => S.of(context).firebase_not_found,
+    'firebase_already_exists': (context) =>
+        S.of(context).firebase_already_exists,
+    'firebase_permission_denied': (context) =>
+        S.of(context).firebase_permission_denied,
+    'firebase_resource_exhausted': (context) =>
+        S.of(context).firebase_resource_exhausted,
+    'firebase_failed_precondition': (context) =>
+        S.of(context).firebase_failed_precondition,
+    'firebase_aborted': (context) => S.of(context).firebase_aborted,
+    'firebase_out_of_range': (context) => S.of(context).firebase_out_of_range,
+    'firebase_unimplemented': (context) => S.of(context).firebase_unimplemented,
+    'firebase_internal': (context) => S.of(context).firebase_internal,
+    'firebase_unavailable': (context) => S.of(context).firebase_unavailable,
+    'firebase_data_loss': (context) => S.of(context).firebase_data_loss,
+    'firebase_unauthenticated': (context) =>
+        S.of(context).firebase_unauthenticated,
+
+    // Storage errors
+    'firebase_object_not_found': (context) =>
+        S.of(context).firebase_object_not_found,
+    'firebase_bucket_not_found': (context) =>
+        S.of(context).firebase_bucket_not_found,
+    'firebase_project_not_found': (context) =>
+        S.of(context).firebase_project_not_found,
+    'firebase_quota_exceeded': (context) =>
+        S.of(context).firebase_quota_exceeded,
+    'firebase_unauthorized': (context) => S.of(context).firebase_unauthorized,
+
+    // Default
+    'firebase_unexpected_error': (context) =>
+        S.of(context).firebase_unexpected_error,
+  };
+
+  static String getFirebaseErrorMessage(
+      BuildContext context, String messageKey) {
+    return _firebaseErrorMap[messageKey]?.call(context) ??
+        S.of(context).firebase_unexpected_error;
+  }
 }

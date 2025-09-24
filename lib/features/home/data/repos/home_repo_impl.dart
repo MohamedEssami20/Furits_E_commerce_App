@@ -6,6 +6,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_hub/core/errors/failure.dart';
 import 'package:fruits_hub/core/errors/firebase_auth_exceptions.dart';
+import 'package:fruits_hub/core/errors/firebase_exception.dart';
 import 'package:fruits_hub/core/services/data_base_service.dart';
 import 'package:fruits_hub/core/services/firebase_auth_service.dart';
 import 'package:fruits_hub/core/services/storage_services.dart';
@@ -38,9 +39,7 @@ class HomeRepoImpl implements HomeRepo {
     } on FirebaseException catch (e) {
       log("error to get user data 1 = ${e.message.toString()}");
       yield left(
-        ServerFailure(
-          errorMessage: e.message.toString(),
-        ),
+        FirebaseExceptionHandler.fromFirebaseException(e),
       );
     } catch (e) {
       log("error to get user data 2 = ${e.toString()}");
@@ -76,9 +75,7 @@ class HomeRepoImpl implements HomeRepo {
     } on FirebaseException catch (e) {
       log("error to upload image to storage = ${e.message.toString()}");
       return left(
-        ServerFailure(
-          errorMessage: e.message.toString(),
-        ),
+        FirebaseExceptionHandler.fromFirebaseException(e),
       );
     } catch (e) {
       log("error to upload image to storage 2 = ${e.toString()}");
@@ -107,11 +104,7 @@ class HomeRepoImpl implements HomeRepo {
       );
     } on FirebaseException catch (e) {
       log("error to update user email = ${e.message.toString()}");
-      return left(
-        ServerFailure(
-          errorMessage: e.message.toString(),
-        ),
-      );
+      return left(FirebaseExceptionHandler.fromFirebaseException(e));
     } catch (e) {
       log("error to update user email 2 = ${e.toString()}");
       return left(
@@ -158,7 +151,7 @@ class HomeRepoImpl implements HomeRepo {
       return left(FirebaseAuthErrorHandler.fromFirebaseAuthException(e));
     } on FirebaseException catch (e) {
       log("error to update user password = ${e.message.toString()}");
-      return left(ServerFailure(errorMessage: e.message.toString()));
+      return left(FirebaseExceptionHandler.fromFirebaseException(e));
     } catch (e) {
       log("error to update user password 2 = ${e.toString()}");
       return left(ServerFailure(errorMessage: genralErrorMessage));
@@ -173,11 +166,7 @@ class HomeRepoImpl implements HomeRepo {
       return right(null);
     } on FirebaseException catch (e) {
       log("error to sign out = ${e.toString()}");
-      return left(
-        ServerFailure(
-          errorMessage: e.message.toString(),
-        ),
-      );
+      return left(FirebaseExceptionHandler.fromFirebaseException(e));
     } catch (e) {
       log("error to sign out 2 = ${e.toString()}");
       return left(
@@ -202,11 +191,10 @@ class HomeRepoImpl implements HomeRepo {
       return right(null);
     } on FirebaseException catch (e) {
       log("error to update user name data = ${e.message.toString()}");
-      return left(ServerFailure(errorMessage: e.message.toString()));
+      return left(FirebaseExceptionHandler.fromFirebaseException(e));
     } catch (e) {
       log("error to update user name data 2 = ${e.toString()}");
-      return left(
-          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+      return left(ServerFailure(errorMessage: genralErrorMessage));
     }
   }
 
@@ -230,7 +218,7 @@ class HomeRepoImpl implements HomeRepo {
       }
     } on FirebaseException catch (e) {
       log("error to get user orders = ${e.message.toString()}");
-      yield left(ServerFailure(errorMessage: e.message.toString()));
+      yield left(FirebaseExceptionHandler.fromFirebaseException(e));
     } catch (e) {
       log("error to get user orders 2 = ${e.toString()}");
       yield left(ServerFailure(errorMessage: genralErrorMessage));

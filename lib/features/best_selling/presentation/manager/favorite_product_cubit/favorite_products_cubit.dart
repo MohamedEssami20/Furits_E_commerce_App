@@ -28,10 +28,12 @@ class FavoriteProductsCubit extends Cubit<FavoriteProductsState> {
   }
 
   // create methodt to add product to favorite
-  Future<void> addToFavorite({required String productId}) async {
+  Future<void> addToFavorite(
+      {required String productId, required String genralErrorMessage}) async {
     currentProductId = productId;
     emit(AddFavoriteProductsLoading(productId: productId));
-    final result = await productRepos.addToFavorites(productId: productId);
+    final result = await productRepos.addToFavorites(
+        productId: productId, genralErrorMessage: genralErrorMessage);
     result.fold(
       (l) => emit(
         AddFavoriteProductsFailure(errormessage: l.errorMessage),
@@ -46,11 +48,12 @@ class FavoriteProductsCubit extends Cubit<FavoriteProductsState> {
   }
 
   // create methodt that remove favorite product;
-  Future<void> removeFavoriteProduct({required String productId}) async {
+  Future<void> removeFavoriteProduct(
+      {required String productId, required String genralErrorMessage}) async {
     currentProductId = productId;
     emit(RemoveFavoriteProductLoading(productId: productId));
-    final result =
-        await productRepos.removeFavoriteProduct(productId: productId);
+    final result = await productRepos.removeFavoriteProduct(
+        productId: productId, genralErrorMessage: genralErrorMessage);
     result.fold(
       (l) => emit(RemoveFavoriteProductError(errorMessage: l.errorMessage)),
       (r) {

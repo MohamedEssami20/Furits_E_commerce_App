@@ -169,6 +169,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage("لا تمتلك حساب؟"),
     "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
+    "editImageSuccess": MessageLookupByLibrary.simpleMessage(
+      "تم تعديل الصورة بنجاح",
+    ),
     "editProfile": MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
     "editProfileFailure": MessageLookupByLibrary.simpleMessage(
       "حدث خطأ اثناء تعديل الملف الشخصي, يرجى المحاولة مرة اخرى",
@@ -202,6 +205,70 @@ class MessageLookup extends MessageLookupByLibrary {
     "expiryDate": MessageLookupByLibrary.simpleMessage("تاريخ الانتهاء"),
     "favourites": MessageLookupByLibrary.simpleMessage("المفضلة"),
     "filter": MessageLookupByLibrary.simpleMessage("تصفية"),
+    "firebase_aborted": MessageLookupByLibrary.simpleMessage(
+      "تم إيقاف العملية بسبب تعارض.",
+    ),
+    "firebase_already_exists": MessageLookupByLibrary.simpleMessage(
+      "المورد موجود بالفعل.",
+    ),
+    "firebase_bucket_not_found": MessageLookupByLibrary.simpleMessage(
+      "لم يتم العثور على حاوية التخزين المحددة.",
+    ),
+    "firebase_cancelled": MessageLookupByLibrary.simpleMessage(
+      "تم إلغاء العملية.",
+    ),
+    "firebase_data_loss": MessageLookupByLibrary.simpleMessage(
+      "حدث فقدان للبيانات.",
+    ),
+    "firebase_deadline_exceeded": MessageLookupByLibrary.simpleMessage(
+      "استغرقت العملية وقتًا طويلاً جدًا.",
+    ),
+    "firebase_failed_precondition": MessageLookupByLibrary.simpleMessage(
+      "لا يمكن تنفيذ العملية في الحالة الحالية للنظام.",
+    ),
+    "firebase_internal": MessageLookupByLibrary.simpleMessage("حدث خطأ داخلي."),
+    "firebase_invalid_argument": MessageLookupByLibrary.simpleMessage(
+      "تم تمرير وسيط غير صالح.",
+    ),
+    "firebase_not_found": MessageLookupByLibrary.simpleMessage(
+      "المورد المطلوب غير موجود.",
+    ),
+    "firebase_object_not_found": MessageLookupByLibrary.simpleMessage(
+      "الكائن المطلوب غير موجود في التخزين.",
+    ),
+    "firebase_out_of_range": MessageLookupByLibrary.simpleMessage(
+      "حاولت العملية الوصول إلى قيم خارج النطاق.",
+    ),
+    "firebase_permission_denied": MessageLookupByLibrary.simpleMessage(
+      "ليست لديك صلاحية لتنفيذ هذا الإجراء.",
+    ),
+    "firebase_project_not_found": MessageLookupByLibrary.simpleMessage(
+      "لم يتم العثور على مشروع Firebase المحدد.",
+    ),
+    "firebase_quota_exceeded": MessageLookupByLibrary.simpleMessage(
+      "تم تجاوز حصة التخزين.",
+    ),
+    "firebase_resource_exhausted": MessageLookupByLibrary.simpleMessage(
+      "تم تجاوز الحصة المسموح بها. حاول لاحقًا.",
+    ),
+    "firebase_unauthenticated": MessageLookupByLibrary.simpleMessage(
+      "يجب أن تسجل الدخول لتنفيذ هذا الإجراء.",
+    ),
+    "firebase_unauthorized": MessageLookupByLibrary.simpleMessage(
+      "أنت غير مصرح لك بالوصول إلى هذا المورد.",
+    ),
+    "firebase_unavailable": MessageLookupByLibrary.simpleMessage(
+      "الخدمة غير متاحة حاليًا.",
+    ),
+    "firebase_unexpected_error": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ غير متوقع في Firebase.",
+    ),
+    "firebase_unimplemented": MessageLookupByLibrary.simpleMessage(
+      "هذه العملية غير مدعومة.",
+    ),
+    "firebase_unknown": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ غير معروف.",
+    ),
     "floorNumber": MessageLookupByLibrary.simpleMessage("رقم الطابق"),
     "forgetPasswordButton": MessageLookupByLibrary.simpleMessage(
       "نسيت كلمة المرور",
@@ -228,6 +295,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "kg": MessageLookupByLibrary.simpleMessage("كيلو"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
     "lightMode": MessageLookupByLibrary.simpleMessage("الوضع الفاتح"),
+    "logOutSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم تسجيل الخروج بنجاح",
+    ),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "makeAddressDefault": MessageLookupByLibrary.simpleMessage(
@@ -408,6 +478,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي"),
     "trackOrder": MessageLookupByLibrary.simpleMessage("تتبع الطلب"),
     "verificationCode": MessageLookupByLibrary.simpleMessage("رمز التحقق"),
+    "verificationCodeError": MessageLookupByLibrary.simpleMessage(
+      "يرجى التحقق من رمز التحقق المدخل.",
+    ),
     "verifyCode": MessageLookupByLibrary.simpleMessage("تحقق من الرمز"),
     "writeComment": MessageLookupByLibrary.simpleMessage("اكتب تعليقًا"),
     "youHave": MessageLookupByLibrary.simpleMessage("لديك"),

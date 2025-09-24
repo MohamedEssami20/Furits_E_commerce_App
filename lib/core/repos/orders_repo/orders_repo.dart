@@ -6,5 +6,6 @@ import '../../../features/checkout/domain/entities/order_entity.dart'
 
 abstract class OrdersRepo {
   // create method that add order to backend;
-  Future<Either<Failure, void>> addOrder({required OrderEntity ordereEntity});
+  Future<Either<Failure, void>> addOrder(
+      {required OrderEntity ordereEntity, required String genralErrorMessage});
 }

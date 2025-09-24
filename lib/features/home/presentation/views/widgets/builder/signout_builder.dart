@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fruits_hub/features/auth/presentation/views/signin_view.dart' show LoginView;
+import 'package:fruits_hub/features/auth/presentation/views/signin_view.dart'
+    show LoginView;
+import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../../../../../core/helper/build_error_snackbar.dart';
 import '../../../../../../core/utils/assets.dart';
@@ -35,11 +37,11 @@ class SignOutBuilder extends StatelessWidget {
             LoginView.routeName,
             (route) => false,
           );
-          buildErrorSnackBar(context, "تم تسجيل الخروج بنجاح");
+          buildErrorSnackBar(context, S.of(context).logOutSuccessfully);
         }
 
         if (state is SignOutFailure) {
-          buildErrorSnackBar(context, "حدث خطاء حاول مرة اخرى");
+          buildErrorSnackBar(context, state.errorMessage);
         }
       },
     );

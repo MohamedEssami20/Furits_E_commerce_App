@@ -906,6 +906,16 @@ class S {
     return Intl.message('Logout', name: 'logout', desc: '', args: []);
   }
 
+  /// `Logout Successfully`
+  String get logOutSuccessfully {
+    return Intl.message(
+      'Logout Successfully',
+      name: 'logOutSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Current Password`
   String get currentPassword {
     return Intl.message(
@@ -1331,6 +1341,16 @@ class S {
     );
   }
 
+  /// `Image edited successfully`
+  String get editImageSuccess {
+    return Intl.message(
+      'Image edited successfully',
+      name: 'editImageSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `when you change your email, we will send you an email to verify your new email address`
   String get noticOfEditEmail {
     return Intl.message(
@@ -1731,6 +1751,236 @@ class S {
     return Intl.message(
       'An unknown error occurred with Apple sign in.',
       name: 'apple_unknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The operation was cancelled.`
+  String get firebase_cancelled {
+    return Intl.message(
+      'The operation was cancelled.',
+      name: 'firebase_cancelled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unknown error occurred.`
+  String get firebase_unknown {
+    return Intl.message(
+      'An unknown error occurred.',
+      name: 'firebase_unknown',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid argument provided.`
+  String get firebase_invalid_argument {
+    return Intl.message(
+      'Invalid argument provided.',
+      name: 'firebase_invalid_argument',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The operation took too long to complete.`
+  String get firebase_deadline_exceeded {
+    return Intl.message(
+      'The operation took too long to complete.',
+      name: 'firebase_deadline_exceeded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The requested resource was not found.`
+  String get firebase_not_found {
+    return Intl.message(
+      'The requested resource was not found.',
+      name: 'firebase_not_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The resource already exists.`
+  String get firebase_already_exists {
+    return Intl.message(
+      'The resource already exists.',
+      name: 'firebase_already_exists',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You do not have permission to perform this action.`
+  String get firebase_permission_denied {
+    return Intl.message(
+      'You do not have permission to perform this action.',
+      name: 'firebase_permission_denied',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resource quota exceeded. Try again later.`
+  String get firebase_resource_exhausted {
+    return Intl.message(
+      'Resource quota exceeded. Try again later.',
+      name: 'firebase_resource_exhausted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Operation could not be executed in the current system state.`
+  String get firebase_failed_precondition {
+    return Intl.message(
+      'Operation could not be executed in the current system state.',
+      name: 'firebase_failed_precondition',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The operation was aborted due to a conflict.`
+  String get firebase_aborted {
+    return Intl.message(
+      'The operation was aborted due to a conflict.',
+      name: 'firebase_aborted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The operation attempted to access out of range values.`
+  String get firebase_out_of_range {
+    return Intl.message(
+      'The operation attempted to access out of range values.',
+      name: 'firebase_out_of_range',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This operation is not implemented.`
+  String get firebase_unimplemented {
+    return Intl.message(
+      'This operation is not implemented.',
+      name: 'firebase_unimplemented',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An internal error occurred.`
+  String get firebase_internal {
+    return Intl.message(
+      'An internal error occurred.',
+      name: 'firebase_internal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The service is currently unavailable.`
+  String get firebase_unavailable {
+    return Intl.message(
+      'The service is currently unavailable.',
+      name: 'firebase_unavailable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data loss occurred.`
+  String get firebase_data_loss {
+    return Intl.message(
+      'Data loss occurred.',
+      name: 'firebase_data_loss',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You must be authenticated to perform this action.`
+  String get firebase_unauthenticated {
+    return Intl.message(
+      'You must be authenticated to perform this action.',
+      name: 'firebase_unauthenticated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The requested object was not found in Storage.`
+  String get firebase_object_not_found {
+    return Intl.message(
+      'The requested object was not found in Storage.',
+      name: 'firebase_object_not_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The specified storage bucket was not found.`
+  String get firebase_bucket_not_found {
+    return Intl.message(
+      'The specified storage bucket was not found.',
+      name: 'firebase_bucket_not_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The specified Firebase project was not found.`
+  String get firebase_project_not_found {
+    return Intl.message(
+      'The specified Firebase project was not found.',
+      name: 'firebase_project_not_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Storage quota exceeded.`
+  String get firebase_quota_exceeded {
+    return Intl.message(
+      'Storage quota exceeded.',
+      name: 'firebase_quota_exceeded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are not authorized to access this resource.`
+  String get firebase_unauthorized {
+    return Intl.message(
+      'You are not authorized to access this resource.',
+      name: 'firebase_unauthorized',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unexpected Firebase error occurred.`
+  String get firebase_unexpected_error {
+    return Intl.message(
+      'An unexpected Firebase error occurred.',
+      name: 'firebase_unexpected_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid verification code.`
+  String get verificationCodeError {
+    return Intl.message(
+      'Please enter a valid verification code.',
+      name: 'verificationCodeError',
       desc: '',
       args: [],
     );

@@ -18,11 +18,11 @@ class MyOrdersSection extends StatefulWidget {
 
 class _MyOrdersSectionState extends State<MyOrdersSection> {
   @override
-  void initState() {
+  void didChangeDependencies() {
     context.read<GetUserOrdersCubit>().getUserOrders(
           genralErrorMessage: S.of(context).errorMessage,
         );
-    super.initState();
+    super.didChangeDependencies();
   }
 
   @override

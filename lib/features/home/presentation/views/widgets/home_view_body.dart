@@ -5,6 +5,7 @@ import 'package:fruits_hub/features/best_selling/presentation/views/widgets/best
 import 'package:fruits_hub/features/best_selling/presentation/views/widgets/best_selling_view_body.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/custom_home_appbar.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/featured_item_list_view.dart';
+import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../../../../core/utils/Widgets/custom_search_text_field.dart';
 
@@ -18,10 +19,13 @@ class HomeViewBody extends StatefulWidget {
 }
 
 class _HomeViewBodyState extends State<HomeViewBody> {
+
   @override
-  void initState() {
-    context.read<ProductsCubit>().getProducts();
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    context
+        .read<ProductsCubit>()
+        .getProducts(genralErrorMessage: S.of(context).errorMessage);
   }
 
   @override

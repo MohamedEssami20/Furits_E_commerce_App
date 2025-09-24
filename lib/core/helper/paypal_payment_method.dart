@@ -12,33 +12,35 @@ import '../../generated/l10n.dart';
 import 'build_error_snackbar.dart';
 
 void paymentMethod(OrderEntity orderEntity, BuildContext context) {
-    final OrderEntity orderEntity = context.read<OrderEntity>();
-    final payPalPaymentEntity = PayPalPaymentEntity.fromEntity(orderEntity);
-    var addOrderCubit = context.read<AddOrderCubit>();
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (BuildContext context) => PaypalCheckoutView(
-        sandboxMode: true,
-        clientId: AppKeys.kPayPalClientId,
-        secretKey: AppKeys.kPayPalClientSecret,
-        transactions: [
-          payPalPaymentEntity.toJson(),
-        ],
-        note: "Contact us for any questions on your order.",
-        onSuccess: (Map parms) async {
-          Navigator.pop(context);
-          addOrderCubit.addOrder(ordereEntity: orderEntity);
-          buildErrorSnackBar(context, S.of(context).paymentSuccess);
-        },
-        onError: (error) {
-          Navigator.pop(context);
-          log("payment error= ${error.toString()}");
-          buildErrorSnackBar(context, S.of(context).errorMessageOfPayment);
-        },
-        onCancel: () {
-          log("payment canceled");
-          Navigator.pop(context);
-          buildErrorSnackBar(context, S.of(context).paymentCaceled);
-        },
-      ),
-    ));
-  }
+  final OrderEntity orderEntity = context.read<OrderEntity>();
+  final payPalPaymentEntity = PayPalPaymentEntity.fromEntity(orderEntity);
+  var addOrderCubit = context.read<AddOrderCubit>();
+  Navigator.of(context).push(MaterialPageRoute(
+    builder: (BuildContext context) => PaypalCheckoutView(
+      sandboxMode: true,
+      clientId: AppKeys.kPayPalClientId,
+      secretKey: AppKeys.kPayPalClientSecret,
+      transactions: [
+        payPalPaymentEntity.toJson(),
+      ],
+      note: "Contact us for any questions on your order.",
+      onSuccess: (Map parms) async {
+        Navigator.pop(context);
+        addOrderCubit.addOrder(
+            ordereEntity: orderEntity,
+            genralErrorMessage: S.of(context).errorMessageOfPayment);
+        buildErrorSnackBar(context, S.of(context).paymentSuccess);
+      },
+      onError: (error) {
+        Navigator.pop(context);
+        log("payment error= ${error.toString()}");
+        buildErrorSnackBar(context, S.of(context).errorMessageOfPayment);
+      },
+      onCancel: () {
+        log("payment canceled");
+        Navigator.pop(context);
+        buildErrorSnackBar(context, S.of(context).paymentCaceled);
+      },
+    ),
+  ));
+}

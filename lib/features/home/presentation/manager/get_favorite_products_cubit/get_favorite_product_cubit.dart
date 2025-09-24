@@ -17,9 +17,11 @@ class GetFavoriteProductCubit extends Cubit<GetFavoriteProductState> {
   List<ProductEntity> favoriteProducts = [];
 
   // create method that get favorite products as stream;
-  void getFavoriteProducts() {
+  void getFavoriteProducts({required String genralErrorMessage}) {
     emit(GetFavoriteProductsLoading());
-    streamSubscription = productRepos.getFavoritesProducts().listen((event) {
+    streamSubscription = productRepos
+        .getFavoritesProducts(genralErrorMessage: genralErrorMessage)
+        .listen((event) {
       log("new event is work = $event");
       event.fold(
         (l) => emit(
@@ -35,7 +37,6 @@ class GetFavoriteProductCubit extends Cubit<GetFavoriteProductState> {
       );
     });
   }
-
 
   @override
   Future<void> close() {

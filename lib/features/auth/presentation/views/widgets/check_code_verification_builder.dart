@@ -4,6 +4,7 @@ import 'package:fruits_hub/core/utils/app_text_style.dart' show TextStyles;
 import 'package:fruits_hub/features/auth/presentation/views/create_new_pssword_view.dart';
 
 import '../../../../../core/helper/build_error_snackbar.dart';
+import '../../../../../generated/l10n.dart';
 import '../../manager/reset_password_cubit/reset_password_cubit.dart';
 import 'custom_verification_button.dart';
 
@@ -23,7 +24,7 @@ class CheckCodeVerificationBuilder extends StatelessWidget {
                   color: Colors.white,
                 )
               : Text(
-                  "التحقق من الرمز",
+                  S.of(context).verifyCode,
                   style: TextStyles.bold16.copyWith(color: Colors.white),
                 ),
         );

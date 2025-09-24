@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:fruits_hub/core/errors/failure.dart';
+import 'package:fruits_hub/core/errors/firebase_exception.dart';
 import 'package:fruits_hub/core/services/data_base_service.dart';
 import 'package:fruits_hub/core/services/firebase_auth_service.dart';
 import 'package:fruits_hub/core/utils/backend_endpoints.dart';
@@ -20,7 +21,8 @@ class OrdersRepoImpl implements OrdersRepo {
   FirebaseAuthService firebaseAuthService = FirebaseAuthService();
   @override
   Future<Either<Failure, void>> addOrder(
-      {required OrderEntity ordereEntity}) async {
+      {required OrderEntity ordereEntity,
+      required String genralErrorMessage}) async {
     try {
       OrderModel orderModel = OrderModel.fromEntity(ordereEntity);
       await dataBaseService.addDataWithDocumentId(
@@ -33,11 +35,10 @@ class OrdersRepoImpl implements OrdersRepo {
       return const Right(null);
     } on FirebaseException catch (e) {
       log("error to add order = ${e.message.toString()}");
-      return left(ServerFailure(errorMessage: e.message.toString()));
+      return left(FirebaseExceptionHandler.fromFirebaseException(e));
     } catch (e) {
       log("error to add order 2 = ${e.toString()}");
-      return left(
-          ServerFailure(errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى"));
+      return left(ServerFailure(errorMessage: genralErrorMessage));
     }
   }
 }
