@@ -4,8 +4,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_hub/core/constant/constant.dart';
-import 'package:fruits_hub/core/errors/custom_exception.dart';
-
+import 'package:fruits_hub/core/errors/apple_auth_exception.dart';
 import 'package:fruits_hub/core/errors/failure.dart';
 import 'package:fruits_hub/core/errors/firebase_auth_exceptions.dart';
 import 'package:fruits_hub/core/services/data_base_service.dart';
@@ -15,6 +14,7 @@ import 'package:fruits_hub/core/utils/backend_endpoints.dart';
 import 'package:fruits_hub/features/auth/data/models/user_model.dart';
 import 'package:fruits_hub/features/auth/domain/entity/user_entity.dart';
 import 'package:fruits_hub/features/auth/domain/repos/auth_repo.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class AuthRepoImpl extends AuthRepo {
   final FirebaseAuthService firebaseAuthService;
@@ -25,7 +25,8 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
       {required String email,
       required String password,
-      required String name}) async {
+      required String name,
+      required String genralErrorMessage}) async {
     User? user;
     try {
       user = await firebaseAuthService.createUserWithEmailAndPassword(
@@ -49,17 +50,17 @@ class AuthRepoImpl extends AuthRepo {
       return right(
         userEntity,
       );
-    } on CustomException catch (error) {
+    } on FirebaseAuthException catch (error) {
       await deleteUser(user);
       return left(
-        ServerFailure(errorMessage: error.errorMessage),
+        FirebaseAuthErrorHandler.fromFirebaseAuthException(error),
       );
     } catch (error) {
       deleteUser(user);
       log("Exception in auth repo impl= ${error.toString()}");
       return left(
         ServerFailure(
-          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+          errorMessage: genralErrorMessage,
         ),
       );
     }
@@ -73,7 +74,9 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<Either<Failure, UserEntity>> signInWithEmailAndPassword(
-      {required String email, required String password}) async {
+      {required String email,
+      required String password,
+      required String genralErrorMessage}) async {
     try {
       User user = await firebaseAuthService.signInWithEmailAndPassword(
           email: email, password: password);
@@ -92,14 +95,15 @@ class AuthRepoImpl extends AuthRepo {
       log("Exception in auth repo impl signin= $error");
       return left(
         ServerFailure(
-          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+          errorMessage: genralErrorMessage,
         ),
       );
     }
   }
 
   @override
-  Future<Either<Failure, UserEntity>> signInWithGoogle() async {
+  Future<Either<Failure, UserEntity>> signInWithGoogle(
+      {required String genralErrorMessage}) async {
     User? user;
     try {
       user = await firebaseAuthService.signInWithGoogle();
@@ -115,62 +119,64 @@ class AuthRepoImpl extends AuthRepo {
       return right(
         UserModel.fromFirebaseUser(user: user),
       );
-    } on CustomException catch (error) {
+    } on FirebaseAuthException catch (error) {
       deleteUser(user);
       return left(
-        ServerFailure(errorMessage: error.errorMessage),
+        FirebaseAuthErrorHandler.fromFirebaseAuthException(error),
       );
     } catch (error) {
       log("Exception in auth repo impl signin= ${error.toString()}");
       return left(
         ServerFailure(
-          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+          errorMessage: genralErrorMessage,
         ),
       );
     }
   }
 
   @override
-  Future<Either<Failure, UserEntity>> signInWithFacebook() async {
+  Future<Either<Failure, UserEntity>> signInWithFacebook(
+      {required String genralErrorMessage}) async {
     User? user;
     try {
       user = await firebaseAuthService.signInWithFacebook();
       return right(
         UserModel.fromFirebaseUser(user: user),
       );
-    } on CustomException catch (error) {
+    } on FirebaseAuthException catch (error) {
       deleteUser(user);
       return left(
-        ServerFailure(errorMessage: error.errorMessage),
+        FirebaseAuthErrorHandler.fromFirebaseAuthException(error),
       );
     } catch (error) {
       log("Exception in auth repo impl signin= ${error.toString()}");
       return left(
         ServerFailure(
-          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+          errorMessage: genralErrorMessage,
         ),
       );
     }
   }
 
   @override
-  Future<Either<Failure, UserEntity>> signInWithApple() async {
+  Future<Either<Failure, UserEntity>> signInWithApple(
+      {required String genralErrorMessage}) async {
     User? user;
     try {
       user = await firebaseAuthService.signInWithApple();
       return right(
         UserModel.fromFirebaseUser(user: user),
       );
-    } on CustomException catch (error) {
+    } on SignInWithAppleException catch (error) {
       deleteUser(user);
       return left(
-        ServerFailure(errorMessage: error.errorMessage),
+        AppleAuthExceptionsHandler.fromSignInWithAppleException(error),
       );
     } catch (error) {
       log("Exception in auth repo impl signin= ${error.toString()}");
       return left(
         ServerFailure(
-          errorMessage: "حدث خطأ ما يرجى المحاولة مرة أخرى",
+          errorMessage: genralErrorMessage,
         ),
       );
     }

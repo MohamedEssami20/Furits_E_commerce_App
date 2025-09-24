@@ -1,8 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
+import 'package:fruits_hub/core/helper/localization_helper.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_progress_hud.dart';
 import 'package:fruits_hub/features/auth/presentation/manager/signup_cubit/signup_user_cubit.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/signup_view_body.dart';
@@ -26,7 +25,9 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
           );
         }
         if (state is SignupUserFailure) {
-          buildErrorSnackBar(context, state.errorMessage);
+          final String errorTranslation =
+           LocalizationHelper.getAuthErrorMessage(context, state.errorMessage);
+          buildErrorSnackBar(context, errorTranslation);
         }
       },
       builder: (context, state) {

@@ -95,10 +95,11 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                             name: userName,
                             email: email,
                             password: password,
+                            genralErrorMessage: S.of(context).errorMessage,
                           );
                     } else {
-                      buildErrorSnackBar(
-                          context, S.of(context).shouldAcceptTermsAndConditions);
+                      buildErrorSnackBar(context,
+                          S.of(context).shouldAcceptTermsAndConditions);
                     }
                   } else {
                     autoValidateMode = AutovalidateMode.always;

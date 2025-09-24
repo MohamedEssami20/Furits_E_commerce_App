@@ -7,6 +7,7 @@ import 'package:fruits_hub/features/home/presentation/views/main_view.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../../../../core/helper/build_error_snackbar.dart';
+import '../../../../../core/helper/localization_helper.dart';
 
 class SiginViewBodyBlocConsumer extends StatelessWidget {
   const SiginViewBodyBlocConsumer({
@@ -22,7 +23,10 @@ class SiginViewBodyBlocConsumer extends StatelessWidget {
           buildErrorSnackBar(context, S.of(context).successMessageOfLogin);
         }
         if (state is SigninFailure) {
-          buildErrorSnackBar(context, state.errorMessage);
+          final String errorTranslation =
+              LocalizationHelper.getAppleErrorMessage(
+                  context, state.errorMessage);
+          buildErrorSnackBar(context, errorTranslation);
         }
       },
       builder: (context, state) {

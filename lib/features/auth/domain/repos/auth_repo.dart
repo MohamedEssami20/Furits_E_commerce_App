@@ -4,16 +4,24 @@ import 'package:fruits_hub/features/auth/domain/entity/user_entity.dart';
 
 abstract class AuthRepo {
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
-      {required String email, required String password, required String name});
+      {required String email,
+      required String password,
+      required String name,
+      required String genralErrorMessage});
 
   Future<Either<Failure, UserEntity>> signInWithEmailAndPassword(
-      {required String email, required String password});
+      {required String email,
+      required String password,
+      required String genralErrorMessage});
 
-  Future<Either<Failure, UserEntity>> signInWithGoogle();
+  Future<Either<Failure, UserEntity>> signInWithGoogle(
+      {required String genralErrorMessage});
 
-  Future<Either<Failure, UserEntity>> signInWithFacebook();
+  Future<Either<Failure, UserEntity>> signInWithFacebook(
+      {required String genralErrorMessage});
 
-  Future<Either<Failure, UserEntity>> signInWithApple();
+  Future<Either<Failure, UserEntity>> signInWithApple(
+      {required String genralErrorMessage});
 
   Future<void> addUserData(
       {required UserEntity userEntity, String? documnetId});

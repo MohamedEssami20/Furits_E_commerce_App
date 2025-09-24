@@ -47,7 +47,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                 validator: (value) {
                   if (value!.isEmpty) {
                     return S.of(context).emailIsRequired;
-                }
+                  }
                   return null;
                 },
                 hintText: S.of(context).emailHint,
@@ -92,6 +92,7 @@ class _SigninViewBodyState extends State<SigninViewBody> {
                         .signInWithEmailAndPassword(
                           email: email,
                           password: password,
+                          genralErrorMessage: S.of(context).errorMessage,
                         );
                   } else {
                     setState(() {
@@ -115,7 +116,8 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               SocialLoginButton(
                 title: S.of(context).signInWithGoogle,
                 onPressed: () async {
-                  await context.read<SigninCubit>().signInWithGoogle();
+                  await context.read<SigninCubit>().signInWithGoogle(
+                      genralErrorMessage: S.of(context).errorMessage);
                 },
                 image: Assets.assetsImagesGoogleIcon,
               ),
@@ -139,7 +141,8 @@ class _SigninViewBodyState extends State<SigninViewBody> {
               SocialLoginButton(
                 title: S.of(context).signInWithFacebook,
                 onPressed: () async {
-                  await context.read<SigninCubit>().signInWithFacebook();
+                  await context.read<SigninCubit>().signInWithFacebook(
+                      genralErrorMessage: S.of(context).errorMessage);
                 },
                 image: Assets.assetsImagesFacebookIcon,
               ),

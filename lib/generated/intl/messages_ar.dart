@@ -55,8 +55,74 @@ class MessageLookup extends MessageLookupByLibrary {
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "هل لديك حساب بالفعل؟",
     ),
+    "apple_canceled": MessageLookupByLibrary.simpleMessage(
+      "تم إلغاء عملية تسجيل الدخول.",
+    ),
+    "apple_credentials_error": MessageLookupByLibrary.simpleMessage(
+      "حدثت مشكلة في بيانات اعتماد Apple الخاصة بك.",
+    ),
+    "apple_failed": MessageLookupByLibrary.simpleMessage(
+      "فشلت محاولة تسجيل الدخول.",
+    ),
+    "apple_invalid_response": MessageLookupByLibrary.simpleMessage(
+      "استجابة غير صالحة من خادم Apple.",
+    ),
+    "apple_not_handled": MessageLookupByLibrary.simpleMessage(
+      "لم يتم التعامل مع طلب تسجيل الدخول.",
+    ),
+    "apple_not_interactive": MessageLookupByLibrary.simpleMessage(
+      "طلب تسجيل الدخول غير تفاعلي.",
+    ),
+    "apple_not_supported": MessageLookupByLibrary.simpleMessage(
+      "تسجيل الدخول عبر Apple غير مدعوم على هذا الجهاز.",
+    ),
+    "apple_unknown": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ غير معروف أثناء تسجيل الدخول عبر Apple.",
+    ),
     "areYouSureYouWantToExit": MessageLookupByLibrary.simpleMessage(
       "هل تريد الاغلاق؟",
+    ),
+    "auth_invalidContinueUri": MessageLookupByLibrary.simpleMessage(
+      "رابط المتابعة (Continue URL) غير صالح.",
+    ),
+    "auth_invalidCredential": MessageLookupByLibrary.simpleMessage(
+      "كلمة المرور الحالية غير صحيحة.",
+    ),
+    "auth_invalidEmail": MessageLookupByLibrary.simpleMessage(
+      "البريد الإلكتروني غير صالح.",
+    ),
+    "auth_invalidVerificationCode": MessageLookupByLibrary.simpleMessage(
+      "رمز التحقق غير صحيح.",
+    ),
+    "auth_invalidVerificationId": MessageLookupByLibrary.simpleMessage(
+      "معرّف التحقق غير صالح.",
+    ),
+    "auth_missingAndroidPkgName": MessageLookupByLibrary.simpleMessage(
+      "يجب توفير اسم الحزمة (Package Name) لتطبيق أندرويد إذا كان مطلوب تثبيت التطبيق.",
+    ),
+    "auth_missingContinueUri": MessageLookupByLibrary.simpleMessage(
+      "يجب توفير رابط متابعة (Continue URL) في الطلب.",
+    ),
+    "auth_missingIosBundleId": MessageLookupByLibrary.simpleMessage(
+      "يجب توفير iOS Bundle ID إذا تم توفير App Store ID.",
+    ),
+    "auth_requiresRecentLogin": MessageLookupByLibrary.simpleMessage(
+      "لأسباب أمان، يجب تسجيل الدخول مرة أخرى قبل تنفيذ هذه العملية.",
+    ),
+    "auth_unauthorizedContinueUri": MessageLookupByLibrary.simpleMessage(
+      "النطاق الخاص برابط المتابعة غير مضاف إلى قائمة النطاقات المصرح بها في وحدة تحكم Firebase.",
+    ),
+    "auth_unexpectedError": MessageLookupByLibrary.simpleMessage(
+      "حدث خطأ غير متوقع. حاول مرة أخرى.",
+    ),
+    "auth_userMismatch": MessageLookupByLibrary.simpleMessage(
+      "بيانات تسجيل الدخول لا تتطابق مع المستخدم الحالي.",
+    ),
+    "auth_userNotFound": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد مستخدم مسجل بهذه البيانات.",
+    ),
+    "auth_wrongPassword": MessageLookupByLibrary.simpleMessage(
+      "كلمة المرور غير صحيحة.",
     ),
     "bestSellingFruits": MessageLookupByLibrary.simpleMessage("الأكثر مبيعًا"),
     "buyNowPayLater": MessageLookupByLibrary.simpleMessage(

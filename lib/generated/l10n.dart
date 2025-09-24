@@ -1515,6 +1515,226 @@ class S {
       args: [],
     );
   }
+
+  /// `The login credentials do not match the current user.`
+  String get auth_userMismatch {
+    return Intl.message(
+      'The login credentials do not match the current user.',
+      name: 'auth_userMismatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No user found with these credentials.`
+  String get auth_userNotFound {
+    return Intl.message(
+      'No user found with these credentials.',
+      name: 'auth_userNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The current password is incorrect.`
+  String get auth_invalidCredential {
+    return Intl.message(
+      'The current password is incorrect.',
+      name: 'auth_invalidCredential',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The email address is invalid.`
+  String get auth_invalidEmail {
+    return Intl.message(
+      'The email address is invalid.',
+      name: 'auth_invalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The password is incorrect.`
+  String get auth_wrongPassword {
+    return Intl.message(
+      'The password is incorrect.',
+      name: 'auth_wrongPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The verification code is invalid.`
+  String get auth_invalidVerificationCode {
+    return Intl.message(
+      'The verification code is invalid.',
+      name: 'auth_invalidVerificationCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The verification ID is invalid.`
+  String get auth_invalidVerificationId {
+    return Intl.message(
+      'The verification ID is invalid.',
+      name: 'auth_invalidVerificationId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `For security reasons, please log in again before performing this action.`
+  String get auth_requiresRecentLogin {
+    return Intl.message(
+      'For security reasons, please log in again before performing this action.',
+      name: 'auth_requiresRecentLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An Android package name must be provided if the app installation is required.`
+  String get auth_missingAndroidPkgName {
+    return Intl.message(
+      'An Android package name must be provided if the app installation is required.',
+      name: 'auth_missingAndroidPkgName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `A continue URL must be provided in the request.`
+  String get auth_missingContinueUri {
+    return Intl.message(
+      'A continue URL must be provided in the request.',
+      name: 'auth_missingContinueUri',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An iOS Bundle ID must be provided if an App Store ID is supplied.`
+  String get auth_missingIosBundleId {
+    return Intl.message(
+      'An iOS Bundle ID must be provided if an App Store ID is supplied.',
+      name: 'auth_missingIosBundleId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The continue URL is invalid.`
+  String get auth_invalidContinueUri {
+    return Intl.message(
+      'The continue URL is invalid.',
+      name: 'auth_invalidContinueUri',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The domain of the continue URL is not authorized in the Firebase console.`
+  String get auth_unauthorizedContinueUri {
+    return Intl.message(
+      'The domain of the continue URL is not authorized in the Firebase console.',
+      name: 'auth_unauthorizedContinueUri',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unexpected error occurred. Please try again.`
+  String get auth_unexpectedError {
+    return Intl.message(
+      'An unexpected error occurred. Please try again.',
+      name: 'auth_unexpectedError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in with Apple is not supported on this device.`
+  String get apple_not_supported {
+    return Intl.message(
+      'Sign in with Apple is not supported on this device.',
+      name: 'apple_not_supported',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The sign in process was canceled.`
+  String get apple_canceled {
+    return Intl.message(
+      'The sign in process was canceled.',
+      name: 'apple_canceled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The sign in attempt failed.`
+  String get apple_failed {
+    return Intl.message(
+      'The sign in attempt failed.',
+      name: 'apple_failed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid response from Apple server.`
+  String get apple_invalid_response {
+    return Intl.message(
+      'Invalid response from Apple server.',
+      name: 'apple_invalid_response',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The sign in request was not handled.`
+  String get apple_not_handled {
+    return Intl.message(
+      'The sign in request was not handled.',
+      name: 'apple_not_handled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The sign in request is not interactive.`
+  String get apple_not_interactive {
+    return Intl.message(
+      'The sign in request is not interactive.',
+      name: 'apple_not_interactive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There was an issue with your Apple credentials.`
+  String get apple_credentials_error {
+    return Intl.message(
+      'There was an issue with your Apple credentials.',
+      name: 'apple_credentials_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `An unknown error occurred with Apple sign in.`
+  String get apple_unknown {
+    return Intl.message(
+      'An unknown error occurred with Apple sign in.',
+      name: 'apple_unknown',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -13,10 +13,15 @@ class SigninCubit extends Cubit<SigninState> {
   final AuthRepo authRepo;
 
   Future<void> signInWithEmailAndPassword(
-      {required String email, required String password}) async {
+      {required String email,
+      required String password,
+      required String genralErrorMessage}) async {
     emit(SigninLoading());
-    Either<Failure, UserEntity> result = await authRepo
-        .signInWithEmailAndPassword(email: email, password: password);
+    Either<Failure, UserEntity> result =
+        await authRepo.signInWithEmailAndPassword(
+            email: email,
+            password: password,
+            genralErrorMessage: genralErrorMessage);
     result.fold(
       (failure) => emit(
         SigninFailure(errorMessage: failure.errorMessage),
@@ -29,9 +34,10 @@ class SigninCubit extends Cubit<SigninState> {
 
   // create googel sign in function;
 
-  Future<void> signInWithGoogle() async {
+  Future<void> signInWithGoogle({required String genralErrorMessage}) async {
     emit(SigninLoading());
-    Either<Failure, UserEntity> result = await authRepo.signInWithGoogle();
+    Either<Failure, UserEntity> result =
+        await authRepo.signInWithGoogle(genralErrorMessage: genralErrorMessage);
     result.fold(
       (failure) => emit(
         SigninFailure(errorMessage: failure.errorMessage),
@@ -43,9 +49,10 @@ class SigninCubit extends Cubit<SigninState> {
   }
 
   //create sigin with facebook function;
-  Future<void> signInWithFacebook() async {
+  Future<void> signInWithFacebook({required String genralErrorMessage}) async {
     emit(SigninLoading());
-    Either<Failure, UserEntity> result = await authRepo.signInWithFacebook();
+    Either<Failure, UserEntity> result = await authRepo.signInWithFacebook(
+        genralErrorMessage: genralErrorMessage);
     result.fold(
       (failure) => emit(
         SigninFailure(errorMessage: failure.errorMessage),
@@ -58,9 +65,10 @@ class SigninCubit extends Cubit<SigninState> {
 
   // cereate sign in with apple function;
 
-  Future<void> signInWithApple() async {
+  Future<void> signInWithApple({required String genralErrorMessage}) async {
     emit(SigninLoading());
-    Either<Failure, UserEntity> result = await authRepo.signInWithApple();
+    Either<Failure, UserEntity> result =
+        await authRepo.signInWithApple(genralErrorMessage: genralErrorMessage);
     result.fold(
       (failure) => emit(
         SigninFailure(errorMessage: failure.errorMessage),

@@ -55,8 +55,74 @@ class MessageLookup extends MessageLookupByLibrary {
     "alreadyHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Already have an account?",
     ),
+    "apple_canceled": MessageLookupByLibrary.simpleMessage(
+      "The sign in process was canceled.",
+    ),
+    "apple_credentials_error": MessageLookupByLibrary.simpleMessage(
+      "There was an issue with your Apple credentials.",
+    ),
+    "apple_failed": MessageLookupByLibrary.simpleMessage(
+      "The sign in attempt failed.",
+    ),
+    "apple_invalid_response": MessageLookupByLibrary.simpleMessage(
+      "Invalid response from Apple server.",
+    ),
+    "apple_not_handled": MessageLookupByLibrary.simpleMessage(
+      "The sign in request was not handled.",
+    ),
+    "apple_not_interactive": MessageLookupByLibrary.simpleMessage(
+      "The sign in request is not interactive.",
+    ),
+    "apple_not_supported": MessageLookupByLibrary.simpleMessage(
+      "Sign in with Apple is not supported on this device.",
+    ),
+    "apple_unknown": MessageLookupByLibrary.simpleMessage(
+      "An unknown error occurred with Apple sign in.",
+    ),
     "areYouSureYouWantToExit": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to exit?",
+    ),
+    "auth_invalidContinueUri": MessageLookupByLibrary.simpleMessage(
+      "The continue URL is invalid.",
+    ),
+    "auth_invalidCredential": MessageLookupByLibrary.simpleMessage(
+      "The current password is incorrect.",
+    ),
+    "auth_invalidEmail": MessageLookupByLibrary.simpleMessage(
+      "The email address is invalid.",
+    ),
+    "auth_invalidVerificationCode": MessageLookupByLibrary.simpleMessage(
+      "The verification code is invalid.",
+    ),
+    "auth_invalidVerificationId": MessageLookupByLibrary.simpleMessage(
+      "The verification ID is invalid.",
+    ),
+    "auth_missingAndroidPkgName": MessageLookupByLibrary.simpleMessage(
+      "An Android package name must be provided if the app installation is required.",
+    ),
+    "auth_missingContinueUri": MessageLookupByLibrary.simpleMessage(
+      "A continue URL must be provided in the request.",
+    ),
+    "auth_missingIosBundleId": MessageLookupByLibrary.simpleMessage(
+      "An iOS Bundle ID must be provided if an App Store ID is supplied.",
+    ),
+    "auth_requiresRecentLogin": MessageLookupByLibrary.simpleMessage(
+      "For security reasons, please log in again before performing this action.",
+    ),
+    "auth_unauthorizedContinueUri": MessageLookupByLibrary.simpleMessage(
+      "The domain of the continue URL is not authorized in the Firebase console.",
+    ),
+    "auth_unexpectedError": MessageLookupByLibrary.simpleMessage(
+      "An unexpected error occurred. Please try again.",
+    ),
+    "auth_userMismatch": MessageLookupByLibrary.simpleMessage(
+      "The login credentials do not match the current user.",
+    ),
+    "auth_userNotFound": MessageLookupByLibrary.simpleMessage(
+      "No user found with these credentials.",
+    ),
+    "auth_wrongPassword": MessageLookupByLibrary.simpleMessage(
+      "The password is incorrect.",
     ),
     "bestSellingFruits": MessageLookupByLibrary.simpleMessage("Best Selling"),
     "buyNowPayLater": MessageLookupByLibrary.simpleMessage(

@@ -13,33 +13,33 @@ class FirebaseAuthErrorHandler extends Failure {
   static String getErrorMessage(FirebaseAuthException e) {
     switch (e.code) {
       case 'user-mismatch':
-        return 'بيانات تسجيل الدخول لا تتطابق مع المستخدم الحالي.';
+        return "auth_userMismatch";
       case 'user-not-found':
-        return 'لا يوجد مستخدم مسجل بهذه البيانات.';
+        return "auth_userNotFound";
       case 'invalid-credential':
-        return 'كلمة المرور الحالية غير صحيحة.';
+        return "auth_invalidCredential";
       case 'invalid-email':
-        return 'البريد الإلكتروني غير صالح.';
+        return "auth_invalidEmail";
       case 'wrong-password':
-        return 'كلمة المرور غير صحيحة.';
+        return "auth_wrongPassword";
       case 'invalid-verification-code':
-        return 'رمز التحقق غير صحيح.';
+        return "auth_invalidVerificationCode";
       case 'invalid-verification-id':
-        return 'معرّف التحقق غير صالح.';
+        return "auth_invalidVerificationId";
       case 'requires-recent-login':
-        return 'لأسباب أمان، يجب تسجيل الدخول مرة أخرى قبل تنفيذ هذه العملية.';
+        return "auth_requiresRecentLogin";
       case 'missing-android-pkg-name':
-        return 'يجب توفير اسم الحزمة (Package Name) لتطبيق أندرويد إذا كان مطلوب تثبيت التطبيق.';
+        return "auth_missingAndroidPkgName";
       case 'missing-continue-uri':
-        return 'يجب توفير رابط متابعة (Continue URL) في الطلب.';
+        return "auth_missingContinueUri";
       case 'missing-ios-bundle-id':
-        return 'يجب توفير iOS Bundle ID إذا تم توفير App Store ID.';
+        return "auth_missingIosBundleId";
       case 'invalid-continue-uri':
-        return 'رابط المتابعة (Continue URL) غير صالح.';
+        return "auth_invalidContinueUri";
       case 'unauthorized-continue-uri':
-        return 'النطاق الخاص برابط المتابعة غير مضاف إلى قائمة النطاقات المصرح بها في وحدة تحكم Firebase.';
+        return "auth_unauthorizedContinueUri";
       default:
-        return 'حدث خطأ غير متوقع. حاول مرة أخرى.';
+        return "auth_unexpectedError";
     }
   }
 }
