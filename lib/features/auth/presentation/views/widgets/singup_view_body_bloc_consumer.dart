@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
@@ -25,8 +27,10 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
           );
         }
         if (state is SignupUserFailure) {
+          log("error signup builder = ${state.errorMessage}");
           final String errorTranslation =
-           LocalizationHelper.getAuthErrorMessage(context, state.errorMessage);
+              LocalizationHelper.getAuthErrorMessage(
+                  context, state.errorMessage);
           buildErrorSnackBar(context, errorTranslation);
         }
       },

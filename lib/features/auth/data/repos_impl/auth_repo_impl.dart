@@ -52,6 +52,7 @@ class AuthRepoImpl extends AuthRepo {
       );
     } on FirebaseAuthException catch (error) {
       await deleteUser(user);
+      log("Exception in sign up repo impl one= $error");
       return left(
         FirebaseAuthErrorHandler.fromFirebaseAuthException(error),
       );
@@ -88,6 +89,7 @@ class AuthRepoImpl extends AuthRepo {
         userEntity,
       );
     } on FirebaseAuthException catch (error) {
+      log("error to sign in = $error");
       return left(
         FirebaseAuthErrorHandler.fromFirebaseAuthException(error),
       );

@@ -189,6 +189,7 @@
     "auth_userMismatch": "The login credentials do not match the current user.",
     "auth_userNotFound": "No user found with these credentials.",
     "auth_invalidCredential": "The current password is incorrect.",
+    "auth_emailAlreadyInUse": "The email address is already in use by another account.",
     "auth_invalidEmail": "The email address is invalid.",
     "auth_wrongPassword": "The password is incorrect.",
     "auth_invalidVerificationCode": "The verification code is invalid.",

@@ -16,6 +16,8 @@ class FirebaseAuthErrorHandler extends Failure {
         return "auth_userMismatch";
       case 'user-not-found':
         return "auth_userNotFound";
+      case 'email-already-in-use':
+        return "auth_emailAlreadyInUse";
       case 'invalid-credential':
         return "auth_invalidCredential";
       case 'invalid-email':

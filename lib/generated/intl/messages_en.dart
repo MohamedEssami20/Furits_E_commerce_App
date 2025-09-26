@@ -82,6 +82,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "areYouSureYouWantToExit": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to exit?",
     ),
+    "auth_emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+      "The email address is already in use by another account.",
+    ),
     "auth_invalidContinueUri": MessageLookupByLibrary.simpleMessage(
       "The continue URL is invalid.",
     ),

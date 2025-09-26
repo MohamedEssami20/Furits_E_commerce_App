@@ -82,6 +82,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "areYouSureYouWantToExit": MessageLookupByLibrary.simpleMessage(
       "هل تريد الاغلاق؟",
     ),
+    "auth_emailAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+      "البريد الالكتروني مستخدم بالفعل",
+    ),
     "auth_invalidContinueUri": MessageLookupByLibrary.simpleMessage(
       "رابط المتابعة (Continue URL) غير صالح.",
     ),

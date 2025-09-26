@@ -5,6 +5,7 @@ class LocalizationHelper {
   static final Map<String, String Function(BuildContext)> _authErrorMap = {
     'auth_userMismatch': (context) => S.of(context).auth_userMismatch,
     'auth_userNotFound': (context) => S.of(context).auth_userNotFound,
+    'auth_emailAlreadyInUse': (context) => S.of(context).auth_emailAlreadyInUse,
     'auth_invalidCredential': (context) => S.of(context).auth_invalidCredential,
     'auth_invalidEmail': (context) => S.of(context).auth_invalidEmail,
     'auth_wrongPassword': (context) => S.of(context).auth_wrongPassword,

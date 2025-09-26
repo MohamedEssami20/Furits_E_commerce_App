@@ -1566,6 +1566,16 @@ class S {
     );
   }
 
+  /// `The email address is already in use by another account.`
+  String get auth_emailAlreadyInUse {
+    return Intl.message(
+      'The email address is already in use by another account.',
+      name: 'auth_emailAlreadyInUse',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `The email address is invalid.`
   String get auth_invalidEmail {
     return Intl.message(

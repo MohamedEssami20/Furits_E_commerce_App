@@ -188,6 +188,7 @@
     "fromGallery": "من المعرض",
     "auth_userMismatch": "بيانات تسجيل الدخول لا تتطابق مع المستخدم الحالي.",
     "auth_userNotFound": "لا يوجد مستخدم مسجل بهذه البيانات.",
+    "auth_emailAlreadyInUse": "البريد الالكتروني مستخدم بالفعل",
     "auth_invalidCredential": "كلمة المرور الحالية غير صحيحة.",
     "auth_invalidEmail": "البريد الإلكتروني غير صالح.",
     "auth_wrongPassword": "كلمة المرور غير صحيحة.",

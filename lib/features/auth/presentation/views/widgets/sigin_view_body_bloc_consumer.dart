@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_progress_hud.dart';
@@ -24,7 +25,7 @@ class SiginViewBodyBlocConsumer extends StatelessWidget {
         }
         if (state is SigninFailure) {
           final String errorTranslation =
-              LocalizationHelper.getAppleErrorMessage(
+              LocalizationHelper.getAuthErrorMessage(
                   context, state.errorMessage);
           buildErrorSnackBar(context, errorTranslation);
         }
