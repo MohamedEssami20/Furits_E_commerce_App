@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/helper/show_logout_dialog.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 import '../../../../../core/utils/app_text_style.dart';
-import '../../manager/sign_out_cubit/sign_out_cubit.dart';
 import 'builder/signout_builder.dart';
 
 class SignOut extends StatelessWidget {
@@ -26,10 +25,8 @@ class SignOut extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () async {
-                await context
-                    .read<SignOutCubit>()
-                    .signOut(genralErrorMessage: S.of(context).errorMessage);
+              onTap: () {
+                showLogoutDialog(context);
               },
               child: const SignOutBuilder(),
             )

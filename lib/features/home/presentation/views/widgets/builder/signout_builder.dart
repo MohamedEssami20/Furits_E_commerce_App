@@ -6,6 +6,7 @@ import 'package:fruits_hub/features/auth/presentation/views/signin_view.dart'
 import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../../../../../core/helper/build_error_snackbar.dart';
+import '../../../../../../core/helper/localization_helper.dart';
 import '../../../../../../core/utils/assets.dart';
 import '../../../manager/sign_out_cubit/sign_out_cubit.dart';
 
@@ -41,7 +42,10 @@ class SignOutBuilder extends StatelessWidget {
         }
 
         if (state is SignOutFailure) {
-          buildErrorSnackBar(context, state.errorMessage);
+          final String errorTranslation =
+              LocalizationHelper.getFirebaseErrorMessage(
+                  context, state.errorMessage);
+          buildErrorSnackBar(context, errorTranslation);
         }
       },
     );

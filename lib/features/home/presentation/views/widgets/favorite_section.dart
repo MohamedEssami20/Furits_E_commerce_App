@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/helper/custom_pop_scope.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/builder/get_favorite_product_builder.dart';
 import '../../../../../core/utils/Widgets/build_app_bar.dart';
 import '../../../../../generated/l10n.dart';
@@ -10,27 +11,29 @@ class FavoriteSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        buildAppBar(context,
-            title: S.of(context).favourites,
-            showBackButton: true,
-            showNotification: false, onBackPress: () {
-          context.read<ProfileViewCubit>().changeIndex(0);
-        }),
-        const SizedBox(
-          height: 28,
-        ),
-        const Expanded(
-          child: CustomScrollView(
-            physics: BouncingScrollPhysics(),
-            shrinkWrap: true,
-            slivers: [
-              GetFavoriteProductBuilder(),
-            ],
+    return CustomPopScope(
+      child: Column(
+        children: [
+          buildAppBar(context,
+              title: S.of(context).favourites,
+              showBackButton: true,
+              showNotification: false, onBackPress: () {
+            context.read<ProfileViewCubit>().changeIndex(0);
+          }),
+          const SizedBox(
+            height: 28,
           ),
-        ),
-      ],
+          const Expanded(
+            child: CustomScrollView(
+              physics: BouncingScrollPhysics(),
+              shrinkWrap: true,
+              slivers: [
+                GetFavoriteProductBuilder(),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

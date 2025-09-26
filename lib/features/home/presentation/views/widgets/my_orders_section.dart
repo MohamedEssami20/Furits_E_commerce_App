@@ -5,6 +5,7 @@ import 'package:fruits_hub/features/home/presentation/manager/get_user_orders_cu
 import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../../../../core/constant/app_colors.dart';
+import '../../../../../core/helper/custom_pop_scope.dart';
 import '../../../../../core/utils/Widgets/build_app_bar.dart';
 import '../../manager/profile_view_cubit/profile_view_cubit.dart';
 import 'my_orders_list_view.dart';
@@ -27,44 +28,46 @@ class _MyOrdersSectionState extends State<MyOrdersSection> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        buildAppBar(context,
-            title: S.of(context).myOrders,
-            showBackButton: true,
-            showNotification: false, onBackPress: () {
-          context.read<ProfileViewCubit>().changeIndex(0);
-        }),
-        const SizedBox(
-          height: 20,
-        ),
-        Expanded(
-          child: BlocBuilder<GetUserOrdersCubit, GetUserOrdersState>(
-            builder: (context, state) {
-              if (state is GetUserOrdersSuccess && state.ordersList.isEmpty) {
-                return Center(
-                    child: Text(
-                  S.of(context).noOrders,
-                  style: TextStyles.semiBold16.copyWith(color: Colors.black),
-                ));
-              }
-              if (state is GetUserOrdersLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.lightSecondaryColor,
-                  ),
-                );
-              }
-              if (state is GetUserOrdersSuccess) {
-                return MyOrdersListView(
-                  myOrders: state.ordersList,
-                );
-              }
-              return Text(S.of(context).errorMessage);
-            },
+    return CustomPopScope(
+      child: Column(
+        children: [
+          buildAppBar(context,
+              title: S.of(context).myOrders,
+              showBackButton: true,
+              showNotification: false, onBackPress: () {
+            context.read<ProfileViewCubit>().changeIndex(0);
+          }),
+          const SizedBox(
+            height: 20,
           ),
-        ),
-      ],
+          Expanded(
+            child: BlocBuilder<GetUserOrdersCubit, GetUserOrdersState>(
+              builder: (context, state) {
+                if (state is GetUserOrdersSuccess && state.ordersList.isEmpty) {
+                  return Center(
+                      child: Text(
+                    S.of(context).noOrders,
+                    style: TextStyles.semiBold16.copyWith(color: Colors.black),
+                  ));
+                }
+                if (state is GetUserOrdersLoading) {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.lightSecondaryColor,
+                    ),
+                  );
+                }
+                if (state is GetUserOrdersSuccess) {
+                  return MyOrdersListView(
+                    myOrders: state.ordersList,
+                  );
+                }
+                return Text(S.of(context).errorMessage);
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
