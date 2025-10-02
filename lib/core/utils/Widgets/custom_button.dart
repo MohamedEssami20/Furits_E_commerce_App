@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_hub/core/utils/app_text_style.dart';
 import 'package:fruits_hub/core/utils/my_colors.dart';
 
 class CustomButton extends StatelessWidget {
@@ -8,6 +7,7 @@ class CustomButton extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return SizedBox(
       width: double.infinity,
       height: 60,
@@ -21,7 +21,9 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           title,
-          style: TextStyles.bold16.copyWith(color: Colors.white),
+          style: theme.textTheme.headlineLarge!.copyWith(
+            color: theme.colorScheme.onPrimary,
+          ),
         ),
       ),
     );

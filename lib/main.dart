@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fruits_hub/core/cubit/change_language_cubit.dart/change_language_cubit.dart';
+import 'package:fruits_hub/core/helper/app_theme.dart';
 import 'package:fruits_hub/core/helper/on_generate_routes.dart';
 import 'package:fruits_hub/core/services/custom_bloc_observer.dart';
 import 'package:fruits_hub/core/services/firebase_auth_service.dart';
 import 'package:fruits_hub/core/services/get_it_service.dart';
 import 'package:fruits_hub/core/services/shared_prefrence_sigelton.dart';
-import 'package:fruits_hub/core/utils/my_colors.dart';
 import 'package:fruits_hub/features/home/presentation/manager/edit_user_info_cubit/user_cubit.dart';
 import 'package:fruits_hub/features/splash/presentation/views/splash_view.dart';
 import 'package:fruits_hub/generated/l10n.dart';
@@ -55,12 +55,9 @@ class FruitsHub extends StatelessWidget {
       child: BlocBuilder<ChangeLanguageCubit, ChangeLanguageState>(
         builder: (context, state) {
           return MaterialApp(
-            theme: ThemeData(
-              fontFamily: 'Cairo',
-              colorScheme:
-                  ColorScheme.fromSeed(seedColor: MyColors.kPrimaryColor),
-              scaffoldBackgroundColor: Colors.white,
-            ),
+            theme: AppTheme.lightTheme(),
+            darkTheme: AppTheme.darkTheme(),
+            themeMode: ThemeMode.dark,
             localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,

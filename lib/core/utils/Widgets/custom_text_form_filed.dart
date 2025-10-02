@@ -15,7 +15,9 @@ class CustomTextFormFiled extends StatelessWidget {
     this.onChanged,
     this.controller,
     this.textAlign = TextAlign.start,
-    this.initialValue, this.validator, this.enabled,
+    this.initialValue,
+    this.validator,
+    this.enabled,
   });
 
   final String hintText;
@@ -46,6 +48,9 @@ class CustomTextFormFiled extends StatelessWidget {
       onSaved: onSaved,
       keyboardType: textInputType,
       textAlign: textAlign,
+      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+            color: Theme.of(context).colorScheme.onSurface,
+          ),
       decoration: InputDecoration(
         counterText: "", // hide counter when maxLength is set
         hintText: hintText,
@@ -57,7 +62,7 @@ class CustomTextFormFiled extends StatelessWidget {
         focusedBorder: buildBorder(),
         border: buildBorder(),
         filled: true,
-        fillColor: const Color(0xfff9FAFA),
+        fillColor: Theme.of(context).colorScheme.secondary,
       ),
     );
   }

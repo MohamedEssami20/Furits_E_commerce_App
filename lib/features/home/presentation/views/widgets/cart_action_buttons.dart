@@ -4,19 +4,18 @@ import 'package:fruits_hub/core/constant/app_colors.dart';
 import 'package:fruits_hub/features/home/domain/entities/cart_item_entity.dart';
 import 'package:fruits_hub/features/home/presentation/manager/cart_item_cubit/cart_item_cubit.dart';
 
-import '../../../../../core/utils/app_text_style.dart' show TextStyles;
-
 class CartActionButtons extends StatelessWidget {
   const CartActionButtons({super.key, required this.cartItemEntity});
   final CartItemEntity cartItemEntity;
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Row(
       spacing: 16,
       children: [
         CartActionButton(
           icon: Icons.add,
-          iconColor: Colors.white,
+          iconColor: theme.colorScheme.surface,
           backgroundColor: AppColors.primaryColor,
           onPressed: () {
             cartItemEntity.increaseQuantity();
@@ -26,7 +25,9 @@ class CartActionButtons extends StatelessWidget {
         Text(
           cartItemEntity.quantity.toString(),
           textAlign: TextAlign.center,
-          style: TextStyles.bold13.copyWith(color: Colors.black),
+          style: theme.textTheme.labelLarge!.copyWith(
+            color: theme.colorScheme.onSurface,
+          ),
         ),
         CartActionButton(
           icon: Icons.remove,

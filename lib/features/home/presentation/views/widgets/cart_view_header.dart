@@ -9,23 +9,19 @@ class CartViewHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 10),
-      decoration: const BoxDecoration(
-        color: Color(0xFFEBF9F1),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.onTertiaryFixed,
       ),
       child: Center(
         child: Text(
-          "${S.of(context).youHave} ${context.watch<CartCubit>().cartEntityList.cartItemsEntity.length} ${S.of(context).productsIntoCart}",
-          style: const TextStyle(
-            color: Color(0xff1B5E37),
-            fontSize: 13,
-            fontWeight: FontWeight.w400,
-            fontFamily: "Cairo",
-            height: 1.60,
-          ),
-        ),
+            "${S.of(context).youHave} ${context.watch<CartCubit>().cartEntityList.cartItemsEntity.length} ${S.of(context).productsIntoCart}",
+            style: theme.textTheme.bodyMedium!.copyWith(
+              color: theme.colorScheme.onSurface,
+            )),
       ),
     );
   }

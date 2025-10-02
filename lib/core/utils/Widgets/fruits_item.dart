@@ -23,7 +23,7 @@ class FruitsItem extends StatelessWidget {
     return Container(
       width: 200,
       height: 220,
-      color: const Color(0xfff3f5f7),
+      color: Theme.of(context).colorScheme.surface,
       child: Stack(
         children: [
           Positioned.fill(
@@ -48,7 +48,9 @@ class FruitsItem extends StatelessWidget {
                 ListTile(
                   title: Text(
                     product.name,
-                    style: TextStyles.semiBold16,
+                    style: TextStyles.semiBold16.copyWith(
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
                     textAlign: TextAlign.right,
                   ),
                   subtitle: Text.rich(
@@ -56,23 +58,25 @@ class FruitsItem extends StatelessWidget {
                       children: [
                         TextSpan(
                           text: "${product.price} ${S.of(context).egp}",
-                          style: TextStyles.bold13
-                              .copyWith(color: MyColors.kSecondaryColor),
+                          style: TextStyles.bold13.copyWith(
+                            color: Theme.of(context).colorScheme.primaryFixed,
+                          ),
                         ),
                         TextSpan(
                           text: '/',
-                          style: TextStyles.bold13
-                              .copyWith(color: MyColors.kLightSecondaryColor),
+                          style: TextStyles.bold13.copyWith(
+                            color: Theme.of(context).colorScheme.primaryFixed,
+                          ),
                         ),
-                        TextSpan(
+                        const TextSpan(
                           text: ' ',
-                          style: TextStyles.semiBold13
-                              .copyWith(color: MyColors.kLightSecondaryColor),
+                          style: TextStyles.semiBold13,
                         ),
                         TextSpan(
                           text: S.of(context).kg,
-                          style: TextStyles.semiBold13
-                              .copyWith(color: MyColors.kLightSecondaryColor),
+                          style: TextStyles.semiBold13.copyWith(
+                            color: Theme.of(context).colorScheme.tertiaryFixed,
+                          ),
                         ),
                       ],
                     ),
@@ -82,12 +86,13 @@ class FruitsItem extends StatelessWidget {
                       // CartCubit.get(context).addToCart(product);
                       context.read<CartCubit>().addProductToCart(product);
                     },
-                    child: const CircleAvatar(
+                    child: CircleAvatar(
                       backgroundColor: MyColors.kPrimaryColor,
                       child: Center(
                         child: Icon(
                           Icons.add,
-                          color: Colors.white,
+                          color:
+                              Theme.of(context).colorScheme.secondaryContainer,
                         ),
                       ),
                     ),

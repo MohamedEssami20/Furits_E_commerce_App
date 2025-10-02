@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/services/get_it_service.dart';
@@ -49,7 +48,7 @@ class _MainViewState extends State<MainView> {
               });
             },
           ),
-          backgroundColor: const Color(0xFFFFFFFF),
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: PopScope(
             canPop: false,
             onPopInvokedWithResult: (didPop, result) {

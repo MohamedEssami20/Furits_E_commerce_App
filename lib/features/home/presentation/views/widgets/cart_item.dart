@@ -17,6 +17,7 @@ class CartItem extends StatelessWidget {
   final CartItemEntity cartItems;
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return BlocBuilder<CartItemCubit, CartItemState>(
       buildWhen: (previous, current) {
         if (current is CartItemUptated) {
@@ -33,11 +34,12 @@ class CartItem extends StatelessWidget {
               Container(
                 width: 73,
                 height: 92,
-                decoration: const BoxDecoration(
-                  color: Color(0xFFF3F5F7),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surface,
                 ),
                 child: CustomNetowrkImage(
                   imageUrl: cartItems.productEntity.iamgeUrl!,
+                  
                 ),
               ),
               const SizedBox(

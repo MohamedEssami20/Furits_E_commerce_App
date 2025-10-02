@@ -12,9 +12,9 @@ class NotificationWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsetsDirectional.all(14),
-      decoration: const ShapeDecoration(
-        color: Color(0xffEEF8ED),
-        shape: OvalBorder(),
+      decoration: ShapeDecoration(
+        color: Theme.of(context).colorScheme.surface,
+        shape: const OvalBorder(),
       ),
       child: SvgPicture.asset(Assets.assetsImagesNotificationIcon),
     );

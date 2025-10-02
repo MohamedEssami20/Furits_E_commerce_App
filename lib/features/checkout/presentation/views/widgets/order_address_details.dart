@@ -12,6 +12,7 @@ class OrderAddressDetails extends StatelessWidget {
   final PageController pageController;
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return PaymentItem(
       showTitle: false,
       title: "",
@@ -22,9 +23,8 @@ class OrderAddressDetails extends StatelessWidget {
             children: [
               Text(
                 S.of(context).shippingAddress,
-                style: TextStyles.bold13.copyWith(
-                  color: const Color(0xFF0C0D0D),
-                ),
+                style: theme.textTheme.labelLarge!
+                    .copyWith(color: theme.colorScheme.onSurface),
               ),
               const Spacer(),
               GestureDetector(
@@ -59,8 +59,8 @@ class OrderAddressDetails extends StatelessWidget {
               Text(
                 context.read<OrderEntity>().getAddressDetails(),
                 textAlign: TextAlign.right,
-                style: TextStyles.regular16.copyWith(
-                  color: const Color(0xFF4E5556),
+                style: theme.textTheme.titleMedium!.copyWith(
+                  color: theme.colorScheme.onSurface,
                 ),
               ),
             ],

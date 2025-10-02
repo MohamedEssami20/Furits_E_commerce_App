@@ -10,11 +10,13 @@ class AcativeBottomNavigationIcon extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Center(
       child: Container(
-        padding: const EdgeInsetsDirectional.only(start: 8),
+        width: 140,
+        padding: const EdgeInsetsDirectional.only(start: 6),
         decoration: ShapeDecoration(
-          color: const Color(0xFFEEEEEE),
+          color: theme.colorScheme.surface,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
@@ -35,6 +37,10 @@ class AcativeBottomNavigationIcon extends StatelessWidget {
                 child: SvgPicture.asset(
                   image,
                   width: 25,
+                  colorFilter: ColorFilter.mode(
+                    Theme.of(context).colorScheme.surface,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
             ),

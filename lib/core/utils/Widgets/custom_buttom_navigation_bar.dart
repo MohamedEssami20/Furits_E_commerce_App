@@ -21,15 +21,15 @@ class _CustomButtomNavigationBarState extends State<CustomButtomNavigationBar> {
     return Container(
       height: 80,
       width: double.infinity,
-      decoration: const ShapeDecoration(
-        color: Colors.white,
-        shape: RoundedRectangleBorder(
+      decoration: ShapeDecoration(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
           ),
         ),
-        shadows: [
+        shadows: const [
           BoxShadow(
             color: Color(0x19000000),
             blurRadius: 25,
@@ -50,7 +50,7 @@ class _CustomButtomNavigationBarState extends State<CustomButtomNavigationBar> {
           int index = entry.key;
           var value = entry.value;
           return Expanded(
-            flex: selectedIndex == index ? 3 : 2,
+            flex: selectedIndex == index ? 4 : 2,
             child: GestureDetector(
               onTap: () {
                 setState(() {

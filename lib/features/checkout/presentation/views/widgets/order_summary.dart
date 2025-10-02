@@ -4,7 +4,6 @@ import 'package:fruits_hub/features/checkout/domain/entities/order_entity.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/payment_item.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 
-import '../../../../../core/utils/app_text_style.dart';
 
 class OrderSummary extends StatelessWidget {
   const OrderSummary({
@@ -13,6 +12,7 @@ class OrderSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return PaymentItem(
       showTitle: true,
       title: "${S.of(context).orderSummary} :",
@@ -22,18 +22,17 @@ class OrderSummary extends StatelessWidget {
             children: [
               Text(
                 '${S.of(context).subTotal} :',
-                style: TextStyles.regular13.copyWith(
-                  color: const Color(0xFF4E5556),
+                style: theme.textTheme.headlineMedium!.copyWith(
+                  color: theme.colorScheme.onSurface,
                 ),
               ),
               const Spacer(),
               Text(
-                '${context.read<OrderEntity>().cartItems.calculateTotalPrice()} ${S.of(context).egp}',
-                textAlign: TextAlign.right,
-                style: TextStyles.semiBold16.copyWith(
-                  color: const Color(0xFF0C0D0D),
-                ),
-              ),
+                  '${context.read<OrderEntity>().cartItems.calculateTotalPrice()} ${S.of(context).egp}',
+                  textAlign: TextAlign.right,
+                  style: theme.textTheme.headlineMedium!.copyWith(
+                    color: theme.colorScheme.onSurface,
+                  )),
             ],
           ),
           const SizedBox(
@@ -43,18 +42,16 @@ class OrderSummary extends StatelessWidget {
             children: [
               Text(
                 '${S.of(context).delivery} :',
-                style: TextStyles.regular13.copyWith(
-                  color: const Color(0xFF4E5556),
+                style: theme.textTheme.bodyMedium!.copyWith(
+                  color: theme.colorScheme.onSurface,
                 ),
               ),
               const Spacer(),
-              Text(
-                '50 ${S.of(context).egp}',
-                textAlign: TextAlign.right,
-                style: TextStyles.semiBold13.copyWith(
-                  color: const Color(0xFF4E5556),
-                ),
-              ),
+              Text('50 ${S.of(context).egp}',
+                  textAlign: TextAlign.right,
+                  style: theme.textTheme.titleSmall!.copyWith(
+                    color: theme.colorScheme.onSurface,
+                  )),
             ],
           ),
           const SizedBox(
@@ -71,16 +68,16 @@ class OrderSummary extends StatelessWidget {
             children: [
               Text(
                 S.of(context).total,
-                style: TextStyles.bold16.copyWith(
-                  color: const Color(0xFF0C0D0D),
+                style: theme.textTheme.headlineLarge!.copyWith(
+                  color: theme.colorScheme.onSurface,
                 ),
               ),
               const Spacer(),
               Text(
                 '${context.read<OrderEntity>().cartItems.calculateTotalPrice() + 50} ${S.of(context).egp}',
                 textAlign: TextAlign.right,
-                style: TextStyles.bold16.copyWith(
-                  color: const Color(0xFF0C0D0D),
+                style: theme.textTheme.headlineLarge!.copyWith(
+                  color: theme.colorScheme.onSurface,
                 ),
               ),
             ],

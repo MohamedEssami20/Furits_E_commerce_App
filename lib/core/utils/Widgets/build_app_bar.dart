@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/Widgets/notification_widget.dart';
 
-import '../app_text_style.dart';
-
 AppBar buildAppBar(BuildContext context,
     {required String title,
     required bool showBackButton,
@@ -29,7 +27,7 @@ AppBar buildAppBar(BuildContext context,
     centerTitle: true,
     title: Text(
       title,
-      style: TextStyles.bold19,
+      style: Theme.of(context).textTheme.displaySmall,
     ),
   );
 }

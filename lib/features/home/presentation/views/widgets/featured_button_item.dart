@@ -12,7 +12,7 @@ class FeaturedButtonItem extends StatelessWidget {
     return SizedBox(
       child: TextButton(
         style: TextButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).cardColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(4),
           ),
