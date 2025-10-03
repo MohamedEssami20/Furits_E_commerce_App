@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/core/cubit/app_theme_cubit.dart/app_theme_cubit.dart';
 import 'package:fruits_hub/core/utils/assets.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/custom_profile_divider.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/sign_out_item.dart';
@@ -28,6 +29,7 @@ class _AccountSectionState extends State<AccountSection> {
   bool isNotification = false;
   @override
   Widget build(BuildContext context) {
+    final themeCubit = context.read<AppThemeCubit>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -84,12 +86,13 @@ class _AccountSectionState extends State<AccountSection> {
         const ChangeLangauge(),
         const CustomProfileDivider(),
         NotificationAndModeItem(
-          value: isDarkMode,
+          value: isCurrentlyDark(),
           title: S.of(context).mode,
           icon: Assets.assetsImagesMagicpenIcon,
           onToggle: (value) {
             setState(() {
               isDarkMode = value;
+              changeTheme(isDarkMode: value, themeCubit: themeCubit);
             });
           },
         ),
@@ -120,5 +123,19 @@ class _AccountSectionState extends State<AccountSection> {
         ),
       ],
     );
+  }
+
+  void changeTheme(
+      {required bool isDarkMode, required AppThemeCubit themeCubit}) {
+    if (isDarkMode) {
+      themeCubit.changeTheme(themeMode: ThemeMode.dark);
+    } else {
+      themeCubit.changeTheme(themeMode: ThemeMode.light);
+    }
+  }
+
+  bool isCurrentlyDark() {
+    final themeCubit = context.read<AppThemeCubit>();
+    return themeCubit.state.themeMode == ThemeMode.dark;
   }
 }

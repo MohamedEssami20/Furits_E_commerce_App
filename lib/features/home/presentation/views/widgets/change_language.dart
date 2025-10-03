@@ -17,6 +17,7 @@ class ChangeLangauge extends StatelessWidget {
     final langCubit = context.read<ChangeLanguageCubit>();
     final String currentLang =
         context.watch<ChangeLanguageCubit>().state.locale.languageCode;
+    final ThemeData theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.only(top: 9),
       child: Row(
@@ -43,24 +44,22 @@ class ChangeLangauge extends StatelessWidget {
           Row(
             spacing: 6,
             children: [
-              Text(
-                currentLang == "en" ? "English" : "العربية",
-                style: TextStyles.regular13.copyWith(
-                  color: Colors.black,
-                ),
-              ),
+              Text(currentLang == "en" ? "English" : "العربية",
+                  style: theme.textTheme.bodyMedium!.copyWith(
+                    color: theme.colorScheme.onSurface,
+                  )),
               SizedBox(
                 width: 20,
                 height: 25,
                 child: PopupMenuButton(
-                    color: const Color(0xffF2F3F3),
+                    color: theme.colorScheme.surface,
                     popUpAnimationStyle: const AnimationStyle(
                       duration: Duration(milliseconds: 400),
                       curve: Curves.bounceInOut,
                     ),
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.arrow_forward_ios,
-                      color: Colors.black,
+                      color: theme.colorScheme.onSurface,
                       size: 20,
                     ),
                     onSelected: (value) {
@@ -76,20 +75,24 @@ class ChangeLangauge extends StatelessWidget {
                     ),
                     itemBuilder: (context) {
                       return [
-                        const PopupMenuItem(
+                        PopupMenuItem(
                           value: "en",
                           height: 50,
                           enabled: true,
                           child: Text(
                             "English",
-                            style: TextStyles.bold13,
+                            style: theme.textTheme.bodyMedium!.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            ),
                           ),
                         ),
-                        const PopupMenuItem(
+                        PopupMenuItem(
                           value: "ar",
                           child: Text(
                             "العربية",
-                            style: TextStyles.bold13,
+                            style: theme.textTheme.bodyMedium!.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            ),
                           ),
                         ),
                       ];

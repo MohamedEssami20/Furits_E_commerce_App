@@ -67,11 +67,9 @@ class ProductRepoImpl extends ProductRepos {
       List<ProductEntity> finalProducts =
           getFinalProducts(favSanpShot, products);
       for (int counter = 0; counter < finalProducts.length; counter++) {
-        log("${finalProducts[counter].name} isFavorite = ${finalProducts[counter].isFavorite}");
       }
       return right(finalProducts);
     } catch (e) {
-      log("error to get product = ${e.toString()}");
       return left(
         ServerFailure(errorMessage: genralErrorMessage),
       );

@@ -19,6 +19,7 @@ class _MyOrderItemState extends State<MyOrderItem> {
   @override
   Widget build(BuildContext context) {
     final direconiality = Directionality.of(context);
+    final ThemeData theme = Theme.of(context);
     return Container(
       padding: const EdgeInsets.only(
         top: 16,
@@ -26,7 +27,7 @@ class _MyOrderItemState extends State<MyOrderItem> {
         left: 16,
         right: 16,
       ),
-      color: const Color(0x7FF2F3F3),
+      color: theme.colorScheme.surface,
       child: Column(
         children: [
           Row(
@@ -52,13 +53,12 @@ class _MyOrderItemState extends State<MyOrderItem> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    direconiality == TextDirection.rtl
-                        ? "طلب رقم #${widget.myOrdersEntity.orderId.substring(0, 8)} "
-                        : "Order Number #${widget.myOrdersEntity.orderId.substring(0, 8)}",
-                    style: TextStyles.bold13.copyWith(
-                      color: Colors.black,
-                    ),
-                  ),
+                      direconiality == TextDirection.rtl
+                          ? "طلب رقم #${widget.myOrdersEntity.orderId.substring(0, 8)} "
+                          : "Order Number #${widget.myOrdersEntity.orderId.substring(0, 8)}",
+                      style: theme.textTheme.labelLarge!.copyWith(
+                        color: theme.colorScheme.onSurface,
+                      )),
                   Text(
                     '${S.of(context).orderPlaced} :${(widget.myOrdersEntity.orderDate)}',
                     style: TextStyles.regular13.copyWith(
@@ -74,12 +74,11 @@ class _MyOrderItemState extends State<MyOrderItem> {
                               color: const Color(0xFF949D9E),
                             )),
                         TextSpan(
-                          text:
-                              '${widget.myOrdersEntity.orderProductEntity.length}',
-                          style: TextStyles.bold13.copyWith(
-                            color: Colors.black,
-                          ),
-                        ),
+                            text:
+                                '${widget.myOrdersEntity.orderProductEntity.length}',
+                            style: theme.textTheme.labelLarge!.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            )),
                       ],
                     ),
                   ),
@@ -92,12 +91,11 @@ class _MyOrderItemState extends State<MyOrderItem> {
                               color: const Color(0xFF949D9E),
                             )),
                         TextSpan(
-                          text:
-                              '${widget.myOrdersEntity.totalPrice} ${S.of(context).egp}',
-                          style: TextStyles.bold13.copyWith(
-                            color: Colors.black,
-                          ),
-                        ),
+                            text:
+                                '${widget.myOrdersEntity.totalPrice} ${S.of(context).egp}',
+                            style: theme.textTheme.labelLarge!.copyWith(
+                              color: theme.colorScheme.onSurface,
+                            )),
                       ],
                     ),
                   ),
@@ -112,9 +110,9 @@ class _MyOrderItemState extends State<MyOrderItem> {
                 },
                 icon: Transform.rotate(
                   angle: isShowOrderDetails ? -3.14 / 2 : 0,
-                  child: const Icon(
+                  child: Icon(
                     Icons.arrow_forward_ios,
-                    color: Colors.black,
+                    color: theme.colorScheme.onSurface,
                   ),
                 ),
               )

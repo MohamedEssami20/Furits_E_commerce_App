@@ -12,7 +12,7 @@ class SignOut extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 35,
-      color: const Color(0xFFEBF9F1),
+      color: Theme.of(context).colorScheme.surface,
       child: Center(
         child: Row(
           mainAxisSize: MainAxisSize.max,

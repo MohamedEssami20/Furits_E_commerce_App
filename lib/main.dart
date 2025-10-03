@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fruits_hub/core/cubit/app_theme_cubit.dart/app_theme_cubit.dart';
 import 'package:fruits_hub/core/cubit/change_language_cubit.dart/change_language_cubit.dart';
 import 'package:fruits_hub/core/helper/app_theme.dart';
 import 'package:fruits_hub/core/helper/on_generate_routes.dart';
@@ -49,26 +50,33 @@ class FruitsHub extends StatelessWidget {
           create: (context) => ChangeLanguageCubit()..loadSavedLanguage(),
         ),
         BlocProvider(
+          create: (context) => AppThemeCubit()..loadCurrentTheme(),
+        ),
+        BlocProvider(
           create: (context) => ProfileViewCubit(),
         ),
       ],
-      child: BlocBuilder<ChangeLanguageCubit, ChangeLanguageState>(
-        builder: (context, state) {
-          return MaterialApp(
-            theme: AppTheme.lightTheme(),
-            darkTheme: AppTheme.darkTheme(),
-            themeMode: ThemeMode.dark,
-            localizationsDelegates: const [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-            locale: state.locale,
-            onGenerateRoute: onGenerateRoute,
-            initialRoute: SplashView.splashViewRoute,
-            debugShowCheckedModeBanner: false,
+      child: BlocBuilder<AppThemeCubit, AppThemeState>(
+        builder: (context, stateOne) {
+          return BlocBuilder<ChangeLanguageCubit, ChangeLanguageState>(
+            builder: (context, state) {
+              return MaterialApp(
+                theme: AppTheme.lightTheme(),
+                darkTheme: AppTheme.darkTheme(),
+                themeMode: stateOne.themeMode,
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+                locale: state.locale,
+                onGenerateRoute: onGenerateRoute,
+                initialRoute: SplashView.splashViewRoute,
+                debugShowCheckedModeBanner: false,
+              );
+            },
           );
         },
       ),

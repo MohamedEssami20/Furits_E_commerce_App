@@ -65,7 +65,7 @@ class MyOrderStateItem extends StatelessWidget {
                                   : OrderStatusItem.statuses[index].key,
                               style: TextStyles.semiBold13.copyWith(
                                 color: index <= orderStatus.length
-                                    ? Colors.black
+                                    ? Theme.of(context).colorScheme.onSurface
                                     : Colors.grey,
                               ),
                             ),

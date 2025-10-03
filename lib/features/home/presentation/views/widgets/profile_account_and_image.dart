@@ -9,6 +9,7 @@ class ProfileAccountAndImage extends StatelessWidget {
   final UserEntity? userEntity;
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
     return Row(
       spacing: 25,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -20,12 +21,10 @@ class ProfileAccountAndImage extends StatelessWidget {
           spacing: 4,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              userEntity?.userName ?? getUserData().userName,
-              style: TextStyles.bold13.copyWith(
-                color: const Color(0xFF131F46),
-              ),
-            ),
+            Text(userEntity?.userName ?? getUserData().userName,
+                style: theme.textTheme.labelLarge!.copyWith(
+                  color: theme.colorScheme.onSurface,
+                )),
             Text(
               userEntity?.email ?? getUserData().email,
               style: TextStyles.regular13.copyWith(

@@ -12,6 +12,8 @@ class HelpSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final generalColor = theme.colorScheme.onSurface;
     return CustomPopScope(
       child: Column(
         spacing: 12,
@@ -27,19 +29,19 @@ class HelpSection extends StatelessWidget {
           ),
           Text(
             S.of(context).aboutUsTextPart1,
-            style: TextStyles.semiBold16.copyWith(color: Colors.black),
+            style: TextStyles.semiBold16.copyWith(color: generalColor),
           ),
           Text(
             S.of(context).aboutUsTextPart2,
-            style: TextStyles.semiBold16.copyWith(color: Colors.black),
+            style: TextStyles.semiBold16.copyWith(color: generalColor),
           ),
           Text(
             S.of(context).aboutUsTextPart3,
-            style: TextStyles.semiBold16.copyWith(color: Colors.black),
+            style: TextStyles.semiBold16.copyWith(color: generalColor),
           ),
           Text(
             S.of(context).aboutUsTextPart4,
-            style: TextStyles.semiBold16.copyWith(color: Colors.black),
+            style: TextStyles.semiBold16.copyWith(color: generalColor),
           ),
         ],
       ),
