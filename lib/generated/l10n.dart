@@ -479,6 +479,26 @@ class S {
     return Intl.message('New', name: 'newText', desc: '', args: []);
   }
 
+  /// `Mark All As Read`
+  String get markAllAsRead {
+    return Intl.message(
+      'Mark All As Read',
+      name: 'markAllAsRead',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In another time`
+  String get inAnotherTime {
+    return Intl.message(
+      'In another time',
+      name: 'inAnotherTime',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Select All As Read`
   String get selectAllAsRead {
     return Intl.message(

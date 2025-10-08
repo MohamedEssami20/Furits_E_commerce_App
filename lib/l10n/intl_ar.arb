@@ -52,6 +52,8 @@
     "oppsNotAvailable": "عفوًا... هذه المعلومات غير متوفرة في الوقت الحالي.",
     "notification": "الإشعارات",
     "newText": "جديد",
+    "markAllAsRead": "تحديد الكل كمقروء",
+    "inAnotherTime": "في وقت سابق",
     "selectAllAsRead": "تحديد الكل كمقروء",
     "sortBy": "تصنيف حسب",
     "price": "السعر",

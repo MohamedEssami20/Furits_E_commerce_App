@@ -52,6 +52,8 @@
     "oppsNotAvailable": "Oops... this information is not available at the moment.",
     "notification": "Notification",
     "newText": "New",
+    "markAllAsRead": "Mark All As Read",
+    "inAnotherTime": "In another time",
     "selectAllAsRead": "Select All As Read",
     "sortBy": "Sort By",
     "price": "Price",

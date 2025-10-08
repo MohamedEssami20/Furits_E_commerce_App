@@ -294,6 +294,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "helloInApp": MessageLookupByLibrary.simpleMessage("مرحبًا بك في"),
     "help": MessageLookupByLibrary.simpleMessage("المساعدة"),
     "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+    "inAnotherTime": MessageLookupByLibrary.simpleMessage("في وقت سابق"),
     "inCart": MessageLookupByLibrary.simpleMessage("في السلة"),
     "kg": MessageLookupByLibrary.simpleMessage("كيلو"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
@@ -309,6 +310,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "makeCardDefault": MessageLookupByLibrary.simpleMessage(
       "تعيين البطاقة كافتراضية",
     ),
+    "markAllAsRead": MessageLookupByLibrary.simpleMessage("تحديد الكل كمقروء"),
     "mode": MessageLookupByLibrary.simpleMessage("الوضع"),
     "more": MessageLookupByLibrary.simpleMessage("المزيد"),
     "myAccount": MessageLookupByLibrary.simpleMessage("حسابي"),

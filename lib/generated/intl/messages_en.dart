@@ -294,6 +294,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "helloInApp": MessageLookupByLibrary.simpleMessage("Welcome to"),
     "help": MessageLookupByLibrary.simpleMessage("Help"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "inAnotherTime": MessageLookupByLibrary.simpleMessage("In another time"),
     "inCart": MessageLookupByLibrary.simpleMessage("In Cart"),
     "kg": MessageLookupByLibrary.simpleMessage("Kg"),
     "language": MessageLookupByLibrary.simpleMessage("Language"),
@@ -309,6 +310,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "makeCardDefault": MessageLookupByLibrary.simpleMessage(
       "Make Card Default",
     ),
+    "markAllAsRead": MessageLookupByLibrary.simpleMessage("Mark All As Read"),
     "mode": MessageLookupByLibrary.simpleMessage("Mode"),
     "more": MessageLookupByLibrary.simpleMessage("More"),
     "myAccount": MessageLookupByLibrary.simpleMessage("My Account"),
