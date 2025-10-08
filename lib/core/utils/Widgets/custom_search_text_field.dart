@@ -21,6 +21,10 @@ class CustomSearchTextField extends StatelessWidget {
       ),
       child: TextField(
         keyboardType: TextInputType.text,
+        style: theme.textTheme.bodyMedium?.copyWith(
+          color: theme.colorScheme.onSurface,
+          fontSize: 15,
+        ),
         decoration: InputDecoration(
           hintText: S.of(context).search,
           hintStyle: theme.textTheme.bodyMedium!.copyWith(
@@ -45,7 +49,7 @@ class CustomSearchTextField extends StatelessWidget {
           focusedBorder: buildBorder(theme),
           border: buildBorder(theme),
           filled: true,
-          fillColor: theme.colorScheme.secondary,
+          fillColor: theme.colorScheme.secondaryContainer,
         ),
       ),
     );

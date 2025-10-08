@@ -10,6 +10,7 @@ import '../../features/auth/presentation/views/create_new_pssword_view.dart';
 import '../../features/auth/presentation/views/forget_password_view.dart';
 import '../../features/best_selling/presentation/views/best_selling_view.dart';
 import '../../features/checkout/presentation/views/checkout_view.dart';
+import '../../features/products_details/presentation/view/products_details_view.dart';
 
 Route<dynamic>? onGenerateRoute(RouteSettings? routeSettings) {
   switch (routeSettings!.name) {
@@ -56,6 +57,10 @@ Route<dynamic>? onGenerateRoute(RouteSettings? routeSettings) {
     case CreateNewPsswordView.routeName:
       return MaterialPageRoute(
         builder: (context) => const CreateNewPsswordView(),
+      );
+    case ProductsDetailsView.routeName:
+      return MaterialPageRoute(
+        builder: (context) => const ProductsDetailsView(),
       );
     default:
       return MaterialPageRoute(
