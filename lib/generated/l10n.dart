@@ -586,6 +586,11 @@ class S {
     return Intl.message('Organic', name: 'organic', desc: '', args: []);
   }
 
+  /// `Calories`
+  String get calories {
+    return Intl.message('Calories', name: 'calories', desc: '', args: []);
+  }
+
   /// `Grams`
   String get grams {
     return Intl.message('Grams', name: 'grams', desc: '', args: []);

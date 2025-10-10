@@ -134,6 +134,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "byCreatingAccount": MessageLookupByLibrary.simpleMessage(
       "من خلال إنشاء حساب فإنك توافق على",
     ),
+    "calories": MessageLookupByLibrary.simpleMessage("كالوري"),
     "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
     "cardHolderName": MessageLookupByLibrary.simpleMessage("اسم صاحب البطاقة"),
     "cardNumber": MessageLookupByLibrary.simpleMessage("رقم البطاقة"),

@@ -11,6 +11,7 @@ import '../../features/auth/presentation/views/forget_password_view.dart';
 import '../../features/best_selling/presentation/views/best_selling_view.dart';
 import '../../features/checkout/presentation/views/checkout_view.dart';
 import '../../features/products_details/presentation/view/products_details_view.dart';
+import '../entities/product_entity.dart';
 
 Route<dynamic>? onGenerateRoute(RouteSettings? routeSettings) {
   switch (routeSettings!.name) {
@@ -50,7 +51,7 @@ Route<dynamic>? onGenerateRoute(RouteSettings? routeSettings) {
       );
     case CheckCodeView.routeName:
       return MaterialPageRoute(
-        builder: (context) =>  CheckCodeView(
+        builder: (context) => CheckCodeView(
           email: routeSettings.arguments as String,
         ),
       );
@@ -60,7 +61,10 @@ Route<dynamic>? onGenerateRoute(RouteSettings? routeSettings) {
       );
     case ProductsDetailsView.routeName:
       return MaterialPageRoute(
-        builder: (context) => const ProductsDetailsView(),
+        builder: (context) => ProductsDetailsView(
+          productEntity:
+              routeSettings.arguments as ProductEntity, //default: null,
+        ),
       );
     default:
       return MaterialPageRoute(

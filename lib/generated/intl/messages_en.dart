@@ -134,6 +134,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "byCreatingAccount": MessageLookupByLibrary.simpleMessage(
       "By creating an account, you agree to",
     ),
+    "calories": MessageLookupByLibrary.simpleMessage("Calories"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "cardHolderName": MessageLookupByLibrary.simpleMessage("Card Holder Name"),
     "cardNumber": MessageLookupByLibrary.simpleMessage("Card Number"),

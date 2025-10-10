@@ -5,15 +5,19 @@ import 'package:fruits_hub/features/home/domain/entities/cart_item_entity.dart';
 import 'package:fruits_hub/features/home/presentation/manager/cart_item_cubit/cart_item_cubit.dart';
 
 class CartActionButtons extends StatelessWidget {
-  const CartActionButtons({super.key, required this.cartItemEntity});
+  const CartActionButtons({super.key, required this.cartItemEntity, this.width, this.height});
   final CartItemEntity cartItemEntity;
+  final double? width, height;
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
       spacing: 16,
       children: [
         CartActionButton(
+          width: width ?? 24,
+          height: height ?? 24,
           icon: Icons.add,
           iconColor: theme.colorScheme.surface,
           backgroundColor: AppColors.primaryColor,
@@ -30,6 +34,8 @@ class CartActionButtons extends StatelessWidget {
           ),
         ),
         CartActionButton(
+          width: width ?? 24,
+          height: height ?? 24,
           icon: Icons.remove,
           iconColor: Colors.grey,
           backgroundColor: const Color(0xFFF1F1F5),
@@ -49,17 +55,18 @@ class CartActionButton extends StatelessWidget {
       required this.iconColor,
       required this.backgroundColor,
       required this.icon,
-      this.onPressed});
+      this.onPressed, this.width, this.height});
   final Color iconColor, backgroundColor;
   final IconData icon;
   final VoidCallback? onPressed;
+  final double? width, height;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        width: 24,
-        height: 24,
+        width:width ?? 24,
+        height: height ?? 24,
         padding: const EdgeInsets.all(3),
         decoration: ShapeDecoration(
           color: backgroundColor,

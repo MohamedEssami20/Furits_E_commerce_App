@@ -16,6 +16,8 @@ import 'package:fruits_hub/generated/l10n.dart';
 
 import 'core/services/supabase_storage_services.dart';
 import 'features/home/domain/repos/home_repo.dart';
+import 'features/home/presentation/manager/cart_cubit/cart_cubit.dart';
+import 'features/home/presentation/manager/cart_item_cubit/cart_item_cubit.dart';
 import 'features/home/presentation/manager/profile_view_cubit/profile_view_cubit.dart';
 import 'firebase_options.dart';
 
@@ -54,6 +56,12 @@ class FruitsHub extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ProfileViewCubit(),
+        ),
+        BlocProvider(
+          create: (context) => CartCubit(),
+        ),
+        BlocProvider(
+          create: (context) => CartItemCubit(),
         ),
       ],
       child: BlocBuilder<AppThemeCubit, AppThemeState>(

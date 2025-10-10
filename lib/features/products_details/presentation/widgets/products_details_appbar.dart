@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../../../core/utils/assets.dart';
+import 'package:fruits_hub/core/utils/Widgets/custom_network_image.dart';
 import '../../../../core/utils/custom_appbar_clipper.dart';
 
 class ProductsDetailsAppBar extends StatelessWidget {
@@ -9,11 +8,13 @@ class ProductsDetailsAppBar extends StatelessWidget {
     required this.height,
     required this.theme,
     required this.textDirection,
+    required this.image,
   });
 
   final double height;
   final ThemeData theme;
   final TextDirection textDirection;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class ProductsDetailsAppBar extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  color: Colors.black,
+                  color: theme.colorScheme.onSurface,
                   icon: const Icon(
                     Icons.arrow_back_ios,
                   ),
@@ -62,10 +63,9 @@ class ProductsDetailsAppBar extends StatelessWidget {
         Positioned.fill(
           top: height * 0.04,
           child: Center(
-            child: Image.asset(
+            child: CustomNetowrkImage(
+              imageUrl: image,
               width: 200,
-              fit: BoxFit.fill,
-              Assets.assetsImagesWaterMelonTestImage,
             ),
           ),
         ),
