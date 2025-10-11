@@ -61,7 +61,7 @@ class SummaryOfRating extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'موصي بها',
+                    S.of(context).suggested,
                     style: TextStyles.regular13.copyWith(
                       height: 1.40,
                       color: theme.colorScheme.onSurface,

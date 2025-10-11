@@ -4,7 +4,8 @@ import 'package:fruits_hub/core/utils/app_text_style.dart';
 AppBar buildAppBarOne(
     {required String title,
     required BuildContext context,
-    bool? showBackButton}) {
+    bool? showBackButton,
+    void Function()? onBackPress}) {
   return AppBar(
     backgroundColor: Colors.transparent,
     centerTitle: true,
@@ -15,9 +16,7 @@ AppBar buildAppBarOne(
     leading: Visibility(
       visible: showBackButton ?? true,
       child: IconButton(
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
+        onPressed: onBackPress ?? () => Navigator.of(context).pop(),
         icon: const Icon(Icons.arrow_back_ios_new_outlined),
       ),
     ),

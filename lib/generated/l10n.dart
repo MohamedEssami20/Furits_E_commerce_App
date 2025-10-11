@@ -576,6 +576,11 @@ class S {
     return Intl.message('Reviews', name: 'reviews', desc: '', args: []);
   }
 
+  /// `Suggested`
+  String get suggested {
+    return Intl.message('Suggested', name: 'suggested', desc: '', args: []);
+  }
+
   /// `Expiry`
   String get expiry {
     return Intl.message('Expiry', name: 'expiry', desc: '', args: []);

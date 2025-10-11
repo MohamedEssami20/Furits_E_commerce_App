@@ -477,6 +477,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "successMessageOfLogin": MessageLookupByLibrary.simpleMessage(
       "Login successfully, welcome back.",
     ),
+    "suggested": MessageLookupByLibrary.simpleMessage("Suggested"),
     "summary": MessageLookupByLibrary.simpleMessage("Summary"),
     "termsAndConditions": MessageLookupByLibrary.simpleMessage(
       "Terms & Conditions",
