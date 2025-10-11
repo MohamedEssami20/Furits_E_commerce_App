@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/entities/product_entity.dart';
 import 'package:fruits_hub/generated/l10n.dart';
+import 'package:provider/provider.dart';
+
+import '../manager/details_and_reviews_cubit/detais_and_reviews_cubit.dart';
 
 class ProductsReviewsHeaderAndDescription extends StatelessWidget {
   const ProductsReviewsHeaderAndDescription(
@@ -30,12 +33,17 @@ class ProductsReviewsHeaderAndDescription extends StatelessWidget {
                 color: theme.colorScheme.onSurfaceVariant,
               ),
             ),
-            Text(
-              S.of(context).review,
-              style: theme.textTheme.headlineLarge?.copyWith(
-                fontSize: 13,
-                color: theme.colorScheme.primary,
-                decoration: TextDecoration.underline,
+            GestureDetector(
+              onTap: () {
+                context.read<DetailsAndReviewsCubit>().changeIndex(1);
+              },
+              child: Text(
+                S.of(context).review,
+                style: theme.textTheme.headlineLarge?.copyWith(
+                  fontSize: 13,
+                  color: theme.colorScheme.primary,
+                  decoration: TextDecoration.underline,
+                ),
               ),
             ),
           ],

@@ -17,12 +17,13 @@ class CustomTextFormFiled extends StatelessWidget {
     this.textAlign = TextAlign.start,
     this.initialValue,
     this.validator,
-    this.enabled,
+    this.enabled, this.prefixIcon,
   });
 
   final String hintText;
   final TextInputType textInputType;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final void Function(String?)? onSaved;
   final bool obscureText;
   final int? maxLength;
@@ -58,6 +59,7 @@ class CustomTextFormFiled extends StatelessWidget {
           color: const Color(0xff949E9D),
         ),
         suffixIcon: suffixIcon,
+        prefixIcon: prefixIcon,
         enabledBorder: buildBorder(),
         focusedBorder: buildBorder(),
         border: buildBorder(),
