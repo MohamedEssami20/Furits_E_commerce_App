@@ -20,4 +20,6 @@ class BackendEndpoints {
       "https://nzyzfagaxchrgmnurlwo.supabase.co/storage/v1/object/public/userImages/images/profile_image1.jpeg";
     static const String baseImageUrl =
       "https://nzyzfagaxchrgmnurlwo.supabase.co/storage/v1/object/public/";
+  static const String reviewsCollection="reviews";
+  static const String productComments="productComments";
 }
