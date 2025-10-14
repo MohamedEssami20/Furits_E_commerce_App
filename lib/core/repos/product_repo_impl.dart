@@ -97,7 +97,6 @@ class ProductRepoImpl extends ProductRepos {
         expeireationMonths: e.expeireationMonths,
         numberOfCalories: e.numberOfCalories,
         unitAmount: e.unitAmount,
-        reviews: e.reviews,
         isFavorite: ids.contains(e.id),
       );
     }).toList();

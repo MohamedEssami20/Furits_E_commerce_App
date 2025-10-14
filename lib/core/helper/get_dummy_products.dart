@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:fruits_hub/core/entities/product_entity.dart';
-import 'package:fruits_hub/core/entities/reviews_entity.dart';
 
 ProductEntity getInstance() {
   return ProductEntity(
@@ -19,15 +18,6 @@ ProductEntity getInstance() {
     avgRating: 4.5,
     ratingCount: 10,
     unitAmount: 1,
-    reviews: [
-      ReviewsEntity(
-        name: 'John Doe',
-        ratting: 4.5,
-        date: "",
-        image: '',
-        reviewDescription: 'This is a dummy review',
-      ),
-    ],
   );
 }
 

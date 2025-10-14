@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:equatable/equatable.dart';
 
-import 'reviews_entity.dart';
 
 // ignore: must_be_immutable
 class ProductEntity extends Equatable {
@@ -21,7 +19,6 @@ class ProductEntity extends Equatable {
   final num ratingCount;
   final int unitAmount;
   final int sellingCount;
-  final List<ReviewsEntity> reviews;
   final bool isFavorite;
   ProductEntity({
     this.isFavorite = false,
@@ -40,7 +37,6 @@ class ProductEntity extends Equatable {
     this.ratingCount = 0,
     this.sellingCount = 0,
     required this.unitAmount,
-    required this.reviews,
   });
 
   @override

@@ -69,7 +69,7 @@ class _WriteCommentTextFieldState extends State<WriteCommentTextField> {
             child: CustomButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
-                  context.read<ReviewsCubit>().addComment(
+                  context.read<ReviewsCubit>().addReview(
                         productId: widget.productId,
                         userCommentModel: UserReviewModel(
                           comment: controller.text,

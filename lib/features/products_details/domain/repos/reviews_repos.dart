@@ -8,4 +8,7 @@ abstract class ReviewsRepos {
       {required String productId,
       required UserReviewModel userCommentModel,
       required String genralErrorMessage});
+
+  // create method that update length of reviews count;
+  Future<Either<Failure, void>> updateRatingCount({required String productId});
 }

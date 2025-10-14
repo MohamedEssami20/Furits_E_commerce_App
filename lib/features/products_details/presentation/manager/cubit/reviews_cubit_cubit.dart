@@ -11,7 +11,7 @@ class ReviewsCubit extends Cubit<ReviewsState> {
   final ReviewsRepos reviewsRepos;
 
   // create method that add comments
-  Future<void> addComment(
+  Future<void> addReview(
       {required String productId,
       required UserReviewModel userCommentModel,
       required String genralErrorMessage}) async {
@@ -24,7 +24,8 @@ class ReviewsCubit extends Cubit<ReviewsState> {
       emit(
         AddCommentFailure(errormessage: failure.errorMessage),
       );
-    }, (_) {
+    }, (_) async {
+      await reviewsRepos.updateRatingCount(productId: productId);
       emit(
         AddCommentSuccess(),
       );

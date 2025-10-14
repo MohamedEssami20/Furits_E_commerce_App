@@ -1,8 +1,6 @@
 import 'dart:io';
 import 'package:fruits_hub/core/entities/product_entity.dart';
 
-import 'reviews_model.dart';
-
 class ProductModel {
   final String productId;
   final String name;
@@ -19,7 +17,6 @@ class ProductModel {
   final num ratingCount;
   final int unitAmount;
   final int sellingCount;
-  final List<ReviewsModel> reviews;
   ProductModel(
       {required this.productId,required this.name,
       required this.code,
@@ -33,7 +30,6 @@ class ProductModel {
       required this.avgRating,
       required this.ratingCount,
       required this.unitAmount,
-      required this.reviews,
       this.sellingCount = 0,
       this.iamgeUrl});
 
@@ -53,13 +49,6 @@ class ProductModel {
       avgRating: json["avgRating"],
       ratingCount: json["ratingCount"],
       unitAmount: json["unitAmount"],
-      reviews: json["reviews"] == null
-          ? []
-          : List<ReviewsModel>.from(
-              json["reviews"].map(
-                (e) => ReviewsModel.fromJson(e),
-              ),
-            ),
       sellingCount: json["sellingCount"]?.toInt() ?? 0,
     );
   }
@@ -80,9 +69,7 @@ class ProductModel {
       avgRating: product.avgRating,
       ratingCount: product.ratingCount,
       unitAmount: product.unitAmount,
-      reviews: product.reviews
-          .map((e) => ReviewsModel.fromReviewsEntity(e))
-          .toList(),
+      sellingCount: product.sellingCount,
     );
   }
 
@@ -102,11 +89,7 @@ class ProductModel {
       avgRating: avgRating,
       ratingCount: ratingCount,
       unitAmount: unitAmount,
-      reviews: reviews
-          .map(
-            (e) => e.toEntity(),
-          )
-          .toList(),
+      sellingCount: sellingCount,
     );
   }
 
@@ -124,11 +107,6 @@ class ProductModel {
       "avgRating": avgRating,
       "ratingCount": ratingCount,
       "unitAmount": unitAmount,
-      "reviews": reviews
-          .map(
-            (e) => e.toJson(),
-          )
-          .toList(),
       "sellingCount": sellingCount,
     };
   }

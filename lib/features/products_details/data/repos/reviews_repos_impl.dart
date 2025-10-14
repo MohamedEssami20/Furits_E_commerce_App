@@ -42,4 +42,36 @@ class ReviewsReposImpl implements ReviewsRepos {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, void>> updateRatingCount(
+      {required String productId}) async {
+    try {
+      final ratingCount = await dataBaseService.getDataWithDocumentId(
+        mainPath: BackendEndpoints.reviewsCollection,
+        subPath: BackendEndpoints.productComments,
+        mainDocumentId: productId,
+      );
+      await dataBaseService.addData(
+        path: BackendEndpoints.getProducts,
+        documentId: productId,
+        data: {
+          "ratingCount": ratingCount.length,
+        },
+      );
+      return right(null);
+    } on FirebaseException catch (e) {
+      log("error to get rating count = ${e.message.toString()}");
+      return left(
+        FirebaseExceptionHandler.fromFirebaseException(e),
+      );
+    } catch (e) {
+      log("error to get rating count 2 = ${e.toString()}");
+      return left(
+        ServerFailure(
+          errorMessage: e.toString(),
+        ),
+      );
+    }
+  }
 }
