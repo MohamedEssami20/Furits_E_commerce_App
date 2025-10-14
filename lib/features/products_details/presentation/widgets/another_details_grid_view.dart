@@ -38,6 +38,7 @@ List<String> getAnotherDetailsValue(ProductEntity productEntity) {
     productEntity.expeireationMonths.toString(),
     productEntity.isOraganic ? "100%" : "0%",
     productEntity.numberOfCalories.toString(),
+    productEntity.ratingCount.toString(),
   ];
 }
 

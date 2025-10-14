@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart';
-import 'package:fruits_hub/core/utils/assets.dart';
+import '../../domain/entities/user_comments_entity.dart';
 
 class PeopleCommentsItem extends StatelessWidget {
-  const PeopleCommentsItem({super.key});
-
+  const PeopleCommentsItem({super.key, required this.userReviewEntity});
+  final UserReviewEntity userReviewEntity;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -14,22 +14,22 @@ class PeopleCommentsItem extends StatelessWidget {
       children: [
         ListTile(
           contentPadding: const EdgeInsets.all(0),
-          leading: const CircleAvatar(
+          leading: CircleAvatar(
             radius: 30,
             backgroundColor: Colors.transparent,
-            backgroundImage: AssetImage(
-              Assets.assetsImagesProfileImage,
+            backgroundImage: NetworkImage(
+              userReviewEntity.userImage,
             ),
           ),
           title: Text(
-            'Ahmed Mohamed',
+            userReviewEntity.userName,
             style: TextStyles.semiBold16.copyWith(
               height: 1.40,
               color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
           subtitle: Text(
-            '25/06/2020',
+            userReviewEntity.date,
             style: TextStyles.regular13.copyWith(
               height: 1.60,
               color: Theme.of(context).colorScheme.onSurfaceVariant,
@@ -37,7 +37,7 @@ class PeopleCommentsItem extends StatelessWidget {
           ),
         ),
         Text(
-          'هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها',
+          userReviewEntity.comment,
           textAlign: TextAlign.right,
           style: TextStyles.regular13.copyWith(
             height: 1.60,

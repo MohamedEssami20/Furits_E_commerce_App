@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/Widgets/build_appbar.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart';
+import 'package:fruits_hub/features/products_details/presentation/widgets/people_comment_builder.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 import 'package:provider/provider.dart';
 
 import '../manager/details_and_reviews_cubit/detais_and_reviews_cubit.dart';
-import 'people_comments_list.dart';
 import 'reviews_stars_item.dart';
 import 'summary_of_rating.dart';
 import 'write_comment_text_field.dart';
@@ -57,7 +57,11 @@ class ReviewsSectionBody extends StatelessWidget {
           const SizedBox(
             height: 12,
           ),
-          const Expanded(child: PeopleCommentsList()),
+          Expanded(
+            child: PeopleCommentsBuilder(
+              productId: productId,
+            ),
+          ),
         ],
       ),
     );

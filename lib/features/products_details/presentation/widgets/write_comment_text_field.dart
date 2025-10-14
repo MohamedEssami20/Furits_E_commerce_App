@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/helper/build_success_and_error_snackbar.dart';
 import 'package:fruits_hub/features/home/presentation/manager/get_user_cubit/get_user_cubit.dart';
-import 'package:fruits_hub/features/products_details/presentation/manager/cubit/reviews_cubit_cubit.dart';
+import 'package:fruits_hub/features/products_details/presentation/manager/cubit/reviews_cubit.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/utils/Widgets/custom_button.dart';

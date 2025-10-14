@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_hub/core/errors/failure.dart';
 import 'package:fruits_hub/core/services/data_base_service.dart';
 import 'package:fruits_hub/features/products_details/data/models/user_comment_model.dart';
+import 'package:fruits_hub/features/products_details/domain/entities/user_comments_entity.dart';
 import '../../../../core/errors/firebase_exception.dart';
 import '../../../../core/utils/backend_endpoints.dart';
 import '../../domain/repos/reviews_repos.dart';
@@ -70,6 +71,38 @@ class ReviewsReposImpl implements ReviewsRepos {
       return left(
         ServerFailure(
           errorMessage: e.toString(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Stream<Either<Failure, List<UserReviewEntity>>> getReviews(
+      {required String productId, required String genralErrorMessage}) async* {
+    try {
+      final reviews = dataBaseService.getStreamDataWithDocumentId(
+        mainPath: BackendEndpoints.reviewsCollection,
+        subPath: BackendEndpoints.productComments,
+        documentId: productId,
+      );
+      await for (var element in reviews) {
+        final reviewsEntities = element
+            .map(
+              (e) => UserReviewModel.fromJson(e.data()).toEntity(),
+            )
+            .toList();
+        yield right(reviewsEntities);
+      }
+    } on FirebaseException catch (e) {
+      log("error to get reviews = ${e.message.toString()}");
+      yield left(
+        FirebaseExceptionHandler.fromFirebaseException(e),
+      );
+    } catch (e) {
+      log("error to get reviews 2 = ${e.toString()}");
+      yield left(
+        ServerFailure(
+          errorMessage: genralErrorMessage,
         ),
       );
     }

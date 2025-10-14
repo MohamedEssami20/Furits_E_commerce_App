@@ -66,8 +66,7 @@ class ProductRepoImpl extends ProductRepos {
 
       List<ProductEntity> finalProducts =
           getFinalProducts(favSanpShot, products);
-      for (int counter = 0; counter < finalProducts.length; counter++) {
-      }
+      log("apple 2 rating count= ${finalProducts[0].ratingCount}");
       return right(finalProducts);
     } catch (e) {
       return left(
@@ -98,6 +97,9 @@ class ProductRepoImpl extends ProductRepos {
         numberOfCalories: e.numberOfCalories,
         unitAmount: e.unitAmount,
         isFavorite: ids.contains(e.id),
+        ratingCount: e.ratingCount,
+        avgRating: e.avgRating,
+        sellingCount: e.sellingCount,
       );
     }).toList();
     return finalProducts;

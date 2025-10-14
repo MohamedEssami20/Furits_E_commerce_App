@@ -34,7 +34,7 @@ class ProductEntity extends Equatable {
     this.isOraganic = false,
     required this.numberOfCalories,
     this.avgRating = 0,
-    this.ratingCount = 0,
+    required this.ratingCount,
     this.sellingCount = 0,
     required this.unitAmount,
   });
