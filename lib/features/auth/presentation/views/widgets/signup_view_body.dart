@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
+import 'package:fruits_hub/core/helper/build_success_and_error_snackbar.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_button.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_text_form_filed.dart';
 import 'package:fruits_hub/features/auth/presentation/manager/signup_cubit/signup_user_cubit.dart';
@@ -98,7 +98,7 @@ class _SignupViewBodyState extends State<SignupViewBody> {
                             genralErrorMessage: S.of(context).errorMessage,
                           );
                     } else {
-                      buildErrorSnackBar(context,
+                      buildSuccessAndErrorSnackBar(context,
                           S.of(context).shouldAcceptTermsAndConditions);
                     }
                   } else {

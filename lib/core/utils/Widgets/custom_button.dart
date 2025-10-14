@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/my_colors.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.onPressed, required this.title});
+  const CustomButton(
+      {super.key, required this.onPressed, this.child, this.title});
   final VoidCallback onPressed;
-  final String title;
+  final String? title;
+  final Widget? child;
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -19,12 +21,13 @@ class CustomButton extends StatelessWidget {
           ),
         ),
         onPressed: onPressed,
-        child: Text(
-          title,
-          style: theme.textTheme.headlineLarge!.copyWith(
-            color: theme.colorScheme.onPrimary,
-          ),
-        ),
+        child: child ??
+            Text(
+              title!,
+              style: theme.textTheme.headlineLarge!.copyWith(
+                color: theme.colorScheme.onPrimary,
+              ),
+            ),
       ),
     );
   }

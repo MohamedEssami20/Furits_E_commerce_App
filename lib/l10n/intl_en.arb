@@ -235,5 +235,10 @@
     "firebase_quota_exceeded": "Storage quota exceeded.",
     "firebase_unauthorized": "You are not authorized to access this resource.",
     "firebase_unexpected_error": "An unexpected Firebase error occurred.",
-    "verificationCodeError": "Please enter a valid verification code."
+    "verificationCodeError": "Please enter a valid verification code.",
+    "send": "Send",
+    "pleaseEnterComment": "Please enter comment",
+    "commentAdded": "Comment added successfully",
+    "commentAddedFail":"Failed to add comment",
+    "ratePorduct":"Rate Product"
 }

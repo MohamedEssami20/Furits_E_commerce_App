@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
+import 'package:fruits_hub/core/helper/build_success_and_error_snackbar.dart';
 import 'package:fruits_hub/features/auth/presentation/manager/reset_password_cubit/reset_password_cubit.dart';
 import 'package:fruits_hub/features/auth/presentation/views/signin_view.dart';
 import 'package:fruits_hub/features/auth/presentation/views/widgets/custom_verification_button.dart';
@@ -37,7 +37,7 @@ class ResetPasswordButtonBuilder extends StatelessWidget {
       },
       listener: (context, state) {
         if (state is SendPasswordResetEmailFailure) {
-          buildErrorSnackBar(context, state.errorMessage);
+          buildSuccessAndErrorSnackBar(context, state.errorMessage);
         }
 
         if (state is SendPasswordResetEmailSuccess) {

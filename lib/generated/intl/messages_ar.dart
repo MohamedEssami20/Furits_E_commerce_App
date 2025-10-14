@@ -148,6 +148,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "اختر طريقة الدفع",
     ),
     "city": MessageLookupByLibrary.simpleMessage("المدينة"),
+    "commentAdded": MessageLookupByLibrary.simpleMessage(
+      "تم اضافة التعليق بنجاح",
+    ),
+    "commentAddedFail": MessageLookupByLibrary.simpleMessage(
+      "فشل اضافة التعليق",
+    ),
     "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
     "confirmNewPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور الجديدة",
@@ -394,6 +400,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pictureIsChanged": MessageLookupByLibrary.simpleMessage(
       "تم تغيير الصورة بنجاح",
     ),
+    "pleaseEnterComment": MessageLookupByLibrary.simpleMessage(
+      "يرجى ادخال التعليق",
+    ),
     "pleaseEnterCurrentPassword": MessageLookupByLibrary.simpleMessage(
       "يرجى ادخال كلمة المرور الحالية",
     ),
@@ -415,6 +424,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "productsTwo": MessageLookupByLibrary.simpleMessage("منتجات"),
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "profileInfo": MessageLookupByLibrary.simpleMessage("المعلومات الشخصية"),
+    "ratePorduct": MessageLookupByLibrary.simpleMessage("تقييم المنتج"),
     "removeProductFromCartSuccess": MessageLookupByLibrary.simpleMessage(
       "تم حذف المنتج من السلة بنجاح",
     ),
@@ -442,6 +452,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectPaymentMethod": MessageLookupByLibrary.simpleMessage(
       "يرجى تحديد طريقة الدفع",
     ),
+    "send": MessageLookupByLibrary.simpleMessage("ارسال"),
     "sendEmailVerification": MessageLookupByLibrary.simpleMessage(
       "تم ارسال بريد التحقق بنجاح",
     ),

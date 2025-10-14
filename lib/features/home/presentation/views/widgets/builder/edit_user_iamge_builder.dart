@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
+import 'package:fruits_hub/core/helper/build_success_and_error_snackbar.dart';
 import 'package:fruits_hub/features/home/presentation/manager/edit_user_info_cubit/user_cubit.dart';
 import 'package:fruits_hub/features/home/presentation/manager/get_user_cubit/get_user_cubit.dart';
 import 'package:fruits_hub/features/home/presentation/views/widgets/profile_account_and_image.dart';
@@ -29,10 +29,10 @@ class EditUserIamgeBuilder extends StatelessWidget {
       listener: (context, state) {
         if (state is EditUserImageSuccess) {
           Navigator.of(context).pop();
-          buildErrorSnackBar(context, S.of(context).editImageSuccess);
+          buildSuccessAndErrorSnackBar(context, S.of(context).editImageSuccess);
         }
         if (state is EditUserImageFailure) {
-          buildErrorSnackBar(context, S.of(context).errorMessage);
+          buildSuccessAndErrorSnackBar(context, S.of(context).errorMessage);
         }
       },
     );

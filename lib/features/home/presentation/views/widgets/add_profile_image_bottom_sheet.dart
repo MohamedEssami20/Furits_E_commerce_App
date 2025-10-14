@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
+import 'package:fruits_hub/core/helper/build_success_and_error_snackbar.dart';
 import 'package:fruits_hub/features/home/presentation/manager/edit_user_info_cubit/user_cubit.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 import 'package:image_picker/image_picker.dart';
@@ -30,11 +30,11 @@ class _AddProfileImageBottomSheetState
       listener: (context, state) {
         if (state is EditUserImageSuccess) {
           Navigator.of(context).pop();
-          buildErrorSnackBar(context, S.of(context).pictureIsChanged);
+          buildSuccessAndErrorSnackBar(context, S.of(context).pictureIsChanged);
         }
         if (state is EditUserImageFailure) {
           Navigator.of(context).pop();
-          buildErrorSnackBar(context, S.of(context).errorMessage);
+          buildSuccessAndErrorSnackBar(context, S.of(context).errorMessage);
         }
       },
       child: BottomSheet(

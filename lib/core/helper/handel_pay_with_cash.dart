@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../features/checkout/domain/entities/order_entity.dart';
 import '../../generated/l10n.dart';
-import 'build_error_snackbar.dart';
+import 'build_success_and_error_snackbar.dart';
 
 void handelpayWithCash(OrderEntity orderEntity, BuildContext context,
     int currentPageIndex, PageController pageController) {
@@ -13,6 +13,6 @@ void handelpayWithCash(OrderEntity orderEntity, BuildContext context,
       curve: Curves.fastOutSlowIn,
     );
   } else {
-    buildErrorSnackBar(context, S.of(context).choosePaymentMethod);
+    buildSuccessAndErrorSnackBar(context, S.of(context).choosePaymentMethod);
   }
 }

@@ -3,16 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart' show TextStyles;
 import 'package:fruits_hub/features/auth/presentation/views/create_new_pssword_view.dart';
 
-import '../../../../../core/helper/build_error_snackbar.dart';
+import '../../../../../core/helper/build_success_and_error_snackbar.dart';
 import '../../../../../generated/l10n.dart';
 import '../../manager/reset_password_cubit/reset_password_cubit.dart';
 import 'custom_verification_button.dart';
 
 class CheckCodeVerificationBuilder extends StatelessWidget {
   const CheckCodeVerificationBuilder({
-    super.key, required this.onPressed,
+    super.key,
+    required this.onPressed,
   });
-   final VoidCallback onPressed;
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
@@ -31,7 +32,7 @@ class CheckCodeVerificationBuilder extends StatelessWidget {
       },
       listener: (context, state) {
         if (state is CheckVerificationCodeFailure) {
-          buildErrorSnackBar(context, state.errorMessage);
+          buildSuccessAndErrorSnackBar(context, state.errorMessage);
         }
 
         if (state is CheckVerificationCodeSuccess) {

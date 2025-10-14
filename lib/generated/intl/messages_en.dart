@@ -148,6 +148,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Choose Payment Method",
     ),
     "city": MessageLookupByLibrary.simpleMessage("City"),
+    "commentAdded": MessageLookupByLibrary.simpleMessage(
+      "Comment added successfully",
+    ),
+    "commentAddedFail": MessageLookupByLibrary.simpleMessage(
+      "Failed to add comment",
+    ),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirmNewPassword": MessageLookupByLibrary.simpleMessage(
       "Confirm New Password",
@@ -390,6 +396,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pictureIsChanged": MessageLookupByLibrary.simpleMessage(
       "Picture is changed successfully",
     ),
+    "pleaseEnterComment": MessageLookupByLibrary.simpleMessage(
+      "Please enter comment",
+    ),
     "pleaseEnterConfirmNewPassword": MessageLookupByLibrary.simpleMessage(
       "Please enter confirm new password",
     ),
@@ -414,6 +423,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "productsTwo": MessageLookupByLibrary.simpleMessage("Products"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "profileInfo": MessageLookupByLibrary.simpleMessage("Profile Info"),
+    "ratePorduct": MessageLookupByLibrary.simpleMessage("Rate Product"),
     "removeProductFromCartSuccess": MessageLookupByLibrary.simpleMessage(
       "Product removed from cart successfully",
     ),
@@ -441,6 +451,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "selectPaymentMethod": MessageLookupByLibrary.simpleMessage(
       "Please select a payment method",
     ),
+    "send": MessageLookupByLibrary.simpleMessage("Send"),
     "sendEmailVerification": MessageLookupByLibrary.simpleMessage(
       "Send Email Verification",
     ),

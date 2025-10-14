@@ -14,8 +14,10 @@ import 'package:fruits_hub/features/auth/domain/repos/reset_password_repo.dart';
 import 'package:fruits_hub/features/best_selling/presentation/manager/favorite_product_cubit/favorite_products_cubit.dart';
 import 'package:fruits_hub/features/home/data/repos/home_repo_impl.dart';
 import 'package:fruits_hub/features/home/domain/repos/home_repo.dart';
+import 'package:fruits_hub/features/products_details/domain/repos/reviews_repos.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../features/products_details/data/repos/reviews_repos_impl.dart';
 import '../repos/orders_repo/orders_repo_impl.dart';
 
 final GetIt getIt = GetIt.instance;
@@ -69,6 +71,12 @@ void setupGetIt() {
   getIt.registerSingleton<FavoriteProductsCubit>(
     FavoriteProductsCubit(
       productRepos: getIt.get<ProductRepos>(),
+    ),
+  );
+
+  getIt.registerSingleton<ReviewsRepos>(
+    ReviewsReposImpl(
+      dataBaseService: getIt.get<DataBaseService>(),
     ),
   );
 }

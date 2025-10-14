@@ -180,6 +180,7 @@
     "sendLikOfChangeEmail": "تم ارسال رابط تغيير البريد الالكتروني للبريد الالكتروني الجديد",
     "nameIsChanged": "تم تغيير الاسم بنجاح",
     "pictureIsChanged": "تم تغيير الصورة بنجاح",
+    "pleaseEnterComment": "يرجى ادخال التعليق",
     "edit": "تعديل",
     "phoneNumber": "رقم الهاتف",
     "noProductsInFavorite": "لا يوجد منتجات في المفضلة",
@@ -235,5 +236,9 @@
     "firebase_quota_exceeded": "تم تجاوز حصة التخزين.",
     "firebase_unauthorized": "أنت غير مصرح لك بالوصول إلى هذا المورد.",
     "firebase_unexpected_error": "حدث خطأ غير متوقع في Firebase.",
-    "verificationCodeError": "يرجى التحقق من رمز التحقق المدخل."
+    "verificationCodeError": "يرجى التحقق من رمز التحقق المدخل.",
+    "send": "ارسال",
+    "commentAdded": "تم اضافة التعليق بنجاح",
+    "commentAddedFail":"فشل اضافة التعليق",
+    "ratePorduct":"تقييم المنتج"
 }

@@ -4,8 +4,8 @@ import 'package:fruits_hub/features/products_details/data/models/user_comment_mo
 
 abstract class ReviewsRepos {
   // create method that add comments to product in reviews;
-  Future<Either<Failure, void>> addComment(
+  Future<Either<Failure, void>> addReviewe(
       {required String productId,
-      required UserCommentModel userCommentModel,
+      required UserReviewModel userCommentModel,
       required String genralErrorMessage});
 }

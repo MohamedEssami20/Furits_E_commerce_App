@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../core/helper/build_error_snackbar.dart';
+import '../../../../../../core/helper/build_success_and_error_snackbar.dart';
 import '../../../../../../core/helper/localization_helper.dart';
 import '../../../../../../core/utils/app_text_style.dart' show TextStyles;
 import '../../../../../../generated/l10n.dart';
@@ -23,18 +23,18 @@ class SendEditingUserInfoBuilder extends StatelessWidget {
             LoginView.routeName,
             (route) => false,
           );
-          buildErrorSnackBar(
+          buildSuccessAndErrorSnackBar(
               context, getUserEditingMessageSuccess(state, context));
         }
         if (state is EditUserNameSuccess) {
           context.read<ProfileViewCubit>().changeIndex(0);
-          buildErrorSnackBar(
+          buildSuccessAndErrorSnackBar(
               context, getUserEditingMessageSuccess(state, context));
         }
         if (state is EditUserPasswordFailure ||
             state is EditUserEmailFailure ||
             state is EditUserNameFailure) {
-          buildErrorSnackBar(
+          buildSuccessAndErrorSnackBar(
               context, getUserEditingMessageError(state, context));
         }
       },

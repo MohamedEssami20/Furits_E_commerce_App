@@ -6,18 +6,17 @@ import '../../../data/models/user_comment_model.dart';
 
 part 'reviews_cubit_state.dart';
 
-class ReviewsCubitCubit extends Cubit<ReviewsCubitState> {
-  ReviewsCubitCubit({required this.reviewsRepos})
-      : super(ReviewsCubitInitial());
+class ReviewsCubit extends Cubit<ReviewsState> {
+  ReviewsCubit({required this.reviewsRepos}) : super(ReviewsCubitInitial());
   final ReviewsRepos reviewsRepos;
 
   // create method that add comments
   Future<void> addComment(
       {required String productId,
-      required UserCommentModel userCommentModel,
+      required UserReviewModel userCommentModel,
       required String genralErrorMessage}) async {
     emit(AddCommentLoading());
-    final result = await reviewsRepos.addComment(
+    final result = await reviewsRepos.addReviewe(
         productId: productId,
         userCommentModel: userCommentModel,
         genralErrorMessage: genralErrorMessage);

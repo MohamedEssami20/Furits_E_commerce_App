@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
+import 'package:fruits_hub/core/helper/build_success_and_error_snackbar.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_button.dart';
 import 'package:fruits_hub/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:fruits_hub/generated/l10n.dart';
@@ -64,7 +64,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
                     curve: Curves.fastOutSlowIn,
                   );
                 } else {
-                  buildErrorSnackBar(
+                  buildSuccessAndErrorSnackBar(
                       context, S.of(context).choosePaymentMethod);
                 }
               } else if (index == 1) {
@@ -75,7 +75,7 @@ class _CheckOutViewBodyState extends State<CheckOutViewBody> {
                     curve: Curves.fastOutSlowIn,
                   );
                 } else {
-                  buildErrorSnackBar(
+                  buildSuccessAndErrorSnackBar(
                       context, S.of(context).choosePaymentMethod);
                 }
               } else {

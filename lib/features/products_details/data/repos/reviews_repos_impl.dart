@@ -4,27 +4,28 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:fruits_hub/core/errors/failure.dart';
+import 'package:fruits_hub/core/services/data_base_service.dart';
 import 'package:fruits_hub/features/products_details/data/models/user_comment_model.dart';
 import '../../../../core/errors/firebase_exception.dart';
-import '../../../../core/services/firestore_service.dart';
 import '../../../../core/utils/backend_endpoints.dart';
 import '../../domain/repos/reviews_repos.dart';
 
 class ReviewsReposImpl implements ReviewsRepos {
-  final FirestoreService firestoreService;
+  final DataBaseService dataBaseService;
 
-  ReviewsReposImpl({required this.firestoreService});
+  ReviewsReposImpl({required this.dataBaseService});
   @override
-  Future<Either<Failure, void>> addComment(
+  Future<Either<Failure, void>> addReviewe(
       {required String productId,
-      required UserCommentModel userCommentModel,
+      required UserReviewModel userCommentModel,
       required String genralErrorMessage}) async {
     try {
-      await firestoreService.addDataWithDocumentId(
+      await dataBaseService.addDataWithDocumentId(
         mainPath: BackendEndpoints.reviewsCollection,
         subPath: BackendEndpoints.productComments,
         data: userCommentModel.toJson(),
         mainDocumentId: productId,
+        subDocumentId: userCommentModel.userId,
       );
       return right(null);
     } on FirebaseException catch (e) {

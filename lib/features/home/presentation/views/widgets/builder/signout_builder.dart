@@ -5,7 +5,7 @@ import 'package:fruits_hub/features/auth/presentation/views/signin_view.dart'
     show LoginView;
 import 'package:fruits_hub/generated/l10n.dart';
 
-import '../../../../../../core/helper/build_error_snackbar.dart';
+import '../../../../../../core/helper/build_success_and_error_snackbar.dart';
 import '../../../../../../core/helper/localization_helper.dart';
 import '../../../../../../core/utils/assets.dart';
 import '../../../manager/sign_out_cubit/sign_out_cubit.dart';
@@ -38,14 +38,15 @@ class SignOutBuilder extends StatelessWidget {
             LoginView.routeName,
             (route) => false,
           );
-          buildErrorSnackBar(context, S.of(context).logOutSuccessfully);
+          buildSuccessAndErrorSnackBar(
+              context, S.of(context).logOutSuccessfully);
         }
 
         if (state is SignOutFailure) {
           final String errorTranslation =
               LocalizationHelper.getFirebaseErrorMessage(
                   context, state.errorMessage);
-          buildErrorSnackBar(context, errorTranslation);
+          buildSuccessAndErrorSnackBar(context, errorTranslation);
         }
       },
     );

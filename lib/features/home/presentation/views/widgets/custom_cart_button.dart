@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruits_hub/core/helper/build_error_snackbar.dart';
+import 'package:fruits_hub/core/helper/build_success_and_error_snackbar.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 
 import '../../../../../core/utils/Widgets/custom_button.dart';
@@ -31,7 +31,8 @@ class CustomCartPaymentButton extends StatelessWidget {
                 arguments: context.read<CartCubit>().cartEntityList,
               );
             } else {
-              buildErrorSnackBar(context, S.of(context).noProductIntoCart);
+              buildSuccessAndErrorSnackBar(
+                  context, S.of(context).noProductIntoCart);
             }
           },
           title:

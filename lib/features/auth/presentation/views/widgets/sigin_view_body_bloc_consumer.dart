@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/utils/Widgets/custom_progress_hud.dart';
@@ -7,7 +6,7 @@ import 'package:fruits_hub/features/auth/presentation/views/widgets/signin_view_
 import 'package:fruits_hub/features/home/presentation/views/main_view.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 
-import '../../../../../core/helper/build_error_snackbar.dart';
+import '../../../../../core/helper/build_success_and_error_snackbar.dart';
 import '../../../../../core/helper/localization_helper.dart';
 
 class SiginViewBodyBlocConsumer extends StatelessWidget {
@@ -21,13 +20,14 @@ class SiginViewBodyBlocConsumer extends StatelessWidget {
       listener: (context, state) {
         if (state is SigninSuccess) {
           Navigator.of(context).pushReplacementNamed(MainView.routeName);
-          buildErrorSnackBar(context, S.of(context).successMessageOfLogin);
+          buildSuccessAndErrorSnackBar(
+              context, S.of(context).successMessageOfLogin);
         }
         if (state is SigninFailure) {
           final String errorTranslation =
               LocalizationHelper.getAuthErrorMessage(
                   context, state.errorMessage);
-          buildErrorSnackBar(context, errorTranslation);
+          buildSuccessAndErrorSnackBar(context, errorTranslation);
         }
       },
       builder: (context, state) {

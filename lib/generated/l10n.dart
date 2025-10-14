@@ -2025,6 +2025,51 @@ class S {
       args: [],
     );
   }
+
+  /// `Send`
+  String get send {
+    return Intl.message('Send', name: 'send', desc: '', args: []);
+  }
+
+  /// `Please enter comment`
+  String get pleaseEnterComment {
+    return Intl.message(
+      'Please enter comment',
+      name: 'pleaseEnterComment',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comment added successfully`
+  String get commentAdded {
+    return Intl.message(
+      'Comment added successfully',
+      name: 'commentAdded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to add comment`
+  String get commentAddedFail {
+    return Intl.message(
+      'Failed to add comment',
+      name: 'commentAddedFail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rate Product`
+  String get ratePorduct {
+    return Intl.message(
+      'Rate Product',
+      name: 'ratePorduct',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
