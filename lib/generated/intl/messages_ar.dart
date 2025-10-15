@@ -154,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "commentAddedFail": MessageLookupByLibrary.simpleMessage(
       "فشل اضافة التعليق",
     ),
+    "comments": MessageLookupByLibrary.simpleMessage("تعليقات"),
     "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
     "confirmNewPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور الجديدة",
@@ -179,6 +180,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage("لا تمتلك حساب؟"),
     "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
+    "editComment": MessageLookupByLibrary.simpleMessage("تعديل التعليق"),
     "editImageSuccess": MessageLookupByLibrary.simpleMessage(
       "تم تعديل الصورة بنجاح",
     ),
@@ -329,6 +331,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "newPassword": MessageLookupByLibrary.simpleMessage("كلمة مرور جديدة"),
     "newText": MessageLookupByLibrary.simpleMessage("جديد"),
     "next": MessageLookupByLibrary.simpleMessage("التالي"),
+    "noCommentsforProduct": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد تعليقات لهذا المنتج",
+    ),
     "noOrders": MessageLookupByLibrary.simpleMessage("لا يوجد طلبات"),
     "noProductIntoCart": MessageLookupByLibrary.simpleMessage(
       "لا يوجد منتجات في سلة التسوق",

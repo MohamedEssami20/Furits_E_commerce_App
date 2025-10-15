@@ -14,6 +14,7 @@ class ReviewsCubit extends Cubit<ReviewsState> {
   final ReviewsRepos reviewsRepos;
 
   StreamSubscription? _streamSubscription;
+  bool isUserCommented = false;
   // create method that add comments
   Future<void> addReview(
       {required String productId,
@@ -30,6 +31,7 @@ class ReviewsCubit extends Cubit<ReviewsState> {
       );
     }, (_) async {
       await reviewsRepos.updateRatingCount(productId: productId);
+      isUserCommented = true;
       emit(
         AddCommentSuccess(),
       );

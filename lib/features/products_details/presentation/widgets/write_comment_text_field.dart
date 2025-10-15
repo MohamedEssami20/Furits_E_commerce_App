@@ -31,6 +31,7 @@ class _WriteCommentTextFieldState extends State<WriteCommentTextField> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final user = context.read<GetUserCubit>().userEntity;
+    final isUserAddComment = context.watch<ReviewsCubit>().isUserCommented;
     return Row(
       spacing: 8,
       children: [
@@ -96,10 +97,14 @@ class _WriteCommentTextFieldState extends State<WriteCommentTextField> {
                       ),
                     );
                   } else {
-                    return Text(
-                      S.of(context).send,
-                      style: theme.textTheme.headlineLarge?.copyWith(
-                        color: theme.colorScheme.onPrimary,
+                    return FittedBox(
+                      child: Text(
+                        isUserAddComment
+                            ? S.of(context).editComment
+                            : S.of(context).send,
+                        style: theme.textTheme.headlineLarge?.copyWith(
+                          color: theme.colorScheme.onPrimary,
+                        ),
                       ),
                     );
                   }

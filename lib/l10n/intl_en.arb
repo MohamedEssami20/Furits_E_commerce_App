@@ -240,5 +240,8 @@
     "pleaseEnterComment": "Please enter comment",
     "commentAdded": "Comment added successfully",
     "commentAddedFail":"Failed to add comment",
-    "ratePorduct":"Rate Product"
+    "ratePorduct":"Rate Product",
+    "noCommentsforProduct":"No comments for this product",
+    "comments":"Comments",
+    "editComment":"Edit Comment"
 }

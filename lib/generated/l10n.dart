@@ -2070,6 +2070,31 @@ class S {
       args: [],
     );
   }
+
+  /// `No comments for this product`
+  String get noCommentsforProduct {
+    return Intl.message(
+      'No comments for this product',
+      name: 'noCommentsforProduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comments`
+  String get comments {
+    return Intl.message('Comments', name: 'comments', desc: '', args: []);
+  }
+
+  /// `Edit Comment`
+  String get editComment {
+    return Intl.message(
+      'Edit Comment',
+      name: 'editComment',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

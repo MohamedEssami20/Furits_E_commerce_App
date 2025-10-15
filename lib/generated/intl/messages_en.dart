@@ -154,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "commentAddedFail": MessageLookupByLibrary.simpleMessage(
       "Failed to add comment",
     ),
+    "comments": MessageLookupByLibrary.simpleMessage("Comments"),
     "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
     "confirmNewPassword": MessageLookupByLibrary.simpleMessage(
       "Confirm New Password",
@@ -181,6 +182,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Don\'t have an account?",
     ),
     "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+    "editComment": MessageLookupByLibrary.simpleMessage("Edit Comment"),
     "editImageSuccess": MessageLookupByLibrary.simpleMessage(
       "Image edited successfully",
     ),
@@ -329,6 +331,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
     "newText": MessageLookupByLibrary.simpleMessage("New"),
     "next": MessageLookupByLibrary.simpleMessage("Next"),
+    "noCommentsforProduct": MessageLookupByLibrary.simpleMessage(
+      "No comments for this product",
+    ),
     "noOrders": MessageLookupByLibrary.simpleMessage("No orders yet"),
     "noProductIntoCart": MessageLookupByLibrary.simpleMessage(
       "No Product into Cart",

@@ -17,4 +17,5 @@ abstract class ReviewsRepos {
 
   // create method that update length of reviews count;
   Future<Either<Failure, void>> updateRatingCount({required String productId});
+
 }

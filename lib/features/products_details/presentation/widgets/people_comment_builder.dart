@@ -4,6 +4,7 @@ import 'package:fruits_hub/generated/l10n.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/helper/get_user_review_dummy_data.dart';
+import '../../../../core/utils/app_text_style.dart';
 import '../manager/cubit/reviews_cubit.dart';
 import 'people_comments_list.dart';
 
@@ -40,9 +41,18 @@ class _PeopleCommentsBuilderState extends State<PeopleCommentsBuilder> {
       },
       builder: (context, state) {
         if (state is GetReviewsSuccess) {
-          return PeopleCommentsList(
-            userReviewEntity: state.reviewsList,
-          );
+          if (state.reviewsList.isEmpty) {
+            return Center(
+              child: Text(
+                S.of(context).noCommentsforProduct,
+                style: TextStyles.bold13,
+              ),
+            );
+          } else {
+            return PeopleCommentsList(
+              userReviewEntity: state.reviewsList,
+            );
+          }
         } else {
           return Skeletonizer(
             child: PeopleCommentsList(

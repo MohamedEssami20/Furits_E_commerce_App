@@ -66,7 +66,6 @@ class ProductRepoImpl extends ProductRepos {
 
       List<ProductEntity> finalProducts =
           getFinalProducts(favSanpShot, products);
-      log("apple 2 rating count= ${finalProducts[0].ratingCount}");
       return right(finalProducts);
     } catch (e) {
       return left(

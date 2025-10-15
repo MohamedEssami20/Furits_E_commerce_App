@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub/core/utils/Widgets/build_appbar.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart';
+import 'package:fruits_hub/features/products_details/presentation/manager/cubit/reviews_cubit.dart';
 import 'package:fruits_hub/features/products_details/presentation/widgets/people_comment_builder.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 import 'package:provider/provider.dart';
@@ -40,7 +41,10 @@ class ReviewsSectionBody extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          const ReviewStarsItem(),
+          Visibility(
+            visible: context.watch<ReviewsCubit>().isUserCommented == false,
+            child: const ReviewStarsItem(),
+          ),
           const SizedBox(
             height: 16,
           ),
@@ -54,6 +58,15 @@ class ReviewsSectionBody extends StatelessWidget {
             height: 16,
           ),
           const SummaryOfRating(),
+          const SizedBox(
+            height: 12,
+          ),
+          Text(
+            S.of(context).comments,
+            style: TextStyles.bold13.copyWith(
+              color: theme.colorScheme.onSurface,
+            ),
+          ),
           const SizedBox(
             height: 12,
           ),

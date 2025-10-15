@@ -240,5 +240,9 @@
     "send": "ارسال",
     "commentAdded": "تم اضافة التعليق بنجاح",
     "commentAddedFail":"فشل اضافة التعليق",
-    "ratePorduct":"تقييم المنتج"
+    "ratePorduct":"تقييم المنتج",
+    "noCommentsforProduct":"لا يوجد تعليقات لهذا المنتج",
+    "comments":"تعليقات",
+    "editComment":"تعديل التعليق"
+   
 }
