@@ -14,7 +14,8 @@ class ReviewsCubit extends Cubit<ReviewsState> {
   final ReviewsRepos reviewsRepos;
 
   StreamSubscription? _streamSubscription;
-  bool isUserCommented = false;
+  StreamSubscription? _isUserCommentedSubscription;
+  bool isUserCommentedFlag = false;
   // create method that add comments
   Future<void> addReview(
       {required String productId,
@@ -31,7 +32,6 @@ class ReviewsCubit extends Cubit<ReviewsState> {
       );
     }, (_) async {
       await reviewsRepos.updateRatingCount(productId: productId);
-      isUserCommented = true;
       emit(
         AddCommentSuccess(),
       );
@@ -59,9 +59,29 @@ class ReviewsCubit extends Cubit<ReviewsState> {
         );
   }
 
+  // create method that check if user commented or not;
+  void isUserCommented({required String productId}) {
+    _isUserCommentedSubscription = reviewsRepos
+        .isUserCommented(
+      productId: productId,
+    )
+        .listen((event) {
+      event.fold(
+          (failure) => emit(
+                IsUserCommentedFailure(errorMessage: failure.errorMessage),
+              ), (isCommented) {
+        isUserCommentedFlag = isCommented;
+        emit(
+          IsUserCommented(isCommented: isCommented),
+        );
+      });
+    });
+  }
+
   @override
   Future<void> close() {
     _streamSubscription?.cancel();
+    _isUserCommentedSubscription?.cancel();
     return super.close();
   }
 }

@@ -59,9 +59,8 @@ Widget buildDetailsView(
         textDirection: textDirection,
       );
     case 1:
-      return  ReviewsView(
+      return ReviewsView(
         productId: productEntity.id,
-        
       );
     default:
       return DetailsViewSection(

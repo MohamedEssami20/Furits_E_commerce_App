@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/utils/Widgets/build_appbar.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart';
 import 'package:fruits_hub/features/products_details/presentation/manager/cubit/reviews_cubit.dart';
 import 'package:fruits_hub/features/products_details/presentation/widgets/people_comment_builder.dart';
 import 'package:fruits_hub/generated/l10n.dart';
-import 'package:provider/provider.dart';
 
 import '../manager/details_and_reviews_cubit/detais_and_reviews_cubit.dart';
 import 'reviews_stars_item.dart';
@@ -41,9 +41,15 @@ class ReviewsSectionBody extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Visibility(
-            visible: context.watch<ReviewsCubit>().isUserCommented == false,
-            child: const ReviewStarsItem(),
+          BlocBuilder<ReviewsCubit, ReviewsState>(
+            builder: (context, state) {
+              final isUserComented =
+                  context.watch<ReviewsCubit>().isUserCommentedFlag;
+              return Visibility(
+                visible: !isUserComented,
+                child: const ReviewStarsItem(),
+              );
+            },
           ),
           const SizedBox(
             height: 16,

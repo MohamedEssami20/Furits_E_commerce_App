@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:fruits_hub/core/errors/failure.dart';
 import 'package:fruits_hub/core/services/data_base_service.dart';
+import 'package:fruits_hub/core/services/firebase_auth_service.dart';
 import 'package:fruits_hub/features/products_details/data/models/user_comment_model.dart';
 import 'package:fruits_hub/features/products_details/domain/entities/user_comments_entity.dart';
 import '../../../../core/errors/firebase_exception.dart';
@@ -13,7 +14,7 @@ import '../../domain/repos/reviews_repos.dart';
 
 class ReviewsReposImpl implements ReviewsRepos {
   final DataBaseService dataBaseService;
-
+  FirebaseAuthService firebaseAuthService = FirebaseAuthService();
   ReviewsReposImpl({required this.dataBaseService});
   @override
   Future<Either<Failure, void>> addReviewe(
@@ -103,6 +104,37 @@ class ReviewsReposImpl implements ReviewsRepos {
       yield left(
         ServerFailure(
           errorMessage: genralErrorMessage,
+        ),
+      );
+    }
+  }
+
+  @override
+  Stream<Either<Failure, bool>> isUserCommented(
+      {required String productId}) async* {
+    String userId = firebaseAuthService.getCurrentUser()!;
+    try {
+      final reviews = dataBaseService.getStreamDataWithDocumentId(
+        mainPath: BackendEndpoints.reviewsCollection,
+        subPath: BackendEndpoints.productComments,
+        documentId: productId,
+      );
+      await for (var element in reviews) {
+        final reviewsEntities = element
+            .map(
+              (e) => UserReviewModel.fromJson(e.data()).toEntity(),
+            )
+            .toList();
+        yield right(reviewsEntities.any((e) => e.userId == userId));
+      }
+    } on FirebaseException catch (e) {
+      yield left(
+        FirebaseExceptionHandler.fromFirebaseException(e),
+      );
+    } catch (e) {
+      yield left(
+        ServerFailure(
+          errorMessage: e.toString(),
         ),
       );
     }

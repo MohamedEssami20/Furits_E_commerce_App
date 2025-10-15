@@ -32,3 +32,16 @@ final class GetReviewsFailure extends ReviewsState {
 }
 
 final class GetReviewsLoading extends ReviewsState {}
+
+
+// create all state of is user commented;
+final class IsUserCommented extends ReviewsState {
+  final bool isCommented;
+  const IsUserCommented({required this.isCommented});
+}
+
+final class IsUserCommentedFailure extends ReviewsState {
+  final String errorMessage;
+  const IsUserCommentedFailure({required this.errorMessage});
+}
+final class IsUserNotCommented extends ReviewsState {}

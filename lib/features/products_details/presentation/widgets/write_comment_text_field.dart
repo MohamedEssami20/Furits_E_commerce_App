@@ -31,7 +31,6 @@ class _WriteCommentTextFieldState extends State<WriteCommentTextField> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final user = context.read<GetUserCubit>().userEntity;
-    final isUserAddComment = context.watch<ReviewsCubit>().isUserCommented;
     return Row(
       spacing: 8,
       children: [
@@ -88,6 +87,8 @@ class _WriteCommentTextFieldState extends State<WriteCommentTextField> {
               },
               child: BlocConsumer<ReviewsCubit, ReviewsState>(
                 builder: (context, state) {
+                   final isUserComentend =
+                        context.watch<ReviewsCubit>().isUserCommentedFlag;
                   if (state is AddCommentLoading) {
                     return SizedBox(
                       height: 20,
@@ -97,9 +98,10 @@ class _WriteCommentTextFieldState extends State<WriteCommentTextField> {
                       ),
                     );
                   } else {
+                   
                     return FittedBox(
                       child: Text(
-                        isUserAddComment
+                        isUserComentend
                             ? S.of(context).editComment
                             : S.of(context).send,
                         style: theme.textTheme.headlineLarge?.copyWith(
