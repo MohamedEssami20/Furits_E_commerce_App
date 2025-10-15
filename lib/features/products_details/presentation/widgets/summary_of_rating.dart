@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub/core/entities/product_entity.dart';
 
 import '../../../../core/utils/app_text_style.dart';
 import '../../../../generated/l10n.dart';
 import 'rating_bar_item.dart';
 
 class SummaryOfRating extends StatelessWidget {
-  const SummaryOfRating({super.key});
-
+  const SummaryOfRating({super.key, required this.productEntity});
+  final ProductEntity productEntity;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -43,7 +44,7 @@ class SummaryOfRating extends StatelessWidget {
                         size: 20,
                       ),
                       Text(
-                        '4.5',
+                        productEntity.avgRating.toString(),
                         style: TextStyles.bold13.copyWith(
                           color: theme.colorScheme.onSurface,
                         ),

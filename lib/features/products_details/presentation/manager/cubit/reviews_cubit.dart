@@ -32,6 +32,7 @@ class ReviewsCubit extends Cubit<ReviewsState> {
       );
     }, (_) async {
       await reviewsRepos.updateRatingCount(productId: productId);
+      await reviewsRepos.updateAverageRating(productId: productId);
       emit(
         AddCommentSuccess(),
       );

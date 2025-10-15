@@ -139,4 +139,38 @@ class ReviewsReposImpl implements ReviewsRepos {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, void>> updateAverageRating(
+      {required String productId}) async {
+    try {
+      final ratingCount = await dataBaseService.getDataWithDocumentId(
+        mainPath: BackendEndpoints.reviewsCollection,
+        subPath: BackendEndpoints.productComments,
+        mainDocumentId: productId,
+      );
+      await dataBaseService.addData(
+        path: BackendEndpoints.getProducts,
+        documentId: productId,
+        data: {
+          "avgRating":
+              ratingCount.map((e) => e["rate"]).reduce((a, b) => a + b) /
+                  ratingCount.length,
+        },
+      );
+      return right(null);
+    } on FirebaseException catch (e) {
+      log("error to update average rating = ${e.message.toString()}");
+      return left(
+        FirebaseExceptionHandler.fromFirebaseException(e),
+      );
+    } catch (e) {
+      log("error to update average rating 2 = ${e.toString()}");
+      return left(
+        ServerFailure(
+          errorMessage: e.toString(),
+        ),
+      );
+    }
+  }
 }

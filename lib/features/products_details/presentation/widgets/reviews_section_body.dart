@@ -6,6 +6,7 @@ import 'package:fruits_hub/features/products_details/presentation/manager/cubit/
 import 'package:fruits_hub/features/products_details/presentation/widgets/people_comment_builder.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 
+import '../../../../core/entities/product_entity.dart';
 import '../manager/details_and_reviews_cubit/detais_and_reviews_cubit.dart';
 import 'reviews_stars_item.dart';
 import 'summary_of_rating.dart';
@@ -15,8 +16,10 @@ class ReviewsSectionBody extends StatelessWidget {
   const ReviewsSectionBody({
     super.key,
     required this.productId,
+    required this.productEntity,
   });
   final String productId;
+  final ProductEntity productEntity;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -55,7 +58,7 @@ class ReviewsSectionBody extends StatelessWidget {
             height: 16,
           ),
           Text(
-            '324 ${S.of(context).review}',
+            '${productEntity.ratingCount} ${S.of(context).review}',
             style: TextStyles.bold13.copyWith(
               color: theme.colorScheme.onSurface,
             ),
@@ -63,7 +66,9 @@ class ReviewsSectionBody extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          const SummaryOfRating(),
+          SummaryOfRating(
+            productEntity: productEntity,
+          ),
           const SizedBox(
             height: 12,
           ),

@@ -17,6 +17,9 @@ abstract class ReviewsRepos {
 
   // create method that update length of reviews count;
   Future<Either<Failure, void>> updateRatingCount({required String productId});
+
+  // create method that update avarage rating;
+  Future<Either<Failure, void>> updateAverageRating({required String productId});
   
   // create stream method that check if user commented on product;
   Stream<Either<Failure, bool>> isUserCommented({required String productId});

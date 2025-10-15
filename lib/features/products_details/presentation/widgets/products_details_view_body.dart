@@ -61,6 +61,7 @@ Widget buildDetailsView(
     case 1:
       return ReviewsView(
         productId: productEntity.id,
+        productEntity: productEntity,
       );
     default:
       return DetailsViewSection(
