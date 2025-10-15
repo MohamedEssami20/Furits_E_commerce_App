@@ -23,4 +23,5 @@ abstract class ReviewsRepos {
   
   // create stream method that check if user commented on product;
   Stream<Either<Failure, bool>> isUserCommented({required String productId});
+  
 }

@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fruits_hub/core/services/data_base_service.dart';
@@ -70,7 +70,6 @@ class FirestoreService implements DataBaseService {
         .collection(path)
         .where('email', isEqualTo: email)
         .get();
-    log("user exists= ${result.docs.isNotEmpty}");
     return result.docs.isNotEmpty;
   }
 
@@ -140,7 +139,6 @@ class FirestoreService implements DataBaseService {
         .collection(subPath)
         .snapshots()
         .map((e) {
-      log("length of favorites = ${e.docs.length}");
       return e.docs.map((e) => e.id).toList();
     });
     return result;

@@ -36,4 +36,12 @@ abstract class HomeRepo {
   // create method that get user orders from firebase
   Stream<Either<Failure, List<MyOrdersEntity>>> getUserOrders(
       {required String genralErrorMessage});
+
+  // create method that update username and user image in all reviews when user update username or image;
+  Future<Either<Failure, void>> updateUserNameAndUserImageInAllReviews(
+    {
+      required String? userName,
+      required String? userImage
+    } 
+  );
 }

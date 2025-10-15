@@ -224,4 +224,38 @@ class HomeRepoImpl implements HomeRepo {
       yield left(ServerFailure(errorMessage: genralErrorMessage));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> updateUserNameAndUserImageInAllReviews({
+    required String? userName,
+    required String? userImage,
+  }) async {
+    try {
+      final fireStore = FirebaseFirestore.instance;
+      final userId = firebaseAuthService.getCurrentUser()!;
+      final querySnapShot = await fireStore
+          .collectionGroup(BackendEndpoints.productComments)
+          .where("userId", isEqualTo: userId)
+          .get();
+
+      if (querySnapShot.docs.isEmpty) {
+        return right(null);
+      }
+
+      for (var doc in querySnapShot.docs) {
+        final updates = <String, dynamic>{};
+        if (userName != null) updates["userName"] = userName;
+        if (userImage != null) updates["userImage"] = userImage;
+        await doc.reference.update(updates);
+      }
+
+      return right(null);
+    } on FirebaseException catch (e) {
+      log("🔥 Firebase error: ${e.message}");
+      return left(FirebaseExceptionHandler.fromFirebaseException(e));
+    } catch (e) {
+      log("🔥 Server error: $e");
+      return left(ServerFailure(errorMessage: e.toString()));
+    }
+  }
 }

@@ -19,13 +19,17 @@ class UserCubit extends Cubit<UserState> {
     final result = await homeRepo.uploadUserImage(
         file: file, genralErrorMessage: genralErrorMessage);
     result.fold(
-      (failure) => emit(
-        EditUserImageFailure(errorMessage: failure.errorMessage),
-      ),
-      (url) => emit(
+        (failure) => emit(
+              EditUserImageFailure(errorMessage: failure.errorMessage),
+            ), (url) async {
+      await homeRepo.updateUserNameAndUserImageInAllReviews(
+        userName: null,
+        userImage: url,
+      );
+      emit(
         EditUserImageSuccess(imageUrl: url),
-      ),
-    );
+      );
+    });
   }
 
   // create methodt that handel state of update user info
@@ -38,13 +42,17 @@ class UserCubit extends Cubit<UserState> {
       final result = await homeRepo.updateName(
           name: userInfoEntity.name!, genralErrorMessage: genralErrorMessage);
       result.fold(
-        (failure) => emit(
-          EditUserNameFailure(errorMessage: failure.errorMessage),
-        ),
-        (_) => emit(
+          (failure) => emit(
+                EditUserNameFailure(errorMessage: failure.errorMessage),
+              ), (_) async {
+        await homeRepo.updateUserNameAndUserImageInAllReviews(
+          userName: userInfoEntity.name,
+          userImage: null,
+        );
+        emit(
           EditUserNameSuccess(),
-        ),
-      );
+        );
+      });
     }
 
     // update user email
