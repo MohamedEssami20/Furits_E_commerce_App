@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/helper/build_success_and_error_snackbar.dart';
 import 'package:fruits_hub/features/home/presentation/manager/get_user_cubit/get_user_cubit.dart';
-import 'package:fruits_hub/features/products_details/presentation/manager/cubit/reviews_cubit.dart';
+import 'package:fruits_hub/features/products_details/presentation/manager/reviews_cubit/reviews_cubit.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/utils/Widgets/custom_button.dart';
@@ -10,7 +10,7 @@ import '../../../../core/utils/Widgets/custom_text_form_filed.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../../generated/l10n.dart';
 import '../../data/models/user_comment_model.dart';
-import '../manager/cubit/rating_count_cubit/rating_count_cubit.dart';
+import '../manager/rating_count_cubit/rating_count_cubit.dart';
 
 class WriteCommentTextField extends StatefulWidget {
   const WriteCommentTextField({

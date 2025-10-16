@@ -17,7 +17,7 @@ class RatingBarRow extends StatelessWidget {
           Expanded(
             child: LinearPercentIndicator(
               lineHeight: 8.0,
-              percent: percent,
+              percent: percent.toDouble(),
               backgroundColor: Colors.grey[200]!,
               progressColor: Colors.orange,
               barRadius: const Radius.circular(2),

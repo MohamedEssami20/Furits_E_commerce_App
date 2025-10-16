@@ -23,5 +23,7 @@ abstract class ReviewsRepos {
   
   // create stream method that check if user commented on product;
   Stream<Either<Failure, bool>> isUserCommented({required String productId});
-  
+
+  // create method that get all percentage of all bars of rating;
+  Stream<Either<Failure, Map<int, double>>> getPercentageOfAllBarsOfRating({required String productId});
 }

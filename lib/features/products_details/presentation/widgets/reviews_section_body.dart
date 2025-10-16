@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/utils/Widgets/build_appbar.dart';
 import 'package:fruits_hub/core/utils/app_text_style.dart';
-import 'package:fruits_hub/features/products_details/presentation/manager/cubit/reviews_cubit.dart';
+import 'package:fruits_hub/features/products_details/presentation/manager/reviews_cubit/reviews_cubit.dart';
 import 'package:fruits_hub/features/products_details/presentation/widgets/people_comment_builder.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 

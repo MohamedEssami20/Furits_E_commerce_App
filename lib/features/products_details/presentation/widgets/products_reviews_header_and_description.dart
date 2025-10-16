@@ -23,7 +23,7 @@ class ProductsReviewsHeaderAndDescription extends StatelessWidget {
               Icons.star,
               color: Colors.amber,
             ),
-            Text(productEntity.avgRating.toString(),
+            Text(productEntity.avgRating.toString().substring(0, 3),
                 style: theme.textTheme.titleSmall?.copyWith(
                   color: theme.colorScheme.onSurface,
                 )),

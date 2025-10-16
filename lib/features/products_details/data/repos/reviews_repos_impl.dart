@@ -173,4 +173,47 @@ class ReviewsReposImpl implements ReviewsRepos {
       );
     }
   }
+
+  @override
+  Stream<Either<Failure, Map<int, double>>> getPercentageOfAllBarsOfRating(
+      {required String productId}) async* {
+    try {
+      final ratingCount = dataBaseService.getStreamDataWithDocumentId(
+        mainPath: BackendEndpoints.reviewsCollection,
+        subPath: BackendEndpoints.productComments,
+        documentId: productId,
+      );
+      await for (var snapShot in ratingCount) {
+        if (snapShot.isEmpty) {
+          yield right({1: 0, 2: 0, 3: 0, 4: 0, 5: 0});
+          continue; // if no comments in this product;
+        }
+
+        final Map<int, double> ratings = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0};
+        for (var element in snapShot) {
+          final data= element.data();
+          final rate = data["rate"];
+          if (ratings.containsKey(rate)) {
+            ratings[rate] = ratings[rate]! + 1;
+          }
+        }
+        final total = snapShot.length;
+        final Map<int, double> percentageOfAllBarsOfRating = {};
+        ratings.forEach((key, value) {
+          percentageOfAllBarsOfRating[key] = (value / total) * 100;
+        });
+        yield right(percentageOfAllBarsOfRating);
+      }
+    } on FirebaseException catch (e) {
+      yield left(
+        FirebaseExceptionHandler.fromFirebaseException(e),
+      );
+    } catch (e) {
+      yield left(
+        ServerFailure(
+          errorMessage: e.toString(),
+        ),
+      );
+    }
+  }
 }

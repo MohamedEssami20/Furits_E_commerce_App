@@ -5,7 +5,7 @@ import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../core/helper/get_user_review_dummy_data.dart';
 import '../../../../core/utils/app_text_style.dart';
-import '../manager/cubit/reviews_cubit.dart';
+import '../manager/reviews_cubit/reviews_cubit.dart';
 import 'people_comments_list.dart';
 
 class PeopleCommentsBuilder extends StatefulWidget {

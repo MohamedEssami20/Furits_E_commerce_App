@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fruits_hub/generated/l10n.dart';
 import '../../../../core/utils/app_text_style.dart';
-import '../manager/cubit/rating_count_cubit/rating_count_cubit.dart';
+import '../manager/rating_count_cubit/rating_count_cubit.dart';
 
 class ReviewStarsItem extends StatelessWidget {
   const ReviewStarsItem({super.key});

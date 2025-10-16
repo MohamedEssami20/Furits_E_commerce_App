@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub/core/services/get_it_service.dart';
-import 'package:fruits_hub/features/products_details/presentation/manager/cubit/reviews_cubit.dart';
+import 'package:fruits_hub/features/products_details/presentation/manager/reviews_cubit/reviews_cubit.dart';
 import 'package:fruits_hub/features/products_details/presentation/manager/details_and_reviews_cubit/detais_and_reviews_cubit.dart';
 
 import '../../../../core/entities/product_entity.dart';
